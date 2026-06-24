@@ -1,0 +1,31 @@
+---
+title: "Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi: HWP Ayrıştırma Analizi (2013–2025)"
+description: "Horiuchi-Wilmoth-Pletcher yöntemiyle TDH kaybının parite geçiş ve evlilik bileşenlerine ayrıştırılması."
+date: 2026-06-01
+---
+
+## Özet
+
+2013–2025 döneminde Türkiye'nin toplam doğurganlık hızı (TDH) 2,11'den 1,42'ye gerilemiştir. Bu çalışma, söz konusu 0,69 puanlık kaybı Horiuchi-Wilmoth-Pletcher (HWP) sürekli ayrıştırma yöntemiyle analiz etmektedir.
+
+## Temel Bulgular
+
+| Kovaryat | TDH Katkısı | Pay (%) |
+|----------|------------|---------|
+| Parite geçiş etkisi (toplam) | −0,473 | %68,6 |
+| → PPR₁ (1→2 geçiş) | −0,391 | %56,7 |
+| → PPR₂ (2→3 geçiş) | −0,034 | %4,9 |
+| → PPR₃₊ (3→4 ve üstü) | −0,048 | %7,0 |
+| Evlilik etkisi | −0,217 | %31,4 |
+
+**Birincil bulgu:** TDH kaybının üçte ikisinden fazlası (%68,6) parite geçiş davranışındaki değişimden kaynaklanmaktadır. Tek başına PPR₁ — birinci çocuktan ikinciye geçiş oranı — toplam kaybın %56,7'sini açıklamaktadır.
+
+## Metodoloji
+
+Horiuchi, Wilmoth ve Pletcher (2008) tarafından geliştirilen sürekli ayrıştırma yöntemi, toplam değişimi her bir kovaryatın marjinal katkısına böler. Yöntemin temel avantajı tam toplanabilirlik ve yol bağımsızlığı sağlamasıdır.
+
+<!-- Tam metodoloji detayı eklenecek -->
+
+## Belge
+
+📄 [Tam raporu indir (PDF)](#) · 📊 [Veri seti (Excel)](#)

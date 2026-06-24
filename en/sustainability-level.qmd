@@ -1,0 +1,23 @@
+---
+title: "Demographic Sustainability Level: A Three-Constraint Framework for Minimum Viable Fertility"
+lang: en
+date: 2026-04-01
+---
+
+## Abstract
+
+This paper defines the *demographic sustainability level* (DSL) as the minimum total fertility rate (TFR) that simultaneously satisfies three structural constraints: net reproduction rate (NRR ≥ 1), old-age dependency ratio (OADR ≤ critical threshold), and population decline rate (≤ acceptable bound). We derive a closed-form solution showing that for Turkey's current mortality and migration parameters, the DSL lies at approximately TFR = 1.84, with a behavioral floor defined by PPR₁ ≥ 0.70.
+
+## Key Results
+
+The three-constraint framework yields a coefficient k = 0.478 linking NRR requirements to TFR targets under observed sex ratios and survival probabilities.
+
+<!-- Full paper content to be added -->
+
+## Downloads
+
+📄 [Full paper (PDF)](#) · 📊 [R code (sustainability_calculations.R)](#)
+
+---
+
+*Correspondence: mehmet.sezgin@aile.gov.tr*

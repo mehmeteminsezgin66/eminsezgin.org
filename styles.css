@@ -1,0 +1,286 @@
+/*-- Emin Sezgin — Demografik Araştırma Sitesi --*/
+/*-- Navy #1F3864 · Gold #9E7A1A · Inter font family --*/
+
+/* ===== CSS Variables ===== */
+:root {
+  --navy: #1F3864;
+  --navy-light: #2B4A80;
+  --navy-dark: #152744;
+  --gold: #9E7A1A;
+  --gold-light: #C9A84C;
+  --gold-muted: rgba(158, 122, 26, 0.12);
+  --warm-white: #FAFAF8;
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --border-light: #E0DDD6;
+  --bg-card: #FFFFFF;
+}
+
+/* ===== Global ===== */
+body {
+  color: var(--text-primary);
+  background: var(--warm-white);
+  font-feature-settings: "kern" 1, "liga" 1;
+  line-height: 1.7;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  border-bottom: 3px solid var(--gold) !important;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.navbar .nav-link {
+  transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+  color: var(--gold-light) !important;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.1rem; margin-bottom: 0.6em; }
+h2 { font-size: 1.55rem; margin-top: 2em; }
+h3 { font-size: 1.25rem; }
+
+/* Gold accent for specific headers */
+.gold-accent {
+  color: var(--gold);
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--navy);
+  text-decoration-color: var(--gold-light);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--gold);
+}
+
+/* ===== Homepage ===== */
+.hero-section {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: white;
+  padding: 4rem 2rem;
+  margin: -1rem -1rem 3rem -1rem;
+  border-bottom: 4px solid var(--gold);
+}
+
+.hero-section h1 {
+  color: white;
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 0.4em;
+}
+
+.hero-section .subtitle {
+  color: var(--gold-light);
+  font-size: 1.15rem;
+  font-weight: 400;
+  max-width: 640px;
+}
+
+.hero-section .tagline {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+/* ===== Cards (for listing pages) ===== */
+.content-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--gold);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+  transition: box-shadow 0.2s ease, border-left-color 0.2s ease;
+}
+
+.content-card:hover {
+  box-shadow: 0 2px 12px rgba(31,56,100,0.08);
+  border-left-color: var(--navy);
+}
+
+.content-card .card-title {
+  color: var(--navy);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+
+.content-card .card-meta {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.5em;
+}
+
+.content-card .card-summary {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===== Tags / Categories ===== */
+.tag {
+  display: inline-block;
+  background: var(--gold-muted);
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.15em 0.65em;
+  border-radius: 3px;
+  margin-right: 0.4em;
+  letter-spacing: 0.02em;
+}
+
+.tag-platform {
+  background: rgba(31, 56, 100, 0.08);
+  color: var(--navy);
+}
+
+/* ===== Stat boxes (for data pages) ===== */
+.stat-box {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+}
+
+.stat-box .stat-value {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.stat-box .stat-label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 0.3em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stat-box.alert .stat-value {
+  color: #B33A3A;
+}
+
+/* ===== Quarto listing overrides ===== */
+.quarto-listing {
+  margin-top: 1rem;
+}
+
+div.quarto-post {
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 1.2rem;
+}
+
+div.quarto-post .listing-title {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+div.quarto-post .listing-title:hover {
+  color: var(--gold);
+}
+
+/* ===== Tables ===== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92rem;
+}
+
+thead th {
+  background: var(--navy);
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+
+tbody td {
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+tbody tr:hover {
+  background: var(--gold-muted);
+}
+
+/* ===== Code blocks (for Demography Lab) ===== */
+.sourceCode {
+  border-left: 3px solid var(--gold);
+  background: #F5F4F0 !important;
+}
+
+/* ===== Callout boxes ===== */
+.callout-note {
+  border-left-color: var(--navy) !important;
+}
+
+.callout-important {
+  border-left-color: var(--gold) !important;
+}
+
+/* ===== About page ===== */
+.about-header {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.about-header img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+}
+
+/* ===== English section indicator ===== */
+.lang-badge {
+  display: inline-block;
+  background: var(--navy);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15em 0.5em;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2.5rem 1.25rem;
+  }
+  .hero-section h1 {
+    font-size: 1.9rem;
+  }
+  .about-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .stat-box .stat-value {
+    font-size: 1.8rem;
+  }
+}
+
+/* ===== Print ===== */
+@media print {
+  .navbar, .page-footer { display: none; }
+  body { font-size: 11pt; }
+}

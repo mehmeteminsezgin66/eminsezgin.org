@@ -1,0 +1,108 @@
+---
+title: "Demography Lab"
+toc: true
+---
+
+Demografik modelleri interaktif olarak inceleyin. Parametreleri değiştirerek farklı politika senaryolarının etkisini gerçek zamanlı gözlemleyebilirsiniz.
+
+## Senaryo Projeksiyonu: TDH 2025–2040
+
+Aşağıdaki modelde PPR₁ iyileşme hızını ve evlilik etkisini ayarlayarak farklı senaryoları karşılaştırabilirsiniz.
+
+```{ojs}
+//| echo: false
+
+// Senaryo parametreleri
+viewof ppr1_improvement = Inputs.range([0, 0.05], {
+  value: 0.035, step: 0.005,
+  label: "Yıllık PPR₁ iyileşmesi"
+})
+
+viewof marriage_effect = Inputs.range([0, 0.03], {
+  value: 0.01, step: 0.005,
+  label: "Evlilik etkisi (yıllık TDH katkısı)"
+})
+
+viewof policy_start = Inputs.range([2026, 2030], {
+  value: 2027, step: 1,
+  label: "Politika başlangıç yılı"
+})
+```
+
+```{ojs}
+//| echo: false
+
+// Projeksiyon hesaplama
+{
+  const years = d3.range(2025, 2041);
+  const base_tdh = 1.42;
+  const base_ppr1 = 0.712;
+  const decay_rate = 0.035; // Müdahalesiz yıllık düşüş
+
+  // S0: Müdahalesiz
+  const s0 = years.map((y, i) => ({
+    year: y,
+    tdh: Math.max(base_tdh - decay_rate * i, 0.8),
+    scenario: "S0 — Müdahalesiz"
+  }));
+
+  // Politika senaryosu
+  const policy = years.map((y, i) => {
+    if (y < policy_start) {
+      return {
+        year: y,
+        tdh: Math.max(base_tdh - decay_rate * (y - 2025), 0.8),
+        scenario: "Politika senaryosu"
+      };
+    }
+    const policy_years = y - policy_start;
+    const pre_policy_loss = decay_rate * (policy_start - 2025);
+    const tdh_at_start = base_tdh - pre_policy_loss;
+    const recovery = ppr1_improvement * 2.1 * policy_years + marriage_effect * policy_years;
+    return {
+      year: y,
+      tdh: Math.min(tdh_at_start + recovery, 2.1),
+      scenario: "Politika senaryosu"
+    };
+  });
+
+  const data = [...s0, ...policy];
+
+  return Plot.plot({
+    width: 720,
+    height: 400,
+    style: { fontSize: "13px", background: "transparent" },
+    x: { label: null, tickFormat: "d" },
+    y: { label: "TDH", domain: [0.8, 2.2], grid: true },
+    color: {
+      domain: ["S0 — Müdahalesiz", "Politika senaryosu"],
+      range: ["#999999", "#1F3864"]
+    },
+    marks: [
+      Plot.ruleY([2.1], { stroke: "#9E7A1A", strokeDasharray: "6,3", strokeWidth: 1.5 }),
+      Plot.ruleY([1.3], { stroke: "#B33A3A", strokeDasharray: "3,3", strokeWidth: 1.5 }),
+      Plot.text(["Yenilenme (2,1)"], { x: 2026, y: 2.13, fill: "#9E7A1A", fontSize: 10 }),
+      Plot.text(["Lowest-low (1,3)"], { x: 2026, y: 1.33, fill: "#B33A3A", fontSize: 10 }),
+      Plot.lineY(data, { x: "year", y: "tdh", stroke: "scenario", strokeWidth: 2.5 }),
+      Plot.dot(data, { x: "year", y: "tdh", fill: "scenario", r: 3 }),
+      Plot.tip(data, Plot.pointerX({
+        x: "year", y: "tdh", stroke: "scenario",
+        format: { x: (d) => `${d}`, y: (d) => `TDH: ${d.toFixed(3)}` }
+      }))
+    ]
+  })
+}
+```
+
+::: {.callout-important}
+## Model Hakkında
+Bu basitleştirilmiş bir projeksiyon modelidir. PPR₁ iyileşmesinin TDH'ye çevrilmesinde doğrusal bir yaklaşım kullanılmıştır. Tam kohort-bileşen modeli için [araştırma sayfasına](../arastirmalar/hwp-analizi.qmd) bakınız.
+:::
+
+## Demografik Sürdürülebilirlik Düzeyi Hesaplayıcı
+
+*Yakında — NRR, OADR ve nüfus artış hızı kısıtlamalarını birlikte sağlayan minimum TDH düzeyinin interaktif hesaplaması.*
+
+## Kohort-Bileşen Nüfus Projeksiyonu
+
+*Yakında — Yaş-cinsiyet piramidi animasyonu ile 2025–2060 nüfus projeksiyonu.*

@@ -1,0 +1,59 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Emin Sezgin"
+  description: "Demografi, sosyal politika ve aile politikaları üzerine araştırma ve analizler"
+  site-url: https://eminsezgin.org
+  favicon: images/favicon.png
+
+  navbar:
+    background: "#1F3864"
+    foreground: "#FFFFFF"
+    logo: images/logo.svg
+    left:
+      - text: "Yazılar"
+        href: yazilar/index.qmd
+      - text: "Araştırmalar"
+        href: arastirmalar/index.qmd
+      - text: "Politika Notları"
+        href: politika-notlari/index.qmd
+      - text: "Veri ve Grafikler"
+        href: veri-grafikler/index.qmd
+      - text: "Demography Lab"
+        href: demography-lab/index.qmd
+      - text: "English"
+        href: en/index.qmd
+    right:
+      - text: "Hakkımda"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/eminsezgin
+      - icon: rss
+        href: yazilar/index.xml
+
+  page-footer:
+    background: "#1F3864"
+    foreground: "#C0C0C0"
+    center: |
+      © 2026 Mehmet Emin Sezgin · Toplum Çalışmaları Enstitüsü
+    right:
+      - icon: envelope
+        href: mailto:mehmet.sezgin@aile.gov.tr
+
+  search:
+    location: navbar
+    type: overlay
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles.css]
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-tools: false
+    smooth-scroll: true
+    lang: tr
+    mainfont: "Inter, system-ui, -apple-system, sans-serif"

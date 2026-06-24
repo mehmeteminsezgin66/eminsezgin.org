@@ -1,0 +1,43 @@
+---
+title: "Hakkımda"
+toc: false
+---
+
+::: {.about-header}
+
+![](images/profile-placeholder.jpg){.rounded}
+
+**Mehmet Emin Sezgin**
+
+Kıdemli Politika Analisti · Aile ve Sosyal Hizmetler Bakanlığı\
+Toplum Çalışmaları Enstitüsü\
+Ankara
+
+:::
+
+## Çalışma Alanları
+
+Yaklaşık 20 yıldır kamu politikası alanında çalışmaktayım. Temel uzmanlık alanlarım demografi, nüfus ve aile politikaları, sosyal politika, istihdam ve ulusal güvenlik kesişimidir.
+
+Mevcut araştırma programım, Türkiye'deki doğurganlık düşüşünü kültürel tercih ya da ideolojik dönüşüm olarak değil, kurumsal kapasite ve risk yönetimi meselesi olarak yeniden tanımlamayı hedeflemektedir. Bu çerçevenin temel tezi şudur: **kriz bir istek eksikliği değil, güvence eksikliğidir.**
+
+## Metodoloji
+
+Çalışmalarımda kullandığım başlıca demografik yöntemler:
+
+- HWP (Horiuchi-Wilmoth-Pletcher) ayrıştırma analizi
+- Parite ilerleme oranları (PPR) analizi
+- Bongaarts-Feeney tempo düzeltmesi
+- Kohort-bileşen nüfus projeksiyonu
+- Kitagawa ayrıştırması
+
+## Yayın Platformları
+
+- **Bu site** — Araştırmalar, politika notları, veri görselleştirmeleri ve interaktif modeller
+- **[TamgaTürk](https://tamgaturk.com)** — Analiz yazıları
+- **[Medium](https://medium.com)** — Geniş kitleye yönelik yazılar
+- **[toplum.org.tr](https://toplum.org.tr)** — Toplum Çalışmaları Enstitüsü
+
+## İletişim
+
+📧 mehmet.sezgin@aile.gov.tr

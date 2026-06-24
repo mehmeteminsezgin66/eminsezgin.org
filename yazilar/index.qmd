@@ -1,0 +1,14 @@
+---
+title: "Yazılar"
+listing:
+  contents: "*.qmd"
+  sort: "date desc"
+  type: default
+  categories: true
+  fields: [date, title, categories, description]
+  page-size: 15
+  filter-ui: true
+toc: false
+---
+
+Demografi, sosyal politika ve aile politikaları üzerine analizler. TamgaTürk ve Medium'da yayımlanan yazılar da burada yer almaktadır.

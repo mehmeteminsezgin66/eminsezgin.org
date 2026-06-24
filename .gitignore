@@ -1,0 +1,9 @@
+_site/
+.quarto/
+*.html
+!_quarto.yml
+.Rproj.user
+.Rhistory
+.RData
+.DS_Store
+Thumbs.db

@@ -1,0 +1,19 @@
+---
+title: "Norm Diffusion Asymmetry and Fertility Decline in Middle-Income Countries"
+lang: en
+date: 2026-03-01
+---
+
+## Abstract
+
+Why do middle-income countries experience rapid fertility decline without the macroeconomic transformation that standard demographic transition theory predicts? This paper proposes a *norm diffusion asymmetry* mechanism: institutional hardware (legal protections, childcare infrastructure, housing affordability) diffuses more slowly than cultural software (fertility norms, gender role expectations, life-course scripts). The resulting gap produces a structural mismatch — desired family size converges toward high-income-country norms while the institutional conditions that enable even moderate fertility in those countries remain absent.
+
+<!-- Full paper content to be added -->
+
+## Downloads
+
+📄 [Full paper (PDF)](#) · 📊 [Measurement framework (PDF)](#)
+
+---
+
+*Correspondence: mehmet.sezgin@aile.gov.tr*

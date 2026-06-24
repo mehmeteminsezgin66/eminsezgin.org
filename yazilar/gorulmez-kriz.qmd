@@ -1,0 +1,16 @@
+---
+title: "Görünmez Kriz: Türkiye'nin Doğurganlık Verileri Ne Söylüyor?"
+description: "2025 TÜİK verileri, Türkiye'nin doğurganlık krizinin toplam rakamlarda görünenden çok daha derin olduğunu ortaya koyuyor."
+date: 2026-06-15
+categories: [TamgaTürk, Demografi, PPR]
+---
+
+*Bu yazı ilk olarak [TamgaTürk](https://tamgaturk.com)'te yayımlanmıştır.*
+
+---
+
+Burada yazı içeriği yer alacak.
+
+TÜİK 2025 verilerine göre toplam doğurganlık hızı 1,42'ye geriledi. Ama asıl hikaye bu rakamın arkasında: PPR₁ — yani bir çocuktan ikinci çocuğa geçiş oranı — 0,712'ye düştü. Kritik eşik olan 0,70'e 0,012 puan kaldı.
+
+<!-- Gerçek yazı içeriği buraya eklenecek -->

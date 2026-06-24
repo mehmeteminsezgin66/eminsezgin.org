@@ -1,0 +1,11 @@
+---
+title: "Politika Notları"
+listing:
+  contents: "*.qmd"
+  sort: "date desc"
+  type: default
+  fields: [date, title, description]
+toc: false
+---
+
+Karar alıcılara yönelik kısa ve odaklı politika belgeleri. Her not, somut bir politika sorunu için analitik çerçeve ve uygulama önerisi sunmaktadır.

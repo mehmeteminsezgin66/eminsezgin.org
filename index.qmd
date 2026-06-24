@@ -1,0 +1,96 @@
+---
+pagetitle: "Emin Sezgin — Demografi ve Sosyal Politika"
+toc: false
+---
+
+::: {.hero-section}
+
+# Emin Sezgin
+
+::: {.subtitle}
+Demografi, sosyal politika ve aile politikaları üzerine araştırma, analiz ve politika tasarımı.
+:::
+
+::: {.tagline}
+Kriz bir istek eksikliği değil, güvence eksikliğidir.
+:::
+
+:::
+
+## Son Çalışmalar
+
+::: {.content-card}
+::: {.card-meta}
+Araştırma · Haziran 2026
+:::
+::: {.card-title}
+[Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi: HWP Ayrıştırma Analizi (2013–2025)](arastirmalar/hwp-analizi.qmd)
+:::
+::: {.card-summary}
+Horiuchi-Wilmoth-Pletcher yöntemiyle TDH kaybının parite geçiş ve evlilik bileşenlerine ayrıştırılması. PPR₁ etkisi toplam kaybın %68,6'sını açıklıyor.
+:::
+:::
+
+::: {.content-card}
+::: {.card-meta}
+Politika Notu · 2026
+:::
+::: {.card-title}
+[Demografik Güvenlik ve Aile Fonu (DGAF): Kurumsal Model](politika-notlari/dgaf.qmd)
+:::
+::: {.card-summary}
+Özel bütçeli, Cumhurbaşkanlığına bağlı bir demografik yatırım fonu tasarımı. Hibrit yönetişim modeli, finansman kanalları ve performans çerçevesi.
+:::
+:::
+
+::: {.content-card}
+::: {.card-meta}
+Demography Lab
+:::
+::: {.card-title}
+[Kohort-Bileşen Projeksiyon Modeli](demography-lab/index.qmd)
+:::
+::: {.card-summary}
+Senaryo parametrelerini değiştirerek Türkiye'nin 2025–2060 nüfus projeksiyonlarını interaktif olarak inceleyin.
+:::
+:::
+
+
+## Güncel Göstergeler
+
+::: {.grid}
+
+::: {.g-col-4}
+::: {.stat-box .alert}
+::: {.stat-value}
+1.42
+:::
+::: {.stat-label}
+TDH 2025
+:::
+:::
+:::
+
+::: {.g-col-4}
+::: {.stat-box .alert}
+::: {.stat-value}
+0.712
+:::
+::: {.stat-label}
+PPR₁ 2025
+:::
+:::
+:::
+
+::: {.g-col-4}
+::: {.stat-box}
+::: {.stat-value}
+38
+:::
+::: {.stat-label}
+Lowest-low il sayısı
+:::
+:::
+:::
+
+:::

@@ -1,0 +1,11 @@
+---
+title: "Araştırmalar"
+listing:
+  contents: "*.qmd"
+  sort: "date desc"
+  type: default
+  fields: [date, title, description]
+toc: false
+---
+
+Türkiye'nin demografik yapısı, doğurganlık dinamikleri ve politika çerçeveleri üzerine kapsamlı araştırmalar. Her çalışma metodoloji, bulgular ve indirilebilir belge içermektedir.

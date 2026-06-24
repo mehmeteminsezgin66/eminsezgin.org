@@ -1,0 +1,37 @@
+---
+title: "Research in English"
+lang: en
+toc: true
+---
+
+Selected research papers and working papers in English.
+
+## Working Papers
+
+::: {.content-card}
+::: {.card-meta}
+Working Paper · 2026 ::: {.lang-badge}EN:::
+:::
+::: {.card-title}
+[Demographic Sustainability Level: A Three-Constraint Framework for Minimum Viable Fertility](sustainability-level.qmd)
+:::
+::: {.card-summary}
+Defines the minimum total fertility rate that simultaneously satisfies three demographic constraints: net reproduction (NRR ≥ 1), old-age dependency (OADR ≤ threshold), and population decline rate. Derives a closed-form solution with PPR₁ ≥ 0.70 as the behavioral floor.
+:::
+:::
+
+::: {.content-card}
+::: {.card-meta}
+Working Paper · 2026 ::: {.lang-badge}EN:::
+:::
+::: {.card-title}
+[Norm Diffusion Asymmetry and Fertility Decline in Middle-Income Countries](norm-diffusion.qmd)
+:::
+::: {.card-summary}
+Proposes that institutional hardware (legal protections, childcare, housing) travels slower than cultural software (fertility norms), creating an asymmetric diffusion pattern that explains why middle-income countries experience fertility decline without the macroeconomic trigger that Goldin's model requires.
+:::
+:::
+
+## Contact
+
+For academic correspondence: mehmet.sezgin@aile.gov.tr

@@ -1,0 +1,23 @@
+---
+title: "Demografik Güvenlik ve Aile Fonu (DGAF): Kurumsal Model"
+description: "Özel bütçeli, Cumhurbaşkanlığına bağlı demografik yatırım fonu tasarımı."
+date: 2026-05-01
+---
+
+## Sorun Tanımı
+
+Türkiye'nin mevcut aile politikası mimarisi, doğurganlık krizinin yapısal niteliğiyle orantısız bir kurumsal kapasiteye sahiptir. Parçalı bütçe kalemleri, koordinasyon eksikliği ve performans izleme boşluğu, politika müdahalelerinin etkisini sınırlamaktadır.
+
+## Önerilen Model
+
+Demografik Güvenlik ve Aile Fonu (DGAF), üç temel işlevi tek çatı altında birleştiren özel bütçeli bir kuruluş olarak tasarlanmıştır:
+
+1. **Finansman havuzu** — Demografik yatırımlar için ayrıştırılmış ve sürdürülebilir kaynak
+2. **Koordinasyon mekanizması** — Bakanlıklar arası politika tutarlılığı
+3. **İzleme ve değerlendirme** — PPR₁ bazlı performans takibi
+
+<!-- Tam içerik eklenecek -->
+
+## Belge
+
+📄 [Politika notunu indir (PDF)](#)
