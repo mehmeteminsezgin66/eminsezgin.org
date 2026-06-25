@@ -11,7 +11,259 @@ Türkiye'nin demografik göstergeleri — interaktif grafikler ve veri kaynaklar
 
 TDH zaman serisi, yaşa özel doğurganlık hızları, doğum sırası dağılımı ve il bazlı haritalar.
 
-*Bu bölümün içeriği hazırlanıyor.*
+### Toplam Doğurganlık Hızı, 2001–2025
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+library(plotly)
+
+yillar <- 2001:2025
+tdh <- c(2.38, 2.17, 2.09, 2.11, 2.12, 2.12, 2.16, 2.15, 2.10, 2.08,
+         2.05, 2.11, 2.11, 2.19, 2.16, 2.11, 2.08, 2.00, 1.89, 1.77,
+         1.71, 1.63, 1.52, 1.49, 1.42)
+
+fig <- plot_ly(x = yillar, y = tdh, type = "scatter", mode = "lines+markers",
+               line = list(color = "#1F3864", width = 2.5),
+               marker = list(color = "#1F3864", size = 5),
+               hovertemplate = "Yıl: %{x}<br>TDH: %{y:.2f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "TDH (çocuk sayısı)", range = c(1.0, 2.5)),
+    shapes = list(
+      list(type = "line", x0 = 2001, x1 = 2025, y0 = 2.1, y1 = 2.1,
+           line = list(color = "#9E7A1A", width = 1.5, dash = "dash")),
+      list(type = "line", x0 = 2001, x1 = 2025, y0 = 1.3, y1 = 1.3,
+           line = list(color = "#B33A3A", width = 1.5, dash = "dot"))
+    ),
+    annotations = list(
+      list(x = 2004, y = 2.16, text = "Yenilenme düzeyi (2,1)",
+           showarrow = FALSE, font = list(size = 10, color = "#9E7A1A")),
+      list(x = 2004, y = 1.36, text = "Lowest-low eşiği (1,3)",
+           showarrow = FALSE, font = list(size = 10, color = "#B33A3A"))
+    ),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Temel Doğurganlık Göstergeleri 2001–2025. 2025 TDH: 1,42 — 2014'teki zirveden (2,19) 11 yılda −0,77 puanlık kayıp.
+:::
+
+### Toplam Doğum Sayısı, 2001–2025
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+dogum_sayisi <- c(1323341, 1229555, 1198927, 1222484, 1244041, 1255432, 1289992, 1295511,
+                  1266751, 1261169, 1252812, 1294605, 1297505, 1351088, 1336908, 1316204,
+                  1300258, 1257071, 1191709, 1120430, 1086136, 1041846, 963075, 940273, 895374)
+
+fig2 <- plot_ly(x = yillar, y = dogum_sayisi, type = "bar",
+                marker = list(color = "#1F3864"),
+                hovertemplate = "Yıl: %{x}<br>Doğum: %{y:,.0f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Doğum sayısı"),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig2
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Doğum İstatistikleri. 2025'te 895.374 doğum — 2001'den bu yana en düşük seviye, zirve yılı 2014'e (1.351.088) göre %33,7 azalma.
+:::
+
+### Yaşa Özel Doğurganlık Hızı: 2010 / 2020 / 2025 Karşılaştırması
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yas_gruplari <- c("15-19", "20-24", "25-29", "30-34", "35-39", "40-44", "45-49")
+asfr_2010 <- c(33.76, 112.84, 125.59, 88.19, 42.93, 10.90, 1.82)
+asfr_2020 <- c(14.83, 77.12, 116.13, 89.81, 44.88, 10.69, 0.93)
+asfr_2025 <- c(9.15, 53.25, 95.86, 79.59, 36.70, 8.45, 0.71)
+
+fig3 <- plot_ly(x = yas_gruplari, y = asfr_2010, type = "scatter", mode = "lines+markers",
+                name = "2010", line = list(color = "#9E7A1A", width = 2)) %>%
+  add_trace(y = asfr_2020, name = "2020", line = list(color = "#5B7DB1", width = 2)) %>%
+  add_trace(y = asfr_2025, name = "2025", line = list(color = "#1F3864", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = "Annenin yaş grubu"),
+    yaxis = list(title = "Yaşa özel doğurganlık hızı (‰)"),
+    legend = list(orientation = "h", y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig3
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Yaşa Özel Doğurganlık Hızları. Doğurganlık zirvesi 25–29 yaş grubunda kalmayı sürdürüyor, ancak tüm yaş gruplarında düzey 15 yılda belirgin biçimde gerilemiş; 20–24 grubunda düşüş özellikle dik (112,8‰ → 53,2‰).
+:::
+
+### Doğum Sırası Dağılımı, 2012–2025
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_sira <- 2012:2025
+toplam <- c(1294605, 1297505, 1351088, 1336908, 1316204, 1300258, 1257071, 1191709,
+            1120430, 1086136, 1041846, 963075, 940273, 895374)
+birinci <- c(468944, 467915, 482157, 483173, 477710, 473400, 451887, 431276,
+             415699, 390243, 401184, 388886, 392724, 383482)
+ikinci <- c(427342, 423977, 435261, 426936, 420386, 413516, 403163, 380046,
+            358850, 351914, 322126, 295073, 288209, 273052)
+ucuncu <- c(218884, 225438, 244831, 243765, 240039, 236177, 229844, 216731,
+            200452, 196992, 181846, 159559, 150296, 138465)
+dorduncu_uzeri <- c(170608, 169645, 177925, 171037, 167279, 165785, 159436, 149938,
+                    138772, 139950, 130207, 114068, 105983, 96544)
+
+pay_birinci <- birinci / toplam * 100
+pay_ikinci <- ikinci / toplam * 100
+pay_ucuncu <- ucuncu / toplam * 100
+pay_dorduncu <- dorduncu_uzeri / toplam * 100
+
+fig4 <- plot_ly(x = yillar_sira, y = pay_birinci, type = "scatter", mode = "lines",
+                stackgroup = "one", name = "1. çocuk", fillcolor = "#1F3864",
+                line = list(width = 0.5, color = "#1F3864")) %>%
+  add_trace(y = pay_ikinci, name = "2. çocuk", fillcolor = "#5B7DB1",
+            line = list(width = 0.5, color = "#5B7DB1")) %>%
+  add_trace(y = pay_ucuncu, name = "3. çocuk", fillcolor = "#C9A84C",
+            line = list(width = 0.5, color = "#C9A84C")) %>%
+  add_trace(y = pay_dorduncu, name = "4+ çocuk", fillcolor = "#9E7A1A",
+            line = list(width = 0.5, color = "#9E7A1A")) %>%
+  layout(
+    xaxis = list(title = ""),
+    yaxis = list(title = "Pay (%)", range = c(0, 100)),
+    legend = list(orientation = "h", y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig4
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, Annenin Yaş Grubu ve Doğum Sırasına Göre Doğumlar. **Birinci çocuğun payı 2012'deki %36,2'den 2025'te %42,8'e yükselmiştir** — bu, ailelerin giderek artan oranda tek çocukta kaldığının doğrudan göstergesidir. İkinci çocuk payı aynı dönemde %33,0'dan %30,5'e gerilemiştir.
+:::
+
+### Ortalama Anne Yaşı ve İlk Doğum Yaşı Trendi
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_yas <- 2014:2025
+ort_anne_yasi <- c(28.37, 28.49, 28.60, 28.70, 28.86, 28.94, 29.00, 29.13, 29.17, 29.22, 29.31, 29.42)
+ilk_dogum_yasi <- c(25.51, 25.68, 25.86, 26.03, 26.24, 26.40, 26.54, 26.74, 26.83, 27.02, 27.26, 27.46)
+
+fig5 <- plot_ly(x = yillar_yas, y = ort_anne_yasi, type = "scatter", mode = "lines+markers",
+                name = "Ortalama anne yaşı (tüm doğumlar)", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(y = ilk_dogum_yasi, name = "İlk doğumdaki ortalama anne yaşı",
+            line = list(color = "#9E7A1A", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Yaş", range = c(25, 30)),
+    legend = list(orientation = "h", y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig5
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Temel Doğurganlık Göstergeleri. İlk doğum yaşı 2014–2025 arasında 25,5'ten 27,5'e yükselmiştir — bu artış, doğurganlık çağının etkin penceresini sıkıştırarak ikinci çocuğa geçiş için kalan biyolojik zamanı azaltmaktadır.
+:::
+
+### İllere Göre TDH — En Yüksek ve En Düşük 15 İl (2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 7
+
+il_adi <- c("Bartın", "İzmir", "Eskişehir", "Ankara", "Zonguldak", "Edirne", "Kütahya", "Karabük",
+            "Kırıkkale", "Giresun", "İstanbul", "Gümüşhane", "Kırklareli", "Uşak", "Çanakkale",
+            "Şanlıurfa", "Şırnak", "Mardin", "Diyarbakır", "Siirt", "Ağrı", "Bitlis", "Muş",
+            "Gaziantep", "Batman", "Adıyaman", "Van", "Kilis", "Hatay", "Hakkari")
+tdh_il <- c(1.09, 1.10, 1.11, 1.11, 1.11, 1.12, 1.13, 1.14,
+            1.14, 1.14, 1.14, 1.14, 1.15, 1.17, 1.17,
+            3.15, 2.53, 2.23, 2.14, 2.11, 2.05, 2.05, 2.01,
+            2.00, 2.00, 1.91, 1.87, 1.84, 1.81, 1.71)
+
+df_il <- data.frame(il = il_adi, tdh = tdh_il)
+df_il <- df_il[order(df_il$tdh), ]
+df_il$il <- factor(df_il$il, levels = df_il$il)
+
+fig6 <- plot_ly(df_il, y = ~il, x = ~tdh, type = "bar", orientation = "h",
+                marker = list(color = ~tdh, colorscale = list(c(0, "#B33A3A"), c(1, "#1F3864")),
+                              cmin = 1.0, cmax = 3.5),
+                hovertemplate = "%{y}: %{x:.2f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "TDH (çocuk sayısı)"),
+    yaxis = list(title = ""),
+    shapes = list(list(type = "line", x0 = 1.3, x1 = 1.3, y0 = -0.5, y1 = 29.5,
+                        line = list(color = "#B33A3A", width = 1.5, dash = "dot"))),
+    margin = list(l = 100),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig6
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İllere Göre Toplam Doğurganlık Hızı 2025. Doğu ve Güneydoğu illeri ulusal ortalamanın belirgin biçimde üzerinde kalırken, Batı ve Kuzey illerinin çoğu lowest-low eşiğinin (1,3) altına düşmüştür. Tam il bazlı harita görselleştirmesi yakında eklenecektir.
+:::
+
+### Annenin Medeni Durumuna Göre Doğumlar, 2012–2025
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_medeni <- 2012:2025
+evli <- c(1245514, 1246429, 1296737, 1283250, 1263490, 1246675, 1206635, 1144859,
+          1079832, 1045076, 1001894, 927014, 905469, 862481)
+evli_disi <- c(27121+1046+8162+12762, 27940+1061+8754+13321, 29626+1103+9380+14242,
+               29252+1093+9345+13968, 29962+1241+9363+12148, 29837+1268+9535+12943,
+               27691+1152+9189+12404, 25660+1109+9471+10610, 23414+1032+8902+7250,
+               23376+1051+9342+7291, 23228+1279+8822+6623, 21127+950+8690+5294,
+               22848+909+8125+2922, 20282+721+7559+4331)
+
+pay_evli <- evli / toplam * 100
+pay_evli_disi <- evli_disi / toplam * 100
+
+fig7 <- plot_ly(x = yillar_medeni, y = pay_evli, type = "bar", name = "Evli",
+                marker = list(color = "#1F3864")) %>%
+  add_trace(y = pay_evli_disi, name = "Evlilik dışı (hiç evlenmedi, boşandı, eşi öldü, bilinmeyen)",
+            marker = list(color = "#9E7A1A")) %>%
+  layout(
+    barmode = "stack",
+    xaxis = list(title = ""),
+    yaxis = list(title = "Pay (%)", range = c(0, 100)),
+    legend = list(orientation = "h", y = -0.25),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig7
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İl ve Annenin Yasal Medeni Durumuna Göre Doğumlar. Türkiye'de doğumların ezici çoğunluğu (2025'te %96,3) evlilik içinde gerçekleşmektedir — bu yapı, Batı Avrupa'nın aksine, doğurganlık düşüşünün evlilik dışı doğurganlık artışıyla değil, evlilik içi parite davranışındaki değişimle açıklanması gerektiğini göstermektedir.
+:::
 
 ## PPR ve HWP Analizi
 
