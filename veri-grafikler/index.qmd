@@ -265,6 +265,64 @@ fig7
 **Kaynak:** TÜİK, İl ve Annenin Yasal Medeni Durumuna Göre Doğumlar. Türkiye'de doğumların ezici çoğunluğu (2025'te %96,3) evlilik içinde gerçekleşmektedir — bu yapı, Batı Avrupa'nın aksine, doğurganlık düşüşünün evlilik dışı doğurganlık artışıyla değil, evlilik içi parite davranışındaki değişimle açıklanması gerektiğini göstermektedir.
 :::
 
+### Doğum Aralıkları: 1→2 ve 2→3 Geçişleri Arasındaki Süre (2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 4.5
+
+araliklar <- c("6-17 ay", "18-23 ay", "24-35 ay", "36-47 ay", "48-59 ay", "60+ ay")
+pay_1_2 <- c(8.27, 10.22, 19.95, 16.90, 13.13, 31.52)
+pay_2_3 <- c(5.67, 7.05, 13.82, 13.04, 12.22, 48.21)
+
+fig8 <- plot_ly(x = araliklar, y = pay_1_2, type = "bar", name = "1→2 geçişi (1. ve 2. doğum arası)",
+                marker = list(color = "#1F3864")) %>%
+  add_trace(y = pay_2_3, name = "2→3 geçişi (2. ve 3. doğum arası)",
+            marker = list(color = "#9E7A1A")) %>%
+  layout(
+    barmode = "group",
+    xaxis = list(title = "Son iki doğum arasındaki ay aralığı"),
+    yaxis = list(title = "Pay (%)"),
+    legend = list(orientation = "h", y = -0.25),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig8
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Annenin Doğum Sırasına Göre Son İki Doğumu Arasındaki Aylık Doğum Aralığı (2025). 2→3 geçişinde 60 ay (5 yıl) ve üzeri aralık bekleyenlerin payı (%48,2), 1→2 geçişine göre (%31,5) belirgin biçimde daha yüksektir — bu, ailelerin ikinci çocuktan üçüncüye geçerken daha uzun süre erteleme eğiliminde olduğunu göstermektedir.
+:::
+
+### Annenin Evlilik Süresine Göre Doğum Dağılımı (2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 4.5
+
+evlilik_suresi <- c("<1 yıl", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10-14", "15-19", "20+")
+dogum_sayisi_es <- c(89791, 138533, 100227, 83558, 66693, 55598, 51069, 44190, 38263, 33549, 101045, 35701, 6915)
+toplam_es <- sum(dogum_sayisi_es)
+pay_es <- dogum_sayisi_es / toplam_es * 100
+
+fig9 <- plot_ly(x = factor(evlilik_suresi, levels = evlilik_suresi), y = pay_es, type = "bar",
+                marker = list(color = "#1F3864"),
+                hovertemplate = "Evlilik süresi: %{x}<br>Pay: %{y:.1f}%<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "Evlilik süresi (yıl)"),
+    yaxis = list(title = "Doğumların payı (%)"),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig9
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İl ve Annenin Evlilik Süresine Göre Doğumlar (2025; bilinmeyen kategorisi hariç tutulmuştur). Doğumlar evliliğin ilk yılında en yüksek yoğunluğa ulaşmakta (%16,4), ardından düzenli biçimde azalmaktadır — bu örüntü, evlilik sonrası ilk çocuğun hızla geldiğini, ancak sonraki doğumların zaman içinde seyreldiğini göstermektedir.
+:::
+
 ## PPR ve HWP Analizi
 
 Parite geçiş oranları, HWP ayrıştırma bulguları ve karşı-olgusal senaryolar — sitenin özgün analitik katkısı.
