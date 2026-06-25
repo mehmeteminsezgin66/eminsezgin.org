@@ -186,3 +186,7 @@ TÜİK (2025). *İşgücü İstatistikleri Bülteni 2024-2025*; *Yaşlı İstati
 Nal, M. ve Gül Yücel, K. (2025). Türkiye'de Yaşlanan Nüfus ve Kamu Emeklilik Sisteminde Artan Mali Zorluklar. *Maliye Dergisi*, 188, 103-131.
 
 OECD (2023). *Government at a Glance 2023.* Paris.
+
+---
+
+📄 **[Tam metni indir (PDF)](butce-kaynaklari-tam-metin.pdf)** — tüm tablolar, grafikler (bütçe dağılımı, SGK aktif/pasif tarihsel seyri, yaşlı bağımlılık projeksiyonu) ve güven kodlaması metodolojisi dahil.
