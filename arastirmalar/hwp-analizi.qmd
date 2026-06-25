@@ -1,31 +1,151 @@
 ---
-title: "Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi: HWP Ayrıştırma Analizi (2013–2025)"
-description: "Horiuchi-Wilmoth-Pletcher yöntemiyle TDH kaybının parite geçiş ve evlilik bileşenlerine ayrıştırılması."
-date: 2026-06-01
+title: "Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi"
+subtitle: "2013–2024 Dönemi Üzerine Bir Ayrıştırma Analizi"
+description: "Horiuchi-Wilmoth-Pletcher sürekli değişim yöntemiyle Türkiye'nin TDH kaybının evlilik ve parite geçiş bileşenlerine ayrıştırılması."
+date: 2026-03-01
+author: "Mehmet Emin Sezgin"
 ---
+
+::: {.callout-note}
+Bu sayfa, çalışmanın özetlenmiş web versiyonudur. Tam metin — tüm tablolar, kuşak verisi ve metodolojik tartışma dahil — PDF olarak aşağıdan indirilebilir.
+:::
 
 ## Özet
 
-2013–2025 döneminde Türkiye'nin toplam doğurganlık hızı (TDH) 2,11'den 1,42'ye gerilemiştir. Bu çalışma, söz konusu 0,69 puanlık kaybı Horiuchi-Wilmoth-Pletcher (HWP) sürekli ayrıştırma yöntemiyle analiz etmektedir.
+Bu çalışma, Türkiye'nin Toplam Doğurganlık Hızı (TDH) serisini Horiuchi, Wilmoth ve Pletcher'ın (2008) sürekli değişim modeliyle TÜİK idari verisi üzerinden analiz eden ilk çalışmadır. **2013–2024 döneminde TDH 2,110'dan 1,484'e gerilemiş**, toplam kayıp (−0,626 puan) iki ana bileşene ayrıştırılmıştır:
 
-## Temel Bulgular
+- **Evlilik etkisi: −0,218 puan (%34,8)**
+- **Parite geçiş etkisi: −0,408 puan (%65,2)**
 
-| Kovaryat | TDH Katkısı | Pay (%) |
-|----------|------------|---------|
-| Parite geçiş etkisi (toplam) | −0,473 | %68,6 |
-| → PPR₁ (1→2 geçiş) | −0,391 | %56,7 |
-| → PPR₂ (2→3 geçiş) | −0,034 | %4,9 |
-| → PPR₃₊ (3→4 ve üstü) | −0,048 | %7,0 |
-| Evlilik etkisi | −0,217 | %31,4 |
+Parite etkisinin içinde, **1→2 çocuk geçişi (PPR₁) tek başına −0,354 puan (%56,6) ile en belirleyici kaldıraç** olarak öne çıkmaktadır. Karşı-olgusal analiz, parite davranışı 2013 düzeyinde sabit kalsaydı TDH'nin bugün yaklaşık **1,84** düzeyinde seyredeceğini göstermektedir.
 
-**Birincil bulgu:** TDH kaybının üçte ikisinden fazlası (%68,6) parite geçiş davranışındaki değişimden kaynaklanmaktadır. Tek başına PPR₁ — birinci çocuktan ikinciye geçiş oranı — toplam kaybın %56,7'sini açıklamaktadır.
+## Neden Bu Ayrıştırma Önemli
 
-## Metodoloji
+Doğurganlık düşüşünü politika açısından anlamlı yorumlamak, toplam değişimi değil onun bileşenlerini bilmeyi gerektirir: kaybın ne kadarı evlilik örüntüsünden, ne kadarı parite kararlarından kaynaklanıyor, ve parite içinde hangi geçiş belirleyici? Bu ayrıştırma yapılmadan tasarlanan politika, karanlıkta hedef arayan bir müdahaleye dönüşür.
 
-Horiuchi, Wilmoth ve Pletcher (2008) tarafından geliştirilen sürekli ayrıştırma yöntemi, toplam değişimi her bir kovaryatın marjinal katkısına böler. Yöntemin temel avantajı tam toplanabilirlik ve yol bağımsızlığı sağlamasıdır.
+Türkiye için bu tür kapsamlı bir ayrıştırma, Torun Alaca'nın (2022) 1993–2013 dönemini kapsayan çalışmasından sonra ilk defa güncellenmektedir.
 
-<!-- Tam metodoloji detayı eklenecek -->
+## Yöntem: HWP Sürekli Değişim Modeli
 
-## Belge
+Horiuchi-Wilmoth-Pletcher (HWP) yöntemi, iki zaman noktası arasındaki bir demografik göstergenin (burada TDH) toplam değişimini, belirlenen bileşenlerin (kovaryatların) katkılarına ayrıştırır — nedensellik iddiası taşımadan. Klasik ayrıştırma yöntemlerinden (Kitagawa, Das Gupta) farkı, değişimi ayrık adımlarla değil **sürekli bir patika üzerinde integral alarak** hesaplamasıdır. Bu, yol-bağımsız ve artığı sıfıra yakın sonuçlar üretir.
 
-📄 [Tam raporu indir (PDF)](#) · 📊 [Veri seti (Excel)](#)
+Çalışmada TDH şu yapıda modellenmiştir:
+
+$$TDH = k \times M \times PC$$
+
+- **M**: yaş gruplarına göre ağırlıklandırılmış evlilik etkisi
+- **PC**: kümülatif parite geçiş terimi (PPR₁ × PPR₂ × PPR₃ × PPR₄₊'nin birikimli çarpımı)
+
+Kalibrasyon katsayısı k=1,728 olarak hesaplanmış, model tutarlılığı 2013 ve 2024 kesitleri arasında %1,0 sapmayla doğrulanmıştır. Veriler dört kaynaktan derlenmiştir: TÜİK Doğum İstatistikleri (2001–2024), TÜİK Medeni Duruma Göre Nüfus serisi (2008–2025), TNSA 2018 ham mikro verisi (13.367 doğum kaydı, bağımsız doğrulama için) ve Torun Alaca'nın (2022) tarihsel karşılaştırma bulguları.
+
+## Ana Bulgu: Kovaryat Ayrıştırması
+
+TDH'nin 2013'teki 2,110 düzeyinden 2024'teki 1,484'e nasıl indiğini, her bileşenin payı kadar adım adım gösteren şelale grafiği:
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+library(plotly)
+
+labels <- c("TDH 2013", "Evlilik\netkisi", "1→2 geçiş\n(PPR₁)", "2→3 geçiş\n(PPR₂)", "3→4 geçiş\n(PPR₃)", "4+ geçiş", "TDH 2024")
+base <- c(0, 1.892, 1.538, 1.532, 1.511, 1.484, 0)
+visible <- c(2.110, 0.218, 0.354, 0.006, 0.021, 0.027, 1.484)
+colors <- c("#898781", "#e34948", "#2a78d6", "#2a78d6", "#2a78d6", "#2a78d6", "#898781")
+text_labels <- c("2,110", "−0,218", "−0,354", "−0,006", "−0,021", "−0,027", "1,484")
+
+fig <- plot_ly(
+  x = factor(labels, levels = labels), y = base, type = "bar",
+  marker = list(color = "rgba(0,0,0,0)"), showlegend = FALSE,
+  hoverinfo = "none"
+) %>%
+  add_trace(
+    y = visible, marker = list(color = colors),
+    text = text_labels, textposition = "outside",
+    hovertemplate = "%{text}<extra></extra>"
+  ) %>%
+  layout(
+    yaxis = list(title = "TDH", range = c(1.3, 2.25)),
+    xaxis = list(title = ""),
+    barmode = "stack",
+    showlegend = FALSE,
+    plot_bgcolor = "rgba(0,0,0,0)",
+    paper_bgcolor = "rgba(0,0,0,0)"
+  )
+
+fig
+```
+
+| Kovaryat | TDH Katkısı | Pay |
+|---|---|---|
+| **Evlilik etkisi (toplam)** | **−0,218** | **%34,8** |
+| ↳ 20–24 yaş | −0,077 | %12,3 |
+| ↳ 25–29 yaş | −0,066 | %10,5 |
+| ↳ diğer yaş grupları | −0,075 | %12,0 |
+| **Parite geçiş etkisi (toplam)** | **−0,408** | **%65,2** |
+| ↳ **1→2 geçiş (PPR₁)** | **−0,354** | **%56,6** |
+| ↳ 2→3 geçiş (PPR₂) | −0,006 | %1,0 |
+| ↳ 3→4 geçiş (PPR₃) | −0,021 | %3,4 |
+| ↳ 4+ geçiş | −0,027 | %4,2 |
+| **TOPLAM TDH KAYBI** | **−0,626** | **%100** |
+
+Bu tablonun doğru okunuşu önemli: "1→2 geçiş baskın" bulgusu, "insanlar birinci çocuktan vazgeçiyor" anlamına gelmez. TÜİK verisi evli çiftlerin büyük çoğunluğunun birinci çocuğu yapmaya devam ettiğini göstermektedir. Doğru okuma şudur: **birinci çocuğu olan ailelerin ikincisinden vazgeçme eğilimi, 2013–2024 döneminin baskın demografik dinamiğidir.**
+
+## Karşı-Olgusal Analiz: "Ne Olurdu?"
+
+HWP yönteminin toplanabilirlik özelliği, bileşenlerin katkısını ayrı ayrı izole ederek "eğer X değişmeseydi TDH ne olurdu" sorusuna yanıt vermeye imkân tanır:
+
+| Senaryo | Tahmini TDH | Baz Farkı |
+|---|---|---|
+| Gözlemlenen durum (2024) | 1,484 | — |
+| Evlilik oranları 2013'te kalsaydı | 1,632 | +0,148 |
+| **Parite davranışı 2013'te kalsaydı** | **1,839** | **+0,355** |
+| Her ikisi de 2013'te kalsaydı | 2,110 | +0,626 |
+
+Evlilik etkisinin yalıtılmış katkısı (+0,148) ile parite davranışının yalıtılmış katkısı (+0,355) arasındaki bu derin asimetri, politika önceliklendirmesinin sayısal zeminini oluşturmaktadır: **parite davranışındaki değişim, evlilik örüntüsündeki değişimden iki kattan fazla etkili.**
+
+## Tarihsel Süreklilik: 1993'ten Bugüne Parite Tıkanmasının Evrimi
+
+Torun Alaca'nın (2022) 1993–2013 dönemi bulgularıyla bu çalışmanın 2013–2024 bulguları birlikte okunduğunda, Türkiye'nin doğurganlık geçişinin hangi evreden hangi evreye geçtiği görülür:
+
+| Dönem | Baskın Parite Etkisi | 1→2 Geçişinin Payı |
+|---|---|---|
+| 1993–2003 | 3→4 ve 4+ geçişleri (%71,0) | %4,8 (ihmal edilebilir) |
+| 2003–2013 | 3→4 ve 4+ geçişleri (%68,2) | %16,1 (belirginleşmeye başlıyor) |
+| **2013–2024** | **1→2 geçişi baskın** | **%56,6 (kritik kaldıraç)** |
+
+Bu tablo, üçüncü/dördüncü çocuğa yönelik teşviklerin (örn. güncel nakdi destek yapısı) yirmi yıl önce isabetli bir önceliklendirme olduğunu, ancak demografik dinamiğin o zamandan bugüne köklü biçimde değiştiğini göstermektedir. Bugünün kritik eşiği farklı bir yerde: birinci çocuktan ikinciye geçiş.
+
+## 2025–2030 Projeksiyon Senaryoları
+
+HWP ayrıştırmasından türetilen eğilimler, 2025 başlangıç noktasından (TDH=1,40) beş yıl ileri uzatılarak dört senaryo simüle edilmiştir:
+
+| Senaryo | İçerik | 2030 TDH | Lowest-Low (1,30) Eşiği |
+|---|---|---|---|
+| **S0 — Müdahalesiz** | Statüko devam | 1,142 | 2027'de aşılıyor |
+| **S1 — Yavaşlama** | Eğilim yarıya iner | 1,259 | 2029'da aşılıyor |
+| **S2 — Bakım + istihdam** | Kreş + çalışan anne güvencesi | 1,476 | Aşılmıyor |
+| **S3 — Kapsamlı paket** | S2 + okul kalitesi + nakdi destek | 1,613 | Aşılmıyor |
+| **S4 — Kırılma** | Mevcut hız ×1,3 ivmelenir | 1,075 | 2027'de aşılıyor |
+
+S3 senaryosu, PPR₁'de yıllık ortalama **+0,035** iyileşme varsayımına dayanmaktadır — kreş ve istihdam güvencesinden +0,020, okul kalitesi reformundan +0,015. Bu, S0'a kıyasla 2030'da +0,471 puanlık net TDH kazanımı anlamına gelir. Önemle belirtilmelidir ki bu senaryo parametreleri literatürden türetilen simülasyon değerleridir, nedensel kesinlik taşımaz.
+
+## Sınırlılıklar
+
+Çalışmanın iki temel sınırlılığı vardır. Birincisi, model yapısının basitleştirilmişliği: TDH fonksiyonu M × parite zinciri şeklinde kurulduğu için yaş-parite çapraz etkisi büyük ölçüde dışarıda kalmaktadır (TNSA 2018 verisiyle hesaplanan yaş × parite matrisi, PPR₁'in yaş grubuna göre 0,219 ile 0,913 arasında değiştiğini göstermektedir — bu sınırlılığın büyüklüğü böylece sayısallaştırılmıştır). İkincisi, kovaryat bağımsızlığı varsayımı: evlilik ertelemesi ile parite kararı arasındaki gerçek korelasyon, bulguların tam nedensel yorumunu sınırlamaktadır. Her iki sınırlılık da analizin geçerliliğini ortadan kaldırmamakta, gelecek araştırma gündemini tanımlamaktadır — özellikle TNSA 2025 mikro verisi ve SGK idari kayıtları erişilebilir olduğunda.
+
+## Kaynakça (Seçili)
+
+Horiuchi, S., Wilmoth, J. R. ve Pletcher, S. D. (2008). A decomposition method based on a model of continuous change. *Demography*, 45(4), 787–801.
+
+Kohler, H.-P., Billari, F. C. ve Ortega, J. A. (2002). The emergence of lowest-low fertility in Europe. *Population and Development Review*, 28(4), 641–680.
+
+Torun Alaca, D. (2022). *Essays on the components of demographic change in Turkey: An application of decomposition methods.* Doktora Tezi, Hacettepe Üniversitesi Nüfus Etütleri Enstitüsü.
+
+TÜİK (2024). Doğum İstatistikleri Veri Tabanı; Medeni Duruma Göre Nüfus İstatistikleri.
+
+---
+
+📄 **[Tam metni indir (PDF)](#)** — tüm tablolar, 2008–2025 evlilik etkisi serisi, kuşak temelli PPR doğrulaması ve yaş × parite matrisi dahil.

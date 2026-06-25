@@ -1,0 +1,189 @@
+---
+title: "Bütçe Kaynaklarının Demografik Görünümü"
+subtitle: "ABD–Türkiye (Penn Wharton Bütçe Modeli) Uyarlaması ile Keşifsel Analiz"
+description: "Türkiye 2025 Merkezi Yönetim Bütçesi'nin yaş gruplarına göre dağılımı, PWBM metodolojisi uyarlamasıyla ABD ile karşılaştırmalı olarak analiz edilmiştir."
+date: 2026-02-01
+author: "Mehmet Emin Sezgin"
+---
+
+::: {.callout-important}
+## Temel Bulgular
+Türkiye 2025 bütçe gerçekleşmesinde (14,6 trilyon TL) yaşa atanabilir harcamaların **%34,6'sı emeklilere (65+), %43,8'i çalışma çağındakilere (26-64) ve %21,6'sı çocuklar ile gençlere (<26)** yönelmektedir. ABD FY2025'te emekli payı %61,9'dur. Kişi başı harcamada Türkiye'de emekliler gençlerin 5,3 katını almaktadır; ABD'de bu oran 10,2 kattır.
+
+**Uyarı:** Emekli payının %34,6 çıkması Türkiye'nin emeklilere az harcadığı anlamına gelmez. SGK'nın prim geliriyle finanse ettiği ~1,2 trilyon TL'lik emekli aylığı merkezi yönetim bütçesi dışındadır; bu dahil edildiğinde oran ABD düzeyine yaklaşır.
+
+**Uyarı:** SGK'nın Ocak 2026 bültenine göre aktif/pasif oranı 1,591'e gerilemiş olup 2009'dan bu yana en düşük düzeydir. SGK açık finansmanı 2024'teki 37 milyar TL'den 2025'te 75 milyar TL'ye çıkmıştır. 2023'teki EYT reformu tek yılda yaşlılık aylığı stoğuna 2,0 milyon kişi eklemiş; aktif/pasif oranı 2022'deki 2,01 zirvesinden bu yana −0,42 puan gerilemiştir.
+:::
+
+## 1. Giriş ve Metodoloji
+
+ABD'de Nisan ayı başında yayınlanan bir çalışmada (Penn Wharton Bütçe Modeli, PWBM) federal harcamaların yaş gruplarına göre dağılımı sistematik biçimde ortaya konmuş; temel soru olarak "devlet harcamalarının nihai alıcısı hangi yaş grubudur?" sorusu sorulmuştur. Bu analiz, söz konusu metodolojik çerçeveyi Türkiye'nin 2025 yılı Merkezi Yönetim Bütçesi gerçekleşmesine uyarlamaktadır. PWBM metodolojisi harcamaları dört kategoriye ayırır: emekliler (65+), çalışma çağı (26-64), çocuklar ve gençler (0-25) ve yaşa atanamayan artık kalemler. Bütçe analizi, SGK'nın Ocak 2026 tarihli Sigortalı İstatistikleri Aylık Bülteni ile derinleştirilmiştir.
+
+Bu çalışma bakanlık toplam bütçelerini değil, **ekonomik sınıflandırma bazında kalemleri** esas almaktadır. Bir bakanlığın toplam bütçesini hizmet ettiği yaş grubuna atamak kavramsal olarak hatalıdır; çünkü bakanlık bütçesinin büyük bölümü personel ve SGK primi giderlerinden oluşur. Örneğin Millî Eğitim Bakanlığı'nın 1,5 trilyon TL'lik toplam bütçesinin %80'i öğretmen maaşı ve SGK primidir; doğrudan öğrencilere ulaşan kaynak (cari transfer, sermaye gideri, ders kitabı gibi mal ve hizmet alımları) yalnızca %20'dir.
+
+Bütçe kalemleri iki gruba ayrılmıştır: yaşa atanamayan artık kalemler (personel giderleri 3.634 Mr TL/%24,8; SGK primleri 454 Mr/%3,1; faiz giderleri 2.054 Mr/%14,0; borç verme 310 Mr/%2,1; yerel yönetim payları ve genel amaçlı Hazine transferleri) ve yaşa atanabilir kalemler. Türkiye'de kamu istihdamının toplam istihdama oranı (%13,5) OECD ortalamasının (%18,6) altında olmasına rağmen personel giderlerinin bütçedeki payının (%24,8) belirgin olması, Türkiye'nin sağlık ve eğitim hizmetlerini doğrudan bakanlık personeli aracılığıyla ürettiğinden kaynaklanmaktadır.
+
+**Veri kaynakları:** 2025 Yılı Merkezi Yönetim Bütçe Kanunu İcmali (SBB); 2025 Aralık Ayı Bütçe Gerçekleşmeleri; SGK Sigortalı İstatistikleri Aylık Bülteni (Ocak 2026); GSB Performans Programı 2025; ASHB 2025 Faaliyet Raporu; ÇSGB Faaliyet Sınıflandırma Tablosu 2025; TÜİK İşgücü ve Yaşlı İstatistikleri 2025; PWBM FY2025 Yaş Dağılımı Çalışması (Smetters, 2026).
+
+## 2. Bütçenin Yaşa Göre Dağılımı
+
+Merkezi yönetim bütçesinin 14,6 trilyon TL'lik gerçekleşmesinden yaşa atanabilir 3,4 trilyon TL'ye (%23,5) ulaşmak için üç adım izlenmiştir: (i) personel giderleri, SGK primleri, faiz giderleri ve borç verme artık kategorisine ayrılmış; (ii) cari transferler bakanlık bazında yaşa atanmış, yerel yönetim payları ve genel amaçlı Hazine transferleri artıkta bırakılmış; (iii) eğitim ve sağlık hizmet girdileri yaşa atanmış, güvenlik ve genel idari giderler artığa ayrılmıştır.
+
+**Tablo 1. Türkiye 2025 Bütçesi — Yaşa Göre Harcama Ataması**
+
+| Harcama Kalemi | Tutar (Mr TL) | Bütçe Payı | <26 | 26-64 | 65+ | Güven Kodu |
+|---|---|---|---|---|---|---|
+| Devlet SGK Katkısı | 889 | %6,1 | 44 | 311 | 533 | C — Çıkarımsal |
+| Faturalı Ödemeler | 372 | %2,5 | 74 | 167 | 130 | B — TNSA proxy |
+| SSK 5 Puan İndirimi | 296 | %2,0 | — | 296 | — | A — Aktif istihdam |
+| Ek Karşılıklar | 16 | %0,1 | — | 2 | 14 | C — Aktüeryal çıkarım |
+| Emeklilere Ek Ödeme | 157 | %1,1 | — | — | 157 | A — Doğrudan hedef |
+| SGK Açık Finansmanı | 75 | %0,5 | — | 8 | 68 | A — Prim açığı |
+| İşsizlik Sigorta Fonu | 83 | %0,6 | — | 83 | — | A — Çalışma çağı |
+| Çalışma Bakanlığı (SGK dışı) | 55 | %0,4 | 8 | 32 | 15 | B/C — Faaliyet verisi |
+| ASHB Cari Transfer | 306 | %2,1 | 74 | 116 | 107 | A/B — Faaliyet raporu |
+| GSB Cari Transfer (KYK ağırlıklı) | 166 | %1,1 | 139 | 21 | — | A — Performans programı |
+| MEB (transfer+sermaye+mal/hiz.) | 301 | %2,1 | 301 | — | — | A/B — Doğrudan <26 |
+| Sağlık Bakanlığı (transfer+sermaye+mal/hiz.) | 403 | %2,8 | 81 | 181 | 141 | B — TNSA proxy |
+| Tarım Cari Transfer | 170 | %1,2 | — | 153 | 17 | B — İşgücü proxy |
+
+*Kaynak: 2025 Bütçe Kanunu; yazar hesaplaması.*
+
+Türkiye'nin emekli payı (%34,6) ABD'nin (%61,9) yarısı düzeyindedir. Aradaki 27 puanlık farkın birincil kaynağı kurumsal yapı farkıdır: ABD bütçesindeki Social Security ve Medicare tam olarak emekli harcaması sayılırken, Türkiye'de SGK'nın prim gelirinden finanse ettiği emekli aylıkları (~1,2 trilyon TL) bütçe dışında kalmaktadır. Çocuk ve genç payında ise Türkiye (%21,6) ABD'nin (%10,3) iki katından fazladır; bu fark büyük ölçüde KYK yurt ve burs harcamalarının GSB bütçesi üzerinden yürütülmesinden kaynaklanmaktadır.
+
+SGK Hazine transferlerinin ana kalemleri 2025 gerçekleşme verisinden ayrı ayrı yaşa atanmıştır. Devlet SGK Katkısı (889 Mr TL), aktif sigortalıların işveren payı ile emekli sağlık subsidizasyonunu birlikte içerdiğinden SGK harcama kompozisyonundan çıkarımsal olarak bölünmüş ve C güven koduyla sınıflandırılmıştır. SGK açık finansmanı 2025'te 75 Mr TL olarak gerçekleşmiştir (2024: 37 Mr TL); bütçe kanununda bu kalem için 552 Mr TL ödenek ayrılmış olmasına rağmen gerçekleşme oranı %13,6 düzeyinde kalmıştır.
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 4.5
+
+library(plotly)
+
+kategori <- c("Çocuk ve gençler (<26)", "Çalışma çağı (26-64)", "Emekliler (65+)")
+turkiye <- c(21.6, 43.8, 34.6)
+abd <- c(10.3, 27.8, 61.9)
+
+fig <- plot_ly(
+  y = kategori, x = turkiye, type = "bar", orientation = "h",
+  name = "Türkiye", marker = list(color = "#1F3864"),
+  text = paste0(turkiye, "%"), textposition = "outside"
+) %>%
+  add_trace(
+    x = abd, name = "ABD", marker = list(color = "#9E7A1A"),
+    text = paste0(abd, "%"), textposition = "outside"
+  ) %>%
+  layout(
+    barmode = "group",
+    xaxis = list(title = "Yaşa atanabilir harcama içindeki pay (%)", range = c(0, 75)),
+    yaxis = list(title = ""),
+    legend = list(orientation = "h", y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)",
+    paper_bgcolor = "rgba(0,0,0,0)"
+  )
+
+fig
+```
+
+## 3. Kişi Başı Harcama Analizi
+
+**Tablo 2. Kişi Başı Yaşa Atanabilir Harcama — Türkiye 2025**
+
+| Yaş Grubu | Nüfus (mn) | Harcama (Mr TL) | Kişi başı (TL) | Endeks (26-64=100) | Emekli/genç |
+|---|---|---|---|---|---|
+| Çocuklar (<26) | 31,5 | 740 | 23.496 | 69 | — |
+| Çalışma çağı (26-64) | 44,2 | 1.505 | 34.045 | 100 | — |
+| **Emekliler (65+)** | 9,55 | 1.189 | **124.548** | **366** | **5,3×** |
+
+Emekli/genç kişi başı harcama oranı 5,3 kattır; ABD'de bu oran 10,2 kattır. Farkın temel kaynağı yine kurumsal yapıdır — SGK'nın bütçe dışı emekli aylıkları dahil edildiğinde Türkiye'nin oranı ABD'ye yaklaşacaktır. Çocuk kişi başı harcamanın (23.496 TL) çalışma çağının (34.045 TL) üçte ikisi düzeyinde kalması, bütçenin demografik yenileme fonksiyonunu sınırlı biçimde yerine getirdiğini göstermektedir.
+
+## 4. Demografik ve İşgücü Göstergeleri
+
+**Tablo 3. Demografik ve İşgücü Göstergeleri: Türkiye–ABD Karşılaştırması**
+
+| Gösterge | Türkiye (2024-25) | ABD (2024) | Fark | Yorum |
+|---|---|---|---|---|
+| 65+ nüfus payı | %11,1 | %17,4 | −6,3 pp | TR demografik avantajda |
+| Yaşlı bağımlılık oranı | %16,2 | %27,6 | −11,4 pp | Her 100 çalışan: TR 16, ABD 28 yaşlı |
+| Toplam bağımlılık oranı | %46,1 | %55,0 | −8,9 pp | TR genç nüfusla destekleniyor |
+| İşgücüne katılım oranı | %53,8 | %62,6 | −8,8 pp | TR işgücü potansiyeli yüksek |
+| İstihdam oranı | ~%49 | ~%60 | −11 pp | Her 2 TR çalışma çağlısından 1'i dışarıda |
+| Resmî işsizlik oranı | %8,4 | %4,1 | +4,3 pp | TR geniş işsizlik: %29,4 (Q3 2025) |
+| 65+ işgücüne katılım oranı | ~%5 | %19,5 | −14,5 pp | TR emeklileri piyasadan kopuk |
+| SGK aktif/pasif oranı | 1,591 | ~2,9 | −1,31 | SGK Ocak 2026; tarihi dip |
+| Medyan yaş | 34,9 | 38,9 | −4,0 yıl | TR 2020'de 32,7; hızla yükseliyor |
+| TFR | 1,48 | 1,62 | −0,14 | İkisi de eşik altı; TR daha hızlı düşüyor |
+| Yaşlı bağ. oranı — 2030 proj. | %19,5 | ~%31 | — | TR, ABD bugününün 15 yıl gerisinde |
+| **Yaşlı bağ. oranı — 2060 proj.** | **%45,5** | **~%42** | **+3,5 pp** | **2060'ta TR ABD'yi geçiyor** |
+| Emekli/çocuk kişi başı harcama | 5,3× | 10,2× | −4,0× | TR yapısal avantajı; geçici |
+
+*Kaynaklar: TÜİK (2025); SGK Aylık Bülteni Ocak 2026; BLS (2024); World Bank; UN WPP 2024.*
+
+### SGK Aktif/Pasif Dengesi
+
+SGK'nın Ocak 2026 tarihli bülteni, aktif/pasif oranının 1,591'e gerilediğini tescil etmiştir — 2009'dan bu yana en düşük değer.
+
+**Tablo 4. SGK Aktif/Pasif Dengesi: Türkiye–ABD Karşılaştırması**
+
+| Gösterge | Türkiye | ABD |
+|---|---|---|
+| SGK tescilli aktif sigortalı | 25,8 mn | ~161 mn |
+| Pasif — aylık alan kişi | 17,0 mn | ~58,4 mn |
+| Aktif/pasif oranı (resmî) | 1,591 (tarihi dip) | ~2,9 |
+| 4/a (SSK) aktif/pasif | 1,709 | — |
+| **4/b (Bağ-Kur) aktif/pasif** | **1,151 (alarm)** | — |
+| 4/c (Emekli Sandığı) aktif/pasif | 1,553 | — |
+| Yaşlılık aylığı alanlar | 12,27 mn | ~50,5 mn |
+| 2022-2023 EYT etkisi | +2,0 mn (tek yıl) | Kademeli |
+| SGK açık finansmanı büyümesi | 37→75 Mr TL (+%102) | Kademeli |
+
+*Kaynak: SGK Sigortalı İstatistikleri Aylık Bülteni, Ocak 2026.*
+
+## 5. Neden Veri Yanıltıcı Olabilir?
+
+**Demografik olgunluk yanılsaması.** Türkiye'nin emekli bütçe payının (%34,6) ABD'ye (%61,9) kıyasla düşük görünmesi, yüzeysel okumada politika başarısı olarak yorumlanabilir. Ancak bu görece denge, yapısal avantajı değil **demografik gecikmeyi** yansıtmaktadır. 65+ nüfus payı bugün %11,1 iken ABD'de %17,4'tür — Türkiye, ABD'nin bugünkü demografik olgunluğuna yaklaşık 10–15 yıl içinde ulaşmış olacaktır.
+
+PWBM'nin siyaset ekonomisi analizi bu geçiş sürecinde belirleyici bir uyarı içerir: medyan-seçmen teorisi çerçevesinde nüfus yaşlandıkça medyan seçmen de yaşlanır, bu durum genç kuşaklara yönelik politikalar üretmeyi siyasi açıdan giderek güçleştirir. Türkiye bu dinamiğin eşiğindedir — 2023 EYT reformuyla yaşlılık aylığı stoğuna tek yılda 2,0 milyon kişi eklenmiş, aktif/pasif oranı 2022'deki 2,01'den Ocak 2026'da 1,591'e gerilemiştir.
+
+Tarımsal 4/b sigortası alt dilimi ek bir baskı unsuru oluşturmaktadır: 2009'da 1,0 milyon olan zorunlu tarım sigortalısı sayısı Ocak 2026'da 630 bine gerilemiştir — tarımsal istihdamın demografik çöküşünü somutlaştırmakta ve kentleşme-doğurganlık bağlantısını desteklemektedir.
+
+**65+ istihdam boşluğu.** ABD'de 65 yaş üstü nüfusun ~%19,5'i hâlâ işgücündedir; bu, emeklilerin aktif ekonomiye katkı sunduğu ve transfer yükünü kısmen azalttığı anlamına gelir. Türkiye'de bu oran ~%5 düzeyindedir — 9,6 milyon kişilik 65+ nüfusunun büyük çoğunluğu piyasadan tamamen kopuktur.
+
+## 6. Projeksiyon ve Kırılma Noktaları
+
+İki ülkenin yaşlı bağımlılık oranı 2060'a uzanan seyirde ABD'nin oranı kademeli artışla ~%42'ye ulaşırken, Türkiye'nin oranı çok daha dik bir eğimle %45,5'e yükselmektedir. **Kritik kesişim noktası 2055–2060 civarındadır** — bu tarihten itibaren Türkiye demografik yük bakımından ABD'yi geçmiş olacaktır.
+
+TÜİK projeksiyonlarına göre çalışma çağı nüfusunun (15–64) toplam nüfus içindeki payı bugünkü %68,4'ten yüzyılın sonuna doğru %55'e gerileyecektir. Faiz giderleriyle ilgili ikinci bir kırılma boyutu da not edilmelidir: 2025 bütçesinde faiz ödemeleri 1,95 trilyon TL ile bütçenin %13,2'sini oluşturmaktadır. SGK transferlerinin büyümesiyle birleştiğinde, emekli yükü ile borç servisi ikilisi bütçe üzerinde katmanlı bir sıkışma yaratma potansiyeli taşımaktadır.
+
+## 7. Politika Çıkarımları
+
+**Birinci düzey — kısa vadeli bütçe riski.** SGK açık finansmanının 75 milyar TL'ye ulaşması ve aktif/pasif oranının 1,591'e gerilemesi, bütçe disiplini ile sosyal harcama taahhütleri arasındaki dengeyi kırılgan kılmaktadır. EYT reformunun aktif/pasif dengesini bozucu etkisi, SGK'nın orta vadeli sürdürülebilirlik hesaplarında yeniden modellenmesini gerektirmektedir. 4/b (Bağ-Kur) kolunun 1,151 aktif/pasif oranıyla kırmızı bölgede seyretmesi, esnaf ve tarım sigortasına yönelik yapısal iyileştirmelerin geciktirilmemesi gerektiğini göstermektedir.
+
+**İkinci düzey — orta vadeli demografik güvence açığı.** Çocuklara ulaşan kaynak sınırlıdır: MEB'in 1,5 trilyon TL'lik bütçesinin yalnızca 301 Mr TL'si (%20) doğrudan öğrencilere transfer veya yatırım niteliğindedir. GSB bütçesinin %78'inin KYK programına ayrılması, gençlik politikasının fiilen yükseköğretim barınma politikasına dönüştüğünü göstermektedir. Kreş, 0-6 yaş gelişim ve çocuk bakımı gibi doğurganlıkla doğrudan ilişkili kalemler, mevcut bütçe yapısında etkili bir kaynak tahsisi almamaktadır.
+
+**Üçüncü düzey — uzun vadeli siyaset ekonomisi.** 65+ nüfus payı 2025'te %11,1'den 2040'ta %20'nin, 2060'ta %25'in üzerine çıkacaktır. Emekli transferlerinin bütçe payı doğal olarak artacak, çocuklara kaynak ayırma kapasitesi daha da daralacaktır. Medyan-seçmen teorisinin öngördüğü yapısal engel, gençlere yönelik politikaların bugün tasarlanmasını yarına bırakılan tasarımlara kıyasla hem daha uygulanabilir hem daha az maliyetli kılmaktadır. **Müdahale penceresi daralmaktadır** — güvence mimarisinin önümüzdeki 5-10 yılda kurulması, 15 yıl sonrasına bırakılmasından hem ekonomik hem siyasi açıdan daha az maliyetlidir.
+
+## 8. Sonuç
+
+Türkiye 2025 bütçe gerçekleşmesinin ekonomik sınıflama bazında yaş gruplarına göre analizi, yaşa atanabilir harcamaların %34,6'sının emeklilere, %43,8'inin çalışma çağındakilere ve %21,6'sının çocuklar ile gençlere yöneldiğini ortaya koymaktadır. Bütçenin %76,5'i yaşa atanamaz niteliktedir — bu oran ABD'deki %37,5'in iki katıdır ve büyük ölçüde Türkiye'nin sağlık ve eğitim hizmetlerini doğrudan bakanlık personeli aracılığıyla üretmesinden kaynaklanmaktadır.
+
+Emekli payının ABD'ye (%61,9) kıyasla düşük çıkması bir politika başarısı değil, **kurumsal yapı farkını** yansıtmaktadır. SGK'nın prim geliriyle finanse ettiği emekli aylıkları dahil edildiğinde Türkiye'nin emekli yönelimi ABD'ye yaklaşmaktadır. Kişi başı emekli/genç harcama oranının 5,3 kat çıkması (ABD'deki 10,2 katın üçte ikisi) bu yapısal farkı yansıtmaktadır.
+
+SGK açık finansmanının 37'den 75 milyar TL'ye çıkması, aktif/pasif oranının 1,591'e gerilemesi ve 65+ nüfus payının 2060'ta %25'in üzerine çıkacak olması, mevcut bütçe dağılımının sürdürülebilirliğini sorgulatmaktadır. Demografik projeksiyon, müdahale penceresinin daraldığını açıkça göstermektedir.
+
+## Kaynakça
+
+Smetters, K. (2026). *How Federal Spending is Distributed by Age Group in FY2025.* Penn Wharton Budget Model, 1 Nisan 2026.
+
+Strateji ve Bütçe Başkanlığı (2025). *2025 Yılı Merkezi Yönetim Bütçe Kanunu İcmali — Ekonomik Sınıflandırma.* Ankara: SBB.
+
+Strateji ve Bütçe Başkanlığı (2025). *2025 Yılı Aralık Ayı Merkezi Yönetim Bütçe Gerçekleşmeleri.* Ankara: SBB.
+
+Sosyal Güvenlik Kurumu (2026). *Sigortalı İstatistikleri Aylık Bülteni, Ocak 2026.* Ankara: SGK.
+
+TÜİK (2025). *İşgücü İstatistikleri Bülteni 2024-2025*; *Yaşlı İstatistikleri, 2025.* Ankara.
+
+Nal, M. ve Gül Yücel, K. (2025). Türkiye'de Yaşlanan Nüfus ve Kamu Emeklilik Sisteminde Artan Mali Zorluklar. *Maliye Dergisi*, 188, 103-131.
+
+OECD (2023). *Government at a Glance 2023.* Paris.
