@@ -323,6 +323,232 @@ fig9
 **Kaynak:** TÜİK, İl ve Annenin Evlilik Süresine Göre Doğumlar (2025; bilinmeyen kategorisi hariç tutulmuştur). Doğumlar evliliğin ilk yılında en yüksek yoğunluğa ulaşmakta (%16,4), ardından düzenli biçimde azalmaktadır — bu örüntü, evlilik sonrası ilk çocuğun hızla geldiğini, ancak sonraki doğumların zaman içinde seyreldiğini göstermektedir.
 :::
 
+### İllere Göre TDH'de 10 Yıllık Değişim (2015–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 13
+
+il_degisim <- c("Ağrı", "Şırnak", "Van", "Muş", "Siirt", "Iğdır", "Bitlis", "Şanlıurfa",
+                "Batman", "Mardin", "Kilis", "Gaziantep", "Diyarbakır", "Hakkari", "Kars",
+                "Erzurum", "Adıyaman", "Kahramanmaraş", "Hatay", "Bingöl", "Bayburt", "Yozgat",
+                "Aksaray", "Kayseri", "Karaman", "Osmaniye", "Antalya", "Ardahan", "Adana",
+                "Mersin", "İstanbul", "Sivas", "Türkiye", "Niğde", "Konya", "Kocaeli",
+                "Nevşehir", "Ankara", "Afyonkarahisar", "Elazığ", "Çorum", "İzmir", "Malatya",
+                "Denizli", "Bursa", "Kırşehir", "Gümüşhane", "Kırıkkale", "Uşak", "Trabzon",
+                "Samsun", "Ordu", "Tekirdağ", "Muğla", "Aydın", "Amasya", "Sakarya", "Manisa",
+                "Erzincan", "Tokat", "Rize", "Artvin", "Giresun", "Çankırı", "Isparta",
+                "Bartın", "Burdur", "Sinop", "Kütahya", "Tunceli", "Eskişehir", "Bilecik",
+                "Zonguldak", "Karabük", "Yalova", "Edirne", "Balıkesir", "Kırklareli", "Bolu",
+                "Çanakkale", "Kastamonu")
+degisim <- c(-1.78, -1.56, -1.50, -1.48, -1.45, -1.44, -1.35, -1.27,
+             -1.25, -1.23, -1.19, -1.19, -1.08, -1.06, -1.06,
+             -1.02, -0.96, -0.94, -0.94, -0.90, -0.90, -0.85,
+             -0.82, -0.81, -0.80, -0.79, -0.78, -0.78, -0.78,
+             -0.75, -0.74, -0.74, -0.74, -0.72, -0.68, -0.68,
+             -0.66, -0.66, -0.66, -0.64, -0.63, -0.62, -0.61,
+             -0.61, -0.60, -0.60, -0.59, -0.59, -0.58, -0.58,
+             -0.58, -0.58, -0.57, -0.56, -0.54, -0.53, -0.52,
+             -0.52, -0.52, -0.52, -0.52, -0.51, -0.51, -0.50,
+             -0.49, -0.48, -0.47, -0.46, -0.46, -0.45, -0.45,
+             -0.45, -0.44, -0.43, -0.41, -0.41, -0.41, -0.38,
+             -0.38, -0.35)
+
+df_deg <- data.frame(il = il_degisim, degisim = degisim)
+df_deg <- df_deg[order(-df_deg$degisim), ]
+df_deg$il <- factor(df_deg$il, levels = df_deg$il)
+
+fig10 <- plot_ly(df_deg, y = ~il, x = ~degisim, type = "bar", orientation = "h",
+                 marker = list(color = ~degisim, colorscale = list(c(0, "#B33A3A"), c(1, "#C9A84C")),
+                               cmin = -1.8, cmax = -0.3),
+                 hovertemplate = "%{y}: %{x:.2f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "TDH değişimi, 2015→2025 (puan)"),
+    yaxis = list(title = "", tickfont = list(size = 9)),
+    margin = list(l = 110),
+    height = 1100,
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig10
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, İllere Göre Toplam Doğurganlık Hızı (yazar hesaplaması). En çarpıcı bulgu: **en yüksek düşüşü yaşayan iller, geleneksel olarak en yüksek doğurganlığa sahip Doğu/Güneydoğu illeridir** (Ağrı −1,78, Şırnak −1,56, Van −1,50). Bu, bölgesel doğurganlık yakınsamasının hızla gerçekleştiğini, "yüksek doğurganlık bölgesi" kavramının giderek tarihsel bir kategoriye dönüştüğünü göstermektedir.
+:::
+
+### Lowest-Low İl Sayısı Trendi (TDH < 1,30)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_ll <- 2009:2025
+ll_sayisi <- c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 8, 19, 25, 38)
+
+fig11 <- plot_ly(x = yillar_ll, y = ll_sayisi, type = "scatter", mode = "lines+markers",
+                 fill = "tozeroy", fillcolor = "rgba(179,58,58,0.15)",
+                 line = list(color = "#B33A3A", width = 2.5),
+                 marker = list(color = "#B33A3A", size = 6),
+                 hovertemplate = "Yıl: %{x}<br>İl sayısı: %{y}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Lowest-low il sayısı (81 il içinde)"),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig11
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, İllere Göre Toplam Doğurganlık Hızı (yazar hesaplaması). 2019'a kadar tek bir il bile lowest-low eşiğinin (1,30) altına düşmemişken, **2025'te 81 ilin 38'i** bu eşiğin altındadır — altı yılda neredeyse sıfırdan ile yarısına çıkan bu hız, krizin coğrafi yayılımının ne kadar hızlandığını göstermektedir.
+:::
+
+### Eğitim Durumuna Göre TDH (2019–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_egitim <- 2019:2025
+okuma_yazma_yok <- c(3.65, 3.22, 2.97, 2.76, 2.46, 2.66, 2.07)
+ilkokul <- c(2.86, 2.40, 2.33, 2.21, 2.40, 2.37, 2.51)
+ilkogretim <- c(2.32, 2.26, 2.26, 2.25, 2.13, 2.17, 2.03)
+lise <- c(1.50, 1.48, 1.44, 1.42, 1.34, 1.32, 1.25)
+yuksekogretim <- c(1.56, 1.49, 1.43, 1.36, 1.30, 1.22, 1.24)
+
+fig12 <- plot_ly(x = yillar_egitim, y = okuma_yazma_yok, type = "scatter", mode = "lines+markers",
+                 name = "Okuryazar değil / okul bitirmemiş", line = list(color = "#B33A3A", width = 2)) %>%
+  add_trace(y = ilkokul, name = "İlkokul mezunu", line = list(color = "#9E7A1A", width = 2)) %>%
+  add_trace(y = ilkogretim, name = "İlköğretim/ortaokul mezunu", line = list(color = "#C9A84C", width = 2)) %>%
+  add_trace(y = lise, name = "Lise mezunu", line = list(color = "#5B7DB1", width = 2)) %>%
+  add_trace(y = yuksekogretim, name = "Yükseköğretim mezunu", line = list(color = "#1F3864", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "TDH (çocuk sayısı)"),
+    legend = list(orientation = "h", y = -0.3),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig12
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Annenin Eğitim Durumuna Göre Toplam Doğurganlık Hızı. Eğitim düzeyi ile doğurganlık arasındaki ters ilişki belirgin biçimde sürmektedir, ancak **2025'te lise ve yükseköğretim mezunları arasındaki fark neredeyse kapanmıştır** (1,25 ve 1,24) — bu, doğurganlık baskısının artık yalnızca düşük eğitimli kesimle sınırlı olmadığını, eğitimli orta sınıfa da yayıldığını göstermektedir.
+:::
+
+### Kent/Kır Yoğunluğuna Göre TDH (2023–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_kentkir <- c(2023, 2024, 2025)
+kir <- c(1.803, 1.837, 1.752)
+orta_yogun <- c(1.641, 1.584, 1.529)
+yogun_kent <- c(1.432, 1.398, 1.330)
+
+fig13 <- plot_ly(x = yillar_kentkir, y = kir, type = "bar", name = "Kır (seyrek nüfuslu)",
+                 marker = list(color = "#9E7A1A")) %>%
+  add_trace(y = orta_yogun, name = "Orta yoğun kent", marker = list(color = "#5B7DB1")) %>%
+  add_trace(y = yogun_kent, name = "Yoğun kent", marker = list(color = "#1F3864")) %>%
+  layout(
+    barmode = "group",
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "TDH (çocuk sayısı)"),
+    legend = list(orientation = "h", y = -0.25),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig13
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İl ve Kent-Kır Sınıflamasına Göre Toplam Doğurganlık Hızı. Kır ve yoğun kent arasındaki fark sistematik olarak korunmaktadır (2025'te 0,42 puan), ancak her üç kategori de aynı yönde düşüş göstermektedir — kırsal alanların "doğurganlık tamponu" işlevi giderek zayıflamaktadır.
+:::
+
+### İllere Göre İlk Doğumdaki Ortalama Anne Yaşı (2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 7
+
+il_yas <- c("Şanlıurfa", "Ağrı", "Muş", "Kilis", "Gaziantep", "Kahramanmaraş", "Bitlis", "Niğde",
+            "Siirt", "Hatay", "Osmaniye", "Şırnak", "Mardin", "Afyonkarahisar", "Kars",
+            "Artvin", "Tunceli", "İstanbul", "Rize", "Trabzon", "İzmir", "Ankara",
+            "Muğla", "Eskişehir", "Yalova", "Antalya", "Bolu", "Çanakkale", "Kocaeli",
+            "Kırklareli", "Gümüşhane", "Erzincan")
+yas_il <- c(24.42, 24.72, 24.90, 25.12, 25.29, 25.60, 25.67, 25.77,
+            25.85, 25.88, 25.90, 25.94, 26.06, 26.09, 26.12,
+            28.99, 28.86, 28.92, 28.74, 28.69, 28.68, 28.60,
+            28.59, 28.59, 28.40, 28.28, 28.25, 28.10, 27.98,
+            28.02, 27.98, 27.96)
+
+df_yas <- data.frame(il = il_yas, yas = yas_il)
+df_yas <- df_yas[order(df_yas$yas), ]
+df_yas$il <- factor(df_yas$il, levels = df_yas$il)
+
+fig14 <- plot_ly(df_yas, y = ~il, x = ~yas, type = "bar", orientation = "h",
+                 marker = list(color = ~yas, colorscale = list(c(0, "#B33A3A"), c(1, "#1F3864")),
+                               cmin = 24, cmax = 29),
+                 hovertemplate = "%{y}: %{x:.1f} yaş<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "İlk doğumdaki ortalama anne yaşı", range = c(22,30)),
+    yaxis = list(title = ""),
+    margin = list(l = 110),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig14
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İllere Göre İlk Doğumdaki Ortalama Anne Yaşı (en düşük/en yüksek 15 il; 81 ilin tam haritası yakında eklenecektir). Şanlıurfa (24,4) ile Artvin (28,99) arasındaki 4,6 yıllık fark, ilk doğum yaşının bölgesel olarak ne denli farklılaştığını göstermektedir — bu fark, doğrudan biyolojik pencere ile parite geçiş olasılığını da bölgesel olarak şekillendirmektedir (bkz. PPR ve HWP Analizi sekmesi).
+:::
+
+### Kaba Doğum Hızı: İllere Göre (2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 7
+
+il_kdh <- c("Zonguldak", "Bartın", "Giresun", "Sinop", "Edirne", "Karabük", "Kırklareli", "Çanakkale",
+            "Kütahya", "Balıkesir", "Çorum", "Kırıkkale", "Kastamonu", "İzmir", "Artvin",
+            "Şanlıurfa", "Şırnak", "Mardin", "Siirt", "Diyarbakır", "Batman", "Ağrı",
+            "Bitlis", "Muş", "Van", "Gaziantep", "Hakkari", "Kilis", "Adıyaman", "Iğdır")
+kdh_il <- c(6.62, 6.82, 6.88, 7.20, 7.23, 7.31, 7.38, 7.40,
+            7.40, 7.49, 7.55, 7.62, 7.63, 7.65, 7.76,
+            23.94, 21.10, 17.90, 17.42, 17.13, 16.61, 16.60,
+            16.59, 16.02, 15.80, 15.58, 14.99, 14.72, 13.59, 12.57)
+
+df_kdh <- data.frame(il = il_kdh, kdh = kdh_il)
+df_kdh <- df_kdh[order(df_kdh$kdh), ]
+df_kdh$il <- factor(df_kdh$il, levels = df_kdh$il)
+
+fig15 <- plot_ly(df_kdh, y = ~il, x = ~kdh, type = "bar", orientation = "h",
+                 marker = list(color = ~kdh, colorscale = list(c(0, "#1F3864"), c(1, "#B33A3A")),
+                               cmin = 6, cmax = 24),
+                 hovertemplate = "%{y}: %{x:.1f}‰<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "Kaba doğum hızı (‰)"),
+    yaxis = list(title = ""),
+    margin = list(l = 110),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig15
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İllere Göre Kaba Doğum Hızı 2025 (en düşük/en yüksek 15 il). Şanlıurfa'nın kaba doğum hızı (23,9‰) Zonguldak'ın (6,6‰) yaklaşık 3,6 katıdır. Kaba doğum hızı nüfus yapısından (genç nüfus oranı) da etkilendiği için TDH'ye göre bölgesel farkları daha da büyük göstermektedir.
+:::
+
 ## PPR ve HWP Analizi
 
 Parite geçiş oranları, HWP ayrıştırma bulguları ve karşı-olgusal senaryolar — sitenin özgün analitik katkısı.
