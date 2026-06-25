@@ -1,11 +1,11 @@
 ---
-pagetitle: "Emin Sezgin — Demografi ve Sosyal Politika"
+pagetitle: "Mehmet Emin Sezgin — Demografi ve Sosyal Politika"
 toc: false
 ---
 
 ::: {.hero-section}
 
-# Emin Sezgin
+# Mehmet Emin Sezgin
 
 ::: {.subtitle}
 Demografi, sosyal politika ve aile politikaları üzerine araştırma, analiz ve politika tasarımı.

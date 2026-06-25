@@ -3,7 +3,7 @@ project:
   output-dir: _site
 
 website:
-  title: "Emin Sezgin"
+  title: "Mehmet Emin Sezgin"
   description: "Demografi, sosyal politika ve aile politikaları üzerine araştırma ve analizler"
   site-url: https://eminsezgin.org
   favicon: images/favicon.png
@@ -37,7 +37,7 @@ website:
     background: "#1F3864"
     foreground: "#C0C0C0"
     center: |
-      © 2026 Mehmet Emin Sezgin · Toplum Çalışmaları Enstitüsü
+      © 2026 Mehmet Emin Sezgin
     right:
       - icon: envelope
         href: mailto:mehmet.sezgin@aile.gov.tr
