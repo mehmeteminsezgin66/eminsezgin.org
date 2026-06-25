@@ -2,7 +2,6 @@
 title: "Bütçe Kaynaklarının Demografik Görünümü"
 subtitle: "ABD–Türkiye (Penn Wharton Bütçe Modeli) Uyarlaması ile Keşifsel Analiz"
 description: "Türkiye 2025 Merkezi Yönetim Bütçesi'nin yaş gruplarına göre dağılımı, PWBM metodolojisi uyarlamasıyla ABD ile karşılaştırmalı olarak analiz edilmiştir."
-date: 2026-02-01
 author: "Mehmet Emin Sezgin"
 ---
 

@@ -2,7 +2,6 @@
 title: "Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi"
 subtitle: "2013–2024 Dönemi Üzerine Bir Ayrıştırma Analizi"
 description: "Horiuchi-Wilmoth-Pletcher sürekli değişim yöntemiyle Türkiye'nin TDH kaybının evlilik ve parite geçiş bileşenlerine ayrıştırılması."
-date: 2026-03-01
 author: "Mehmet Emin Sezgin"
 ---
 

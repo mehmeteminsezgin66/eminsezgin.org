@@ -2,9 +2,9 @@
 title: "Araştırmalar"
 listing:
   contents: "*.qmd"
-  sort: "date desc"
+  sort: "title asc"
   type: default
-  fields: [date, title, description]
+  fields: [title, description]
 toc: false
 ---
 
