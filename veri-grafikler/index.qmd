@@ -331,30 +331,9 @@ fig9
 #| fig-width: 9
 #| fig-height: 13
 
-il_degisim <- c("Ağrı", "Şırnak", "Van", "Muş", "Siirt", "Iğdır", "Bitlis", "Şanlıurfa",
-                "Batman", "Mardin", "Kilis", "Gaziantep", "Diyarbakır", "Hakkari", "Kars",
-                "Erzurum", "Adıyaman", "Kahramanmaraş", "Hatay", "Bingöl", "Bayburt", "Yozgat",
-                "Aksaray", "Kayseri", "Karaman", "Osmaniye", "Antalya", "Ardahan", "Adana",
-                "Mersin", "İstanbul", "Sivas", "Türkiye", "Niğde", "Konya", "Kocaeli",
-                "Nevşehir", "Ankara", "Afyonkarahisar", "Elazığ", "Çorum", "İzmir", "Malatya",
-                "Denizli", "Bursa", "Kırşehir", "Gümüşhane", "Kırıkkale", "Uşak", "Trabzon",
-                "Samsun", "Ordu", "Tekirdağ", "Muğla", "Aydın", "Amasya", "Sakarya", "Manisa",
-                "Erzincan", "Tokat", "Rize", "Artvin", "Giresun", "Çankırı", "Isparta",
-                "Bartın", "Burdur", "Sinop", "Kütahya", "Tunceli", "Eskişehir", "Bilecik",
-                "Zonguldak", "Karabük", "Yalova", "Edirne", "Balıkesir", "Kırklareli", "Bolu",
-                "Çanakkale", "Kastamonu")
-degisim <- c(-1.78, -1.56, -1.50, -1.48, -1.45, -1.44, -1.35, -1.27,
-             -1.25, -1.23, -1.19, -1.19, -1.08, -1.06, -1.06,
-             -1.02, -0.96, -0.94, -0.94, -0.90, -0.90, -0.85,
-             -0.82, -0.81, -0.80, -0.79, -0.78, -0.78, -0.78,
-             -0.75, -0.74, -0.74, -0.74, -0.72, -0.68, -0.68,
-             -0.66, -0.66, -0.66, -0.64, -0.63, -0.62, -0.61,
-             -0.61, -0.60, -0.60, -0.59, -0.59, -0.58, -0.58,
-             -0.58, -0.58, -0.57, -0.56, -0.54, -0.53, -0.52,
-             -0.52, -0.52, -0.52, -0.52, -0.51, -0.51, -0.50,
-             -0.49, -0.48, -0.47, -0.46, -0.46, -0.45, -0.45,
-             -0.45, -0.44, -0.43, -0.41, -0.41, -0.41, -0.38,
-             -0.38, -0.35)
+il_degisim <- c("Kastamonu", "Çanakkale", "Bolu", "Kırklareli", "Balıkesir", "Edirne", "Yalova", "Karabük", "Zonguldak", "Bilecik", "Eskişehir", "Tunceli", "Kütahya", "Sinop", "Burdur", "Bartın", "Isparta", "Çankırı", "Giresun", "Artvin", "Rize", "Tokat", "Erzincan", "Manisa", "Sakarya", "Amasya", "Aydın", "Muğla", "Tekirdağ", "Ordu", "Samsun", "Trabzon", "Uşak", "Kırıkkale", "Gümüşhane", "Kırşehir", "Bursa", "Denizli", "Malatya", "İzmir", "Çorum", "Elazığ", "Afyonkarahisar", "Ankara", "Nevşehir", "Kocaeli", "Konya", "Niğde", "Türkiye", "Sivas", "İstanbul", "Mersin", "Adana", "Ardahan", "Antalya", "Osmaniye", "Karaman", "Kayseri", "Aksaray", "Yozgat", "Bayburt", "Bingöl", "Hatay", "Kahramanmaraş", "Adıyaman", "Erzurum", "Kars", "Hakkari", "Diyarbakır", "Gaziantep", "Kilis", "Mardin", "Batman", "Şanlıurfa", "Bitlis", "Iğdır", "Siirt", "Muş", "Van", "Şırnak", "Ağrı")
+
+degisim <- c(-0.35, -0.38, -0.38, -0.41, -0.41, -0.41, -0.43, -0.44, -0.45, -0.45, -0.45, -0.46, -0.46, -0.47, -0.48, -0.49, -0.5, -0.51, -0.51, -0.51, -0.52, -0.52, -0.52, -0.52, -0.52, -0.53, -0.54, -0.56, -0.57, -0.58, -0.58, -0.58, -0.58, -0.59, -0.59, -0.6, -0.6, -0.61, -0.61, -0.62, -0.63, -0.64, -0.66, -0.66, -0.66, -0.68, -0.68, -0.72, -0.74, -0.74, -0.74, -0.75, -0.78, -0.78, -0.78, -0.79, -0.8, -0.81, -0.82, -0.85, -0.9, -0.9, -0.94, -0.94, -0.96, -1.02, -1.06, -1.06, -1.08, -1.19, -1.19, -1.23, -1.25, -1.27, -1.35, -1.44, -1.45, -1.48, -1.5, -1.56, -1.78)
 
 df_deg <- data.frame(il = il_degisim, degisim = degisim)
 df_deg <- df_deg[order(-df_deg$degisim), ]
