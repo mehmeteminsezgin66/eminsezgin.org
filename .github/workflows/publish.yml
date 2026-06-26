@@ -42,6 +42,7 @@ jobs:
             any::htmlwidgets
             any::sf
             any::rnaturalearth
+            any::ggplot2
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
