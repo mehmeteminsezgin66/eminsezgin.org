@@ -1,0 +1,118 @@
+---
+title: "Güvenli Başlangıç Programı"
+description: "İstihdam güvencesi, bakım altyapısı ve erken çocukluk gelişim merkezlerini bütünleşik bir çerçevede sunan, doğum sonrası dönemdeki yapısal riskleri kamusal mekanizmalarla paylaşmayı hedefleyen program tasarımı."
+author: "Mehmet Emin Sezgin"
+categories: [politika notu, istihdam, bakım altyapısı, doğurganlık]
+---
+
+Güvenli Başlangıç Programı (GBP), doğum sonrası dönemde ortaya çıkan istihdam, gelir ve bakım risklerinin bir bölümünü kamusal mekanizmalar aracılığıyla üstlenerek genç aileler için öngörülebilir bir yaşam döngüsü oluşturmayı amaçlayan bütünleşik bir politika aracıdır. Program, doğurganlığı doğrudan teşvik etmeyi değil; çocuk sahibi olmanın bireyler açısından aşırı ekonomik ve mesleki risk üretmesini engellemeyi hedeflemektedir.
+
+Bu belge iki bütünleşik bileşenden oluşmaktadır: Güvenli Başlangıç Programı'nın kendisi ve bu programı destekleyen 0–3 Yaş İhtisas Kreşleri ve Erken Çocukluk Gelişim Merkezleri Projesi.
+
+## Gerekçe: İstihdam–Doğurganlık Çatışması
+
+Türkiye'de doğurganlık düşüşünün temel nedeni, genç ailelerin çocuk sahibi olmanın kariyer ve gelir üzerindeki uzun vadeli risklerini yönetememesidir. Kadın istihdamının görece düşük, bakım altyapısının yetersiz ve iş güvencesinin zayıf olduğu mevcut yapı; ilk doğumun ertelenmesine ve özellikle ilk doğum sonrasında kadınların istihdamdan koparak ikinci çocuk kararını ertelemesine ya da vazgeçmesine yol açmaktadır.
+
+Uluslararası literatür, kadın istihdamının güvence, bakım desteği ve aile–iş uyumuyla birlikte sunulduğunda doğurganlıkla çatışmak zorunda olmadığını ortaya koymaktadır. Türkiye, istihdamın doğurganlıkla en çatışmalı ilişki içinde olduğu kırılgan bir bantta yer almaktadır.
+
+### Rejim Analizi: Türkiye'nin Mevcut Konumu
+
+| Rejim | Özellikler | Dinamik |
+|---|---|---|
+| **Rejim 1:** Düşük istihdam – geleneksel bakım | Kadın istihdamı düşük, aile içi bakım yaygın, doğurganlık görece yüksek | İstihdam artışı başladığında bakım altyapısı çöker → doğurganlık düşer |
+| **Rejim 2:** Orta istihdam – kırılgan dönem **(Türkiye'nin mevcut konumu)** | Kadın çalışıyor ancak kurumsal destek yetersiz; kreş kıt, iş güvencesi zayıf | İstihdam artışı → doğurganlık hızla düşer |
+| **Rejim 3:** Yüksek istihdam – kurumsal destek **(hedeflenen)** | Kreş yaygın, izin sistemleri güçlü, iş–aile uyumu yüksek | İstihdam artışı → doğurganlık toparlanır |
+
+GBP, Türkiye'yi Rejim 2'den Rejim 3'e taşıyacak kurumsal geçişi sağlamayı hedeflemektedir.
+
+## Hedef Grup: Pariteye Duyarlı Modül Yapısı
+
+Program, doğurganlık davranışının parite geçişleri üzerinden şekillendiği gerçeğinden hareketle iki aşamalı ve farklılaştırılmış bir destek yapısı üzerine kurgulanmıştır:
+
+| Modül | Hedef Grup | Amaç |
+|---|---|---|
+| **Modül 1 — İlk Çocuk Destek Paketi** | 23–27 yaş aralığında ilk çocuğunu dünyaya getiren kadınlar | İlk doğumun ertelenmesini önlemek; doğum sonrası istihdamdan kopuş riskini azaltmak |
+| **Modül 2 — İkinci Çocuk Destek Paketi** | İlk doğumdan 24–36 ay sonra, 28–30 yaşında ikinci çocuğunu dünyaya getiren kadınlar | 1→2 geçişindeki gelir, bakım ve mesleki uyum risklerini azaltarak ikinci çocuk kararını desteklemek |
+
+Modül 1 için 23 yaş alt sınırı bilinçli bir politika tercihidir. Daha düşük bir yaş sınırı, yükseköğretim sürecindeki kadınlar için erken mezuniyete veya okul bırakmaya teşvik işlevi görebileceğinden, programın uzun vadeli insan sermayesi hedefleriyle çelişme riski taşımaktadır.
+
+## Program Tasarımı: İstihdam Tamponu Modeli
+
+Program üç temel bileşen üzerine kuruludur:
+
+**Bileşen A — Doğum Sonrası İşe Dönüş Garantisi:** Yararlanıcılara doğumdan sonra en geç 18. ayda kayıtlı bir işe geçiş imkânı üç kanal üzerinden sunulur: kamu istihdamı (açılacak kreşlerde öncelikli), prim ve ücret destekleriyle teşvik edilen özel sektör istihdamı ve KOSGEB destekli mikro girişimcilik kanalı.
+
+**Bileşen B — Bakım Altyapısı ve Erişim:** 12–36 ay arası çocuklara yönelik ücretsiz veya düşük maliyetli kreş erişimi, işyeri ve mahalle bazlı bakım modelleri, kalite güvencesi standartlarına bağlı hizmet sunumu.
+
+**Bileşen C — Mesleki Yeterlilik ve Beceri Güncelleme:** Mikro sertifika programları, işbaşı eğitimleri ve hizmet/dijital sektör odaklı beceri modülleri.
+
+### Garanti Standartları
+
+| Standart | İçerik |
+|---|---|
+| Zaman standardı | 18. ayda aktif işe yerleştirme |
+| Kayıt standardı | Resmî çalışma veya faaliyet kaydı |
+| Gelir standardı | Asgari gelir tabanı güvencesi |
+| Süre standardı | En az 24 ay işte kalma ve mesleki entegrasyon desteği |
+| Uyum standardı | Eğitim ve bakım planıyla entegrasyon |
+| Çıkış standardı | Olağanüstü durumlarda korumalı çıkış mekanizması |
+
+## Mevcut Destek Mekanizmalarıyla Entegrasyon
+
+Yürürlükteki Evlenecek Gençlerin Desteklenmesi Projesi kapsamındaki evlilik kredileri, programın tamamlayıcı bir unsurudur. Entegrasyon dört adımda işler: kredi yararlanıcılarına bilgilendirme, ilk çocuk sonrası bakım ve mesleki modüllerin devreye alınması, borç erteleme döneminin işe dönüş planıyla eşgüdümlü yürütülmesi ve 18. ayda işe geçiş sürecinin başlatılması. Bu yapı, borç ertelemesini geçici rahatlama aracından sürdürülebilir geçiş mekanizmasına dönüştürür.
+
+## Pilot Uygulama ve İzleme
+
+| Parametre | Değer |
+|---|---|
+| Pilot il sayısı | 8–12 il |
+| Yararlanıcı sayısı | 10.000–20.000 kişi |
+| Uygulama süresi | 24 ay |
+
+İzleme sistemi operasyonel veri (katılım, destek türü, işe yerleştirme, bakım kullanımı) ve davranışsal veri (risk algısı, doğum niyeti, zamanlama beklentisi) olmak üzere iki kategoride veri toplar. Temel performans göstergeleri: işe dönüş oranı, 24 ay işte kalma oranı, kreş erişim süresi, finansal stres düzeyi ve ikinci çocuk niyeti.
+
+## 0–3 Yaş İhtisas Kreşleri ve Erken Çocukluk Gelişim Merkezleri
+
+Belgenin ikinci bileşeni, GBP'yi destekleyen kamusal bir erken çocukluk bakım altyapısı projesidir. Mevcut bakım sistemindeki yapısal açmaz — yüksek maliyet, düşük personel ücreti ve kalite sorununun birbirini besleyen döngüsü — piyasa mekanizması içinde çözülememektedir. Proje, bakımı piyasalaştırmadan, kaliteyi kamu tarafından standardize ederek uzun vadeli sosyal getiri üretmeyi hedeflemektedir.
+
+### Uygulama Tipleri
+
+| Yerleşim Türü | Birim Tipi | Kapasite |
+|---|---|---|
+| Küçük yerleşimler ve mahalle ölçeği | Tip A | 16 çocuk |
+| Büyük yerleşimler ve OSB bölgeleri | Tip B | 32 çocuk |
+
+### Temel Tasarım İlkeleri
+
+**İnsan kaynağı modeli:** 4 çocuğa 1 bakıcı, 4 bakıcıya 1 çocuk gelişimi uzmanı oranı. Her çocuğa bir primer ve bir ikincil bakım veren atanır; personel rotasyonu asgari düzeyde tutulur.
+
+**Pedagojik model:** Güvenli bağlanma, duyarlı ve tutarlı bakım, düşük stres ortamı, rutin sürekliliği ve ekransız ortam ilkeleri üzerine kuruludur. Yaşa göre kademeli hizmet: 0–12 ay ebeveyn eşlikli geçiş, 12–24 ay yarım gün ağırlıklı, 24–36 ay tam gün.
+
+**OSB modeli:** Çift vardiya (07.00–15.00 / 15.00–23.00) esasına göre hizmet sunulur. Gece vardiyasının (23.00–07.00) kapsam dışı bırakılması, mali kısıtlamadan değil çocuk gelişimi, aile refahı ve hizmet kalitesine ilişkin bilimsel değerlendirmelerden kaynaklanan bilinçli bir politika kararıdır.
+
+**Program entegrasyonu:** GBP mezunları; yardımcı personel, mentorluk, sertifikasyon ve asal kadro aşamalarından geçerek kreş sistemine entegre edilir. Bu mekanizma, program yararlanıcılarına istihdam alanı açarken kreşlere eğitimli personel havuzu oluşturur.
+
+## Uygulama Takvimi
+
+| Aşama | Süre | İçerik |
+|---|---|---|
+| Hazırlık | 6 ay | Standart geliştirme, mekân seçimi, personel alımı ve eğitimi |
+| Pilot Uygulama | 18 ay | 3–5 ilde seçilmiş merkezlerle sınırlı uygulama ve veri toplama |
+| Değerlendirme | 6 ay | Pilot sonuçlarının analizi, model revizyonu |
+| Yaygınlaştırma | 3 yıl | Pilot bulgularına göre ulusal ölçekte kademeli genişleme |
+
+## Beklenen Etkiler
+
+| Vade | Beklenen Etkiler |
+|---|---|
+| **Kısa** | Kadın istihdam artışı; bakım maliyetlerinin düşmesi; erişim eşitliğinin sağlanması |
+| **Orta** | İkinci çocuk geçiş oranında artış; okul hazırbulunuşluğunun yükselmesi; gelişim risklerinde azalma |
+| **Uzun** | İnsan sermayesi artışı; sosyal politika verimliliği; demografik dengeye yapısal katkı |
+
+## Stratejik Konum
+
+GBP ve 0–3 Yaş İhtisas Kreşleri Projesi, birbirinden bağımsız iki girişim değil; demografik krizin birbirini tamamlayan iki boyutuna yanıt veren bütünleşik bir güvence mimarisinin parçalarıdır. Bu belge bir kreş yatırım teklifi ya da geçici bir destek mekanizması değildir. Türkiye'nin erken insan sermayesi altyapısını kurmak, kadın istihdamını doğurganlıkla barıştırmak ve 1→2 geçişini önleyen yapısal engelleri kaldırmak için tasarlanmış uzun vadeli bir politika aracıdır.
+
+---
+
+📄 **[Tam metni indir (PDF)](guvenli-baslangic-tam-metin.pdf)** — rejim analizi, modül detayları, istihdam tamponu modelinin tam tasarımı, 0–3 yaş kreş projesinin fiziksel/mekânsal tasarım ve insan kaynağı modeli, kalite standartları, risk yönetimi ve izleme sistemi dahil.
