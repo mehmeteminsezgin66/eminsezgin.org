@@ -1,0 +1,174 @@
+---
+title: "Aile Politikası Harcamaları: OECD Karşılaştırması ve S3 Senaryosu"
+subtitle: "Türkiye İçin Kapsamlı Müdahale Senaryosunun Bütçesel Karşılığı"
+description: "Türkiye'nin kamu aile harcamaları OECD ortalamasının beşte biri düzeyinde. OECD ortalamasına ulaşmak için gereken ek kaynak ve bunun HWP S3 senaryosuyla bağlantısı."
+author: "Mehmet Emin Sezgin"
+---
+
+::: {.callout-important}
+## Temel Bulgular
+Türkiye, kamu aile harcamalarında GSYH'nin **%0,45'i (2021)** ile OECD'nin en düşük ülkeleri arasındadır. OECD ortalaması **%2,31**; zirvedeki İzlanda **%3,82**.
+
+2026 GSYH tahminine (~77,3 trilyon TL) göre mevcut aile harcaması ~350 Mr TL; OECD ortalaması hedefi ~1.788 Mr TL. **Gereken ek kaynak ~1.438 Mr TL** (2026 bütçesinin %7,6'sı). Bu paket, HWP ayrıştırma çalışmasının **S3 senaryosunu** gerçek bütçe kaynaklarıyla karşılamaktadır.
+
+S3'te TDH 2030'da **1,61**'e yükselir; "en düşük doğurganlık" eşiği (1,30) 2030 ufku boyunca aşılmaz. Müdahalesiz S0'da bu eşik **2027**'de aşılmaktadır.
+
+**SGK etkisi:** S3 paketi 2040'ta ~3 milyon ek kayıtlı sigortalı sağlar; yıllık +150-200 Mr TL prim geliri. Aktif/pasif dengesi S0'ın 0,22-0,33 puan üzerinde seyreder.
+:::
+
+## OECD Ülkelerinde Aile Politikası Harcamaları
+
+OECD'nin kamu aile harcamaları göstergesi, aileye yönelik nakit transferlerini, hizmetleri ve vergi teşviklerini kapsamaktadır. OECD Sosyal Harcama Veritabanı'na (SOCX, 2021-2023) göre OECD ortalaması GSYH'nin %2,31'idir. İzlanda %3,82 ile zirvede, Fransa %2,63 ile 13. sıradadır. **Türkiye %0,45 ile OECD'nin en düşük dört ülkesi arasındadır** — Meksika (%0,55) ve ABD'nin (%0,60) bile altında.
+
+| Ülke | GSYH Payı (%) | Not |
+|---|---|---|
+| İzlanda | 3,82 | OECD zirvesi |
+| Polonya | 3,33 | |
+| İsveç | 3,32 | |
+| Norveç | 2,78 | |
+| Almanya | 2,65 | |
+| Fransa | 2,63 | Yüksek kreş kapsama + kapsamlı destek |
+| **OECD Ortalaması** | **2,31** | **Türkiye için referans hedef (~1.788 Mr TL)** |
+| İngiltere | 1,85 | |
+| İspanya | 1,48 | |
+| ABD | 0,60 | |
+| Meksika | 0,55 | |
+| **Türkiye (mevcut)** | **0,45** | **~350 Mr TL (2026)** |
+| **Türkiye (S3 hedefi)** | **2,31** | **~1.788 Mr TL; ek kaynak ~1.438 Mr TL** |
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 6
+
+library(plotly)
+
+ulkeler <- c("Türkiye", "Meksika", "ABD", "İspanya", "İngiltere", "OECD Ortalaması",
+             "Almanya", "Norveç", "İsveç", "Polonya", "İzlanda")
+oranlar <- c(0.45, 0.55, 0.60, 1.48, 1.85, 2.31, 2.65, 2.78, 3.32, 3.33, 3.82)
+renkler <- ifelse(ulkeler == "Türkiye", "#B33A3A",
+            ifelse(ulkeler == "OECD Ortalaması", "#9E7A1A", "#1F3864"))
+
+df_oecd <- data.frame(ulke = ulkeler, oran = oranlar, renk = renkler, stringsAsFactors = FALSE)
+df_oecd$ulke <- factor(df_oecd$ulke, levels = df_oecd$ulke[order(df_oecd$oran)])
+
+fig_oecd <- plot_ly(df_oecd, y = ~ulke, x = ~oran, type = "bar", orientation = "h",
+                marker = list(color = ~renk),
+                hovertemplate = "%{y}: %%%{x}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "GSYH payı (%)"),
+    yaxis = list(title = ""),
+    margin = list(l = 130),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_oecd
+```
+
+OECD aile harcaması dört kategoride örgütlenir: **nakit yardımlar** (~%45 pay — çocuk ödeneği, doğum izni ücreti), **bakım hizmetleri** (~%30 — kreş, okul öncesi), **eğitim kalitesi** (~%18) ve **vergi teşvikleri** (~%7). Türkiye'nin 0-3 yaş kreş kapsama oranı %5'in altındadır; Fransa'da %60'ın üzerinde. 3-5 yaş okullaşma oranı %54'te kalmaktadır.
+
+## OECD Ortalamasına Ulaşma Senaryosu: 2026 Bütçe Analizi
+
+2026 merkezi yönetim bütçesi 18,929 trilyon TL, GSYH tahmini ~77,3 trilyon TL'dir (OVP 2026-2028). Mevcut aile harcaması (%0,45) yaklaşık 350 Mr TL'ye karşılık gelir. OECD ortalamasına ulaşmak için gereken **ek kaynak ~1.438 Mr TL** — 2026 bütçesinin %7,6'sı, faiz dışı harcamanın %8,9'u.
+
+### S3 Senaryosu — Önerilen Bütçe Dağılımı (~1.440 Mr TL)
+
+| Kalem | Tutar | Pay | İçerik |
+|---|---|---|---|
+| Evrensel kreş ve 0-3 yaş bakım | 370 Mr TL | %25,5 | Kapsama %5→%40; ~620.000 yeni kapasite |
+| Güvence zinciri (evlilik + 1.+2. çocuk) | 320 Mr TL | %22,0 | Evlilik 62 / 1.çocuk 93 / 2.çocuk 155 Mr |
+| Çalışan anne istihdam güvencesi | 260 Mr TL | %18,0 | Esnek çalışma + 24 ay kısmi ücret desteği |
+| Okul öncesi eğitim kapsama artışı | 180 Mr TL | %12,5 | %54→%90; ~650.000 ek çocuk |
+| Devlet okulu kalitesi + uzatılmış gün | 220 Mr TL | %15,6 | Öğretmen 85 / Altyapı 73 / Uzatılmış gün 62 |
+| Vergi teşvikleri | 90 Mr TL | %6,4 | 2. çocuktan itibaren kademeli GV indirimi |
+| **TOPLAM** | **~1.440 Mr TL** | **%100** | 2026 bütçesinin %7,6'sı |
+
+Bu dağılımda üç kanal HWP modelinin kovaryat gruplarına doğrudan karşılık gelir: kreş ve çalışan anne güvencesi PPR₁'in istihdam-doğurganlık kesişimini hedeflerken, okul kalitesi ve uzatılmış gün düzenlemesi "eğitim maliyeti beklentisi" bariyerini kırar; nakdi destek zinciri hem evlilik hem parite kanallarını eş zamanlı hedefler.
+
+::: {.callout-note}
+**Uzatılmış Okul Günü — Paketin Kritik Köprüsü:** Kreş sorunu 0-3 yaşta çözüldüğünde bir sonraki kopukluk okul çağında ortaya çıkar. Saat 14:00'te sona eren okul günü çalışan anneyi işten koparır. Fransa'nın "périscolaire" modelinden uyarlanan 07:30-17:30 okul saatleri + okul içi etüt (15:00-17:00), 0-3 kreş ile 3-5 okul öncesini kesintisiz bir destek köprüsüne bağlar. Maliyet: 50-60 Mr TL.
+:::
+
+## HWP Ayrıştırma Çalışmasıyla Bağlantı
+
+[HWP ayrıştırma çalışması](hwp-analizi.qmd), Türkiye'nin 2013-2024 TDH kaybının (−0,626 puan) %65,2'sinin parite geçiş davranışından, özellikle 1→2 çocuk geçişinden (PPR₁; %56,6 pay) kaynaklandığını göstermiştir. Bu bulgu üzerine beş senaryo kurgulanmıştır:
+
+| Senaryo | İçerik | Paket Kapsamı | TDH Projeksiyonu |
+|---|---|---|---|
+| S0 — Müdahalesiz | Statüko | Yok | 2027'de 1,30 eşiği aşılıyor; 2060'ta ~0,82 |
+| S1 — Yavaşlama | Eğilim yarıya iner | Kısmi | 2029'da eşik aşılıyor; 2060'ta ~0,90 |
+| S2 — Bakım+istihdam | Kreş + güvence | Kısmi (2 bileşen) | 2030'da 1,48 |
+| **S3 — Kapsamlı** | **S2 + okul + nakdi** | **TAM (3 bileşen)** | **2030'da 1,61; 2060'ta ~1,70** |
+| S4 — Kırılma | 2022 hızı sürer | Yok | 2030'da 1,075; Güney Kore tuzağı riski |
+
+S3, PPR₁'de yıllık ortalama **+0,035** iyileşme öngörür: kreş+istihdam kanalından +0,020, okul kalitesi kanalından +0,015. Bu iyileşme PPR₁'i 2030'da ~0,900'e taşır.
+
+::: {.callout-note}
+**Önemli uyarı:** S3 parametreleri literatürden türetilmiş simülasyon değerleridir, nedensel kesinlik taşımaz. S3 ayrıca evlilik örüntüsü üzerinde müdahale varsaymaz; oysa önerilen pakette evlilik desteği mevcuttur — bu nedenle paket teorik olarak S3'ün biraz üzerinde konumlanır.
+:::
+
+**Net maliyet:** Brüt yıllık maliyet ~1.438 Mr TL. SGK prim geri dönüşü (~150-200 Mr TL/yıl) + vergi geliri artışı (~50-80 Mr TL/yıl) düşüldüğünde 2030 itibarıyla net yük ~1.158-1.238 Mr TL bandına iner.
+
+## 2060'a Uzanan Projeksiyon
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_proj <- c(2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060)
+tdh_s0 <- c(1.40, 1.14, 1.05, 0.98, 0.93, 0.89, 0.85, 0.82)
+tdh_s3 <- c(1.40, 1.61, 1.66, 1.69, 1.70, 1.70, 1.70, 1.70)
+
+fig_proj <- plot_ly(x = yillar_proj, y = tdh_s0, type = "scatter", mode = "lines+markers",
+                name = "S0 — Müdahalesiz", line = list(color = "#B33A3A", width = 2.5)) %>%
+  add_trace(y = tdh_s3, name = "S3 — OECD Ortalaması Paketi", line = list(color = "#1F3864", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = ""),
+    yaxis = list(title = "TDH", range = c(0.7, 2.2)),
+    shapes = list(
+      list(type = "line", x0 = 2025, x1 = 2060, y0 = 1.30, y1 = 1.30,
+           line = list(color = "#9E7A1A", width = 1.5, dash = "dot")),
+      list(type = "line", x0 = 2025, x1 = 2060, y0 = 2.10, y1 = 2.10,
+           line = list(color = "#898781", width = 1, dash = "dash"))
+    ),
+    annotations = list(
+      list(x = 2027, y = 1.34, text = "Lowest-low eşiği (1,30)", showarrow = FALSE,
+           font = list(size = 10, color = "#9E7A1A"))
+    ),
+    legend = list(orientation = "h", y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_proj
+```
+
+S0'da TDH 2030'da 1,14'e, 2040'da ~0,98'e, 2060'da ~0,82'ye gerilir. S3'te TDH 2030'da 1,61 ile S0'ın ~0,47 puan üzerinde seyreder, 2060'a kadar 1,70 bandında istikrar kazanır. **2060 ufkunda iki senaryo arasındaki kümülatif doğum farkı ~6-7 milyon çocuğa** karşılık gelir.
+
+SGK aktif/pasif oranı Ocak 2026'da 1,591 ile tarihi diptedir. S3'ün SGK'ya katkısı iki kanaldan gelir: kısa vadede kadın istihdamı artışıyla 10 yılda ~3 milyon ek kayıtlı sigortalı (yıllık +150-200 Mr TL prim); uzun vadede demografik kuşak etkisiyle aktif/pasif dengesi S0'ın 0,22-0,33 puan üzerinde tutulur. S0'da 2055 civarında kritik 1,0 eşiği aşılmaktadır.
+
+| Dönem/Senaryo | A/P Oranı | Fark (S3−S0) |
+|---|---|---|
+| 2024 (baz) | 1,591 | — |
+| 2040 S0 | ~1,10 | — |
+| 2040 S3 | ~1,32 | +0,22 |
+| 2060 S0 | ~0,82 | — |
+| 2060 S3 | ~1,15 | +0,33 |
+
+## Politika Konumlandırması
+
+Bu paket demografik krizin tek çözümü değildir. Doğurganlığı 1,48'den yenilenme düzeyine (2,10) çıkaracak bilinen bir politika yoktur. Savunulabilir çerçeve: düşüşün hızını yavaşlatır, kadın istihdamı kanalından kısa vadeli SGK katkısı sağlar, HWP'nin işaret ettiği müdahale penceresini açık tutar. **Müdahaleyi ertelemek maliyeti düşürmemekte, yalnızca koşulları ağırlaştırmaktadır.**
+
+## Kaynakça (Seçili)
+
+OECD (2025). *Family Database, PF1.1: Public spending on family benefits.* Paris: OECD Publishing.
+
+Sezgin, M.E. (2026). *Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi: 2013–2024 Dönemi.* Toplum Çalışmaları Enstitüsü.
+
+Strateji ve Bütçe Başkanlığı (2025). *Orta Vadeli Program 2026–2028*; *2026 Yılı Merkezi Yönetim Bütçe Kanunu.* Ankara: SBB.
+
+SGK (2026). *İstatistik Bülteni, Ocak 2026.* Ankara: Sosyal Güvenlik Kurumu.
+
+---
+
+📄 **[Tam metni indir (PDF)](aile-harcamalari-tam-metin.pdf)** — tüm tablolar, OECD karşılaştırma grafiği, bileşen kırılımı, 2025-2060 TDH ve SGK aktif/pasif projeksiyon grafikleri dahil.
