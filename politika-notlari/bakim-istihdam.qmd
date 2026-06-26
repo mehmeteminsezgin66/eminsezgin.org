@@ -1,0 +1,88 @@
+---
+title: "Demografik Krizi Bakım ve İstihdam Ekseninde Yeniden Düşünmek"
+description: "Türkiye'nin demografik krizini bir istek eksikliği değil güvence eksikliği olarak çerçeveleyen, istihdam tamponu ve pariteye duyarlı güvence mimarisi öneren araştırma notu. Ters-J hipotezi, sosyal rezerv kavramı ve bakım rejiminin yeniden inşası."
+author: "Mehmet Emin Sezgin"
+categories: [politika notu, istihdam, bakım altyapısı, doğurganlık, kadın istihdamı]
+---
+
+Bu çalışma, Türkiye'nin demografik krizini "kaç çocuk" sorusu yerine "çocuk sahibi olmanın risk mimarisi" ekseninde yeniden çerçevelemekte; istihdamı doğurganlığın karşısına değil yanına konumlandıran bir güvence mimarisi önermektedir. Çalışmada geliştirilen "istihdam tamponu" ve "sosyal rezerv" kavramları, demografik krizin çözümünü yalnızca nüfus artışı değil, ekonomik sürdürülebilirlik açısından da ele alan çift taraflı bir kaldıraç mekanizması olarak tasarlanmıştır.
+
+*Toplum Çalışmaları Enstitüsü Araştırma Notu, Mart 2026.*
+
+## Temel Tez: Güvence Eksikliği
+
+Türkiye'de doğurganlık düşüşü çoğu zaman kültürel dönüşüm veya bireysel tercihlerle açıklanmaktadır. Oysa TNSA 2018 verileri, hiç çocuğu olmayan kadınların bile ortalama 2,6 çocukluk bir ideal benimsediğini ortaya koymaktadır. Sorun bir istek eksikliği değil, bir güvence eksikliğidir: çocuk sahibi olmanın ürettiği gelir kaybı, kariyer kopuşu ve bakım yükü birlikte yönetilememektedir.
+
+| Yaşayan Çocuk Sayısı | Ortalama İdeal Çocuk Sayısı |
+|---|---|
+| 0 | 2,6 |
+| 1 | 2,5 |
+| 2 | 2,8 |
+| 3 | 3,2 |
+| 4+ | 3,8 |
+
+: TNSA 2018 — Yaşayan Çocuk Sayısına Göre İdeal Çocuk Sayısı
+
+İstihdamdaki kadının 1,38 olan doğurganlık hızı ile beyan edilen 2,5–3,0 bandındaki ideal sayı arasındaki devasa boşluk, risk mimarisini kamusal olarak üstlenen modellerin ne kadar büyük bir "ertelenmiş potansiyeli" harekete geçirebileceğinin en somut göstergesidir.
+
+## Ters-J Eğrisi ve Türkiye'nin Sıkıştığı Bant
+
+Uluslararası literatürde ters-J hipotezi (Billari ve Myrskylä, 2009), düşük ve orta kalkınma düzeylerinde ekonomik gelişme ve kadın istihdamının doğurganlığı düşürdüğünü; yüksek kalkınma ve kurumsal destek düzeylerinde ise ilişkinin tersine dönebildiğini ileri sürmektedir. Myrskylä (2024) ABD verileriyle belirli bir kalkınma ve toplumsal cinsiyet eşitliği eşiği aşıldığında istihdam artışının doğurganlıkla çatışmak zorunda olmadığını kanıtlamıştır.
+
+Türkiye'nin mevcut konumu, bu ilişkinin en kırılgan olduğu "orta istihdam – zayıf kurumsal destek" bandına karşılık gelmektedir. Kadın istihdamı artış eğilimi gösterirken bakım altyapısı ve iş–aile uyum mekanizmaları aynı hızda gelişmemiş; sonuç olarak istihdam artışı doğurganlık üzerinde baskılayıcı etki üretmektedir.
+
+Kritik bir paradoks da burada ortaya çıkmaktadır: Türkiye'de doğurganlık azalırken kadın istihdamı kayda değer bir sıçrama göstermemektedir. 2014–2024 döneminde TDH 2,19'dan 1,48'e gerilerken, kadın istihdam oranı yaklaşık %33'ten ancak %42 bandına yükselebilmiştir. Bu artışın temel kaynağı da kapsayıcı bir işgücü piyasası genişlemesi değil, yükseköğretim mezunu kadın nüfusunun artmasından kaynaklanan sınırlı bir kompozisyon etkisidir (TESEV, 2025).
+
+## "Çalışan Kadın Daha Az Doğuruyor" Eleştirisine Yanıt
+
+Sigortalı kadınların düşük doğurganlığı, istihdamın kendisinden değil; istihdam ile bakım ve gelir güvencesi arasındaki kurumsal uyumsuzluktan kaynaklanmaktadır. Özgören, Ergöçmen ve Tansel (2018), doğurganlık ile istihdam arasındaki ilişkinin yapısal olarak negatif olmak zorunda olmadığını, bu ilişkinin büyük ölçüde kurumsal güvence ve öngörülebilirlik düzeyine bağlı olarak şekillendiğini göstermiştir. Özellikle kamu sektöründe çalışan kadınların ikinci doğuma geçiş olasılığı, özel sektördekilere kıyasla anlamlı biçimde daha yüksektir — bu desen, istihdam güvencesinin kamusal olarak güçlendirilmesinin ikinci çocuk kararını destekleyebileceğine dair güçlü bir ampirik zemin sunmaktadır.
+
+Jakobsen ve diğerleri (2025) ise Danimarka verileriyle doğum sonrası dönemde ortaya çıkan kariyer kesintileri ve beşeri sermaye aşınmasının doğurganlığı baskıladığını göstermiştir. Bu bulgu, istihdam tamponu yaklaşımının yalnızca nakdi teşviklere değil, kariyer sürekliliğini merkeze alan güvence mimarisine dayanması gerektiğine ilişkin uluslararası bir dayanak sunmaktadır.
+
+## Sosyal Rezerv ve İstihdam Tamponu
+
+Türkiye'de kullanılmamış bir sosyal rezerv mevcuttur: eğitimli genç kadın nüfusu, bakım ve güvencesizlik nedeniyle sistem dışında kalan kadınlar ve ertelenmiş ikinci çocuk kararları. TÜİK verilerine göre kadınların %42,9'u ev işleri ve bakım sorumlulukları nedeniyle, yaklaşık 1,1 milyon kadın ise çalışmaya hazır olduğu halde iş arayamadığı için işgücü dışındadır.
+
+Bu rezervi harekete geçirecek mekanizma doğrudan teşvik değil, bir istihdam tamponudur. Model üç varsayıma dayanır: ilk doğum sonrası istihdamdan kopuş ikinci çocuğa geçişte temel kırılma noktasıdır; gelir belirsizliği ve bakım erişim eksikliği doğurganlığı rasyonel biçimde erteletir; risklerin bir bölümü kamu tarafından üstlenildiğinde davranış değişikliği mümkündür.
+
+Mesele "çocuk yapmayı teşvik etmek" değil, "kadınları çocuk sahibi olma durumunda çalışma hayatında karşılaşacakları risklerden korumaktır."
+
+## Bakım Rejimi ve İstihdamın Yeniden Konumlandırılması
+
+Bakım altyapısı kurulmadan istihdam artışının sürdürülebilir olmadığı açıktır. Kurumsal bakımın zayıf olduğu rejimlerde istihdam ve doğurganlık arasındaki gerilim kalıcılaşmaktadır. Çalışmada önerilen mekanizma zinciri: doğum riskleri (gelir kaybı, bakım yükü, kariyer kopuşu) → istihdam tamponu güvence paketi (garantili istihdam, kreş erişimi, uyum mekanizmaları, korumalı çıkış) → hane düzeyinde risk algısının azalması → 1→2 geçişinin güçlenmesi → aktif nüfus ve prim artışı → sosyal güvenlik dengesinde iyileşme. Model bir teşvik paketi değil, demografik ve aktüeryal riskleri birlikte yöneten kurumsal bir güvence mimarisi olarak kurgulanmıştır.
+
+## Pariteye Duyarlı Tasarım
+
+Demografik istikrar açısından belirleyici eşik ilk çocuğun varlığı değil, 1→2 geçişidir. Önerilen iki aşamalı model, 23–27 yaş aralığında ilk doğumu ve 28–30 yaş aralığında ikinci çocuğu güvence altına alarak yaşam döngüsüne uyumlu risk paylaşımı sunmaktadır.
+
+Güvence mimarisinin yalnızca düşük gelirli kesimler için değil, yüksek nitelikli kadınların da kariyer sürekliliğini koruyacak şekilde tasarlanması gerekmektedir. Goldin'in (2021) gösterdiği üzere, modern iş piyasasındaki "açgözlü işler" yapısı cinsiyet eşitsizliğini artık eğitim farkından değil, zaman ve esneklik maliyetinden üretmektedir.
+
+## Sonuç: Sayıdan Sürece Geçiş
+
+İstihdamda olan (1,38) ve olmayan (1,72) kadınların doğurganlık hızları arasındaki makasın dramatik biçimde daralması, Türkiye'nin demografik krizinin artık yalnızca kariyer odaklı bir erteleme meselesi değil, toplumsal geneline yayılmış sistematik bir güvence krizi olduğunu kanıtlamaktadır. Geleneksel aile desteklerinin ve tek gelire dayalı hane yapısının sürdürülebilirliğini yitirdiği bu tabloda çözüm, mülkiyetini devletin üstlendiği yeni bir risk mimarisinde aranmalıdır.
+
+Doğurganlık bir hedef sayı değil, yönetilmesi gereken bir süreçtir. Demografik kriz kültürel olduğu kadar kurumsal bir krizdir; çözüm ise ancak kurumsal düzeyde üretilebilir.
+
+### Kaynakça
+
+Billari, F. C. ve Myrskylä, M. (2009). Advances in development reverse fertility declines. *Nature*, 460(7256), 741–743.
+
+Goldin, C. (2021). *Career and Family: Women's Century-Long Journey Toward Equity.* Princeton University Press.
+
+Hacettepe Üniversitesi Nüfus Etütleri Enstitüsü (2019). *2018 Türkiye Nüfus ve Sağlık Araştırması.* Ankara: HÜNEE.
+
+Jakobsen, K. M., Jørgensen, T. H. ve Low, H. (2025). Fertility and family labor supply. *Working Paper No. 2025-26*, Federal Reserve Bank of Chicago.
+
+Myrskylä, M. (2024). Revisiting the J-Shape: Human Development and Fertility in the United States. *Demographic Research*, 50, 1–34.
+
+Özgören, A. A., Ergöçmen, B. A. ve Tansel, A. (2018). Birth and employment transitions of women in Turkey: The emergence of role incompatibility. *Demographic Research*, 39(46), 1241–1290.
+
+TESEV (2025). *İşgücü Piyasasının Cinsiyetçi Yapısı, Geleceğin İşleri ve Kadınların Önündeki Engeller.* İstanbul: TESEV Yayınları.
+
+TÜİK (2023). *İşgücü İstatistikleri.* Ankara: TÜİK.
+
+TÜİK ve CEİD (2024). *Toplumsal Cinsiyet Eşitliği İzleme Raporu 2023–2024.* Ankara.
+
+---
+
+📄 **[Tam metni indir (PDF)](bakim-istihdam-tam-metin.pdf)** — ters-J hipotezinin detaylı analizi, cinsiyete göre işsizlik ve işgücüne dahil olmama tabloları, Özgören/Ergöçmen/Tansel ve Jakobsen çalışmalarının kapsamlı değerlendirmesi, mekanizma zinciri şeması ve "açgözlü işler" tartışması dahil.
