@@ -1,23 +1,149 @@
 ---
-title: "Demografik Güvenlik ve Aile Fonu (DGAF): Kurumsal Model"
-description: "Özel bütçeli, Cumhurbaşkanlığına bağlı demografik yatırım fonu tasarımı."
-date: 2026-05-01
+title: "Demografik Güvenlik ve Aile Fonu"
+description: "Mevcut bütçe mimarisinin demografik politikaya kalıcı kaynak ayırmadaki yapısal yetersizliğine kurumsal bir yanıt: Savunma Sanayii Fonu modelinden esinlenen hibrit fon tasarımı, kaynak mimarisi ve uygulama yol haritası."
+author: "Mehmet Emin Sezgin"
+categories: [politika notu, finansman, kurumsal tasarım, doğurganlık]
 ---
 
-## Sorun Tanımı
+::: {.callout-note appearance="simple"}
+## Temel Bulgular
 
-Türkiye'nin mevcut aile politikası mimarisi, doğurganlık krizinin yapısal niteliğiyle orantısız bir kurumsal kapasiteye sahiptir. Parçalı bütçe kalemleri, koordinasyon eksikliği ve performans izleme boşluğu, politika müdahalelerinin etkisini sınırlamaktadır.
+- Türkiye'nin kamu aile harcaması GSYH'nin %0,45'i ile OECD'nin en düşük ülkeleri arasındadır. OECD ortalaması %2,31'dir.
+- S3 kapsamlı politika paketinin hayata geçirilmesi yıllık ~1.788 milyar TL harcama gerektirmektedir. Mevcut bütçeye göre gereken ek kaynak ~1.438 milyar TL'dir (bütçenin %7,6'sı).
+- Bütçenin ~%80'i zorunlu, yasal ve ertelenemez giderlere kilitlenmiştir. Esnek alan organik olarak daralmaktadır.
+- Müdahalesiz senaryoda "en düşük doğurganlık" eşiği (1,30) 2027–2028'de aşılacaktır. S3 paketi bu eşiğin 2030 ufku boyunca aşılmamasını sağlar; TDH 2030'da 1,61 düzeyine taşınabilir.
+:::
 
-## Önerilen Model
+## 1. Sorun: Neden Mevcut Yapı Yeterli Değil?
 
-Demografik Güvenlik ve Aile Fonu (DGAF), üç temel işlevi tek çatı altında birleştiren özel bütçeli bir kuruluş olarak tasarlanmıştır:
+Türkiye'nin toplam doğurganlık hızı 2008'deki 2,15 düzeyinden 2024'te 1,48'e, 2025 tahminlerine göre ise yaklaşık 1,40'a gerilemiştir. Demografik literatürde "en düşük doğurganlık tuzağı" olarak tanımlanan 1,30 eşiği, müdahale edilmezse 2027–2028'de aşılacaktır. Bu eşik bir kez geçildiğinde geri dönüşü güç bir ivme kazanılmaktadır: yaşlanan nüfus yapısı sosyal güvenlik sistemini aşındırırken çalışma çağı nüfusu daralır, işgücü arzı ve stratejik kapasite kalıcı hasar görür.
 
-1. **Finansman havuzu** — Demografik yatırımlar için ayrıştırılmış ve sürdürülebilir kaynak
-2. **Koordinasyon mekanizması** — Bakanlıklar arası politika tutarlılığı
-3. **İzleme ve değerlendirme** — PPR₁ bazlı performans takibi
+Türkiye'nin bu süreçteki temel sorunu çocuk istememek değildir. Araştırma verileri, hiç çocuğu olmayan kadınların dahi ortalama 2,6 çocukluk bir ideal benimsediğini ortaya koymaktadır. Sorun bir istek eksikliği değil, güvence eksikliğidir: çocuk sahibi olmanın ürettiği gelir kaybı, kariyer kopuşu ve bakım yükü birlikte yönetilememektedir. Analizler, 2013–2024 arasındaki toplam doğurganlık kaybının %65'inden fazlasının birinci çocuktan ikinciye geçişteki kırılmadan kaynaklandığını göstermektedir. Birinci çocuğu olan ailelerin büyük çoğunluğu ikinci çocuktan vazgeçmektedir — bu bir tercih değil, bir kısıttır.
 
-<!-- Tam içerik eklenecek -->
+Bu kısıtı ortadan kaldırmak için ne gerekir? Uluslararası literatür ve Türkiye'ye özgü veriler, üç müdahale kanalının eş zamanlı devreye girmesi gerektiğine işaret etmektedir: 0–3 yaş evrensel bakım altyapısı, doğum sonrası istihdam güvencesi ve ikinci çocuğu odağa alan pariteye duyarlı nakdi destek. Buna devlet okullarının kalitesinin güçlendirilmesi de eklenmektedir; özel okul talebinin yarattığı maliyet baskısı aile büyüklüğü kararlarını doğrudan etkilemektedir.
 
-## Belge
+Bu kapsamlı paketin hayata geçirilmesi, kamu aile harcamalarının yıllık GSYH'nin %2,31'ine — yaklaşık 1.788 milyar TL — ulaşmasını gerektirmektedir. Bu, OECD ülkelerinin harcadığı ortalama düzeydir. Türkiye'nin mevcut kamu aile harcaması ise GSYH'nin yalnızca %0,45'inde kalmakta; OECD'nin en düşük ülkeleri arasında yer almaktadır. Gereken ek kaynak yıllık yaklaşık 1.438 milyar TL'dir.
 
-📄 [Politika notunu indir (PDF)](#)
+Sorun bu büyüklükteki kaynağın nereden geleceği değildir yalnızca. Esas sorun, mevcut bütçe mimarisinin bu kaynağı kalıcı ve güvenilir biçimde tahsis etmeye yapısal olarak elverişli olup olmadığıdır. Bu sorunun yanıtı olumlu değildir.
+
+## 2. Neden Mevcut Bütçe Mimarisi Yetmez?
+
+Mevcut yapı içinde aile politikasına sürekli ve yeterli kaynak ayrılmasını zorlaştıran üç yapısal engel bir arada işlemektedir.
+
+### 2.1. Bütçede Yaşanan Kalıcı Asimetri
+
+Türkiye 2025 bütçesinin analizi, yaşa atanabilir harcamaların yaklaşık %34,6'sının 65 yaş üstü nüfusa yöneldiğini ortaya koymaktadır. Emekli maaşları, SGK transferleri ve sağlık harcamaları her yıl büyüyen bir yapısal yük oluşturmaktadır. SGK genel kapsam aktif/pasif oranı 2022'deki 2,01 zirvesinden Ocak 2026'da 1,59'a gerilemiştir. 2023'te hayata geçirilen EYT reformu tek yılda yaşlılık aylığı stoğuna 2,0 milyon kişi eklemiş, SGK açık finansmanı 2024'teki 37 milyar TL'den 2025'te 75 milyar TL'ye yükselmiştir.
+
+Bu tablonun arkasında yapısal bir kilitlenme yatmaktadır. Türkiye merkezi bütçesinin yaklaşık %80'i "zorunlu, yasal ve ertelenemez" giderlerden oluşmaktadır: personel giderleri, SGK devlet primi, faiz ödemeleri ve cari transferler. SGK'nın artan açık finansmanı, EYT maliyetleri ve yaşlılık aylıkları bütçenin esnekliğini fiilen daraltmıştır. Bu kilitlenme sürdükçe merkezi bütçe geleceği inşa etme kapasitesini yitirmeye devam edecek; geçmişin sosyal güvenlik taahhütlerini finanse eden bir transfer ofisine dönüşecektir. Aile politikasına ayrılabilecek esnek alan bu yapı içinde organik olarak daralmaktadır.
+
+### 2.2. Siyasi Çevrim Baskısı
+
+Demografik politikanın etkileri 10–20 yıllık bir ufukta ortaya çıkar; seçim çevrimleri ise 4–5 yıllıktır. Bu asimetri, aile harcamalarını her bütçe müzakeresinde yeniden tartışmaya açık ve kırılgan kılar. Daha derin bir engel de şudur: nüfus yaşlandıkça seçmen tabanının ağırlık merkezi de yaşlanır. Yaşlı seçmenler üzerinde daha güçlü baskı oluşturduğundan, bütçe kaynaklarının genç ailelere yönlendirilmesi siyasi açıdan giderek daha az rekabetçi bir tercih haline gelmektedir. EYT reformunun yarattığı tablonun bu dinamiğin Türkiye'de de işlemeye başladığını gösteren somut bir örnek olduğu değerlendirilmektedir.
+
+### 2.3. Çok Yıllı Taahhüt Kapasitesinin Yokluğu
+
+Kreş ağı kurmak, öğretmen istihdamı artırmak, istihdam güvencesi mekanizması oluşturmak uzun vadeli altyapı yatırımları gerektirmektedir. Bu yatırımlar yıllık bütçe süreçlerinde her zaman ertelenebilir kalemler olarak görünmektedir. Kurumların, işverenlerin ve ailelerin politikaya güvenmesi için taahhütlerin çok yıllı ve bağlayıcı olması şarttır; mevcut bütçe mimarisi bu güvenceyi üretememektedir.
+
+Bu üç engel birlikte değerlendirildiğinde demografik güvenceye yönelik harcamaların, mevcut bütçe kanalları içinde kalındığı sürece büyüyen transfer yükünün gölgesinde kalacağı, her konjonktürel dalgalanmada ilk ertelenen kalem olmaya devam edeceği görülmektedir. Demografik Güvenlik ve Aile Fonu bu yapısal soruna kurumsal bir yanıt olarak tasarlanmıştır.
+
+## 3. Kurumsal Model: Neden Bağımsız Bir Fon?
+
+Türkiye'de bütçe dışı finansman mekanizmalarının başarılı bir örneği mevcuttur: 1985'te 3238 sayılı Kanun'la kurulan Savunma Sanayii Fonu (SSF). SSF gelir kaynakları kanunla belirlenmiş, harcama kararları İcra Komitesi tarafından alınmış, Hazine denetimine tabi olmakla birlikte bütçe içi kısıtlardan bağımsız çok yıllı taahhüt kapasitesiyle çalışmıştır. Türkiye'nin savunma sanayii özerkliğinin inşasında bu modelin belirleyici bir rolü olmuştur.
+
+DGAF, savunma alanında kanıtlanmış bu modeli demografik alana taşımaktadır. Savunma kapasitesi bir stratejik güvenlik yatırımı olarak görülüp bu amaçla özel bir finansman mekanizması kurulduysa, en az o kadar kritik olan demografik kapasite için benzer bir yapının kurulması tutarlı bir politika tercihidir.
+
+### 3.1. Alternatif Modeller
+
+| Model | Güçlü Yanlar | Zayıf Yanlar |
+|---|---|---|
+| **SSF Modeli** (Bağımsız fon) | Güçlü bütçesel bağımsızlık; çok yıllı taahhüt kapasitesi | Demografik izleme ve uyarlamadan kopuk; izole harcama riski |
+| **Döner Sermaye** (Bakanlık bünyesi) | Düşük kuruluş maliyeti; mevzuata uyum kolay | Bütçesel bağımsızlık sınırlı; S3 ölçeği için yetersiz |
+| **Hibrit Model** (Önerilen) | SSF bağımsızlığı + Kurul izleme kapasitesi bir arada | Ayrı kanun gerektirir; kuruluş süreci daha uzun |
+
+### 3.2. Önerilen Model: Hibrit Yapı
+
+Savunma Sanayii Fonu modelinin bütçesel bağımsızlığını Demografik İzleme Kurulu'nun izleme ve uyarlama kapasitesiyle birleştiren hibrit model, önerilen yapının çekirdeğini oluşturmaktadır.
+
+DGAF ayrı bir kanunla özel bütçeli kuruluş statüsünde kurulur ve Cumhurbaşkanlığına bağlı çalışır. Demografik İzleme Kurulu, genişletilmiş yönetim kurulu işleviyle hem fon tahsis kararlarını alır hem de demografik göstergeleri sistematik biçimde izler. Bu yapı kurulu gerçek anlamda icracı kılar: karar yetkisi ile veri üretimi aynı çatı altında buluşur. Doğurganlık göstergeleri gerilediyse kurul bunu tespit eder ve tahsisi revize etme yetkisine sahip olur.
+
+Kurumlar arası bileşim şu şekilde öngörülmektedir: Cumhurbaşkanlığı Strateji ve Bütçe Başkanlığı (koordinasyon), Hazine ve Maliye Bakanlığı (mali denetim ve aktüeryal köprü), Aile ve Sosyal Hizmetler Bakanlığı (program tasarımı ve uygulama), SGK (prim ve aktif/pasif veri akışı) ve HÜNEE (demografik projeksiyon ve etki değerlendirmesi). Sayıştay denetimi standarttır. Fon harcamalarının GSYH sınırına kilitlenmesi (%2,31 hedefi) ve Sayıştay'a özel yıllık raporlama yükümlülüğü hesap verebilirlik çerçevesini tamamlar.
+
+## 4. Fonun İşlevleri
+
+### 4.1. Finansman ve Çok Yıllı Tahsis
+
+Fon, aile politikası paketini karşılayacak kaynakları en az beş yıllık taahhüt ufkuyla tahsis eder. Programın öngörülen bütçe dağılımı:
+
+| Kalem | Tutar (2026) | Pay | İçerik |
+|---|---|---|---|
+| Evrensel kreş ve 0–3 yaş bakım | 370 Mr TL | %25,5 | 0–3 yaş kapsama %5→%40; ~620.000 yeni kapasite |
+| Güvence zinciri (evlilik + 1. + 2. çocuk) | 320 Mr TL | %22,0 | Evlilik: 62 Mr ∣ 1. çocuk: 93 Mr ∣ 2. çocuk: 155 Mr |
+| Çalışan anne istihdamı güvencesi | 260 Mr TL | %18,0 | Esnek çalışma + 24 ay kısmi ücret desteği |
+| Okul öncesi eğitim kapsama artışı (3–5 yaş) | 180 Mr TL | %12,5 | %54→%90; ~650.000 ek çocuk |
+| Devlet okulu kalitesi + uzatılmış gün | 220 Mr TL | %15,6 | Öğretmen 85 ∣ Altyapı 73 ∣ Uzatılmış gün 62 |
+| Vergi teşvikleri | 90 Mr TL | %6,4 | 2. çocuktan itibaren kademeli GV indirimi |
+| **TOPLAM EK KAYNAK** | **~1.440 Mr TL** | **%100** | **2026 bütçesinin %7,6'sı ∣ GSYH %2,31 hedefi** |
+
+### 4.2. Parite Odaklı İzleme ve Uyarlama
+
+Fon harcamaları demografik etki göstergelerine göre izlenir. Temel performans göstergesi birinci çocuktan ikinciye geçiş oranıdır (PPR₁); bu oran 2013'teki 0,906 düzeyinden 2024'te 0,725'e gerilemiştir. Kapsamlı politika paketi PPR₁'de yıllık ortalama +0,035 iyileşme öngörmektedir. Bu iyileşmenin gerçekleşip gerçekleşmediği, fon tahsislerinin güncellenmesinde esas alınır. Göstergelerin hedeften sapması durumunda tahsis revizyonu mekanizması otomatik devreye girer. Bu yapı, kaynakların demografik etki üretmeyen kalemlere kaymasını önler ve politika öğrenmesini kurumsal hale getirir.
+
+### 4.3. Aktüeryal Köprü İşlevi
+
+Fon SGK ile koordineli çalışır. Kreş ve çalışan anne güvencesi kanalından sağlanacak kadın işgücüne katılım artışı, tahminlere göre yıllık 150–200 milyar TL prim geri dönüşü ve 50–80 milyar TL ek vergi geliri üretmektedir. Bu geri dönüşlerin SGK aktüeryal hesaplarına sistematik biçimde eklenmesi, demografik yatırımın mali getirisini görünür kılar ve fona yönelik siyasi desteğin sürdürülmesine zemin sağlar. Demografik katkının aktif nüfus üzerindeki olumlu etkisi 15 yıllık gecikmeyle işlediğinden bu köprü işlevi orta vadede belirleyici önem kazanır.
+
+### 4.4. Stratejik Demografi Belgesi Üretimi
+
+Demografik İzleme Kurulu, 2028 yılı sonuna kadar 2040–2060 dönemini kapsayan Stratejik Demografi Belgesi'ni hazırlar. Bu belge; işgücü arzı, sosyal güvenlik dengesi, savunma personel tabanı ve bölgesel stratejik kapasite projeksiyonlarını demografik değişkenlerle ilişkilendiren, periyodik olarak güncellenen yaşayan bir strateji belgesidir. Yalnızca nüfus tahmini değil; demografik riskleri devlet kapasitesi planlamasına entegre eden, politika seçeneklerini ve maliyetlerini somutlaştıran bir çerçeve sunar.
+
+## 5. Kaynak Mimarisi
+
+**Bütçe içi yeniden önceliklendirme:** Mevcut aile harcamasının fona kanallanması ve demografik etkisi düşük kalemlerin yeniden yapılandırılması başlangıç tabanını oluşturur. Bu kanal ek kaynak üretmez; mevcut kaynakların etkinliğini artırır.
+
+**Kanunla ayrıştırılmış gelir akışları:** SSF modelinin temel dersi burada devreye girer: bütçesel bağımsızlık ancak öngörülebilir gelir akışlarıyla kalıcı hale gelir. Tütün ve alkol ürünleri özel tüketim vergisinin belirli bir oranı, yabancı işgücü çalışma izni harçları ve mülk devir vergisinin bir dilimi kanunla fona bağlanabilir. Bu mekanizma fonun yıllık bütçe müzakerelerindeki kırılganlığını kalıcı olarak azaltır.
+
+**Uluslararası kalkınma finansmanı:** Erken çocukluk gelişimi ve 0–3 yaş bakım altyapısı Dünya Bankası, Avrupa Yatırım Bankası ve OECD finansman mekanizmaları kapsamında uygun proje kategorisindedir. Kreş altyapı yatırımlarının önemli bir bölümünün bu kanaldan karşılanması fonun cari harcama yükünü azaltır.
+
+**Demografik temettü mekanizması:** Politika işlediğinde üretilen geri dönüşlerin — SGK prim artışı, ek vergi gelirleri, sağlık harcamalarındaki uzun vadeli tasarruf — belirlenen bir oranının fona yeniden aktarılması. Müdahalesiz senaryoya kıyasla 2025–2060 döneminde gerçekleşmesi öngörülen 6–7 milyon ek doğum, bu kuşağın 2040–2070 arasında aktif prim üreticisine dönüşmesiyle birlikte bu mekanizmayı zamanla belirleyici kaynak kanalı haline getirecektir.
+
+## 6. Uygulama Yol Haritası
+
+| Aşama | Dönem | GSYH Hedefi | Temel Adımlar |
+|---|---|---|---|
+| **Kuruluş** | 2026–2027 | %0,80 | Kanun hazırlığı; Demografik İzleme Kurulu'nun operasyonel hale getirilmesi; Aile ve Gençlik fonunun ve doğum yardımlarının fona transferi; pilot kreş programlarının başlatılması |
+| **Genişleme** | 2028–2030 | %1,20–1,50 | Kreş ve istihdam güvencesi programlarının yaygınlaşması; uluslararası finansman kanallarının devreye alınması; kanunla ayrıştırılmış gelir akışlarının oluşturulması |
+| **Olgunluk** | 2031–2035 | %2,00–2,31 | OECD ortalaması hedefine ulaşım; demografik temettü mekanizmasının devreye girmesi; Stratejik Demografi Belgesi'nin ilk tam döngüsünün tamamlanması |
+
+## 7. Sonuç
+
+Demografik politikanın seçim çevrimlerinden bağımsız, uzun soluklu bir taahhüt gerektirdiği açıktır. Mevcut bütçe mimarisi içinde kalındığı sürece aile harcamaları büyüyen transfer yükünün gölgesinde kalacak, konjonktürel baskılarda ilk ertelenen kalem olmaya devam edecektir.
+
+DGAF bu kısıtı aşmanın kurumsal yanıtıdır. Hibrit model — SSF'nin bütçesel bağımsızlığını Demografik İzleme Kurulu'nun izleme ve uyarlama kapasitesiyle birleştiren yapı — demografik politikayı hem bütçe konjonktüründen hem de siyasi çevrim baskısından korurken kurulu gerçek anlamda icracı bir konuma taşır.
+
+Politika penceresinin hâlâ açık olduğu bu dönemde kurulması, ertelenmesinden hem mali hem de stratejik açıdan çok daha az maliyetlidir. 2027–2028'de aşılacak olan 1,30 eşiği geri dönüşü güç bir kırılma noktasını temsil etmektedir. Bu kırılmadan önce harekete geçilmesi, Türkiye'nin orta ve uzun vadeli stratejik kapasitesinin korunması açısından kritik önem taşımaktadır.
+
+### Kaynakça
+
+Nal, M. ve Gül Yücel, K. (2025). Türkiye'de Yaşlanan Nüfus ve Kamu Emeklilik Sisteminde Artan Mali Zorluklar: Kapsama Oranında Artış Bir Çıkış Yolu Olabilir mi? *Maliye Dergisi*, 188, 103–131.
+
+OECD (2025). *Family Database, PF1.1: Public spending on family benefits.* Paris: OECD Publishing.
+
+Sezgin, M. E. (2026). Demografik Kriz: Türkiye'nin Stratejik Kapasitesine Yönelik Yapısal Tehdit ve Çözüm Çerçevesi. *Toplum Çalışmaları Enstitüsü*, Nisan 2026.
+
+Sezgin, M. E. (2026). Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi: 2013–2024 Dönemi Üzerine Bir Ayrıştırma Analizi. *Toplum Çalışmaları Enstitüsü Araştırma Notu*.
+
+Sezgin, M. E. (2026). Bütçe Kaynaklarının Yaşa Göre Dağılımı: ABD–Türkiye Karşılaştırması ve Politika Çıkarımları. *Toplum Çalışmaları Enstitüsü*.
+
+Sezgin, M. E. (2026). Aile Politikası Harcamaları: OECD Karşılaştırması ve Türkiye İçin S3 Senaryosu. *Toplum Çalışmaları Enstitüsü*.
+
+Smetters, K. (2026). How Federal Spending is Distributed by Age Group in FY2025. *Penn Wharton Budget Model*, 1 Nisan 2026.
+
+Sosyal Güvenlik Kurumu (2026). *Sigortalı İstatistikleri Aylık Bülteni*, Ocak 2026. Ankara: SGK.
+
+Strateji ve Bütçe Başkanlığı (2025). *Orta Vadeli Program 2026–2028.* Ankara: SBB.
+
+Strateji ve Bütçe Başkanlığı (2025). *2026 Yılı Merkezi Yönetim Bütçe Kanunu.* Ankara: SBB.
+
+---
+
+📄 **[Tam metni indir (PDF)](dgaf-tam-metin.pdf)**
