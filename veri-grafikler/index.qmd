@@ -229,8 +229,8 @@ fig6
 
 ### İllere Göre TDH — Koroplet Harita (2025) {.unnumbered}
 
-::: {.callout-important}
-**Test aşaması:** Bu harita `rnaturalearth` paketiyle üretilmiştir, ilk deneme niteliğindedir. Render sonrası görünümü kontrol ediniz.
+::: {.callout-note}
+**Kaynak:** TÜİK, İllere Göre Toplam Doğurganlık Hızı 2025. `rnaturalearth` paketiyle üretilen koroplet harita.
 :::
 
 ```{r}
@@ -255,7 +255,15 @@ normalize_il <- function(x) {
   x <- tolower(x)
   x <- chartr("çğıöşü", "cgiosu", x)
   x <- gsub("i̇", "i", x)
-  trimws(x)
+  x <- trimws(x)
+  # Natural Earth'teki bilinen yazım farklılıkları için manuel eşleştirme
+  duzeltmeler <- c(
+    "zinguldak" = "zonguldak",
+    "kinkkale" = "kirikkale",
+    "k. maras" = "kahramanmaras",
+    "k.maras" = "kahramanmaras"
+  )
+  ifelse(x %in% names(duzeltmeler), duzeltmeler[x], x)
 }
 
 tdh_data$il_norm <- normalize_il(tdh_data$il)
@@ -384,28 +392,27 @@ fig9
 #| echo: false
 #| warning: false
 #| fig-width: 9
-#| fig-height: 13
+#| fig-height: 6
 
-il_degisim <- c("Kastamonu", "Çanakkale", "Bolu", "Kırklareli", "Balıkesir", "Edirne", "Yalova", "Karabük", "Zonguldak", "Bilecik", "Eskişehir", "Tunceli", "Kütahya", "Sinop", "Burdur", "Bartın", "Isparta", "Çankırı", "Giresun", "Artvin", "Rize", "Tokat", "Erzincan", "Manisa", "Sakarya", "Amasya", "Aydın", "Muğla", "Tekirdağ", "Ordu", "Samsun", "Trabzon", "Uşak", "Kırıkkale", "Gümüşhane", "Kırşehir", "Bursa", "Denizli", "Malatya", "İzmir", "Çorum", "Elazığ", "Afyonkarahisar", "Ankara", "Nevşehir", "Kocaeli", "Konya", "Niğde", "Türkiye", "Sivas", "İstanbul", "Mersin", "Adana", "Ardahan", "Antalya", "Osmaniye", "Karaman", "Kayseri", "Aksaray", "Yozgat", "Bayburt", "Bingöl", "Hatay", "Kahramanmaraş", "Adıyaman", "Erzurum", "Kars", "Hakkari", "Diyarbakır", "Gaziantep", "Kilis", "Mardin", "Batman", "Şanlıurfa", "Bitlis", "Iğdır", "Siirt", "Muş", "Van", "Şırnak", "Ağrı")
+il_degisim_all <- c("Kastamonu", "Çanakkale", "Bolu", "Kırklareli", "Balıkesir", "Edirne", "Yalova", "Karabük", "Zonguldak", "Bilecik", "Eskişehir", "Tunceli", "Kütahya", "Sinop", "Burdur", "Bartın", "Isparta", "Çankırı", "Giresun", "Artvin", "Rize", "Tokat", "Erzincan", "Manisa", "Sakarya", "Amasya", "Aydın", "Muğla", "Tekirdağ", "Ordu", "Samsun", "Trabzon", "Uşak", "Kırıkkale", "Gümüşhane", "Kırşehir", "Bursa", "Denizli", "Malatya", "İzmir", "Çorum", "Elazığ", "Afyonkarahisar", "Ankara", "Nevşehir", "Kocaeli", "Konya", "Niğde", "Türkiye", "Sivas", "İstanbul", "Mersin", "Adana", "Ardahan", "Antalya", "Osmaniye", "Karaman", "Kayseri", "Aksaray", "Yozgat", "Bayburt", "Bingöl", "Hatay", "Kahramanmaraş", "Adıyaman", "Erzurum", "Kars", "Hakkari", "Diyarbakır", "Gaziantep", "Kilis", "Mardin", "Batman", "Şanlıurfa", "Bitlis", "Iğdır", "Siirt", "Muş", "Van", "Şırnak", "Ağrı")
 
-degisim <- c(-0.35, -0.38, -0.38, -0.41, -0.41, -0.41, -0.43, -0.44, -0.45, -0.45, -0.45, -0.46, -0.46, -0.47, -0.48, -0.49, -0.5, -0.51, -0.51, -0.51, -0.52, -0.52, -0.52, -0.52, -0.52, -0.53, -0.54, -0.56, -0.57, -0.58, -0.58, -0.58, -0.58, -0.59, -0.59, -0.6, -0.6, -0.61, -0.61, -0.62, -0.63, -0.64, -0.66, -0.66, -0.66, -0.68, -0.68, -0.72, -0.74, -0.74, -0.74, -0.75, -0.78, -0.78, -0.78, -0.79, -0.8, -0.81, -0.82, -0.85, -0.9, -0.9, -0.94, -0.94, -0.96, -1.02, -1.06, -1.06, -1.08, -1.19, -1.19, -1.23, -1.25, -1.27, -1.35, -1.44, -1.45, -1.48, -1.5, -1.56, -1.78)
+degisim_all <- c(-0.35, -0.38, -0.38, -0.41, -0.41, -0.41, -0.43, -0.44, -0.45, -0.45, -0.45, -0.46, -0.46, -0.47, -0.48, -0.49, -0.5, -0.51, -0.51, -0.51, -0.52, -0.52, -0.52, -0.52, -0.52, -0.53, -0.54, -0.56, -0.57, -0.58, -0.58, -0.58, -0.58, -0.59, -0.59, -0.6, -0.6, -0.61, -0.61, -0.62, -0.63, -0.64, -0.66, -0.66, -0.66, -0.68, -0.68, -0.72, -0.74, -0.74, -0.74, -0.75, -0.78, -0.78, -0.78, -0.79, -0.8, -0.81, -0.82, -0.85, -0.9, -0.9, -0.94, -0.94, -0.96, -1.02, -1.06, -1.06, -1.08, -1.19, -1.19, -1.23, -1.25, -1.27, -1.35, -1.44, -1.45, -1.48, -1.5, -1.56, -1.78)
 
-df_deg <- data.frame(il = il_degisim, degisim = degisim)
-df_deg <- df_deg[order(-df_deg$degisim), ]
-df_deg$il <- factor(df_deg$il, levels = df_deg$il)
+degisim_data <- data.frame(il = il_degisim_all, degisim = degisim_all, stringsAsFactors = FALSE)
+degisim_data <- degisim_data[degisim_data$il != "Türkiye", ]
+degisim_data$il_norm <- normalize_il(degisim_data$il)
 
-fig10 <- plot_ly(df_deg, y = ~il, x = ~degisim, type = "bar", orientation = "h",
-                 marker = list(color = ~degisim, colorscale = list(c(0, "#B33A3A"), c(1, "#C9A84C")),
-                               cmin = -1.8, cmax = -0.3),
-                 hovertemplate = "%{y}: %{x:.2f}<extra></extra>") %>%
-  layout(
-    xaxis = list(title = "TDH değişimi, 2015→2025 (puan)"),
-    yaxis = list(title = "", tickfont = list(size = 9)),
-    margin = list(l = 110),
-    height = 1100,
-    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
-  )
-fig10
+merged_degisim <- left_join(turkey_map, degisim_data, by = "il_norm")
+
+p_degisim <- ggplot2::ggplot(merged_degisim) +
+  ggplot2::geom_sf(ggplot2::aes(fill = degisim, text = paste0(name, ": ", round(degisim,2))), color = "white", linewidth = 0.15) +
+  ggplot2::scale_fill_gradient2(low = "#B33A3A", mid = "#C9A84C", high = "#1F3864",
+                                  midpoint = -0.8, name = "Değişim") +
+  ggplot2::theme_void() +
+  ggplot2::theme(legend.position = "right")
+
+ggplotly(p_degisim, tooltip = "text") %>%
+  layout(plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)")
 ```
 
 ::: {.callout-important}
@@ -511,38 +518,30 @@ fig13
 #| echo: false
 #| warning: false
 #| fig-width: 9
-#| fig-height: 7
+#| fig-height: 6
 
-il_yas <- c("Şanlıurfa", "Ağrı", "Muş", "Kilis", "Gaziantep", "Kahramanmaraş", "Bitlis", "Niğde",
-            "Siirt", "Hatay", "Osmaniye", "Şırnak", "Mardin", "Afyonkarahisar", "Kars",
-            "Artvin", "Tunceli", "İstanbul", "Rize", "Trabzon", "İzmir", "Ankara",
-            "Muğla", "Eskişehir", "Yalova", "Antalya", "Bolu", "Çanakkale", "Kocaeli",
-            "Kırklareli", "Gümüşhane", "Erzincan")
-yas_il <- c(24.42, 24.72, 24.90, 25.12, 25.29, 25.60, 25.67, 25.77,
-            25.85, 25.88, 25.90, 25.94, 26.06, 26.09, 26.12,
-            28.99, 28.86, 28.92, 28.74, 28.69, 28.68, 28.60,
-            28.59, 28.59, 28.40, 28.28, 28.25, 28.10, 27.98,
-            28.02, 27.98, 27.96)
+il_yas_all <- c("Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin", "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkari", "Hatay", "Isparta", "Mersin", "İstanbul", "İzmir", "Kars", "Kastamonu", "Kayseri", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Kahramanmaraş", "Mardin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Şanlıurfa", "Uşak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kırıkkale", "Batman", "Şırnak", "Bartın", "Ardahan", "Iğdır", "Yalova", "Karabük", "Kilis", "Osmaniye", "Düzce")
 
-df_yas <- data.frame(il = il_yas, yas = yas_il)
-df_yas <- df_yas[order(df_yas$yas), ]
-df_yas$il <- factor(df_yas$il, levels = df_yas$il)
+yas_all <- c(26.68, 26.69, 26.09, 24.72, 27.69, 28.6, 28.28, 28.99, 27.14, 27.44, 27.56, 27.49, 25.67, 28.25, 26.85, 27.82, 28.1, 27.02, 27.23, 27.63, 26.22, 27.59, 27.93, 27.96, 27.06, 28.59, 25.29, 28.32, 27.98, 27.66, 25.88, 27.56, 27.24, 28.92, 28.68, 26.12, 27.57, 27.05, 28.02, 27.44, 27.98, 26.3, 27.01, 27.89, 26.95, 25.6, 26.06, 28.59, 24.9, 26.34, 25.77, 27.41, 28.74, 27.48, 27.57, 25.85, 27.53, 27.06, 27.58, 26.8, 28.69, 28.86, 24.42, 26.96, 26.21, 26.6, 27.9, 26.16, 27.79, 27.0, 27.03, 26.68, 25.94, 27.17, 26.52, 26.2, 28.4, 27.73, 25.12, 25.9, 27.43)
 
-fig14 <- plot_ly(df_yas, y = ~il, x = ~yas, type = "bar", orientation = "h",
-                 marker = list(color = ~yas, colorscale = list(c(0, "#B33A3A"), c(1, "#1F3864")),
-                               cmin = 24, cmax = 29),
-                 hovertemplate = "%{y}: %{x:.1f} yaş<extra></extra>") %>%
-  layout(
-    xaxis = list(title = "İlk doğumdaki ortalama anne yaşı", range = c(22,30)),
-    yaxis = list(title = ""),
-    margin = list(l = 110),
-    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
-  )
-fig14
+yas_data <- data.frame(il = il_yas_all, yas = yas_all, stringsAsFactors = FALSE)
+yas_data$il_norm <- normalize_il(yas_data$il)
+
+merged_yas <- left_join(turkey_map, yas_data, by = "il_norm")
+
+p_yas <- ggplot2::ggplot(merged_yas) +
+  ggplot2::geom_sf(ggplot2::aes(fill = yas, text = paste0(name, ": ", round(yas,1), " yaş")), color = "white", linewidth = 0.15) +
+  ggplot2::scale_fill_gradient2(low = "#B33A3A", mid = "#C9A84C", high = "#1F3864",
+                                  midpoint = 27, name = "Yaş") +
+  ggplot2::theme_void() +
+  ggplot2::theme(legend.position = "right")
+
+ggplotly(p_yas, tooltip = "text") %>%
+  layout(plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)")
 ```
 
 ::: {.callout-note}
-**Kaynak:** TÜİK, İllere Göre İlk Doğumdaki Ortalama Anne Yaşı (en düşük/en yüksek 15 il; 81 ilin tam haritası yakında eklenecektir). Şanlıurfa (24,4) ile Artvin (28,99) arasındaki 4,6 yıllık fark, ilk doğum yaşının bölgesel olarak ne denli farklılaştığını göstermektedir — bu fark, doğrudan biyolojik pencere ile parite geçiş olasılığını da bölgesel olarak şekillendirmektedir (bkz. PPR ve HWP Analizi sekmesi).
+**Kaynak:** TÜİK, İllere Göre İlk Doğumdaki Ortalama Anne Yaşı (2025). Şanlıurfa (24,4) ile Artvin (28,99) arasındaki 4,6 yıllık fark, ilk doğum yaşının bölgesel olarak ne denli farklılaştığını göstermektedir — bu fark, doğrudan biyolojik pencere ile parite geçiş olasılığını da bölgesel olarak şekillendirmektedir (bkz. PPR ve HWP Analizi sekmesi).
 :::
 
 ### Kaba Doğum Hızı: İllere Göre (2025)
@@ -551,36 +550,30 @@ fig14
 #| echo: false
 #| warning: false
 #| fig-width: 9
-#| fig-height: 7
+#| fig-height: 6
 
-il_kdh <- c("Zonguldak", "Bartın", "Giresun", "Sinop", "Edirne", "Karabük", "Kırklareli", "Çanakkale",
-            "Kütahya", "Balıkesir", "Çorum", "Kırıkkale", "Kastamonu", "İzmir", "Artvin",
-            "Şanlıurfa", "Şırnak", "Mardin", "Siirt", "Diyarbakır", "Batman", "Ağrı",
-            "Bitlis", "Muş", "Van", "Gaziantep", "Hakkari", "Kilis", "Adıyaman", "Iğdır")
-kdh_il <- c(6.62, 6.82, 6.88, 7.20, 7.23, 7.31, 7.38, 7.40,
-            7.40, 7.49, 7.55, 7.62, 7.63, 7.65, 7.76,
-            23.94, 21.10, 17.90, 17.42, 17.13, 16.61, 16.60,
-            16.59, 16.02, 15.80, 15.58, 14.99, 14.72, 13.59, 12.57)
+il_kdh_all <- c("Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin", "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkari", "Hatay", "Isparta", "Mersin", "İstanbul", "İzmir", "Kars", "Kastamonu", "Kayseri", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Kahramanmaraş", "Mardin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Şanlıurfa", "Uşak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kırıkkale", "Batman", "Şırnak", "Bartın", "Ardahan", "Iğdır", "Yalova", "Karabük", "Kilis", "Osmaniye", "Düzce")
 
-df_kdh <- data.frame(il = il_kdh, kdh = kdh_il)
-df_kdh <- df_kdh[order(df_kdh$kdh), ]
-df_kdh$il <- factor(df_kdh$il, levels = df_kdh$il)
+kdh_all <- c(10.77, 13.59, 9.89, 16.6, 7.83, 8.56, 8.68, 7.76, 8.36, 7.49, 8.76, 12.19, 16.59, 8.21, 8.24, 9.52, 7.4, 8.29, 7.55, 8.54, 17.13, 7.23, 9.68, 9.42, 11.43, 7.84, 15.58, 6.88, 7.83, 14.99, 12.53, 8.08, 9.78, 9.29, 7.65, 12.41, 7.63, 9.96, 7.38, 8.18, 10.75, 11.27, 7.4, 9.65, 9.29, 12.07, 17.9, 7.88, 16.02, 9.51, 10.39, 7.87, 8.43, 10.27, 8.45, 17.42, 7.2, 8.71, 9.9, 7.81, 8.5, 8.48, 23.94, 7.86, 15.8, 8.31, 6.62, 10.92, 8.96, 9.41, 7.62, 16.61, 21.1, 6.82, 9.66, 12.57, 9.39, 7.31, 14.72, 11.57, 9.61)
 
-fig15 <- plot_ly(df_kdh, y = ~il, x = ~kdh, type = "bar", orientation = "h",
-                 marker = list(color = ~kdh, colorscale = list(c(0, "#1F3864"), c(1, "#B33A3A")),
-                               cmin = 6, cmax = 24),
-                 hovertemplate = "%{y}: %{x:.1f}‰<extra></extra>") %>%
-  layout(
-    xaxis = list(title = "Kaba doğum hızı (‰)"),
-    yaxis = list(title = ""),
-    margin = list(l = 110),
-    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
-  )
-fig15
+kdh_data <- data.frame(il = il_kdh_all, kdh = kdh_all, stringsAsFactors = FALSE)
+kdh_data$il_norm <- normalize_il(kdh_data$il)
+
+merged_kdh <- left_join(turkey_map, kdh_data, by = "il_norm")
+
+p_kdh <- ggplot2::ggplot(merged_kdh) +
+  ggplot2::geom_sf(ggplot2::aes(fill = kdh, text = paste0(name, ": ", round(kdh,1), "‰")), color = "white", linewidth = 0.15) +
+  ggplot2::scale_fill_gradient2(low = "#1F3864", mid = "#C9A84C", high = "#B33A3A",
+                                  midpoint = 12, name = "‰") +
+  ggplot2::theme_void() +
+  ggplot2::theme(legend.position = "right")
+
+ggplotly(p_kdh, tooltip = "text") %>%
+  layout(plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)")
 ```
 
 ::: {.callout-note}
-**Kaynak:** TÜİK, İllere Göre Kaba Doğum Hızı 2025 (en düşük/en yüksek 15 il). Şanlıurfa'nın kaba doğum hızı (23,9‰) Zonguldak'ın (6,6‰) yaklaşık 3,6 katıdır. Kaba doğum hızı nüfus yapısından (genç nüfus oranı) da etkilendiği için TDH'ye göre bölgesel farkları daha da büyük göstermektedir.
+**Kaynak:** TÜİK, İllere Göre Kaba Doğum Hızı 2025. Şanlıurfa'nın kaba doğum hızı (23,9‰) Zonguldak'ın (6,6‰) yaklaşık 3,6 katıdır. Kaba doğum hızı nüfus yapısından (genç nüfus oranı) da etkilendiği için TDH'ye göre bölgesel farkları daha da büyük göstermektedir.
 :::
 
 ## PPR ve HWP Analizi
