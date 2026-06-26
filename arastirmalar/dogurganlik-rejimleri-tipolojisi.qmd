@@ -1,0 +1,158 @@
+---
+title: "Türkiye'de Doğurganlık Rejimleri Tipolojisi"
+subtitle: "Mekânsal, Kuşaksal ve Sosyo-Ekonomik Ayrışma Eksenleri"
+description: "Türkiye'de tek bir doğurganlık rejiminden değil, mekânsal, kuşaksal ve sosyo-ekonomik temelli olarak ayrışan çoklu doğurganlık rejimlerinden söz etmek gerekir. Parite temelli farklılaşma, bu üç ana ayrışmanın sonucudur."
+author: "Mehmet Emin Sezgin"
+---
+
+*Hazırlanan bu belge, doğurganlık politikasının ulusal ortalamalar yerine rejim bazlı ayrıştırma üzerinden tasarlanması için kavramsal ve operasyonel bir çerçeve sunar.*
+
+## 1. Kavramsal Çerçeve
+
+Türkiye'de tek bir doğurganlık rejiminden değil; mekânsal/bölgesel, kuşaksal/kohort ve sosyo-ekonomik temelli olarak ayrışan çoklu doğurganlık rejimlerinden söz etmek gerekir. Parite temelli ayrışma ise bu üç ana eksenin ürettiği sonuçtur. Bu nedenle politika tasarımı, yalnızca toplam doğurganlık hızına veya ulusal ortalamalara dayandırılamaz.
+
+Mevcut çoklu doğurganlık rejimleri literatürü, rejimleri çoğunlukla düşük, ılımlı veya yüksek doğurganlık düzeylerine göre sınıflandırmaktadır. Bölgesel, etnik, sınıfsal veya kuşaksal farklılıklar ise çoğu zaman ulusal demografik geçiş çizgisinden sapma, gecikmiş geçiş ya da aynı sürecin farklı hızlarda yaşanması olarak yorumlanmaktadır.
+
+Bu çalışma ise farklı bir yaklaşım önermektedir: doğurganlık rejimlerini yalnızca düzeylerine göre değil; mekânsal/bölgesel, kuşaksal/kohort ve sosyo-ekonomik risk bileşimleri ile bu bileşimlerin ürettiği müdahale duyarlılığına göre tanımlamaktadır. Bu nedenle parite temelli farklılaşma bağımsız bir ana eksen değil, bu üç yapısal ayrışmanın gözlenebilir sonucu olarak ele alınmaktadır. Böylece çalışma, doğurganlık rejimlerini tanımlayıcı bir sınıflandırma olmaktan çıkararak, hangi grupta hangi risk kanalının doğurganlığı düşürdüğünü ve hangi politika aracının daha yüksek marjinal etki üretebileceğini gösteren müdahale odaklı bir tipolojiye dönüştürmektedir.
+
+Bu çerçeve, doğurganlık düşüşünü tek bir davranış değişikliği olarak değil; bölgesel yerleşim örüntüsü, kuşakların farklı yaşam evreleri ve hanelerin sosyo-ekonomik kapasitesi üzerinden oluşan çok katmanlı bir politika problemi olarak ele alır.
+
+**Ana amaç:** hangi bölgede, hangi yaş/kohort grubunda ve hangi sosyo-ekonomik kesimde hangi risk kanalının doğurganlığı düşürdüğünü tespit etmek ve müdahale araçlarını buna göre farklılaştırmaktır.
+
+### Tablo 1. Türkiye'de Doğurganlık Rejimlerini Ayrıştırma Ana Matrisi
+
+| Ana eksen | Alt rejim | Temel ayırt edici unsur | Politika açısından anlamı |
+|---|---|---|---|
+| Mekânsal / bölgesel | Yoğun metropol | Konut maliyeti, geç evlilik, yüksek yaşam maliyeti, bakım açığı | 1→2 geçişi için bakım, konut ve istihdam güvencesi gerekir |
+| Mekânsal / bölgesel | Orta ölçekli kent | Sanayi/hizmet istihdamı, artan kadın çalışması, sınırlı bakım altyapısı | Kadın istihdamı ile doğurganlık arasında uyum politikası gerekir |
+| Mekânsal / bölgesel | Kır / yarı-kır | Genç nüfus göçü, evlilik piyasasının daralması, hizmet erişim sorunu | Doğurganlık değil, nüfus tutma ve hizmet erişimi temel meseledir |
+| Mekânsal / bölgesel | Batı düşük parite rejimi | Düşük TDH, yüksek maliyet, geç evlilik | İkinci çocuk eşiği ve çocuksuzluk riski birlikte izlenmelidir |
+| Mekânsal / bölgesel | Doğu-Güneydoğu geçiş rejimi | Görece yüksek parite, hızlı yakınsama, genç nüfus | Çocuk refahı, eğitim, kadın istihdamı ve kontrollü geçiş yönetimi gerekir |
+| Kuşaksal / kohort | 15–24 | Evlilik ve ilk doğum eşiği zayıflıyor | Genç yetişkinlik, konut, gelir ve evlilik kurulabilirliği izlenmelidir |
+| Kuşaksal / kohort | 25–34 | 1→2 geçişin ana sahası | En kritik müdahale alanı: bakım, işe dönüş, ikinci çocuk desteği |
+| Kuşaksal / kohort | 35–49 | Stok yanılsaması ve tamamlanmış doğurganlık | Geçmiş doğurganlık rejimini yansıtır, güncel riski maskeleyebilir |
+| Sosyo-ekonomik | Düşük gelir / kırılgan hane | Konut, gıda, bakım ve eğitim maliyetlerinin hane bütçesi üzerindeki baskısı yüksektir | İkinci çocuk kararı için gelir desteği, bakım sübvansiyonu ve temel hizmet erişimi gerekir |
+| Sosyo-ekonomik | Orta gelir / maliyet sıkışması | Gelir var ama konut, kreş, okul ve yaşam maliyetleri nedeniyle ikinci çocuk riski büyür | En yüksek politika getirisi bu grupta olabilir; bakım, konut ve eğitim maliyeti azaltılmalıdır |
+| Sosyo-ekonomik | Yüksek eğitimli / kariyer riski | Geç evlilik, geç ilk doğum, kariyer kesintisi ve doğum sonrası fırsat maliyeti belirgindir | Doğum sonrası işe dönüş güvencesi, esnek çalışma ve nitelikli bakım altyapısı gerekir |
+| Sosyo-ekonomik | Kadın istihdamı-bakım uyumsuzluğu | Kadın çalışmaktadır ancak 0–3 yaş bakım altyapısı ve iş-aile uyumu yetersizdir | Kadın istihdamını sınırlamak değil, bakım ve istihdam güvencesiyle desteklemek gerekir |
+| Sosyo-ekonomik | Tek gelirli / bağımlı hane | Kadının işgücüne katılımı düşük, hane geliri tek kaynağa bağımlıdır | Doğurganlık desteği hane gelirini ve kadınların ekonomik kapasitesini zayıflatmadan tasarlanmalıdır |
+| Sosyo-ekonomik | Kiracı / konut baskısı | Konut sahipliği zayıf, kira/gelir oranı yüksek, ek oda ihtiyacı ikinci çocuk kararını baskılar | Konut politikası, kira yükü ve ikinci çocuk desteği birlikte ele alınmalıdır |
+| Sosyo-ekonomik | Eğitim maliyeti baskısı | Devlet okulu niteliğine güven zayıfsa çocuk maliyeti özel okul/ek eğitim üzerinden yükselir | Devlet okulunun niteliği ve uzatılmış gün modeli doğurganlık politikasının tamamlayıcı aracı olmalıdır |
+
+*Not: Parite temelli farklılaşma burada bağımsız bir ana eksen değil; mekânsal, kuşaksal ve sosyo-ekonomik ayrışmaların doğurduğu sonuç olarak ele alınmaktadır.*
+
+### Tablo 2. Mekânsal / Bölgesel Doğurganlık Rejimleri Tipolojisi
+
+| Rejim tipi | Örnek alanlar | Baskın demografik sorun | Kritik gösterge | Uygun politika aracı |
+|---|---|---|---|---|
+| Yoğun metropol düşük doğurganlık | İstanbul, Ankara, İzmir çekirdekleri | Geç evlilik, geç ilk doğum, 1→2 geçiş kırılması | PPR₁, ilk doğum yaşı, kira/gelir oranı | Kreş, konut desteği, doğum sonrası işe dönüş güvencesi |
+| Sanayi/hizmet kenti geçiş rejimi | Bursa, Kocaeli, Denizli, Kayseri, Konya, Gaziantep | Kadın istihdamı artıyor ama bakım altyapısı yetersiz | Kadın istihdamı, kreş erişimi, PPR₁ | OSB/işyeri kreşi, vardiya uyumlu bakım, prim desteği |
+| Kır / yarı-kır çözülme rejimi | İç Anadolu kırsalı, Karadeniz kırsalı, yaşlanan ilçeler | Genç nüfus göçü ve evlilik piyasasının daralması | 20–39 yaş nüfus, evlenme oranı, göç | Yerel istihdam, kırsal hizmet altyapısı, aile kurma destekleri |
+| Batı düşük parite rejimi | Marmara, Ege, Batı Akdeniz kentleri | İkinci çocuk eşiğinin zayıflaması | 1. çocuk–2. çocuk makası, PPR₁ | İkinci çocuk odaklı nakdi destek + bakım altyapısı |
+| Doğu-Güneydoğu yüksek parite geçiş rejimi | Şanlıurfa, Mardin, Van, Ağrı, Şırnak gibi iller | Yüksek pariteden hızlı düşüşe geçiş, çocuk refahı ve eğitim baskısı | PPR₂, PPR₃, kız çocuk okullaşması, kadın istihdamı | Eğitim, çocuk refahı, kadın istihdamı, sağlık ve sosyal hizmet kapasitesi |
+| Bölgesel kutuplaşma rejimi | Aynı il içinde merkez-çeper ayrışması | İl ortalaması farklı alt grupları gizler | İlçe bazlı TDH, parite ve evlilik göstergeleri | İlçe/mahalle ölçeğinde hedefli müdahale |
+
+### Tablo 3. Kuşak / Yaş Grubu Temelli Doğurganlık Rejimleri
+
+| Yaş grubu | Rejim niteliği | Temel davranış | Risk | İzlenecek gösterge | Politika odağı |
+|---|---|---|---|---|---|
+| 15–24 | Evlilik ve ilk doğum eşiği | Evlilik ve ilk doğum erteleniyor | Aile kurma penceresinin daralması | Evlenme oranı, ilk evlenme yaşı, ASFR 20–24 | Genç yetişkinlik desteği, konut, istihdam başlangıcı |
+| 25–34 | Kritik parite geçiş rejimi | İlk çocuk sonrası ikinci çocuğa geçiş zorlaşıyor | Tek çocuk normunun yerleşmesi | PPR₁, ilk doğum yaşı, ikinci doğum aralığı | 12–36 ay bakım, işe dönüş güvencesi, ikinci çocuk desteği |
+| 35–49 | Stok ve tamamlanmış doğurganlık | Geçmiş rejimin izlerini taşır | Güncel krizi olduğundan hafif gösterir | Tamamlanmış doğurganlık, çocuk sayısı dağılımı | İzleme ve karşılaştırma; doğrudan müdahale alanı sınırlı |
+
+### Tablo 4. Sosyo-Ekonomik Temelli Doğurganlık Rejimleri
+
+| Alt rejim | Temel ayırt edici unsur | Doğurganlık açısından risk | İzlenecek gösterge | Politika odağı |
+|---|---|---|---|---|
+| Düşük gelir / kırılgan hane | Konut, gıda, bakım ve eğitim harcamaları hane bütçesini sıkıştırır | İkinci çocuk maliyeti taşınamaz hale gelir | Konut+gıda payı, yoksulluk, sosyal yardım, çocuk bakım maliyeti | Gelir desteği, bakım sübvansiyonu, ücretsiz/erişilebilir hizmetler |
+| Orta gelir / maliyet sıkışması | Gelir var ancak konut, kreş, okul ve yaşam maliyetleri nedeniyle ikinci çocuk riski büyür | İki çocuk normu en hızlı bu grupta aşınabilir | Kira/gelir oranı, kreş maliyeti, eğitim harcaması, PPR₁ | Bakım, konut ve eğitim maliyetini düşüren parite odaklı paket |
+| Yüksek eğitimli / kariyer riski | Geç evlilik, geç ilk doğum, kariyer kesintisi ve fırsat maliyeti belirgindir | Birinci doğum ertelenir, ikinci çocuk biyolojik ve mesleki pencereye sıkışır | İlk doğum yaşı, doğum sonrası işe dönüş, ücret kaybı | Nitelikli bakım, esnek çalışma, işe dönüş güvencesi, kariyer koruma |
+| Kadın istihdamı-bakım uyumsuzluğu | Kadın çalışır ancak 0–3 yaş bakım altyapısı ve iş-aile uyumu yetersizdir | Doğum sonrası istihdamdan kopuş ikinci çocuk kararını baskılar | Doğum sonrası istihdamda kalma, kreş erişimi, firma ölçeği | Kreş + prim sürekliliği + işveren destekleri + ebeveyn izni |
+| Tek gelirli / bağımlı hane | Hane tek gelire bağımlıdır; kadınların ekonomik kapasitesi sınırlıdır | Kırılgan hane yapısı, gelir şoku ve bağımlılık üretir | Kadın istihdamı oranı, hane gelir kaynağı, kayıtlı istihdam | Kadın ekonomik kapasitesini azaltmayan aile destekleri |
+| Kiracı / konut baskısı | Kira/gelir oranı yüksek, ek oda ihtiyacı ikinci çocuk kararını baskılar | 1→2 geçişi doğrudan barınma maliyetine bağlanır | Kira/gelir oranı, konut sahipliği, oda sayısı | Konut politikası ile ikinci çocuk desteğinin birlikte tasarlanması |
+| Eğitim maliyeti baskısı | Devlet okulu niteliğine güven zayıflarsa çocuk maliyeti özel okul/ek eğitim üzerinden yükselir | Çocuk sayısı kararı eğitim maliyetiyle sınırlanır | Hane eğitim harcaması, özel okul oranı, uzatılmış gün erişimi | Devlet okulu niteliği, uzatılmış gün, okul sonrası bakım |
+
+## 2. Çapraz Okuma: Bölge × Kohort × Sosyo-Ekonomik Kapasite
+
+Ayrıştırma çerçevesinin asıl değeri, üç eksenin birlikte okunmasıdır. Aynı yaş grubundaki kadınların doğurganlık davranışı, metropolde, orta ölçekli sanayi kentinde, kırsalda veya Doğu-Güneydoğu geçiş alanında aynı değildir. Benzer şekilde aynı bölgede yaşayan farklı kuşaklar veya farklı sosyo-ekonomik gruplar da aynı parite davranışını üretmez.
+
+### Tablo 5. Bölge × Kohort Çapraz Rejim Matrisi
+
+| Bölge / mekân | 15–24 | 25–34 | 35–49 |
+|---|---|---|---|
+| Yoğun metropol | Evlilik erteleniyor, aile kurma maliyeti yüksek | 1→2 geçiş en kritik kırılma alanı | Eski kuşaklar iki çocuk normunu hâlâ görünür kılar |
+| Orta ölçekli sanayi kenti | Eğitim/istihdam geçişi güçleniyor | Çalışma ve bakım uyumsuzluğu ikinci çocuğu baskılıyor | Geleneksel iki çocuk normu kısmen sürer |
+| Kır / yarı-kır | Genç nüfus göç ediyor, evlilik piyasası daralıyor | Doğurganlık çağındaki nüfus azalıyor | Yaşlılaşmış hane yapısı baskınlaşır |
+| Batı düşük parite alanı | Geç evlilik ve yüksek maliyet belirgin | Tek çocuk riski yükseliyor | Stok yanılsaması devam eder |
+| Doğu-Güneydoğu geçiş alanı | Erken evlilik azalıyor, eğitim süresi uzuyor | 2→3 ve 3→4 geçişleri düşüşe geçebilir | Yüksek parite mirası hâlâ görünürdür |
+
+### Tablo 6. Rejimlere Göre Ana Müdahale Mantığı
+
+| Rejim | Ana sorun | Müdahale tipi | Öncelikli araç | Başarı göstergesi |
+|---|---|---|---|---|
+| Metropol düşük doğurganlık | İkinci çocuk maliyeti ve bakım açığı | Güvence mimarisi | Kreş + işe dönüş + konut desteği | PPR₁'in yükselmesi |
+| Sanayi kenti geçiş rejimi | Kadın istihdamı-bakım uyumsuzluğu | İş-aile uyum politikası | İşveren destekli kreş, vardiya uyumlu bakım | Doğum sonrası istihdamda kalma |
+| Kır çözülme rejimi | Genç nüfus kaybı | Mekânsal tutunma politikası | Yerel istihdam, hizmet erişimi | 20–39 yaş nüfusun korunması |
+| Batı düşük parite | Tek çocuk normu riski | Parite odaklı destek | İkinci çocuk desteği | 1. ve 2. çocuk makasının daralması |
+| Doğu-Güneydoğu geçiş | Yüksek parite mirası + hızlı düşüş | Geçiş yönetimi | Eğitim, kadın istihdamı, çocuk refahı | PPR₂/PPR₃'te kontrollü yakınsama |
+| Kutuplaşmış rejim | Aynı anda çocuksuzluk ve yüksek parite | Farklılaştırılmış hedefleme | İlçe/mahalle bazlı araç seti | Alt gruplar arası farkın azalması |
+
+## 3. İzleme ve Karar Matrisi
+
+Rejim bazlı politika tasarımı, yalnızca kavramsal bir sınıflandırma değildir; veri üretimi, izleme ve karar alma mimarisi gerektirir. Aşağıdaki göstergeler, ulusal TDH'nin maskelediği farklılaşmaları görünür hale getirmek için birlikte izlenmelidir.
+
+### Tablo 7. Doğurganlık Rejimlerini İzlemek İçin Gösterge Seti
+
+| Gösterge grubu | Gösterge | Neyi gösterir? | Neden önemli? |
+|---|---|---|---|
+| Doğurganlık | TDH | Dönemsel ortalama doğurganlık | Genel alarm göstergesi |
+| Parite | PPR₁ | 1. çocuktan 2. çocuğa geçiş | En kritik politika kaldıracı |
+| Parite | PPR₂ | 2. çocuktan 3. çocuğa geçiş | Yüksek parite eğiliminin değişimini gösterir |
+| Parite | 1.-2. çocuk makası | İlk ve ikinci doğumlar arasındaki fark | Tek çocuk normu riskini gösterir |
+| Kohort | Tamamlanmış doğurganlık | Kuşakların nihai çocuk sayısı | Period TDH yanılsamasını düzeltir |
+| Zamanlama | İlk doğum yaşı | Doğurganlık penceresinin başlangıcı | 1→2 geçiş olasılığını etkiler |
+| Evlilik | İlk evlenme yaşı | Aile kurma zamanlaması | Evlilik etkisini belirler |
+| İstihdam | Doğum sonrası işe dönüş oranı | Kadınların istihdam sürekliliği | İkinci çocuk kararındaki mesleki riski gösterir |
+| Bakım | 0–3 yaş bakım erişimi | Kurumsal bakım kapasitesi | İş-aile uyumunun temel göstergesi |
+| Ekonomi | Kira/gelir oranı | Hane bütçesi baskısı | İkinci çocuk kararının ekonomik zeminini gösterir |
+| Bölge | İl/ilçe TDH ve PPR | Mekânsal ayrışma | Tek tip politika riskini azaltır |
+
+### Tablo 8. Politika Tasarımı İçin Karar Matrisi
+
+| Eğer gözlenen durum buysa | Muhtemel rejim | Politika önceliği | Yanlış müdahale riski |
+|---|---|---|---|
+| TDH düşük ama PPR₁ hâlâ 0,70 civarında | Geçiş rejimi | İkinci çocuk desteği ve bakım güvencesi | Geç kalmak, normun çökmesine yol açar |
+| TDH düşük ve çocuksuzluk hızla artıyor | Çocuksuzluk rejimi | İlk çocuk ve aile kurma koşullarını güçlendirmek | Sadece ikinci çocuk desteği yetersiz kalır |
+| TDH düşük ama 3+ çocuk payı bazı bölgelerde yüksek | Kutuplaşmış rejim | Bölgesel ayrıştırma | Ulusal ortalama üzerinden tek tip teşvik |
+| Kadın istihdamı artıyor, PPR₁ düşüyor | Bakımsız istihdam rejimi | Kreş + işe dönüş güvencesi | Kadın istihdamını sorun gibi görmek |
+| Evli kadın stokunda iki çocuk hâlâ baskın ama doğum sırası verisi bozuluyor | Stok yanılsaması | Akım PPR ve genç kohort izleme | Eski kuşaklara bakarak rahatlamak |
+| 20–24 ASFR hızla düşüyor, 30–34 sınırlı telafi ediyor | Erteleme/tempo rejimi | Zamanlama ve biyolojik pencere yönetimi | Ertelenen doğumların tamamının geri geleceğini varsaymak |
+
+### Tablo 9. Önerilen Nihai Tipoloji
+
+| Rejim kodu | Rejim adı | Baskın mekanizma | Ana risk | Müdahale Önceliği ve Sırası |
+|---|---|---|---|---|
+| R1 | Metropol 1→2 kırılması rejimi | Konut + bakım + kariyer riski | Tek çocuk normu | **ÖNCELİK 1A** — İkinci çocuk güvence paketi |
+| R2 | Bakımsız istihdam rejimi | Kadın çalışıyor ama bakım yok | İş-aile çatışması | **ÖNCELİK 1A** — Kurumsal bakım ve işe dönüş |
+| R3 | Düşük Gelir / Kırılgan Hane Rejimi | Hane geliri çok düşük veya tek kaynağa bağımlı | İkinci çocuk maliyetinin taşınamaz hale gelmesi | **ÖNCELİK 1B** — Gelir desteği, bakım sübvansiyonu |
+| R4 | Maliyet sıkışması rejimi | Konut, eğitim, bakım maliyetleri birleşiyor | İkinci çocuğun ekonomik olarak kapanması | **ÖNCELİK 1B** — Gelir, bakım, konut, eğitim paketi |
+| R5 | Yüksek Fırsat Maliyeti ve Kariyer Riski Rejimi | Yüksek eğitimli kadında geç ilk doğum ve yüksek fırsat maliyeti | Birinci doğumun ertelenmesi, biyolojik ve mesleki pencere sıkışması | **ÖNCELİK 2** — İşe dönüş güvencesi, esnek çalışma, kariyer koruma |
+| R6 | Çocuksuzluk / geç evlilik rejimi | Aile kurma erteleniyor | İlk çocuk eşiğinin zayıflaması | **ÖNCELİK 2** — Genç yetişkinlik ve konut politikası |
+| R7 | Mikro-Mekânsal Kutuplaşma Rejimi | Aynı il içinde merkez-çeper ayrışması | İl ortalamasının alt grupları ve riskleri gizlemesi | **ÖNCELİK 2** — İlçe/mahalle ölçeğinde hedefli müdahale |
+| R8 | Kır çözülme rejimi | Genç nüfus göçü | Doğurganlık kapasitesinin mekânsal kaybı | **ÖNCELİK 3** — Yerel tutunma politikası |
+| R9 | Doğu yüksek parite geçiş rejimi | Kentleşme ve eğitimle hızlı yakınsama | Çocuk refahı ve eşitsizlik | **ÖNCELİK 3** — Eğitim, sağlık, kadın istihdamı |
+| R10 | Stok yanılsaması rejimi | Eski kuşaklar tabloyu maskeliyor | Geç müdahale | **İZLEME** — Akım PPR ve kohort izleme |
+
+::: {.callout-note}
+**Öncelik Yapısı Notu:** Öncelik 1A (R1, R2) doğrudan PPR₁ kaldıracını hedefler — acil müdahale. Öncelik 1B (R3, R4) yapısal ön koşulları hedefler — eş zamanlı müdahale. Öncelik 2 (R5, R6, R7) orta vadeli yapısal dönüşüm. Öncelik 3 (R8, R9) uzun vadeli geçiş yönetimi. İzleme (R10) aktif müdahale değil, kohort ve PPR takibi.
+:::
+
+Bu tipolojide rejimler, birbirini dışlayan ve haneleri tek bir kategoriye yerleştiren kapalı sınıflar olarak değil; doğurganlık davranışını etkileyen risk profilleri olarak ele alınmaktadır. Aynı hane, bölge veya alt nüfus grubu birden fazla rejimin özelliklerini aynı anda taşıyabilir. Bu durum tipolojinin zayıflığı değil, doğurganlık kararlarının çok katmanlı yapısının sonucudur. Uygulamada temel amaç, her haneyi tek bir rejime zorla yerleştirmek değil; baskın risk bileşimini tespit ederek birincil ve ikincil rejim ayrımı yapmaktır. Kaynak tahsisi birincil rejimin ürettiği ana kırılma kanalına göre belirlenmeli; ikincil rejimler ise destek paketinin tamamlayıcı bileşenlerini şekillendirmelidir. Böylece mükerrer teşvik riski azaltılırken, farklı risklerin aynı hane üzerinde birikmesi de politika tasarımında dikkate alınmış olur.
+
+## 4. Sonuç: Ulusal Ortalamadan Rejim Bazlı Politika Tasarımına
+
+Türkiye'de doğurganlık politikası ulusal TDH ortalamasına göre değil, mekânsal, kuşaksal ve sosyo-ekonomik temelli rejimlere göre tasarlanmalıdır. Parite dağılımı ise bu üç eksenin birleşik sonucudur. Bu nedenle PPR₁, PPR₂, çocuksuzluk, ilk doğum yaşı, evlilik yaşı, kira/gelir oranı, bakım erişimi ve doğum sonrası istihdamda kalma göstergeleri birlikte izlenmelidir.
+
+Bu yaklaşım, tek tip nüfus politikasının risklerini azaltır. Aynı araç bir bölgede yetersiz, başka bir bölgede gereksiz, başka bir grupta ise yanlış hedeflenmiş olabilir. Rejim bazlı ayrıştırma, kaynakların en yüksek marjinal etki yaratacak gruplara yönlendirilmesini sağlar.
+
+Bu çerçevenin stratejik sonucu açıktır: **Türkiye'nin demografik müdahale kapasitesi, yalnızca daha fazla teşvik açıklamakla değil, doğru rejimi doğru veriyle teşhis etmek ve doğru aracı doğru gruba yönlendirmekle oluşacaktır.**

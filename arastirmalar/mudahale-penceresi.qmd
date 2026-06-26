@@ -1,0 +1,238 @@
+---
+title: "Demografik Müdahale Penceresi"
+subtitle: "İki Saat Eş Zamanlı İşliyor"
+description: "Türkiye'nin demografik krizinin görünmezliği, davranışsal saat (TDH/PPR₁ çöküşü) ve yapısal saat (kadın havuzu daralması) olmak üzere iki ayrı zaman boyutunda işliyor. Müdahale penceresi 2025-2030 arasında."
+author: "Mehmet Emin Sezgin"
+---
+
+## 1. Sorun: Kriz Neden Görünmüyor?
+
+Türkiye'nin demografik krizinin kavranmasını zorlaştıran temel sorun, krizin görünmez olmasıdır. Bu görünmezlik iki ayrı düzeyde işlemektedir. Makro düzeyde nüfus hâlâ büyümektedir: Türkiye 2025'te 86,1 milyon kişiyle tarihinin en yüksek nüfusundadır. Bu tablo "henüz acil değil" izlenimi yaratmaktadır. Mikro düzeyde ise evli kadınların stok dağılımı hâlâ iki çocuklu aileyi baskın göstermektedir — oysa bu, eski kuşakların mirasıdır. Dört maskeleme halkası (mortalite düşüşü → tempo etkisi → yaş yapısı → parite stoğu) krizin aciliyetini sistematik biçimde gizlemektedir.
+
+Ancak bu maskelemenin altında iki farklı saat eş zamanlı işlemektedir. Birincisi **davranışsal saattir**: TDH düşüşü ve PPR₁ çöküşü. Bu saat tersinirdir — doğru politikayla tersine çevrilebilir — ama tersine çevirme maliyeti her yıl katlanarak artar. İkincisi **yapısal saattir**: doğurganlık çağına girecek kadın havuzunun daralması. Bu saat tersinmezdir — 2020–2025 döneminde doğan (veya doğmayan) kız çocukları 2035–2040'ta 15–19 yaşına girecek ve hiçbir politika bu sayıyı değiştiremez.
+
+## 2. Yapısal Saat: Kız Doğumları ve Kadın Havuzu
+
+### 2.1. Kız Doğumlarındaki Çöküş
+
+TÜİK doğum istatistiklerine göre kız doğumları 2014 zirvesinden (657.160) 2025'te 432.666'ya düşmüştür. On bir yılda yüzde 34,2 kayıp — **her üç kız doğumdan biri kaybolmuştur.**
+
+| Yıl | Kız Doğum | Zirveden Değişim |
+|---|---|---|
+| 2014 (zirve) | 657.160 | — |
+| 2018 | 611.869 | −6,9% |
+| 2020 | 545.289 | −17,0% |
+| 2022 | 506.337 | −23,0% |
+| 2024 | 455.734 | −30,7% |
+| **2025** | **432.666** | **−34,2%** |
+
+*Kaynak: TÜİK Doğum İstatistikleri 2009–2025. 2025 değeri gerçekleşen.*
+
+### 2.2. 15–19 Yaş Kadın Havuzu Projeksiyonu
+
+Her yılın kız doğumları, 15 yıl sonra doğurganlık çağına giren kadın havuzunu belirler. Beş yıllık kohort toplamları şu tabloyu üretmektedir:
+
+| Doğum Kohortu | 15–19 Yaşa Giriş | Toplam | Mevcut 15–19'a Göre |
+|---|---|---|---|
+| 2014–2018 | 2029–2033 | 3.193.497 | +%1,8 |
+| 2015–2019 | 2030–2034 | 3.117.262 | −%0,6 |
+| 2017–2021 | 2032–2036 | 2.899.260 | −%7,5 |
+| 2019–2023 | 2034–2038 | 2.629.633 | −%16,1 |
+| 2020–2024 | 2035–2039 | 2.504.442 | −%20,1 |
+
+*Mevcut 15–19 yaş kadın nüfusu: 3.135.824 (ADNKS 2025). Ölüm ve göç etkileri dahil değildir.*
+
+**Kritik gözlem:** 2033'e kadar havuz görece güçlü kalmaktadır — hatta hafif artış göstermektedir (+%1,8). Bu, yanılsamanın kadın havuzu düzeyindeki karşılığıdır. Karar alıcı bu tabloya bakıp "havuz güçlü, acil değil" diyebilir. Ancak 2035 sonrası yüzde 20'lik daralma kaçınılmazdır — bu çocuklar zaten doğmuş veya doğmamıştır.
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+library(plotly)
+
+donemler <- c("2014-2018\n(2029-33)", "2015-2019\n(2030-34)", "2017-2021\n(2032-36)",
+              "2019-2023\n(2034-38)", "2020-2024\n(2035-39)")
+toplam_havuz <- c(3193497, 3117262, 2899260, 2629633, 2504442)
+mevcut <- 3135824
+
+fig_havuz <- plot_ly(x = donemler, y = toplam_havuz, type = "bar",
+                marker = list(color = c("#1F3864","#1F3864","#9E7A1A","#B33A3A","#B33A3A")),
+                hovertemplate = "%{x}<br>%{y:,.0f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = ""),
+    yaxis = list(title = "15-19 yaş havuzu (toplam, 5 yıllık kohort)"),
+    shapes = list(list(type = "line", x0 = -0.5, x1 = 4.5, y0 = mevcut, y1 = mevcut,
+                        line = list(color = "#898781", width = 1.5, dash = "dash"))),
+    annotations = list(list(x = 0, y = mevcut + 80000, text = "Mevcut 15-19 yaş nüfusu (3,14M)",
+                             showarrow = FALSE, font = list(size = 10, color = "#898781"))),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_havuz
+```
+
+### 2.3. 2040'ların Başı: Üç Senaryo
+
+2025'te gerçekleşen 432.666 kız doğum verisiyle güncellenen projeksiyon, 2040–2044 döneminde 15–19 yaşa girecek kohort için üç senaryo üretmektedir:
+
+| Senaryo | Varsayım | 2040–2044 Havuzu | Mevcut 15–19'a Göre |
+|---|---|---|---|
+| A: Sabit | Yıllık 433K sabit | 2.163.330 | −%31,0 |
+| B: Düşüş devam | Yıllık −%5 | ~1.957.000 | −%37,6 |
+| C: Ilımlı toparlanma | Yıllık +%1 | ~2.207.000 | −%29,6 |
+
+**En iyi senaryoda bile (C) havuz yüzde 30 daralıyor.** Doğumlar bugünkü seviyede kalsa bile 2040'ların başında 15–19 yaş kadın havuzu yaklaşık üçte bir küçülmüş olacaktır. Bu, hiçbir politikanın değiştiremeyeceği tersinmez bir yapısal kayıptır.
+
+## 3. Davranışsal Saat: TDH ve PPR₁ Çöküşü
+
+Yapısal saat tersinmez demografik gerçeklikleri belirlerken, davranışsal saat müdahaleye açık — ama her geçen yıl daha az açık — kanalları işletmektedir.
+
+| Gösterge | Başlangıç | 2024/2025 | Trend |
+|---|---|---|---|
+| TDH | 2,15 (2008) | ~1,40 (2025) | Yıllık ~−0,055 |
+| PPR₁ | 0,894 (2018) | 0,723 (2024) | Yıllık ~−0,028 |
+| Parite makası (1.−2.) | 3,2 puan (2012) | 11,6 puan (2024) | 4 kat açılma |
+| Tempo etkisi (dMAB/dt) | +0,095 (2013) | +0,011 (2024) | Fiilen sıfırlanmış |
+| Evlilik etkisi (M) | 0,613 (2018) | 0,554 (2024) | Düşüş devam |
+
+Bongaarts-Feeney tempo düzeltmesi çapraz doğrulaması kritik bir bulgu sunmaktadır: tempo etkisi 2024'te fiilen sıfırlanmıştır (dMAB/dt = +0,011). Bu, PPR₁'deki düşüşün geçici bir erteleme değil, **kalıcı bir davranış değişikliği** olduğunu doğrulamaktadır. Kadınlar ikinci çocuğu ertelemiyor — vazgeçiyor.
+
+Mevcut trend devam ederse TDH, 2027'de Kohler'in "en düşük-düşük doğurganlık" eşiği olan 1,30'un altına düşecektir. Bu eşik aşıldığında kendi kendini besleyen bir küçülme sarmalı başlar: küçük kohortlar daha az potansiyel ebeveyn üretir, bu da daha küçük kohortlar yaratır. PPR₁ ise 2025–2026'da 0,70 eşiğinin altına inecek, 2028'de kalıcı olarak 0,65'in altında yerleşebilecektir — bu nokta, tek çocuk normunun azınlık davranışından çoğunluk davranışına geçtiği eşiktir.
+
+## 4. İki Saatin Kesişimi: Pencere Kapanma Zaman Çizelgesi
+
+İki saatin eş zamanlı işlemesi, müdahale penceresini belirlemektedir.
+
+| Yıl | Davranışsal Saat | Yapısal Saat | Birleşik Değerlendirme |
+|---|---|---|---|
+| 2025 | TDH ~1,40 / PPR₁ = 0,72 | 15–19 havuz güçlü (3,14M) | **PENCERE AÇIK** — Etkili müdahale mümkün |
+| 2027 | TDH ~1,30 (Kohler eşiği) | Havuz hâlâ güçlü (3,21M) | **SON FIRSAT** — Norm kırılmadan müdahale |
+| 2030 | PPR₁ < 0,65, norm pekişmiş | Havuz daralma başlangıcı (3,12M, −%0,6) | **S3 SON TARİH** — Buraya kadar başlamalı |
+| 2035 | Tek çocuk normu yerleşmiş | 15–19 havuz %20 daralmış (2,50M) | **GEÇ MÜDAHALE** — Getiri düşük |
+| 2040 | Norm geri döndürmek çok zor | 20–34 havuz daralmada, doğum-ölüm kesişmesi | **ÇOK GEÇ** — Nüfus fiilen küçülüyor |
+
+**Kritik gözlem:** Pencere tek bir tarihte kapanmıyor — kademeli olarak daralıyor. Ama üç kritik eşik vardır:
+
+**2027 — Davranışsal kapanma başlangıcı.** TDH 1,30 eşiği aşılırsa düşük doğurganlık tuzağı devreye girer. Bu eşikten dönüş, eşiğe varmadan müdahaleden çok daha maliyetlidir.
+
+**2030 — Operasyonel son tarih.** S3 senaryosunun etkili olabilmesi için müdahalenin bu tarihe kadar başlamış olması gerekmektedir. 2030 sonrası başlayan müdahale, PPR₁ normun altında pekişmiş olacağından aynı kaynakla daha düşük getiri üretir.
+
+**2035 — Yapısal kapanma.** Bu tarihten itibaren 15–19 yaş kadın havuzu her beş yılda %10–15 daralır. Müdahale yapılsa bile, üzerinde etki üreteceği taban küçülmüştür.
+
+## 5. Son Büyük Nesil: Son Fırsat
+
+Yapısal saatin kaçınılmaz daralması içinde bir fırsat penceresi mevcuttur. 2009 ile 2018 arasında doğan kız çocukları — her yıl 600 binin üzerinde — zirve doğurganlık yaşlarına (25–29) 2034 ile 2047 arasında girecektir. Bu kuşak, arkasından gelen 2019 sonrası doğumlulara göre **yüzde 34 daha büyüktür.** Onlardan sonra bu büyüklükte bir kuşak yoktur.
+
+| Doğum yılı | Kız doğumu | 25–29'a giriş | 25–29'dan çıkış | Durum |
+|---|---|---|---|---|
+| 2009 | 615 bin | 2034 | 2038 | 600K+ kuşak |
+| 2012 | 630 bin | 2037 | 2041 | Zirve yakını |
+| 2014 | 657 bin | 2039 | 2043 | **ZİRVE** |
+| 2016 | 641 bin | 2041 | 2045 | 600K+ kuşak |
+| 2018 | 612 bin | 2043 | 2047 | Son 600K+ yıl |
+| 2019 | 581 bin | 2044 | 2048 | Eşik altı |
+| 2025 | 433 bin | 2050 | 2054 | −%34 |
+
+### 5.1. Davranışsal Saat Bu Kuşağı Şimdiden Şekillendiriyor
+
+Kritik asimetri şudur: bu kuşağın zirve doğurganlık yaşına girmesine 8–15 yıl vardır, ama normları **şu anda** absorbe etmektedir. Bugün 12 yaşında olan bir kız çocuğunun ablaları tek çocukta durmuş, kuzenleri ertelemiş, sosyal medya akışlarında çocuklu hayat bir yük olarak kodlanmıştır. Bu norm birikimi, doğurganlık kararından çok önce, ergenlikte şekillenmektedir.
+
+Bu kuşağın 20–24 yaş dilimine girişi 2029–2033 arasındadır; yani birinci çocuk kararını şekillendirecek pencere, zirve doğurganlık yaşından beş yıl önce başlamaktadır. Müdahalenin bu kuşağı yakalaması için altyapının 2028–2030 arasında kurulu olması gerekir. Altyapı inşası 2–3 yıl aldığına göre, başlangıç noktası 2030 değil **bugündür.**
+
+## 6. Kohort Projeksiyonu: 15–49 Kadın Havuzu ve Toplam Nüfus, 2025–2073
+
+Yapısal saatin uzun vadeli sonuçlarını somutlaştırmak için kohort-bileşen yöntemiyle üç senaryo (S0: TDH→1,10; SA: TDH sabit 1,42; S3: TDH→1,80) altında 15–49 kadın havuzu ve toplam nüfus projeksiyonu üretilmiştir.
+
+### 6.1. 15–49 Kadın Havuzu
+
+| Dönem | S0 (TDH→1,10) | SA (sabit 1,42) | S3 (müdahale→1,80) |
+|---|---|---|---|
+| 2020–2025 (gerçek) | 21,8 milyon | 21,8 milyon | 21,8 milyon |
+| 2040–2045 | 18,6M (−%15) | 18,7M (−%14) | 18,9M (−%13) |
+| 2045–2050 | 18,2M (−%17) | 18,5M (−%15) | 18,9M (−%13) |
+| 2055–2060 | 16,1M (−%26) | 16,5M (−%24) | 17,4M (−%20) |
+| **2073 (150. yıl)** | **11,6M (−%47)** | **12,8M (−%42)** | **14,7M (−%33)** |
+
+**Kritik gözlem:** Senaryolar arasındaki havuz farkı 2045–2050'de yalnızca %1,7 iken 2055–2060'da %7,4'e, 2073'te ise %14'e genişlemektedir. Bunun nedeni, müdahalenin ürettiği ek doğumların zamanla havuza girmesidir. **Müdahale havuzu hemen değiştirmez; etkisini 15–20 yıl sonra üretir** — bu da erken başlamanın neden kritik olduğunun doğrudan kanıtıdır.
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+donem_havuz <- c("2020-25", "2040-45", "2045-50", "2055-60", "2073")
+s0_havuz <- c(21.8, 18.6, 18.2, 16.1, 11.6)
+sa_havuz <- c(21.8, 18.7, 18.5, 16.5, 12.8)
+s3_havuz <- c(21.8, 18.9, 18.9, 17.4, 14.7)
+
+fig_kohort <- plot_ly(x = donem_havuz, y = s0_havuz, type = "scatter", mode = "lines+markers",
+                name = "S0 (TDH→1,10)", line = list(color = "#B33A3A", width = 2.5)) %>%
+  add_trace(y = sa_havuz, name = "SA (sabit 1,42)", line = list(color = "#9E7A1A", width = 2.5)) %>%
+  add_trace(y = s3_havuz, name = "S3 (müdahale→1,80)", line = list(color = "#1F3864", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = ""),
+    yaxis = list(title = "15-49 yaş kadın havuzu (milyon)"),
+    legend = list(orientation = "h", y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_kohort
+```
+
+### 6.2. Toplam Nüfus ve Cumhuriyet'in 150. Yılı
+
+| Yıl | S0 (TDH→1,10) | SA (sabit 1,42) | S3 (müdahale→1,80) |
+|---|---|---|---|
+| 2025 (gerçek) | 86,1 milyon | 86,1 milyon | 86,1 milyon |
+| 2040 (zirve) | 89,0M | 89,7M | 90,8M |
+| 2050 | 86,7M | 88,4M | 90,9M |
+| 2060 | 81,1M | 83,8M | 88,0M |
+| **2073 (150. yıl)** | **65,7M (−%24)** | **68,5M (−%20)** | **72,9M (−%15)** |
+
+Üç senaryonun üçünde de nüfus 2040 civarında zirve yapıp düşüşe geçmektedir. Cumhuriyet'in 150. yılında (2073) S0 ile S3 arasındaki fark **7,2 milyon kişidir.** Bu fark, bugün yapılacak ya da yapılmayacak bir politika tercihinin sonucudur.
+
+### 6.3. Yaş Yapısı Dönüşümü: 2025 vs 2073
+
+65+ nüfus payı 2025'teki %10'dan 2073'te üç senaryoda da %28–31 aralığına yükselmektedir. Çalışma çağı nüfus payı görece korunurken genç nüfus (0–14) payı dramatik biçimde daralacaktır. Yaşlı bağımlılık oranı (YAOB) üç katına çıkacaktır. Bu yapısal dönüşüm, SGK aktif/pasif dengesini, bakım talebini ve bütçe esnekliğini doğrudan belirleyecektir.
+
+### 6.4. Belirsizlik Sınırları
+
+Bu projeksiyonların güvenilirliği projekte edilen döneme göre değişmektedir. 2040–2045 dönemi için havuzun yaklaşık %75'i zaten doğmuş kadınlardan oluşur; belirsizlik dardır. 2055–2060 için havuzun yarısı kesin, çeyreği birinci kuşak projeksiyon (anneleri biliniyor), çeyreği ikinci kuşak projeksiyondur (anneleri de projeksiyon). 2073 için belirsizlik daha geniştir ancak senaryolar arası bant hâlâ makul düzeydedir (%14). Sonuçlar kesin tahmin olarak değil, **politika tartışması için büyüklük mertebesi** olarak okunmalıdır.
+
+## 7. Momentum Analizi ile Sentez
+
+Keyfitz (1971) çerçevesiyle gerçekleştirilen momentum analizi, yapısal saatin makro düzeydeki karşılığını sunmaktadır:
+
+| Parametre | Değer | Anlam |
+|---|---|---|
+| NRR | 0,669 | Her kuşak öncekinin 2/3'ünü üretiyor |
+| Momentum oranı | 1,180 | TDH=2,1'e çıksa bile %18 ek büyüme |
+| Kohort yarılanma | 47 yıl | Doğum kuşakları yarıya inmesi |
+| Nüfus yarılanma | ~54 yıl | Yaş yapısı dahil |
+| Doğum-ölüm kesişmesi | ~2040 | Doğal artış negatife döner |
+| S3–S0 farkı (2105) | 25,6 milyon | Müdahalenin büyüklük mertebesi |
+
+Momentum analizi ile kadın havuzu projeksiyonu birlikte okunduğunda ortaya çıkan tablo şudur: yapısal saat (kız doğumlarının düşüşü), momentum penceresinin içini doldurmaktadır. Momentum analizi "nüfus yaklaşık 10-15 yıl daha büyüyecek" demektedir. Kadın havuzu projeksiyonu ise "ama bu 10-15 yılın ikinci yarısında büyüyen nüfusun içi boşalacak" demektedir. **Dışarıdan bakıldığında nüfus artıyor görünecek, ama doğurganlık çağındaki kadın nüfusu daralmaya başlamış olacaktır.**
+
+## 8. Politika Çıkarımı: Pencere Açık, Hızla Daralıyor
+
+Etkili müdahale penceresi **2025–2030** arasındadır. Bu pencereyi belirleyen üç faktör şunlardır:
+
+**Birincisi**, 15–19 yaş kadın havuzu 2033'e kadar güçlü kalmaktadır. Bu, bugün başlatılacak müdahalenin geniş bir taban üzerinde etki üretebileceği anlamına gelir. 2035 sonrası bu taban yüzde 20 küçülmüş olacak — aynı müdahale, daha küçük taban üzerinde daha az etki üretecektir.
+
+**İkincisi**, PPR₁ henüz 0,70 eşiğinin üzerindedir (0,712 — 2025 güncel). Bu eşik altına inildiğinde tek çocuk normu yerleşmeye başlar ve geri dönüş maliyeti katlanarak artar. Mevcut trend devam ederse bu eşik 2025–2026'da aşılacaktır.
+
+**Üçüncüsü**, TDH 1,30 eşiğine (Kohler tuzağı) yalnızca 2–3 yıl mesafededir. Bu eşik aşıldığında düşük doğurganlık normunun kırılması çok daha zor hale gelir.
+
+Geciken her müdahale, hem davranışsal saatte (norm pekişmesi) hem yapısal saatte (havuz daralması) geri döndürülmesi daha zor bir kayıp üretir. 2030 sonrası başlayan müdahale, küçülen bir nüfus tabanı üzerinde etki üreteceği için geometrik olarak düşen getiri sağlar. **2035 sonrası başlayan müdahale, havuz daralması nedeniyle matematiksel olarak S3 hedeflerine ulaşamaz.**
+
+## Kaynakça
+
+Keyfitz, N. (1971). On the momentum of population growth. *Demography*, 8(1), 71–80.
+
+Kohler, H.-P., Billari, F. C. ve Ortega, J. A. (2002). The emergence of lowest-low fertility in Europe.
+
+Sezgin, M. E. (2026). *Görünmez Kriz: Türkiye'nin demografik momentumu, parite dağılımı ve politika penceresi.*
+
+TÜİK (2025). *Adrese Dayalı Nüfus Kayıt Sistemi Sonuçları, Hayat Tablosu 2022–2024, Doğum İstatistikleri 2009–2025.*
