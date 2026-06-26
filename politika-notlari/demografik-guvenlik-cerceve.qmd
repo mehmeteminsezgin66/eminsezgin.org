@@ -1,0 +1,137 @@
+---
+title: "Demografik Güvenlik: Türkiye'nin Stratejik Kapasitesine Yönelik Yapısal Tehdit ve Çözüm Çerçevesi"
+subtitle: "Yönetici Özeti"
+description: "Türkiye'de doğurganlık düşüşü bir 'çocuk istememe' sorunu değil, çocuk sahibi olmanın ürettiği ekonomik ve mesleki risklerin yönetilememesinden kaynaklanan yapısal bir güvence krizidir."
+author: "Mehmet Emin Sezgin"
+---
+
+## 1. Temel Sorun
+
+Türkiye'de doğurganlık hızındaki düşüş, yaygın kanaatin aksine bir "çocuk istememe" sorunu değil; çocuk sahibi olmanın ürettiği ekonomik ve mesleki risklerin yönetilememesinden kaynaklanan yapısal bir güvence krizidir. Türkiye'de tek bir doğurganlık krizi yoktur; farklı mekânsal, kuşaksal ve sosyo-ekonomik koşullarda farklı mekanizmalarla üretilen çoklu doğurganlık rejimleri vardır. Bu nedenle tek tip politika müdahalesi etkisiz kalacaktır.
+
+Nicel analizler, doğurganlık düşüşünün merkezinde çocuk sahibi olmama değil, ilk çocuktan sonra durma davranışının yer aldığını açık biçimde göstermektedir. Demografik mesele sosyal politika ile sınırlı değildir; sosyal güvenlik, kamu maliyesi ve stratejik kapasite ile doğrudan bağlantılıdır.
+
+**Sorun doğurganlık değil, risk yönetimi ve kurumsal kapasite sorunudur.**
+
+## 2. Bulgular
+
+- Toplam doğurganlık kaybının **%65,2'si** parite geçiş davranışından kaynaklanmaktadır.
+- Bu kaybın **%56,6'sı** 1→2 çocuk geçişindeki kırılmadan oluşmaktadır.
+- Evlilik örüntüsünün katkısı %34,8 düzeyindedir. Parite davranışı korunmuş olsaydı TDH bugün yaklaşık **1,84** olacaktı.
+- Konut fiyatlarında yüksek reel artış ve yüksek yaşam maliyeti ikinci çocuk kararını doğrudan zorlaştırmaktadır.
+- SGK genel kapsam (4/a+4/b+4/c) aktif/pasif oranı 2026 Ocak itibarıyla **1,59** düzeyine gerilemiştir. Doğum yapan kadınların %72,8'i 36 ay içinde kayıtlı istihdamdan ayrılmakta; bu oran mikro ölçekli firmalarda %83,5'e yükselmektedir.
+- Yarım çalışma ödeneğine doğum yapan kadınların yalnızca %3,6'sı başvurmuş, başvuru sayısı 2017'den bu yana %66 oranında gerilemiştir.
+- 2016–2024 döneminde istihdamdan kalıcı olarak ayrılan 309.581 kadının sebep olduğu prim kaybı yalnızca 2024 yılı için yaklaşık **1,57 milyar TL** düzeyindedir.
+
+## 3. Stratejik Sonuçlar
+
+- **Mali alan daralması:** Artan transfer yükü ve faiz giderleri kamu maliyesini sıkıştırmaktadır.
+- **İnsan kaynağı kapasitesinde zayıflama:** Daralan ve yaşlanan işgücü, savunma sanayii, ileri teknoloji ve yapay zekâ alanlarında sürdürülebilir kapasite oluşturmayı zorlaştırmaktadır.
+- **Bölgesel güç projeksiyonunda azalma:** Genç ve büyüyen nüfusa sahip komşu ülkelerle kıyaslandığında demografik asimetri stratejik ağırlığı zayıflatmaktadır.
+- **Ekonomik pazar büyüklüğünde daralma:** Nüfus dinamizminin kaybı iç talebi ve uluslararası yatırım çekme kapasitesini olumsuz etkilemektedir.
+- **Diplomatik etki kapasitesinde gerileme:** Nüfus büyüklüğü ve genç nüfus payı, uluslararası örgütlerdeki temsil gücü ve bölgesel ittifak kapasitesini doğrudan şekillendirmektedir.
+- **Siyaset ekonomisi kilitlenmesi:** Yaşlanan seçmen yapısı, genç kuşaklara yönelik güvence ve yatırım politikalarını siyasi açıdan giderek daha az rekabetçi bir tercih haline getirmektedir.
+
+## 4. Önerilen Çerçeve: Güvence Temelli Kapsamlı Yaklaşım
+
+Çocuk sahibi olmanın ürettiği riskin bireyden devlete transferine dayalı bir güvence mimarisi önerilmektedir. Bu çerçeve bir teşvik paketi değil, yapısal bir risk yönetimi modelidir.
+
+- **İstihdam güvencesi:** Doğum sonrası kariyer sürekliliğini koruyacak; işe dönüşü, prim sürekliliğini ve ikinci çocuk kararını destekleyecek istihdam ve gelir güvencesi mekanizmaları
+- **Bakım altyapısı:** 12–36 ay yaş grubuna odaklanan erişilebilir kamu kreş sistemi
+- **İkinci çocuk odaklı destekler:** Nakdi ve ayni desteklerin parite mantığına göre yeniden düzenlenmesi
+- **Devlet okulu niteliğinin yükseltilmesi:** Devlet okullarına olan talebi artıracak iyileştirmeler ve özellikle ilk ve orta okul düzeyinde uzatılmış gün düzenlemesi yapılması
+
+## 5. Demografik Güvenlik ve Aile Fonu (DGAF)
+
+Güvence temelli yaklaşımın hayata geçirilmesi, S3 kapsamlı politika paketinin kalıcı ve öngörülebilir kaynaklara kavuşturulmasını zorunlu kılmaktadır. Türkiye'nin mevcut kamu aile harcaması GSYH'nin %0,45'i ile OECD'nin en alt sıralarında yer almaktadır; OECD ortalaması %2,31'dir. Bu hedefe ulaşmak yıllık yaklaşık 1.438 milyar TL ek kaynak gerektirmektedir.
+
+::: {.callout-important}
+**DGAF Temel Göstergeleri**
+
+Mevcut kamu aile harcaması: GSYH %0,45 | OECD ortalaması: %2,31
+
+S3 paketi toplam maliyeti: ~1.788 milyar TL/yıl | Ek kaynak ihtiyacı: ~1.438 milyar TL
+
+Müdahalesiz senaryoda 1,30 eşiği: 2027–2028 | S3 ile TDH 2030: 1,61
+
+PPR₁ hedef iyileşmesi: yıllık ortalama +0,035 | Uygulama ufku: 2026–2035
+:::
+
+### 5.1. Neden Mevcut Bütçe Mimarisi Yetmez?
+
+Üç yapısal engel aile politikasına sürekli kaynak ayrılmasını engellemektedir:
+
+- **Bütçenin yaşa göre asimetrisi:** Yaşa atanabilir harcamaların yaklaşık %34,6'sı 65 yaş üstü nüfusa yönelmektedir. EYT reformuyla tek yılda 2,0 milyon kişinin sisteme eklenmesi SGK açık finansmanını 2024'teki 37 milyar TL'den 2025'te 75 milyar TL'ye çıkarmıştır. SGK genel kapsam aktif/pasif oranı 2022 zirvesi olan 2,01'den Ocak 2026'da 1,59'a gerilemiştir.
+- **Bütçenin yapısal kilitlenmesi:** Merkezi bütçenin yaklaşık %80'i zorunlu, yasal ve ertelenemez giderlerden oluşmaktadır. Aile politikasına ayrılabilecek esnek alan organik olarak daralmaktadır.
+- **Siyasi çevrim baskısı ve çok yıllı taahhüt yokluğu:** Demografik politikanın etkileri 10–20 yıllık ufukta ortaya çıkar; seçim çevrimleri ise 4–5 yıllıktır. Bu asimetri aile harcamalarını her bütçe döneminde kırılgan kılarken kurumsal düzeyde çok yıllı taahhüt üretilemez.
+
+### 5.2. Kurumsal Model: Hibrit Yapı
+
+DGAF, 1985'te 3238 sayılı Kanun'la kurulan Savunma Sanayii Fonu'nun (SSF) bütçesel bağımsızlık modelini, Demografik İzleme Kurulu'nun izleme ve uyarlama kapasitesiyle birleştiren hibrit bir yapı olarak tasarlanmaktadır.
+
+- Ayrı bir kanunla özel bütçeli kuruluş statüsünde kurulur; Cumhurbaşkanlığı'na bağlı çalışır.
+- Demografik İzleme Kurulu genişletilmiş yönetim kurulu işleviyle hem tahsis kararlarını alır hem de demografik göstergeleri sistematik biçimde izler.
+- Karar yetkisi ile veri üretimi aynı çatı altında buluşur; PPR₁ hedeften saptığında tahsis revizyonu otomatik devreye girer.
+- Cumhurbaşkanlığı SBB, Hazine ve Maliye Bakanlığı, Aile ve Sosyal Hizmetler Bakanlığı, Çalışma ve Sosyal Güvenlik Bakanlığı, SGK ve HÜNEE kurumlar arası bileşimi oluşturur.
+- Sayıştay denetimi standarttır; GSYH sınırına kilitlenmiş harcama çerçevesi hesap verebilirliği tamamlar.
+
+### 5.3. Kaynak Mimarisi
+
+Dört tamamlayıcı kaynak kanalı fonu beslemektedir:
+
+- **Bütçe içi yeniden önceliklendirme:** Mevcut aile harcamasının fona kanalize edilmesi başlangıç tabanını oluşturur.
+- **Kanunla ayrıştırılmış gelir akışları:** Tütün/alkol ÖTV oranı, yabancı işgücü çalışma izni harçları ve mülk devir vergisinin belirlenen dilimleri kanunla fona bağlanır.
+- **Uluslararası kalkınma finansmanı:** Dünya Bankası, Avrupa Yatırım Bankası ve OECD mekanizmaları erken çocukluk ve bakım altyapısı yatırımları için etkinleştirilebilir.
+- **Demografik temettü mekanizması:** Politikanın ürettiği SGK prim geri dönüşleri (yıllık 150–200 milyar TL) ve ek vergi gelirleri (50–80 milyar TL) belirlenen oranda fona yeniden aktarılır.
+
+### 5.4. Uygulama Yol Haritası
+
+| Aşama | Dönem | GSYH Hedefi | Temel Adım |
+|---|---|---|---|
+| Kuruluş | 2026–2027 | %0,80 | Kanun hazırlığı; mevcut aile harcamasının fona transferi; pilot kreş programları |
+| Genişleme | 2028–2030 | %1,20–1,50 | Kreş ve istihdam güvencesi yaygınlaşması; uluslararası finansman kanalları |
+| Olgunluk | 2031–2035 | %2,00–2,31 | OECD ortalaması hedefi; demografik temettü mekanizmasının devreye girmesi |
+
+## 6. Öncelikli Alanlar
+
+- Güvenli Başlangıç Programının gündeme alınması
+- İkinci çocuk eşiğinin odağa alınması
+- Bakım altyapısının kurumsallaşması
+- İstihdam güvencesinin güçlendirilmesi
+- Devlet okullarının tercih edilirliğinin artırılması
+- Konut baskısının demografik gözetim sistemine eklenmesi
+- Evlilik örüntüsündeki bozulmanın izlenmesi
+- Demografik İzleme Kurulu'nun kurulması
+- Demografik Güvenlik ve Aile Fonu'nun kurulması
+- 2040–2060 Stratejik Demografi Belgesi hazırlanması
+
+## 7. Tamamlayıcı Alanlar
+
+Kısa vadeli politika müdahalelerine ek olarak, uzun vadeli demografik yapıyı etkileyen aşağıdaki tamamlayıcı alanlara yönelik politika çerçevesi de geliştirilmelidir:
+
+- Kültürel değerler ve aile kurumu
+- Kentleşme modeli, üretim yapısı ve mekânsal dönüşüm
+- Psikososyal kodlar, sorumluluk ve yetişkinliğe geçiş
+- Eğitim politikaları
+
+## 8. Sonuç
+
+Demografik daralma Türkiye açısından stratejik bir kapasite meselesidir. Müdahalesiz senaryo, TDH'nin 2027–2028 döneminde 1,30 eşiğinin altına inebileceğini ve bunun geri dönüşü güç bir kırılma noktası oluşturacağını göstermektedir. Kohler'in "düşük doğurganlık tuzağı" olarak tanımladığı bu eşik aşıldığında, küçük kohortlar daha az potansiyel ebeveyn üretmekte; bu durum daha küçük kohortlara yol açarak kendi kendini besleyen bir küçülme sarmalı başlatmaktadır.
+
+Toplam doğurganlık hızının 2,1'in altına, 1,40'lar düzeyine inmiş olması tek başına krizin boyutunu anlamak için yeterli değildir. Bakılması gereken iki kritik gösterge daha vardır: NRR (Net Üreme Hızı) ve PPR (Parite Geçiş Oranı). NRR'deki düşüş kuşakların kendini yenileme kapasitesinin zayıfladığını, PPR₁'deki düşüş ise ailelerin birinci çocuktan ikinci çocuğa geçişte zorlandığını göstermektedir. Bu iki dinamik birbirini besleyen bir kısır döngü üretmektedir: küçülen kuşaklar daha az potansiyel anne üretmekte, bu annelerin daha büyük bölümü tek çocukta kalmakta, bir sonraki kuşak daha da küçülmekte ve tek çocuk normu yerleştikçe PPR₁'in yeniden yükseltilmesi giderek zorlaşmaktadır.
+
+Bu nedenle politika müdahalesinin ana hedefi, döngünün kırılma noktası olan PPR₁'i, yani birinci çocuktan ikinci çocuğa geçiş oranını, 0,70 eşiğinin üzerinde tutmak olmalıdır. Bu eşiğin altına kalıcı biçimde geçildiğinde, tek çocuk normu yerleşecek; küçülen kuşaklar daha hızlı küçülecek ve Türkiye'nin TÜİK düşük senaryosunun da altında bir nüfus patikasıyla karşılaşma ihtimali güçlenecektir.
+
+Bu çerçevede Türkiye'de tek bir doğurganlık krizinden değil, farklı mekanizmalarla işleyen çoklu doğurganlık rejimlerinden söz etmek gerekir. Doğurganlık davranışı mekânsal/bölgesel, kuşaksal/kohort ve sosyo-ekonomik eksenlerde ayrışmakta; parite sonuçları ise bu üç eksenin birleşik sonucu olarak ortaya çıkmaktadır. Metropolde konut ve bakım maliyeti, sanayi kentlerinde iş-aile uyumsuzluğu, düşük gelirli hanelerde geçim ve bakım yükü, yüksek eğitimli gruplarda kariyer ve fırsat maliyeti, kırda genç nüfus göçü farklı müdahale araçları gerektirmektedir. Bu nedenle politika tasarımı ulusal TDH ortalamasına göre değil; rejim bazlı teşhis, hedefleme, kaynak tahsisi ve etki izleme mantığına göre kurulmalıdır.
+
+Demografik müdahale penceresi yalnızca TDH'nin düşüş hızıyla değil, doğurganlık çağına girecek kadın kohortlarının büyüklüğüyle de sınırlanmaktadır. Kız doğumları 2013 zirvesinden 2025'e kadar yaklaşık üçte bir azalmış; bu düşüş, 2035 sonrasında 15–19 yaş kadın havuzunda belirgin daralma olarak görünür hale gelecektir. Bu nedenle Türkiye'nin önündeki kritik dönem 2025–2030 arasıdır. Doğal artışın, yani doğum-ölüm farkının, 2040'lar civarında negatife dönmesi beklenmektedir. O noktada nüfus fiilen küçülmeye başlayacaktır. Geciken her müdahale, küçülen bir nüfus tabanı üzerinde etki üreteceği için daha düşük getiri sağlayacaktır.
+
+Kriz yalnızca makro düzeyde değil mikro düzeyde de maskelenmektedir: evli kadınların stok dağılımı eski kuşakların yüksek paritelerini yansıttığı için aileler hâlâ iki çocuklu görünmektedir — oysa genç kuşaklarda PPR₁ çökmüştür.
+
+Türkiye'nin demografik müdahale penceresi yalnızca zaman bakımından değil, yapı bakımından da daralmaktadır. Bugün sorun ağırlıkla ikinci çocuğa geçişte yoğunlaştığı için politika müdahalesi yüksek getiri üretebilir; ancak tek çocuk normu yerleşip çocuksuzluk arttığında sorun ikiye bölünür: hem çocuksuzluğu azaltmak hem de tek çocuk normunu kırmak gerekir. Bu, aynı TDH artışı için daha fazla kaynak, daha karmaşık müdahale ve daha düşük getiri anlamına gelir.
+
+**Müdahale penceresi hâlâ açıktır; ancak hızla daralmaktadır.** Bu nedenle Türkiye'nin demografik krizi, ertelenebilir bir sosyal politika başlığı olarak değil; hızlı, kararlı ve araçları doğru tasarlanmış bir stratejik kapasite meselesi olarak ele alınmalıdır.
+
+---
+
+📄 **[Ana çerçeve belgesinin tam metnini indir (PDF)](demografik-guvenlik-tam-metin.pdf)** — sorunun nicel ayrıştırması (HWP bulguları), mevcut politika yaklaşımlarının değerlendirmesi, stratejik sonuçların detaylı analizi, Güvenli Başlangıç Programı'nın tam tasarımı, Fransa karşılaştırması ve aktüeryal sürdürülebilirlik analizi dahil.
