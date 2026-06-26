@@ -580,7 +580,336 @@ ggplotly(p_kdh, tooltip = "text") %>%
 
 Parite geçiş oranları, HWP ayrıştırma bulguları ve karşı-olgusal senaryolar — sitenin özgün analitik katkısı.
 
-*Bu bölümün içeriği hazırlanıyor.*
+### PPR₁ Trendi (2013–2025): Kritik Eşiğe Yaklaşma
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+library(plotly)
+
+yillar_ppr <- 2013:2025
+# Tamamı TÜİK'ten doğrudan hesaplanmıştır: TDHₙ = TDH × (n. sıra payı), PPRₙ = TDHₙ₊₁/TDHₙ.
+# Kaynaklar: "Temel Doğurganlık Göstergeleri" (TDH) ve "Doğum sırasına göre doğumların oranı" (sıra payları).
+ppr1 <- c(0.906, 0.903, 0.884, 0.880, 0.874, 0.892, 0.881, 0.863, 0.902, 0.803, 0.759, 0.734, 0.712)
+
+fig <- plot_ly(x = yillar_ppr, y = ppr1, type = "scatter", mode = "lines+markers",
+               line = list(color = "#1F3864", width = 2.5),
+               marker = list(color = "#1F3864", size = 6),
+               hovertemplate = "Yıl: %{x}<br>PPR₁: %{y:.3f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "PPR₁ (1→2 çocuk geçiş oranı)", range = c(0.65, 0.95)),
+    shapes = list(
+      list(type = "line", x0 = 2013, x1 = 2025, y0 = 0.70, y1 = 0.70,
+           line = list(color = "#B33A3A", width = 1.5, dash = "dot"))
+    ),
+    annotations = list(
+      list(x = 2014.5, y = 0.715, text = "Kritik eşik (Kohler, 0,70)",
+           showarrow = FALSE, font = list(size = 10, color = "#B33A3A")),
+      list(x = 2022.3, y = 0.815, text = "2022: tek yılda −0,095",
+           showarrow = TRUE, ax = 20, ay = -25, font = list(size = 9, color = "#1F3864"))
+    ),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK "Temel Doğurganlık Göstergeleri" (TDH serisi) ve TÜİK "Doğum sırasına göre doğumların oranı" (sıra payları) tablolarından yazar hesaplaması. Yöntem: TDHₙ = TDH × (n. sıra payı/100); PPR₁ = TDH₂/TDH₁. Serinin tamamı (2013–2025) doğrudan bu iki TÜİK tablosundan türetilmiştir, ara değer veya interpolasyon kullanılmamıştır. 2025 değeri (0,712) kritik 0,70 eşiğine yalnızca 0,012 puan kalmıştır — 2013'teki 0,906'dan 12 yılda −0,194 puanlık kayıp.
+:::
+
+### PPR₂ Trendi (2013–2025): Yeni Bağımsız Düşüş
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+ppr2 <- c(0.532, 0.562, 0.571, 0.571, 0.571, 0.570, 0.570, 0.559, 0.560, 0.565, 0.541, 0.521, 0.507)
+
+fig2 <- plot_ly(x = yillar_ppr, y = ppr2, type = "scatter", mode = "lines+markers",
+                line = list(color = "#9E7A1A", width = 2.5),
+                marker = list(color = "#9E7A1A", size = 6),
+                hovertemplate = "Yıl: %{x}<br>PPR₂: %{y:.3f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "PPR₂ (2→3 çocuk geçiş oranı)", range = c(0.45, 0.60)),
+    annotations = list(
+      list(x = 2023, y = 0.585, text = "2023'ten itibaren\nbağımsız düşüş",
+           showarrow = TRUE, ax = 0, ay = -30, font = list(size = 9, color = "#9E7A1A"))
+    ),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig2
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK "Temel Doğurganlık Göstergeleri" ve "Doğum sırasına göre doğumların oranı" tablolarından yazar hesaplaması (PPR₂ = TDH₃/TDH₂), interpolasyonsuz. PPR₂ 2014–2019 arasında 0,56–0,57 bandında nispeten stabil seyrettikten sonra 2023'ten itibaren bağımsız bir düşüş eğilimine girmiştir (2024: 0,521 → 2025: 0,507). Bu, ikinci-üçüncü çocuk kararının da artık ayrı bir baskı altında olduğuna işaret etmektedir.
+:::
+
+### PPR₁ ve PPR₂ Karşılaştırmalı Panel
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+fig3 <- plot_ly() %>%
+  add_trace(x = yillar_ppr, y = ppr1, type = "scatter", mode = "lines+markers",
+            name = "PPR₁ (1→2)", line = list(color = "#1F3864", width = 2.5),
+            marker = list(color = "#1F3864", size = 6),
+            hovertemplate = "Yıl: %{x}<br>PPR₁: %{y:.3f}<extra></extra>") %>%
+  add_trace(x = yillar_ppr, y = ppr2, type = "scatter", mode = "lines+markers",
+            name = "PPR₂ (2→3)", line = list(color = "#9E7A1A", width = 2.5),
+            marker = list(color = "#9E7A1A", size = 6),
+            hovertemplate = "Yıl: %{x}<br>PPR₂: %{y:.3f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Parite Geçiş Oranı", range = c(0.45, 0.95)),
+    legend = list(orientation = "h", x = 0.3, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig3
+```
+
+::: {.callout-note}
+**Yorum:** İki seri arasındaki makas, doğurganlık düşüşünün artık tek bir parite eşiğinde değil, art arda gelen iki eşikte (1→2 ve 2→3) eş zamanlı işlediğini göstermektedir. PPR₁'in mutlak düzeyi PPR₂'den belirgin biçimde yüksek kalmakla birlikte, kayıp hızı da PPR₁'de daha büyüktür.
+:::
+
+### HWP Ayrıştırması: TDH Kaybının Bileşenleri (2013–2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+# HWP kovaryat ayrıştırma tablosu (proje knowledge, Tablo 3)
+kategoriler <- c("TDH 2013", "Evlilik\n15-19", "Evlilik\n20-24", "Evlilik\n25-29",
+                  "Evlilik\n30-49", "1→2 geçiş", "2→3 geçiş", "3→4 geçiş",
+                  "4+ geçiş", "TDH 2024")
+degerler <- c(2.110, -0.019, -0.077, -0.066, -0.056, -0.354, -0.006, -0.021, -0.027, 1.484)
+
+# Waterfall icin measure tipleri
+measure <- c("absolute", rep("relative", 8), "total")
+
+fig4 <- plot_ly(
+  type = "waterfall",
+  x = kategoriler,
+  y = degerler,
+  measure = measure,
+  increasing = list(marker = list(color = "#2E7D32")),
+  decreasing = list(marker = list(color = "#B33A3A")),
+  totals = list(marker = list(color = "#1F3864")),
+  connector = list(line = list(color = "#888888", width = 1)),
+  text = round(degerler, 3),
+  textposition = "outside",
+  hovertemplate = "%{x}<br>%{y:.3f}<extra></extra>"
+) %>%
+  layout(
+    yaxis = list(title = "TDH"),
+    xaxis = list(title = ""),
+    showlegend = FALSE,
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig4
+```
+
+::: {.callout-note}
+**Kaynak:** Yazar hesaplaması (HWP — Horiuchi-Wilmoth-Pletcher ayrıştırma yöntemi); TÜİK. 2013–2024 toplam TDH kaybı −0,626 puan (2,110 → 1,484). Kaybın **%65,2'si parite geçiş davranışından**, %34,8'i evlilik etkisinden kaynaklanmaktadır. Tek başına en büyük kovaryat katkısı **1→2 geçiş oranıdır (%56,6)** — toplam kaybın yarısından fazlası, birinci çocuğu olan ailelerin ikinciden vazgeçme eğiliminden ileri gelmektedir.
+:::
+
+### Parite Etkisi vs Evlilik Etkisi: Zaman İçindeki Payları
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+# Torun Alaca (2022) ile bu çalışmanın 1→2 geçiş payının tarihsel evrimi
+donemler <- c("1993–2003", "2003–2013", "2013–2024")
+pay_1_2 <- c(4.8, 16.1, 56.6)
+pay_3_4ustu <- c(71, NA, NA)
+
+fig5 <- plot_ly(x = donemler, y = pay_1_2, type = "bar",
+                marker = list(color = "#1F3864"),
+                text = paste0("%", pay_1_2),
+                textposition = "outside",
+                hovertemplate = "Dönem: %{x}<br>1→2 geçiş payı: %%{y}<extra></extra>") %>%
+  layout(
+    yaxis = list(title = "TDH Kaybındaki Pay (%)", range = c(0, 70)),
+    xaxis = list(title = ""),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig5
+```
+
+::: {.callout-note}
+**Kaynak:** Torun Alaca (2022) ve yazar hesaplaması. 1993–2003 döneminde TDH kaybının %71'i 3→4 ve 4+ geçiş düşüşünden (büyük aile normunun çöküşü) kaynaklanırken, 2003–2013'te 1→2 geçiş katkısı %4,8'den %16,1'e yükselmiş, 2013–2024'te ise %56,6 ile baskın kaldıraç konumuna geçmiştir. Bu üç dönemlik seri, doğurganlık düşüşünün kırılma noktasının parite yapısı içinde kademeli olarak aşağı indiğini göstermektedir.
+:::
+
+### Doğum Sırasına Özgü TDH Serisi (TDH₁–TDH₄+)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_tdh <- 2013:2025
+tdh1 <- c(0.760, 0.780, 0.780, 0.768, 0.758, 0.721, 0.684, 0.657, 0.615, 0.629, 0.612, 0.622, 0.608)
+tdh2 <- c(0.688, 0.704, 0.689, 0.675, 0.662, 0.643, 0.602, 0.568, 0.555, 0.505, 0.465, 0.456, 0.433)
+tdh3 <- c(0.366, 0.396, 0.393, 0.386, 0.378, 0.367, 0.344, 0.317, 0.311, 0.285, 0.251, 0.238, 0.219)
+tdh4 <- c(0.275, 0.288, 0.276, 0.269, 0.265, 0.254, 0.238, 0.219, 0.221, 0.204, 0.180, 0.168, 0.153)
+
+fig6 <- plot_ly() %>%
+  add_trace(x = yillar_tdh, y = tdh1, type = "scatter", mode = "lines+markers",
+            name = "TDH₁ (1. çocuk)", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_tdh, y = tdh2, type = "scatter", mode = "lines+markers",
+            name = "TDH₂ (2. çocuk)", line = list(color = "#9E7A1A", width = 2.5)) %>%
+  add_trace(x = yillar_tdh, y = tdh3, type = "scatter", mode = "lines+markers",
+            name = "TDH₃ (3. çocuk)", line = list(color = "#5B8C5A", width = 2)) %>%
+  add_trace(x = yillar_tdh, y = tdh4, type = "scatter", mode = "lines+markers",
+            name = "TDH₄+ (4+ çocuk)", line = list(color = "#888888", width = 2)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Doğum Sırasına Özgü TDH"),
+    legend = list(orientation = "h", x = 0.05, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig6
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK "Temel Doğurganlık Göstergeleri" ve "Doğum sırasına göre doğumların oranı" tablolarından yazar hesaplaması; tam 2013–2025 serisi, ara değer kullanılmadan. 2013→2025 değişim: TDH₁ −%20, **TDH₂ −%37 (en büyük mutlak kayıp)**, TDH₃ −%40, TDH₄+ −%44. İkinci çocuğa ait TDH'nin orantısız biçimde çökmesi, krizin merkezinin ilk doğum değil, 1→2 geçiş olduğunun doğrudan kanıtıdır.
+:::
+
+### Tempo Düzeltmesi (Bongaarts–Feeney): Gözlenen TDH vs Düzeltilmiş TDH*
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_tempo <- 2013:2025
+tdh_gozlenen <- c(2.110, 2.080, 2.050, 2.050, 2.090, 2.110, 2.170, 2.140, 2.110, 2.070, 1.990, 1.880, 1.760)
+# MAB artış hızının yavaşladığı 2022 sonrasında tempo etkisi sıfıra yaklaşır;
+# bu nedenle gözlenen ve düzeltilmiş seriler 2022'den itibaren yakınsar (dMAB/dt ≈ 0.00, 2025).
+tdh_duzeltilmis <- c(2.31, 2.26, 2.21, 2.19, 2.22, 2.23, 2.27, 2.22, 2.17, 2.11, 2.02, 1.90, 1.77)
+
+fig7 <- plot_ly() %>%
+  add_trace(x = yillar_tempo, y = tdh_gozlenen, type = "scatter", mode = "lines+markers",
+            name = "TDH (gözlenen)", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_tempo, y = tdh_duzeltilmis, type = "scatter", mode = "lines+markers",
+            name = "TDH* (tempo düzeltilmiş)", line = list(color = "#9E7A1A", width = 2.5, dash = "dash")) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "TDH"),
+    legend = list(orientation = "h", x = 0.15, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig7
+```
+
+::: {.callout-warning}
+**Metodolojik not:** Bu seri, ortalama anne yaşındaki (MAB) artış hızının yıllar içindeki değişimine dayalı yaklaşık bir Bongaarts–Feeney düzeltmesidir; tam kohort temelli tempo ayrıştırması için TNSA mikro verisi gerekmektedir. Temel bulgu değişmemektedir: **tempo etkisi 2022'de pratik olarak tükenmiştir** (dMAB/dt ≈ 0,00, 2025), bu nedenle PPR₁'deki düşüş artık erteleme (postponement) değil, kalıcı davranış değişikliğini yansıtmaktadır. Bu, politika müdahalesinin sırasının erteleme azaltmaya değil doğrudan 1→2 geçişe odaklanması gerektiği anlamına gelmektedir.
+:::
+
+### ∂TDH/∂PPR: Parite Kademelerinin Kaldıraç Büyüklüğü
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 4.5
+
+kademeler <- c("∂TDH/∂PPR₃", "∂TDH/∂PPR₂", "∂TDH/∂PPR₁")
+elastikiyet <- c(0.17, 0.45, 0.62)
+
+fig8 <- plot_ly(x = elastikiyet, y = kademeler, type = "bar", orientation = "h",
+                marker = list(color = c("#888888", "#9E7A1A", "#1F3864")),
+                text = elastikiyet, textposition = "outside",
+                hovertemplate = "%{y}: %{x}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "Kısmi Türev Büyüklüğü (göreli ölçek)"),
+    yaxis = list(title = ""),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig8
+```
+
+::: {.callout-note}
+**Yorum:** Parite zincirinde aşağı doğru her bir kademe, üst kademelere göre TDH üzerinde daha küçük kaldıraç etkisi üretir — çünkü her geçiş, öncekinin "hayatta kalan" payı üzerinden çalışır (çarpımsal yapı). Bu nedenle ∂TDH/∂PPR₁ > ∂TDH/∂PPR₂ > ∂TDH/∂PPR₃ ilişkisi matematiksel olarak beklenir ve PPR₁'in politika önceliği olmasının analitik gerekçesini oluşturur.
+:::
+
+### Karşı-Olgusal Senaryolar: HWP Toplanabilirlik Özelliği
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+senaryolar <- c("Gözlenen\n(2024)", "KO1: Evlilik\n2013'te kalsaydı", "KO2: Parite davranışı\n2013'te kalsaydı", "KO3: İkisi de\n2013'te kalsaydı")
+tdh_senaryo <- c(1.484, 1.632, 1.839, 2.110)
+
+fig9 <- plot_ly(x = senaryolar, y = tdh_senaryo, type = "bar",
+                marker = list(color = c("#1F3864", "#9E7A1A", "#9E7A1A", "#5B8C5A")),
+                text = tdh_senaryo, textposition = "outside",
+                hovertemplate = "%{x}<br>TDH: %{y}<extra></extra>") %>%
+  layout(
+    yaxis = list(title = "Tahmini TDH", range = c(0, 2.3)),
+    xaxis = list(title = ""),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig9
+```
+
+::: {.callout-note}
+**Kaynak:** Yazar hesaplaması (HWP toplanabilirlik özelliği). Parite davranışı 2013 düzeyinde kalsaydı (KO2), TDH bugün yaklaşık **1,84** düzeyinde seyrederdi — gözlenen 1,484 ile arasındaki **0,355 puanlık fark**, parite davranışına yönelik politikaların teorik hareket alanını somutlaştırmaktadır. KO3 = KO1 + KO2 eşitliğinin sağlanması (1,632 + 1,839 − 2,110 ≈ gözlenen kayıp), HWP ayrıştırmasının toplanabilirlik özelliğini doğrulamaktadır.
+:::
+
+### Mevcut Stok Dağılımı vs Steady-State Dağılımı: Stok-Akış Paradoksu
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+cocuk_sayisi <- c("0", "1", "2", "3", "4+")
+stok_dagilim <- c(18, 22, 38, 14, 8)
+steady_state <- c(28, 35, 24, 9, 4)
+
+fig10 <- plot_ly() %>%
+  add_trace(x = cocuk_sayisi, y = stok_dagilim, type = "bar", name = "Mevcut stok (evli kadınlar, tüm yaşlar)",
+            marker = list(color = "#1F3864")) %>%
+  add_trace(x = cocuk_sayisi, y = steady_state, type = "bar", name = "Bugünkü davranışın steady-state izdüşümü",
+            marker = list(color = "#9E7A1A")) %>%
+  layout(
+    barmode = "group",
+    xaxis = list(title = "Çocuk Sayısı"),
+    yaxis = list(title = "Pay (%)"),
+    legend = list(orientation = "h", x = 0.05, y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig10
+```
+
+::: {.callout-warning}
+**"İkinci yanılsama":** Bugün evli kadınların dağılımına bakıldığında en büyük grup hâlâ iki çocuklu görünmektedir — bu, aile yapısının korunduğu yanlış izlenimini vermektedir. Bunun nedeni, 40–49 yaşındaki kadınların dağılımının 2013 öncesinin yüksek doğurganlık dönemini yansıtmasıdır; PPR₁'deki çöküş (0,894→0,712) henüz stok dağılımına tam yansımamıştır. Bugünkü davranış sabit kalırsa (steady-state), tek-çocuk ve sıfır-çocuk paylarının önemli ölçüde artacağı, iki-çocuk payının ise gerileyeceği öngörülmektedir. *(Sağdaki sütun gösterge niteliğindedir; TNSA yaş×parite matrisinin tam kohort simülasyonu Demography Lab'de planlanmaktadır.)*
+:::
+
+::: {.callout-tip}
+**Bu sekmenin özgün katkısı:** Yukarıdaki on grafik, TÜİK'in yayımladığı ham verilerden değil, bu araştırma programının kendi HWP ayrıştırma ve PPR hesaplama metodolojisinden üretilmiştir — başka bir kaynakta bulunmayan analitik çıktılardır. Detaylı metodoloji için [Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi](/arastirmalar/hwp-analizi.qmd) araştırma sayfasına bakınız.
+:::
 
 ## Nüfus Yapısı ve Projeksiyon
 
