@@ -28,7 +28,7 @@ website:
       - text: "Hakkımda"
         href: about.qmd
       - icon: github
-        href: https://github.com/eminsezgin
+        href: https://github.com/mehmeteminsezgin66
       - icon: rss
         href: yazilar/index.xml
   page-footer:
