@@ -1616,9 +1616,267 @@ fig6
 
 ## Ekonomi, Konut ve Yaşam Maliyeti
 
-Konut fiyat endeksi, hanehalkı harcama yapısı, gelir dağılımı.
+Doğurganlık kararlarının ekonomik bağlamı: gelir, harcama, gelir dağılımı ve yaşam maliyeti göstergeleri.
 
-*Bu bölümün içeriği hazırlanıyor.*
+### Kişi Başına GSYH Trendi (2000–2024, $)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+library(plotly)
+
+yillar_gsyh <- 2000:2024
+gsyh_usd <- c(4256.1, 3114.3, 3616.1, 4751.3, 6040.1, 7404.8, 8008.3, 9791.3, 11089.3, 9108.4,
+              10705.8, 11362.0, 11738.2, 12620.1, 12085.7, 10821.7, 10621.2, 10353.6, 9502.4,
+              8992.3, 8397.3, 9423.6, 10434.1, 13007.6, 15325.1)
+
+fig <- plot_ly(x = yillar_gsyh, y = gsyh_usd, type = "scatter", mode = "lines+markers",
+               line = list(color = "#1F3864", width = 2.5),
+               marker = list(color = "#1F3864", size = 5),
+               hovertemplate = "Yil: %{x}<br>Kisi basi GSYH: $%{y:,.0f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Kisi Basina GSYH (cari $)"),
+    annotations = list(
+      list(x = 2013, y = 13400, text = "2013 zirvesi\n(12.620$)",
+           showarrow = TRUE, ax = -10, ay = -30, font = list(size = 9, color = "#1F3864")),
+      list(x = 2020, y = 7200, text = "2020 dip\n(8.397$)",
+           showarrow = TRUE, ax = 10, ay = 30, font = list(size = 9, color = "#B33A3A")),
+      list(x = 2024, y = 16600, text = "2024: 15.325$\n(seri rekoru)",
+           showarrow = TRUE, ax = -30, ay = -20, font = list(size = 9, color = "#2E7D32"))
+    ),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Yıllık Gayrisafi Yurt İçi Hasıla (1995–2024 serisi, kişi başına, cari $). Kişi başına GSYH 2000–2024 arasında **doğrusal bir trend izlememiştir**: 2008 küresel finansal krizinde sert düşüş (11.089$→9.108$), 2013'te döneme ait zirve (12.620$), 2014–2020 arasında sürekli gerileme (12.620$→8.397$, kümülatif %33,5 düşüş), ve 2021 sonrasında döviz kuru etkisiyle birlikte hızlı toparlanma (2024: 15.325$, serinin en yüksek değeri). Bu dalgalı örüntü, ekonomik kalkınma ile doğurganlık arasındaki ilişkinin tek yönlü olmadığını gösteren bağlamsal bir gösterge sunmaktadır — TDH'nin sürekli düşüş gösterdiği 2013–2024 döneminde, kişi başına GSYH önce düşmüş sonra hızla toparlanmıştır; bu da doğurganlık düşüşünün salt gelir kaynaklı olmadığını, yapısal/kurumsal faktörlerin (PPR₁ çöküşü gibi) daha belirleyici olduğunu desteklemektedir.
+:::
+
+### Hanehalkı Tüketim Harcaması Dağılımı (2019 vs 2022)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 6
+
+kategoriler_harcama <- c("Gida ve Alkolsuz Icecekler", "Konut, Su, Elektrik, Gaz", "Ulastirma",
+                          "Lokanta ve Oteller", "Mobilya, Ev Aletleri", "Cesitli Mal ve Hizmetler",
+                          "Giyim ve Ayakkabi", "Haberlesme", "Alkollu Icecekler ve Tutun",
+                          "Eglence ve Kultur", "Egitim", "Saglik")
+pay_2019 <- c(20.8, 24.1, 16.4, 6.5, 6.4, 5.1, 5.0, 3.6, 4.3, 3.1, 2.5, 2.2)
+pay_2022 <- c(22.8, 22.4, 21.3, 5.8, 6.4, 4.1, 4.9, 3.1, 3.2, 2.5, 1.4, 2.2)
+
+fig2 <- plot_ly() %>%
+  add_trace(y = kategoriler_harcama, x = pay_2019, type = "bar", orientation = "h",
+            name = "2019", marker = list(color = "#9E7A1A")) %>%
+  add_trace(y = kategoriler_harcama, x = pay_2022, type = "bar", orientation = "h",
+            name = "2022", marker = list(color = "#1F3864")) %>%
+  layout(
+    barmode = "group",
+    xaxis = list(title = "Toplam Harcama Icindeki Pay (%)"),
+    yaxis = list(title = "", categoryorder = "array", categoryarray = rev(kategoriler_harcama)),
+    legend = list(orientation = "h", x = 0.3, y = -0.1),
+    margin = list(l = 180),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig2
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK Hanehalkı Bütçe Araştırması, COICOP 2'li düzey harcama kalemleri (yazar hesaplaması; toplam aylık hanehalkı tüketim harcamasının her kalemdeki payı). Gıda payı %20,8'den %22,8'e, ulaştırma payı %16,4'ten %21,3'e yükselmiştir — bu iki kalemin payındaki artış, 2019-2022 arasındaki yüksek enflasyon döneminde temel ihtiyaç harcamalarının hanehalkı bütçesinde daha fazla yer kaplamaya başladığını göstermektedir. Buna karşılık eğitim payı %2,5'ten %1,4'e gerilemiştir — bu, kriz dönemlerinde hanehalklarının isteğe bağlı/yatırım niteliğindeki harcamaları (eğitim, eğlence) önce kıstığını göstermektedir.
+:::
+
+### Konut Fiyat Endeksi ve Kira Enflasyonu (2010–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_kfe <- 2010:2025
+kfe_duzey <- c(4.70, 5.11, 5.67, 6.31, 7.10, 8.22, 9.27, 10.28, 11.08, 11.61, 14.38, 19.77, 49.42, 100.00, 141.54, 186.51)
+
+yillar_kira <- 2010:2025
+kira_yillik_pct <- c(3.96, 4.71, 5.46, 6.50, 7.34, 7.73, 9.30, 9.21, 9.61, 10.05, 9.07, 12.20, 47.07, 108.58, 105.82, 61.61)
+
+fig3 <- plot_ly() %>%
+  add_trace(x = yillar_kfe, y = kfe_duzey, type = "scatter", mode = "lines+markers",
+            name = "Konut Fiyat Endeksi (duzey)", line = list(color = "#1F3864", width = 2.5),
+            yaxis = "y1") %>%
+  add_trace(x = yillar_kira, y = kira_yillik_pct, type = "scatter", mode = "lines+markers",
+            name = "Kira enflasyonu (yillik %)", line = list(color = "#B33A3A", width = 2.5, dash = "dash"),
+            yaxis = "y2") %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "KFE (duzey, log olcek)", type = "log", side = "left"),
+    yaxis2 = list(title = "Kira enflasyonu (yillik %)", overlaying = "y", side = "right"),
+    legend = list(orientation = "h", x = 0.1, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig3
+```
+
+::: {.callout-important}
+**Kaynak:** TCMB EVDS, "Konut Fiyat Endeksi (KFE)-Düzey" (hedonik regresyon, yıllık ortalama); TÜİK TÜFE alt kalemi "041. Gerçek Kira" (yıl sonu, bir önceki yılın Aralık ayına göre değişim, %). KFE 2010'dan 2025'e **~40 kat** artmıştır (4,70→186,51 endeks puanı). Kira enflasyonu ise 2022-2024 arasında manşet enflasyonun çok üzerinde seyrederek zirve yapmış (2023: %108,6), 2025'te kısmen yavaşlamıştır (%61,6) — ancak TCMB'nin Enflasyon Raporu 2026-I'de belirttiği üzere, TÜFE kira endeksi rayiç kiradaki değişimleri **gecikmeyle** (ortalama son 12 ayın ağırlığı %53, son 36 ayın kümülatif ağırlığı %94) yansıtmaktadır — yani gözlenen kira enflasyonu, geçmiş rayiç kira artışlarının birikimli etkisidir, anlık piyasa koşullarını değil.
+:::
+
+### Asgari Ücret Artışı vs Enflasyon (2014–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_au <- 2014:2025
+asgari_ucret_artis <- c(5.9, 6.0, 29.3, 7.9, 14.2, 26.1, 15.0, 21.6, 29.3, 34.0, 49.1, 30.0)
+tufe_yilsonu <- c(8.17, 8.81, 8.53, 11.92, 20.30, 11.84, 14.60, 36.08, 64.27, 64.77, 44.38, 30.89)
+
+fig4 <- plot_ly() %>%
+  add_trace(x = yillar_au, y = asgari_ucret_artis, type = "scatter", mode = "lines+markers",
+            name = "Asgari ucret artisi (%)", line = list(color = "#1F3864", width = 2.5),
+            fill = "none") %>%
+  add_trace(x = yillar_au, y = tufe_yilsonu, type = "scatter", mode = "lines+markers",
+            name = "TUFE yil sonu enflasyonu (%)", line = list(color = "#B33A3A", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Yillik Degisim (%)"),
+    legend = list(orientation = "h", x = 0.1, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig4
+```
+
+::: {.callout-note}
+**Kaynak:** Çalışma ve Sosyal Güvenlik Bakanlığı, Yıllar İtibarıyla Asgari Ücretler (resmi, Resmi Gazete referanslı); TCMB, Tüketici Fiyatları (TÜFE, yıl sonu yıllık % değişim). Not: 2022 ve 2023'te asgari ücrete yıl içinde **iki kez** zam yapılmıştır (Ocak ve Temmuz); grafikte gösterilen oran, yılın ikinci yarısındaki nihai ücretin önceki yılın aynı dönemine göre kümülatif artışını yansıtmaktadır. Asgari ücret artışı 2016 (%29,3) ve 2019 (%26,1) gibi yıllarda enflasyonun üzerinde kalırken, 2014, 2017 ve 2018 gibi yıllarda enflasyonun altında kalmıştır — bu dalgalı örüntü, asgari ücretin reel alım gücünün yıldan yıla tutarsız bir seyir izlediğini göstermektedir.
+:::
+
+### Gini Katsayısı Trendi (2006–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_gini <- 2006:2025
+gini_esdeger_fert <- c(0.428, 0.406, 0.405, 0.415, 0.402, 0.404, 0.402, 0.400, 0.391, 0.397,
+                       0.404, 0.405, 0.408, 0.395, 0.410, 0.401, 0.415, 0.420, 0.413, 0.410)
+
+fig5 <- plot_ly(x = yillar_gini, y = gini_esdeger_fert, type = "scatter", mode = "lines+markers",
+                line = list(color = "#1F3864", width = 2.5),
+                marker = list(color = "#1F3864", size = 5),
+                hovertemplate = "Yil: %{x}<br>Gini: %{y:.3f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Gini Katsayisi (Esdeger Hanehalki Fert Geliri)", range = c(0.35, 0.45)),
+    annotations = list(
+      list(x = 2014, y = 0.385, text = "2014 dip\n(0,391)", showarrow = TRUE, ax = -10, ay = 20,
+           font = list(size = 9, color = "#2E7D32")),
+      list(x = 2023, y = 0.425, text = "2023 zirve\n(0,420)", showarrow = TRUE, ax = 10, ay = -20,
+           font = list(size = 9, color = "#B33A3A"))
+    ),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig5
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Gelir Dağılımı İstatistikleri (Eşdeğer Hanehalkı Kullanılabilir Fert Gelirine göre Gini katsayısı), 2006–2025 tam seri. Gini katsayısı 2014'te bir dip noktasına (0,391) ulaşmış, sonrasında dalgalı biçimde yükselerek 2023'te 2006'dan sonraki en yüksek seviyesine (0,420) çıkmış, 2024-2025'te hafif gerilemiştir (0,413→0,410). Türkiye'nin Gini katsayısı, OECD ortalamasının (~0,30-0,32) belirgin biçimde üzerinde kalmaya devam etmektedir.
+:::
+
+### %20'lik Gelir Gruplarının Payları (2006–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_gelir <- 2006:2025
+ilk20 <- c(4345, 6003, 6174, 6577, 7174, 7882, 8584, 9683, 10376, 11338, 12957, 14537, 15762, 19355, 20665, 24714, 30147, 53803, 111236, 200100)
+ikinci20 <- c(7908, 10294, 10498, 11406, 12234, 13346, 14585, 16107, 17572, 19554, 22015, 24412, 27044, 32834, 37077, 41762, 51032, 92450, 190236, 335733)
+ucuncu20 <- c(11453, 14535, 14884, 16252, 17231, 18811, 20706, 22752, 24972, 27996, 31448, 34797, 38749, 46363, 52753, 58483, 72709, 132706, 274878, 488517)
+dorduncu20 <- c(16706, 20513, 21257, 23257, 24165, 26700, 29209, 32186, 35548, 39691, 44758, 49299, 55204, 64812, 74982, 82594, 103822, 189026, 396009, 700249)
+son20 <- c(35093, 42781, 43834, 48979, 49514, 54978, 59797, 66670, 71530, 81618, 95811, 107616, 120114, 136022, 161276, 176133, 234367, 438000, 902002, 1587404)
+
+# Her yil icin toplami hesapla ve yuzdeye cevir
+toplam <- ilk20 + ikinci20 + ucuncu20 + dorduncu20 + son20
+pay_ilk20 <- round(ilk20 / toplam * 100, 1)
+pay_son20 <- round(son20 / toplam * 100, 1)
+
+fig6 <- plot_ly() %>%
+  add_trace(x = yillar_gelir, y = pay_son20, type = "scatter", mode = "lines+markers",
+            name = "En yuksek %20 payi", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_gelir, y = pay_ilk20, type = "scatter", mode = "lines+markers",
+            name = "En dusuk %20 payi", line = list(color = "#9E7A1A", width = 2.5),
+            yaxis = "y2") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "En yuksek %20 payi (%)", range = c(40, 55)),
+    yaxis2 = list(title = "En dusuk %20 payi (%)", overlaying = "y", side = "right", range = c(4, 9)),
+    legend = list(orientation = "h", x = 0.1, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig6
+```
+
+::: {.callout-warning}
+**Kaynak:** TÜİK, Gelir Dağılımı İstatistikleri — Yıllık Hanehalkı Kullanılabilir Gelirin Dağılımı (yüzde 20'lik gruplar, ortalama TL), 2006–2025 (yazar hesaplaması: her grubun yıllık toplam içindeki payı). En yüksek gelirli %20'lik grubun payı dönem boyunca %46-49 bandında, en düşük gelirli %20'lik grubun payı ise %5,5-6,5 bandında dalgalanmaktadır — aralarındaki makas hiçbir yıl belirgin biçimde kapanmamıştır. *Not: Bu hesaplama "Hanehalkı Kullanılabilir Gelire" (eşdeğerlik düzeltmesi olmadan) dayanmaktadır; TÜİK'in resmi olarak yayınladığı "Eşdeğer Hanehalkı Kullanılabilir Fert Geliri" bazlı pay rakamları (örn. 2024: en yüksek %20 = %48,1) bu hesaplamadan küçük farklılıklar gösterebilir.*
+:::
+
+### Kişi Başına GSYH: İl Bazlı Bölgesel Eşitsizlik (2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 7
+
+iller_top_bottom <- c("Şanlıurfa", "Van", "Ağrı", "Muş", "Bitlis", "Diyarbakır", "Siirt", "Batman")
+# En dusuk 8 il
+en_dusuk_iller <- c("Şanlıurfa", "Van", "Ağrı", "Bitlis", "Muş", "Diyarbakır", "Batman", "Siirt")
+en_dusuk_deger <- c(5731.4, 6185.5, 5929.9, 7063.4, 7015.6, 7464.1, 7202.1, 7975.5)
+
+# En yuksek 8 il
+en_yuksek_iller <- c("Eskişehir", "Antalya", "İzmir", "Bursa", "Tekirdağ", "Ankara", "Kocaeli", "İstanbul")
+en_yuksek_deger <- c(16170.7, 17102.7, 16948.8, 15014.4, 18406.5, 24030.9, 24031.3, 24451.6)
+
+iller_combined <- c(en_dusuk_iller, en_yuksek_iller)
+degerler_combined <- c(en_dusuk_deger, en_yuksek_deger)
+renkler_combined <- c(rep("#B33A3A", 8), rep("#1F3864", 8))
+
+ord <- order(degerler_combined)
+iller_sirali <- iller_combined[ord]
+degerler_sirali <- degerler_combined[ord]
+renkler_sirali <- renkler_combined[ord]
+
+fig7 <- plot_ly(y = factor(iller_sirali, levels = iller_sirali), x = degerler_sirali, type = "bar", orientation = "h",
+                marker = list(color = renkler_sirali),
+                text = paste0("$", format(round(degerler_sirali), big.mark=".")), textposition = "outside",
+                hovertemplate = "%{y}: $%{x:,.0f}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "Kisi Basina GSYH 2024 ($)"),
+    yaxis = list(title = ""),
+    showlegend = FALSE,
+    margin = list(l = 100),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig7
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, İl Bazında Gayrisafi Yurt İçi Hasıla, 2024 (81 ilin tamamı, kişi başına $). Grafikte en düşük ve en yüksek 8'er il gösterilmektedir. **En yüksek (İstanbul, 24.452$) ile en düşük (Şanlıurfa, 5.731$) il arasındaki fark ~4,3 kattır.** Düşük gelirli iller büyük ölçüde Güneydoğu Anadolu (Şanlıurfa, Diyarbakır, Batman, Siirt) ve Doğu Anadolu (Van, Ağrı, Muş, Bitlis) bölgelerinde yoğunlaşmaktadır — bu bölgesel eşitsizlik haritası, önceki sekmelerdeki lowest-low doğurganlık il haritasıyla çapraz okunduğunda, ekonomik gelişmişlik ile doğurganlık düzeyi arasındaki ilişkinin Türkiye'nin kendi içinde de gözlemlenebilir olduğunu göstermektedir.
+:::
+
+
 
 ## Eğitim
 
