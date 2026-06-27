@@ -967,106 +967,6 @@ fig
 **Kaynak:** TÜİK "Yaş Grubuna Göre Nüfus" tablosu — 2007 Genel Nüfus Sayımı ve 2025 ADNKS sonuçları (gerçek, ham veriden hesaplanmış paylar). 2007'de toplam nüfus 70.586.256, 2025'te 86.092.168. Piramidin tabanı (0-4, 5-9 yaş) 2007'de toplam nüfusun %17,3'ünü oluştururken 2025'te %12,8'e gerilemiştir; buna karşılık 65+ tepe dilimi (tüm üst gruplar toplamı) %7,1'den %11,1'e yükselmiştir. Klasik "üçgen" formdan "sürahi/fıçı" formuna geçiş, TÜİK'in ham yaş grubu verisiyle doğrudan doğrulanmaktadır.
 :::
 
-### Nüfus Piramidi Animasyonu: 2025 → 2060 Projeksiyonu
-
-```{ojs}
-//| echo: false
-
-viewof secilen_yil = Inputs.range([2025, 2060], {value: 2025, step: 5, label: "Yıl"})
-viewof secilen_senaryo = Inputs.radio(["S0 — Müdahalesiz (statüko)", "S3 — Kapsamlı politika paketi"], {value: "S0 — Müdahalesiz (statüko)", label: "Senaryo"})
-```
-
-```{ojs}
-//| echo: false
-
-yas_gruplari = ["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39",
-                 "40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+"]
-
-// 2025 gerçek TÜİK piramidi (Yaş Grubuna Göre Nüfus tablosu)
-erkek_2025_base = [2.894, 3.667, 3.885, 3.838, 3.724, 3.918, 3.715, 3.675, 3.758, 3.620,
-                    3.192, 2.632, 2.522, 1.893, 1.422, 0.898, 0.468, 0.297]
-kadin_2025_base = [2.747, 3.484, 3.687, 3.642, 3.557, 3.772, 3.620, 3.614, 3.713, 3.575,
-                    3.204, 2.595, 2.620, 2.022, 1.667, 1.195, 0.696, 0.574]
-
-// Mortalite hayatta kalma faktörleri (5 yıllık kademe geçişinde), yaklaşık TÜİK hayat tablosuna dayalı
-hayatta_kalma = [0.998, 0.999, 0.999, 0.998, 0.997, 0.996, 0.995, 0.993, 0.990, 0.985,
-                  0.978, 0.967, 0.950, 0.925, 0.885, 0.820, 0.720, 0.500]
-
-// Taban girişi (0-4 yaş payı) senaryoya göre: S0 sürekli daralan TDH, S3 toparlanan TDH
-// Gerçek bant noktaları: 2025 TDH=1,42; S0 2060'da TDH~0,82; S3 2060'da TDH~1,70 bandı
-taban_S0 = {2025: 2.894+2.747, 2030: 4.9, 2040: 3.6, 2050: 2.6, 2060: 1.9}
-taban_S3 = {2025: 2.894+2.747, 2030: 5.5, 2040: 5.3, 2050: 5.6, 2060: 5.8}
-
-function piramitHesapla(yil, senaryo) {
-  let adim = (yil - 2025) / 5
-  let erkek = [...erkek_2025_base]
-  let kadin = [...kadin_2025_base]
-
-  // Her 5 yılda bir kademe yukarı kaydırma + mortalite uygulanması
-  for (let s = 0; s < adim; s++) {
-    let yeni_erkek = new Array(18).fill(0)
-    let yeni_kadin = new Array(18).fill(0)
-    for (let i = 17; i > 0; i--) {
-      yeni_erkek[i] = erkek[i-1] * hayatta_kalma[i-1]
-      yeni_kadin[i] = kadin[i-1] * hayatta_kalma[i-1]
-    }
-    let yil_bu_adim = 2025 + (s+1)*5
-    let taban_tablo = senaryo.startsWith("S0") ? taban_S0 : taban_S3
-    let yillar_anahtar = Object.keys(taban_tablo).map(Number).sort((a,b)=>a-b)
-    let alt = yillar_anahtar.filter(y => y <= yil_bu_adim).pop()
-    let ust = yillar_anahtar.filter(y => y >= yil_bu_adim).shift()
-    let taban_deger
-    if (alt === ust) { taban_deger = taban_tablo[alt] }
-    else {
-      let oran = (yil_bu_adim - alt) / (ust - alt)
-      taban_deger = taban_tablo[alt] + (taban_tablo[ust] - taban_tablo[alt]) * oran
-    }
-    yeni_erkek[0] = taban_deger * 0.512
-    yeni_kadin[0] = taban_deger * 0.488
-    erkek = yeni_erkek
-    kadin = yeni_kadin
-  }
-  // Yeniden normalize et (toplamı %100'e sabitle, görsel orantı tutarlılığı için)
-  let toplam = erkek.reduce((a,b)=>a+b,0) + kadin.reduce((a,b)=>a+b,0)
-  erkek = erkek.map(v => v/toplam*100)
-  kadin = kadin.map(v => v/toplam*100)
-  return {erkek, kadin}
-}
-
-piramit_veri = piramitHesapla(secilen_yil, secilen_senaryo)
-```
-
-```{ojs}
-//| echo: false
-
-Plot.plot({
-  width: 700,
-  height: 480,
-  marginLeft: 60,
-  x: {label: "Toplam Nüfusun Payı (%)", domain: [-5.5, 5.5]},
-  y: {label: null, domain: yas_gruplari, type: "band"},
-  color: {
-    domain: ["Erkek", "Kadın"],
-    range: ["#1F3864", "#9E7A1A"]
-  },
-  marks: [
-    Plot.barX(yas_gruplari.map((yg,i) => ({yas: yg, deger: -piramit_veri.erkek[i], cinsiyet: "Erkek"})),
-      {x: "deger", y: "yas", fill: "cinsiyet", sort: {y: null}}),
-    Plot.barX(yas_gruplari.map((yg,i) => ({yas: yg, deger: piramit_veri.kadin[i], cinsiyet: "Kadın"})),
-      {x: "deger", y: "yas", fill: "cinsiyet", sort: {y: null}}),
-    Plot.ruleX([0])
-  ]
-})
-```
-
-::: {.callout-important}
-**${secilen_yil} — ${secilen_senaryo}**
-
-Bu animasyon, basitleştirilmiş bir kohort-kaydırma modeline dayanmaktadır: 2025'in gerçek TÜİK piramidi başlangıç noktası alınır, her 5 yılda bir yaş grubu yukarı kayar (yaklaşık TÜİK hayat tablosu hayatta kalma oranlarıyla), taban (0-4 yaş girişi) seçilen senaryonun TDH eğilimine göre değişir. **S0** senaryosunda taban sürekli daralır (TDH ~0,82'ye düşer); **S3** senaryosunda taban 2030 sonrası stabilize olur (TDH ~1,70 bandı). Bu, tam bir kohort-bileşen modeli değil, momentum analizinin temel mekaniğini görselleştiren bir göstergedir — kesin nüfus projeksiyonu için Demography Lab'deki kohort-bileşen hesaplayıcısına bakınız (geliştirilme aşamasında).
-
-*Kaynak: TÜİK 2025 piramidi (gerçek); senaryo varsayımları HWP projeksiyon çalışmasından (S0/S3 TDH bantları) ve Keyfitz momentum analizinden (Görünmez Kriz, Sezgin 2026) uyarlanmıştır.*
-:::
-
 ### 0–4 Yaş Kohort Büyüklükleri Zaman Serisi (2009–2025)
 
 ```{r}
@@ -1206,7 +1106,7 @@ fig5
 **Kaynak:** TÜİK ADNKS ve "Yaş Grubuna Göre Nüfus" tablosu (2007 ve 2025 değerleri gerçek yaş grubu verisinden hesaplanmıştır). Çalışma çağındaki (15-64) her 100 kişi, 2025'te 29,7 çocuğa ve 16,2 yaşlıya bakmaktadır (toplam bağımlılık oranı %45,9). Çocuk bağımlılık oranı sürekli düşerken yaşlı bağımlılık oranı sürekli artmaktadır — iki çizginin makası daralmaktadır.
 :::
 
-### OADR Projeksiyonu (2025–2060, Üç Senaryo)
+### OADR Projeksiyonu (2025–2060, İki Senaryo)
 
 ```{r}
 #| echo: false
@@ -1347,6 +1247,7 @@ fig9
 ::: {.callout-tip}
 **Bu sekmenin metodolojik notu:** Nüfus piramidi, ortanca yaş projeksiyonu ve OADR senaryolarındaki uzak-vadeli (2040 sonrası) değerler kesin tahmin değil, mevcut trendlerin basit uzantısıdır — kesin demografik momentum modeli için [Demography Lab](/demography-lab/index.qmd)'deki kohort-bileşen hesaplayıcısına bakınız (geliştirilme aşamasında).
 :::
+
 
 
 
