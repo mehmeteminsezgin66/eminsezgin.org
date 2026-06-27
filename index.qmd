@@ -4,30 +4,40 @@ toc: false
 ---
 
 ::: {.hero-section}
-
 # Mehmet Emin Sezgin
 
 ::: {.subtitle}
-Demografi, sosyal politika ve aile politikaları üzerine araştırma, analiz ve politika tasarımı.
+Türkiye'nin demografik dönüşümünü, doğurganlık eğilimlerini ve aile kurma davranışlarını veri temelli analiz ve uygulanabilir politika çerçeveleriyle ele alan bir araştırma programı.
 :::
 
 ::: {.tagline}
-Kriz bir istek eksikliği değil, güvence eksikliğidir.
+Akademik literatür, resmî veriler ve politika uygulamaları arasında bağ kuran bir çalışma alanı.
 :::
-
 :::
 
 ## Son Çalışmalar
 
 ::: {.content-card}
 ::: {.card-meta}
-Araştırma · Haziran 2026
+Araştırma · 2026
 :::
 ::: {.card-title}
 [Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi: HWP Ayrıştırma Analizi (2013–2025)](arastirmalar/hwp-analizi.qmd)
 :::
 ::: {.card-summary}
-Horiuchi-Wilmoth-Pletcher yöntemiyle TDH kaybının parite geçiş ve evlilik bileşenlerine ayrıştırılması. PPR₁ etkisi toplam kaybın %68,6'sını açıklıyor.
+Horiuchi-Wilmoth-Pletcher yöntemiyle TDH kaybının parite geçiş ve evlilik bileşenlerine ayrıştırılması. PPR₁ etkisi toplam kaybın %56,6'sını açıklıyor.
+:::
+:::
+
+::: {.content-card}
+::: {.card-meta}
+Araştırma · 2026
+:::
+::: {.card-title}
+[Demografik Müdahale Penceresi](arastirmalar/mudahale-penceresi.qmd)
+:::
+::: {.card-summary}
+Lowest-low eşiğinin 2027–2028'de aşılacağı projeksiyonu ışığında, politika penceresinin ne kadar açık kaldığına dair nicel bir değerlendirme.
 :::
 :::
 
@@ -36,10 +46,22 @@ Horiuchi-Wilmoth-Pletcher yöntemiyle TDH kaybının parite geçiş ve evlilik b
 Politika Notu · 2026
 :::
 ::: {.card-title}
-[Demografik Güvenlik ve Aile Fonu (DGAF): Kurumsal Model](politika-notlari/dgaf.qmd)
+[Güvenli Başlangıç Programı](politika-notlari/guvenli-baslangic.qmd)
 :::
 ::: {.card-summary}
-Özel bütçeli, Cumhurbaşkanlığına bağlı bir demografik yatırım fonu tasarımı. Hibrit yönetişim modeli, finansman kanalları ve performans çerçevesi.
+İstihdam güvencesi, bakım altyapısı ve erken çocukluk gelişim merkezlerini bütünleşik bir çerçevede sunan, pariteye duyarlı program tasarımı.
+:::
+:::
+
+::: {.content-card}
+::: {.card-meta}
+Araştırma · 2026
+:::
+::: {.card-title}
+[Bütçe Kaynaklarının Demografik Görünümü](arastirmalar/butce-kaynaklari.qmd)
+:::
+::: {.card-summary}
+Yaşa atanabilir kamu harcamalarının dağılımı ve bunun aile politikasına ayrılabilecek esnek bütçe alanı üzerindeki yapısal etkisi.
 :::
 :::
 
@@ -48,13 +70,12 @@ Politika Notu · 2026
 Demography Lab
 :::
 ::: {.card-title}
-[Kohort-Bileşen Projeksiyon Modeli](demography-lab/index.qmd)
+[İnteraktif Modeller ve Simülasyonlar](demography-lab/index.qmd)
 :::
 ::: {.card-summary}
-Senaryo parametrelerini değiştirerek Türkiye'nin 2025–2060 nüfus projeksiyonlarını interaktif olarak inceleyin.
+PPR₁ kurtarma simülatörü, 200 yıllık nüfus projeksiyonu, göç senaryosu ve sürdürülebilirlik hesaplayıcısı dahil altı interaktif model.
 :::
 :::
-
 
 ## Güncel Göstergeler
 
@@ -63,7 +84,7 @@ Senaryo parametrelerini değiştirerek Türkiye'nin 2025–2060 nüfus projeksiy
 ::: {.g-col-4}
 ::: {.stat-box .alert}
 ::: {.stat-value}
-1.42
+1,42
 :::
 ::: {.stat-label}
 TDH 2025
@@ -74,7 +95,7 @@ TDH 2025
 ::: {.g-col-4}
 ::: {.stat-box .alert}
 ::: {.stat-value}
-0.712
+0,712
 :::
 ::: {.stat-label}
 PPR₁ 2025
@@ -89,6 +110,39 @@ PPR₁ 2025
 :::
 ::: {.stat-label}
 Lowest-low il sayısı
+:::
+:::
+:::
+
+::: {.g-col-4}
+::: {.stat-box}
+::: {.stat-value}
+0,669
+:::
+::: {.stat-label}
+NRR (Net Üreme Oranı)
+:::
+:::
+:::
+
+::: {.g-col-4}
+::: {.stat-box .alert}
+::: {.stat-value}
+−%34,2
+:::
+::: {.stat-label}
+Kız doğum kohortu düşüşü (2014→2025)
+:::
+:::
+:::
+
+::: {.g-col-4}
+::: {.stat-box}
+::: {.stat-value}
+%56,6
+:::
+::: {.stat-label}
+1→2 geçişin TDH kaybındaki payı
 :::
 :::
 :::
