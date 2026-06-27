@@ -1,108 +1,485 @@
 ---
 title: "Demography Lab"
 toc: true
+toc-depth: 2
 ---
 
-Demografik modelleri interaktif olarak inceleyin. Parametreleri değiştirerek farklı politika senaryolarının etkisini gerçek zamanlı gözlemleyebilirsiniz.
+Türkiye'nin demografik göstergelerini interaktif olarak keşfedin. Her model, bu araştırma programının özgün analitik çerçevesine dayanmaktadır — kaydırıcıları hareket ettirerek varsayımları değiştirebilir, sonuçları anlık olarak görebilirsiniz.
 
-## Senaryo Projeksiyonu: TDH 2025–2040
-
-Aşağıdaki modelde PPR₁ iyileşme hızını ve evlilik etkisini ayarlayarak farklı senaryoları karşılaştırabilirsiniz.
-
-```{ojs}
-//| echo: false
-
-// Senaryo parametreleri
-viewof ppr1_improvement = Inputs.range([0, 0.05], {
-  value: 0.035, step: 0.005,
-  label: "Yıllık PPR₁ iyileşmesi"
-})
-
-viewof marriage_effect = Inputs.range([0, 0.03], {
-  value: 0.01, step: 0.005,
-  label: "Evlilik etkisi (yıllık TDH katkısı)"
-})
-
-viewof policy_start = Inputs.range([2026, 2030], {
-  value: 2027, step: 1,
-  label: "Politika başlangıç yılı"
-})
-```
-
-```{ojs}
-//| echo: false
-
-// Projeksiyon hesaplama
-{
-  const years = d3.range(2025, 2041);
-  const base_tdh = 1.42;
-  const base_ppr1 = 0.712;
-  const decay_rate = 0.035; // Müdahalesiz yıllık düşüş
-
-  // S0: Müdahalesiz
-  const s0 = years.map((y, i) => ({
-    year: y,
-    tdh: Math.max(base_tdh - decay_rate * i, 0.8),
-    scenario: "S0 — Müdahalesiz"
-  }));
-
-  // Politika senaryosu
-  const policy = years.map((y, i) => {
-    if (y < policy_start) {
-      return {
-        year: y,
-        tdh: Math.max(base_tdh - decay_rate * (y - 2025), 0.8),
-        scenario: "Politika senaryosu"
-      };
-    }
-    const policy_years = y - policy_start;
-    const pre_policy_loss = decay_rate * (policy_start - 2025);
-    const tdh_at_start = base_tdh - pre_policy_loss;
-    const recovery = ppr1_improvement * 2.1 * policy_years + marriage_effect * policy_years;
-    return {
-      year: y,
-      tdh: Math.min(tdh_at_start + recovery, 2.1),
-      scenario: "Politika senaryosu"
-    };
-  });
-
-  const data = [...s0, ...policy];
-
-  return Plot.plot({
-    width: 720,
-    height: 400,
-    style: { fontSize: "13px", background: "transparent" },
-    x: { label: null, tickFormat: "d" },
-    y: { label: "TDH", domain: [0.8, 2.2], grid: true },
-    color: {
-      domain: ["S0 — Müdahalesiz", "Politika senaryosu"],
-      range: ["#999999", "#1F3864"]
-    },
-    marks: [
-      Plot.ruleY([2.1], { stroke: "#9E7A1A", strokeDasharray: "6,3", strokeWidth: 1.5 }),
-      Plot.ruleY([1.3], { stroke: "#B33A3A", strokeDasharray: "3,3", strokeWidth: 1.5 }),
-      Plot.text(["Yenilenme (2,1)"], { x: 2026, y: 2.13, fill: "#9E7A1A", fontSize: 10 }),
-      Plot.text(["Lowest-low (1,3)"], { x: 2026, y: 1.33, fill: "#B33A3A", fontSize: 10 }),
-      Plot.lineY(data, { x: "year", y: "tdh", stroke: "scenario", strokeWidth: 2.5 }),
-      Plot.dot(data, { x: "year", y: "tdh", fill: "scenario", r: 3 }),
-      Plot.tip(data, Plot.pointerX({
-        x: "year", y: "tdh", stroke: "scenario",
-        format: { x: (d) => `${d}`, y: (d) => `TDH: ${d.toFixed(3)}` }
-      }))
-    ]
-  })
-}
-```
-
-::: {.callout-important}
-## Model Hakkında
-Bu basitleştirilmiş bir projeksiyon modelidir. PPR₁ iyileşmesinin TDH'ye çevrilmesinde doğrusal bir yaklaşım kullanılmıştır. Tam kohort-bileşen modeli için [araştırma sayfasına](../arastirmalar/hwp-analizi.qmd) bakınız.
+::: {.callout-tip appearance="simple"}
+**Nasıl kullanılır:** Her modeldeki kaydırıcıları sürükleyerek parametreleri değiştirin. Grafikler ve göstergeler anlık güncellenir. Modellerin metodolojik detayları, ilgili [Araştırmalar](/arastirmalar/) ve [Politika Notları](/politika-notlari/) sayfalarında yer almaktadır.
 :::
 
-## Demografik Sürdürülebilirlik Düzeyi Hesaplayıcı
+## 1. PPR₁ Kurtarma Simülatörü
 
-*Yakında — NRR, OADR ve nüfus artış hızı kısıtlamalarını birlikte sağlayan minimum TDH düzeyinin interaktif hesaplaması.*
+Birinci çocuktan ikinciye geçiş oranındaki (PPR₁) değişimin toplam doğurganlık hızı üzerindeki etkisi. PPR₁, toplam TDH kaybının %56,6'sını tek başına açıklayan en yüksek kaldıraçlı bileşendir.
 
-## Kohort-Bileşen Nüfus Projeksiyonu
+```{ojs}
+//| echo: false
 
-*Yakında — Yaş-cinsiyet piramidi animasyonu ile 2025–2060 nüfus projeksiyonu.*
+viewof ppr1_slider = Inputs.range([0.50, 0.95], {
+  value: 0.712, step: 0.005,
+  label: "PPR₁ (1→2 geçiş oranı)"
+})
+```
+
+```{ojs}
+//| echo: false
+
+// 2025 gerçek TÜİK değerleri (sabit tutulan bileşenler)
+tdh1_sabit = 0.608    // 1. çocuk TDH bileşeni
+ppr2_sabit = 0.507    // 2→3 geçiş oranı
+ppr3_sabit = 0.700    // 3→4+ geçiş oranı (yaklaşık)
+
+// TDH = TDH₁ × (1 + PPR₁ + PPR₁×PPR₂ + PPR₁×PPR₂×PPR₃)
+tdh_hesap = tdh1_sabit * (1 + ppr1_slider + ppr1_slider * ppr2_sabit + ppr1_slider * ppr2_sabit * ppr3_sabit)
+tdh_mevcut = tdh1_sabit * (1 + 0.712 + 0.712 * ppr2_sabit + 0.712 * ppr2_sabit * ppr3_sabit)
+tdh_fark = tdh_hesap - tdh_mevcut
+
+// PPR₁ değerleri dizisi (grafik için)
+ppr1_dizi = Array.from({length: 91}, (_, i) => 0.50 + i * 0.005)
+tdh_dizi = ppr1_dizi.map(p => tdh1_sabit * (1 + p + p * ppr2_sabit + p * ppr2_sabit * ppr3_sabit))
+```
+
+```{ojs}
+//| echo: false
+
+html`<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0;">
+  <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.8em; color: #666;">Hesaplanan TDH</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: #1F3864;">${tdh_hesap.toFixed(3)}</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid ${tdh_fark >= 0 ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.8em; color: #666;">Mevcut TDH'ye fark</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: ${tdh_fark >= 0 ? '#2E7D32' : '#B33A3A'};">${tdh_fark >= 0 ? '+' : ''}${tdh_fark.toFixed(3)}</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.8em; color: #666;">PPR₁ mesafe (0,70 eşiğine)</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: ${ppr1_slider > 0.70 ? '#2E7D32' : '#B33A3A'};">${ppr1_slider > 0.70 ? '+' : ''}${(ppr1_slider - 0.70).toFixed(3)}</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #666; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.8em; color: #666;">Tek çocuklu anne payı</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: #1F3864;">%${((1 - ppr1_slider) * 100).toFixed(0)}</div>
+  </div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+
+Plot.plot({
+  width: 700, height: 380,
+  x: {label: "PPR₁ (1→2 geçiş oranı)", domain: [0.50, 0.95]},
+  y: {label: "Toplam Doğurganlık Hızı (TDH)", domain: [0.9, 2.0]},
+  marks: [
+    Plot.ruleY([1.30], {stroke: "#B33A3A", strokeDasharray: "6,4", strokeWidth: 1}),
+    Plot.ruleY([1.70], {stroke: "#2E7D32", strokeDasharray: "6,4", strokeWidth: 1}),
+    Plot.ruleY([2.10], {stroke: "#888", strokeDasharray: "3,3", strokeWidth: 1}),
+    Plot.text([{x: 0.52, y: 1.32}], {text: ["Lowest-low esigi (1,30)"], fill: "#B33A3A", fontSize: 10}),
+    Plot.text([{x: 0.52, y: 1.72}], {text: ["Surdurulebilirlik bandi (1,70)"], fill: "#2E7D32", fontSize: 10}),
+    Plot.text([{x: 0.52, y: 2.12}], {text: ["Yenilenme (2,10)"], fill: "#888", fontSize: 10}),
+    Plot.line(ppr1_dizi.map((p, i) => ({x: p, y: tdh_dizi[i]})), {x: "x", y: "y", stroke: "#1F3864", strokeWidth: 2.5}),
+    Plot.dot([{x: 0.712, y: tdh_mevcut}], {x: "x", y: "y", r: 7, fill: "#B33A3A", tip: true, title: d => `Mevcut: PPR₁=0,712 → TDH=${tdh_mevcut.toFixed(3)}`}),
+    Plot.dot([{x: ppr1_slider, y: tdh_hesap}], {x: "x", y: "y", r: 7, fill: "#2E7D32", tip: true, title: d => `Secilen: PPR₁=${ppr1_slider.toFixed(3)} → TDH=${tdh_hesap.toFixed(3)}`}),
+    Plot.ruleX([0.70], {stroke: "#9E7A1A", strokeDasharray: "4,4", strokeWidth: 1.5})
+  ]
+})
+```
+
+::: {.callout-note appearance="simple"}
+**Formul:** TDH = TDH₁ × (1 + PPR₁ + PPR₁ × PPR₂ + PPR₁ × PPR₂ × PPR₃). Sabit tutulan 2025 bileşenleri: TDH₁ = 0,608; PPR₂ = 0,507; PPR₃ ≈ 0,700. Kırmızı nokta: Türkiye'nin mevcut konumu (PPR₁ = 0,712 → TDH = 1,419). Yeşil nokta: seçilen PPR₁ değeri. Dikey sarı çizgi: 0,70 kritik eşiği (Kohler).
+:::
+
+---
+
+## 2. Nüfus Piramidi Projeksiyonu (2025 → 2060)
+
+2025'in gerçek TÜİK yaş piramidinden başlayarak, seçilen senaryoya göre nüfus yapısının nasıl dönüştüğünü gösteren interaktif projeksiyon.
+
+```{ojs}
+//| echo: false
+
+viewof secilen_yil = Inputs.range([2025, 2060], {value: 2025, step: 5, label: "Yil"})
+viewof secilen_senaryo = Inputs.radio(["S0 — Mudahalesiz", "S3 — Kapsamli politika"], {value: "S0 — Mudahalesiz", label: "Senaryo"})
+```
+
+```{ojs}
+//| echo: false
+
+yas_gruplari = ["0-4","5-9","10-14","15-19","20-24","25-29","30-34","35-39",
+                 "40-44","45-49","50-54","55-59","60-64","65-69","70-74","75-79","80-84","85+"]
+
+erkek_2025_base = [2.894, 3.667, 3.885, 3.838, 3.724, 3.918, 3.715, 3.675, 3.758, 3.620,
+                    3.192, 2.632, 2.522, 1.893, 1.422, 0.898, 0.468, 0.297]
+kadin_2025_base = [2.747, 3.484, 3.687, 3.642, 3.557, 3.772, 3.620, 3.614, 3.713, 3.575,
+                    3.204, 2.595, 2.620, 2.022, 1.667, 1.195, 0.696, 0.574]
+
+hayatta_kalma = [0.998, 0.999, 0.999, 0.998, 0.997, 0.996, 0.995, 0.993, 0.990, 0.985,
+                  0.978, 0.967, 0.950, 0.925, 0.885, 0.820, 0.720, 0.500]
+
+taban_S0 = {2025: 5.641, 2030: 4.9, 2040: 3.6, 2050: 2.6, 2060: 1.9}
+taban_S3 = {2025: 5.641, 2030: 5.5, 2040: 5.3, 2050: 5.6, 2060: 5.8}
+
+function piramitHesapla(yil, senaryo) {
+  let adim = (yil - 2025) / 5
+  let erkek = [...erkek_2025_base]
+  let kadin = [...kadin_2025_base]
+  for (let s = 0; s < adim; s++) {
+    let ye = new Array(18).fill(0)
+    let yk = new Array(18).fill(0)
+    for (let i = 17; i > 0; i--) { ye[i] = erkek[i-1]*hayatta_kalma[i-1]; yk[i] = kadin[i-1]*hayatta_kalma[i-1] }
+    let yba = 2025 + (s+1)*5
+    let tt = senaryo.startsWith("S0") ? taban_S0 : taban_S3
+    let keys = Object.keys(tt).map(Number).sort((a,b)=>a-b)
+    let lo = keys.filter(y => y <= yba).pop(), hi = keys.filter(y => y >= yba).shift()
+    let td = lo===hi ? tt[lo] : tt[lo]+(tt[hi]-tt[lo])*(yba-lo)/(hi-lo)
+    ye[0] = td*0.512; yk[0] = td*0.488; erkek = ye; kadin = yk
+  }
+  let t = erkek.reduce((a,b)=>a+b,0) + kadin.reduce((a,b)=>a+b,0)
+  return {erkek: erkek.map(v=>v/t*100), kadin: kadin.map(v=>v/t*100)}
+}
+
+piramit_veri = piramitHesapla(secilen_yil, secilen_senaryo)
+taban_pay = (piramit_veri.erkek[0] + piramit_veri.kadin[0]).toFixed(1)
+tepe_pay = (piramit_veri.erkek.slice(13).reduce((a,b)=>a+b,0) + piramit_veri.kadin.slice(13).reduce((a,b)=>a+b,0)).toFixed(1)
+```
+
+```{ojs}
+//| echo: false
+
+html`<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 8px 0;">
+  <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 10px; border-radius: 4px;">
+    <span style="font-size: 0.8em; color: #666;">Taban (0-4 yas) payi:</span>
+    <span style="font-size: 1.3em; font-weight: bold; color: #1F3864;"> %${taban_pay}</span>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 10px; border-radius: 4px;">
+    <span style="font-size: 0.8em; color: #666;">Tepe (65+) payi:</span>
+    <span style="font-size: 1.3em; font-weight: bold; color: #9E7A1A;"> %${tepe_pay}</span>
+  </div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+
+Plot.plot({
+  width: 700, height: 480, marginLeft: 60,
+  x: {label: "Toplam Nufusun Payi (%)", domain: [-5.5, 5.5]},
+  y: {label: null, domain: yas_gruplari, type: "band"},
+  color: {domain: ["Erkek", "Kadin"], range: ["#1F3864", "#9E7A1A"]},
+  marks: [
+    Plot.barX(yas_gruplari.map((yg,i) => ({yas: yg, deger: -piramit_veri.erkek[i], cinsiyet: "Erkek"})),
+      {x: "deger", y: "yas", fill: "cinsiyet", sort: {y: null}}),
+    Plot.barX(yas_gruplari.map((yg,i) => ({yas: yg, deger: piramit_veri.kadin[i], cinsiyet: "Kadin"})),
+      {x: "deger", y: "yas", fill: "cinsiyet", sort: {y: null}}),
+    Plot.ruleX([0])
+  ]
+})
+```
+
+::: {.callout-note appearance="simple"}
+**Yontem:** 2025 gercek TUIK piramidi baslangic noktasi; her 5 yilda bir yas grubu yukari kaydirilir (TUIK hayat tablosuna yakin hayatta kalma oranlariyla), taban (0-4 yas girisi) secilen senaryonun TDH egilimine gore degisir. Tam bir kohort-bilesen modeli degil, momentum analizinin temel mekanigini gorunurlestiren bir gostergedir.
+:::
+
+---
+
+## 3. Kohort Yarilma ve Surdurulebilirlik Hesaplayici
+
+Uc kisit cercevesi: kohort yarilma suresi, yillik kucilme orani ve yasli bagimlilik orani. Turkiye'nin mevcut TDH'si bu kisitlarin neresinde?
+
+```{ojs}
+//| echo: false
+
+viewof tdh_slider = Inputs.range([0.80, 2.50], {value: 1.42, step: 0.01, label: "Toplam Dogurganlik Hizi (TDH)"})
+viewof mu_slider = Inputs.range([26, 32], {value: 29, step: 0.5, label: "Ortalama anne yasi (mu)"})
+```
+
+```{ojs}
+//| echo: false
+
+k_katsayi = 0.478
+nrr_hesap = tdh_slider * k_katsayi
+
+// Kisit I: Kohort yarilma > 100 yil
+kohort_yarilma = nrr_hesap >= 1.0 ? Infinity : (Math.log(2) / (-Math.log(nrr_hesap))) * mu_slider
+kisit1_ok = kohort_yarilma > 100
+
+// Kisit II: Yillik kucilme < %0.5
+yillik_kucilme = nrr_hesap >= 1.0 ? 0 : -(Math.log(nrr_hesap) / mu_slider) * 100
+kisit2_ok = yillik_kucilme < 0.5
+
+// Kisit III: OADR < 0.50 (stabil nufus yaklasimi)
+// OADR lookup tablosu (Sustainability Level belgesinden)
+oadr_tahmin = nrr_hesap >= 1.0 ? 0.35 :
+              tdh_slider >= 2.1 ? 0.35 :
+              tdh_slider >= 1.8 ? 0.45 :
+              tdh_slider >= 1.7 ? 0.49 :
+              tdh_slider >= 1.6 ? 0.53 :
+              tdh_slider >= 1.5 ? 0.58 :
+              tdh_slider >= 1.4 ? 0.63 :
+              tdh_slider >= 1.3 ? 0.68 :
+              tdh_slider >= 1.2 ? 0.74 :
+              tdh_slider >= 1.0 ? 0.85 : 1.00
+kisit3_ok = oadr_tahmin < 0.50
+
+karsilanan = (kisit1_ok ? 1 : 0) + (kisit2_ok ? 1 : 0) + (kisit3_ok ? 1 : 0)
+```
+
+```{ojs}
+//| echo: false
+
+html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
+  <div style="background: ${kisit1_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${kisit1_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Kisit I: Kohort yarilma</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: ${kisit1_ok ? '#2E7D32' : '#B33A3A'};">${kohort_yarilma === Infinity ? '∞' : kohort_yarilma.toFixed(0)} yil</div>
+    <div style="font-size: 0.7em; color: #888;">Esik: >100 yil ${kisit1_ok ? '✓' : '✗'}</div>
+  </div>
+  <div style="background: ${kisit2_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${kisit2_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Kisit II: Yillik kucilme</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: ${kisit2_ok ? '#2E7D32' : '#B33A3A'};">%${yillik_kucilme.toFixed(2)}</div>
+    <div style="font-size: 0.7em; color: #888;">Esik: <%0,50 ${kisit2_ok ? '✓' : '✗'}</div>
+  </div>
+  <div style="background: ${kisit3_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${kisit3_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Kisit III: OADR (65+/15-64)</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: ${kisit3_ok ? '#2E7D32' : '#B33A3A'};">${oadr_tahmin.toFixed(2)}</div>
+    <div style="font-size: 0.7em; color: #888;">Esik: <0,50 ${kisit3_ok ? '✓' : '✗'}</div>
+  </div>
+</div>
+
+<div style="background: ${karsilanan === 3 ? '#e8f5e9' : karsilanan >= 1 ? '#fff3e0' : '#ffebee'}; padding: 14px; border-radius: 6px; text-align: center; margin: 8px 0;">
+  <span style="font-size: 1.1em; font-weight: bold;">
+    NRR = ${nrr_hesap.toFixed(3)} | TDH = ${tdh_slider.toFixed(2)} |
+    ${karsilanan}/3 kisit karsilaniyor |
+    ${karsilanan === 3 ? 'SURDURULEBILIR ✓' : karsilanan >= 1 ? 'KISMI RISK ⚠' : 'SURDURULEMEZ ✗'}
+  </span>
+</div>
+
+<div style="font-size: 0.85em; color: #666; margin-top: 6px;">
+  Surdurulebilirlik bandi: TDH ≥ 1,70 (minimum) | TDH ≥ 1,81 (uc kisit birlikte) | Turkiye mevcut: TDH = 1,42 (bant disinda)
+</div>`
+```
+
+::: {.callout-note appearance="simple"}
+**Formul:** NRR = TDH × k (k = 0,478). Kohort yarilma = ln(2) / (−ln(NRR)) × μ. Yillik kucilme = −ln(NRR) / μ. OADR: stabil nufus modelinden yaklasik (Sustainability Level Fertility, Sezgin 2026).
+:::
+
+---
+
+## 4. Nufus Momentumu (Fren Mesafesi) Olcer
+
+TDH bugun aninda yenilenme duzeyine (2,1) ciksa bile, nufus yas yapisindaki atalet nedeniyle buyumeye devam eder. Ne kadar sure? Ne kadar buyur?
+
+```{ojs}
+//| echo: false
+
+viewof tdh_momentum = Inputs.range([1.40, 2.50], {value: 2.10, step: 0.05, label: "TDH aninda bu degere ciksa:"})
+```
+
+```{ojs}
+//| echo: false
+
+nrr_mom = tdh_momentum * 0.478
+e0 = 78.09
+mu_mom = 29
+nufus_2025 = 86.1  // milyon
+
+// Belgelenmis senaryo projeksiyonlari (milyon, goc haric)
+// Kaynak: Gorulmez Kriz, Sezgin (2026), Tablo 3.2
+proj_S0 = {2025:86.1, 2030:88.0, 2040:89.3, 2050:86.5, 2060:80.7, 2080:63.2, 2105:39.5}  // TDH dusus devam
+proj_S1 = {2025:86.1, 2030:88.0, 2040:90.1, 2050:89.4, 2060:85.2, 2080:71.7, 2105:52.4}  // TDH=1.40 sabit
+proj_S2 = {2025:86.1, 2030:90.2, 2040:96.6, 2050:100.1, 2060:101.1, 2080:101.2, 2105:100.8} // Aninda yenilenme
+proj_S3 = {2025:86.1, 2030:88.0, 2040:91.4, 2050:92.0, 2060:89.1, 2080:79.4, 2105:65.1}  // Politika mudahalesi
+
+// Kullanicinin TDH'sine gore senaryolar arasi interpolasyon
+function interpolateScenario(tdh_val) {
+  // TDH degerine gore en yakin iki senaryo arasinda lineer interpolasyon
+  // S0 ~1.00 (dusus), S1 ~1.40, S3 ~1.70, S2 ~2.10
+  let scenarios = [
+    {tdh: 1.00, proj: proj_S0},
+    {tdh: 1.40, proj: proj_S1},
+    {tdh: 1.70, proj: proj_S3},
+    {tdh: 2.10, proj: proj_S2}
+  ]
+  if (tdh_val <= 1.00) return proj_S0
+  if (tdh_val >= 2.10) return proj_S2
+  
+  let lo = scenarios.filter(s => s.tdh <= tdh_val).pop()
+  let hi = scenarios.filter(s => s.tdh >= tdh_val).shift()
+  if (lo.tdh === hi.tdh) return lo.proj
+  
+  let alpha = (tdh_val - lo.tdh) / (hi.tdh - lo.tdh)
+  let result = {}
+  for (let y of Object.keys(lo.proj)) {
+    result[y] = lo.proj[y] + alpha * (hi.proj[y] - lo.proj[y])
+  }
+  return result
+}
+
+secilen_proj = interpolateScenario(tdh_momentum)
+momentum_orani = nrr_mom >= 1.0 ? 1.180 : 1.0 // belgelenmis M=1.180 (NRR=1 icin)
+
+// Zirve ve stabilizasyon
+proj_vals = Object.values(secilen_proj)
+zirve_nufus = Math.max(...proj_vals)
+zirve_yil_idx = proj_vals.indexOf(zirve_nufus)
+zirve_yil = Object.keys(secilen_proj)[zirve_yil_idx]
+son_deger = secilen_proj[2105] || secilen_proj[2080]
+```
+
+```{ojs}
+//| echo: false
+
+html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
+  <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Zirve nufusu</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: #1F3864;">${zirve_nufus.toFixed(1)}M</div>
+    <div style="font-size: 0.7em; color: #888;">~${zirve_yil} civarinda</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">2060 projeksiyonu</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: #9E7A1A;">${secilen_proj[2060].toFixed(1)}M</div>
+    <div style="font-size: 0.7em; color: #888;">2105: ${secilen_proj[2105].toFixed(1)}M</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #B33A3A; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">S0 karsilastirma (TDH dusus devam)</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: #B33A3A;">${proj_S0[2060].toFixed(1)}M</div>
+    <div style="font-size: 0.7em; color: #888;">2060 (2105: ${proj_S0[2105].toFixed(1)}M)</div>
+  </div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+
+// Projeksiyon grafik verisi
+yillar_proj_keys = [2025, 2030, 2040, 2050, 2060, 2080, 2105]
+
+s0_seri = yillar_proj_keys.map(y => ({yil: y, nufus: proj_S0[y], senaryo: "S0 (dusus devam)"}))
+secilen_seri = yillar_proj_keys.map(y => ({yil: y, nufus: secilen_proj[y], senaryo: `TDH=${tdh_momentum.toFixed(2)}`}))
+s2_seri = yillar_proj_keys.map(y => ({yil: y, nufus: proj_S2[y], senaryo: "S2 (aninda yenilenme)"}))
+
+proj_data = [...s0_seri, ...secilen_seri, ...s2_seri]
+
+Plot.plot({
+  width: 700, height: 380,
+  x: {label: "Yil", tickFormat: d => d.toString()},
+  y: {label: "Nufus (milyon)", domain: [20, 110]},
+  color: {domain: ["S0 (dusus devam)", `TDH=${tdh_momentum.toFixed(2)}`, "S2 (aninda yenilenme)"],
+          range: ["#B33A3A", "#1F3864", "#888888"]},
+  marks: [
+    Plot.line(proj_data, {x: "yil", y: "nufus", stroke: "senaryo", strokeWidth: d => d.senaryo.startsWith("S0") || d.senaryo.startsWith("S2") ? 1.5 : 2.5,
+      strokeDasharray: d => d.senaryo.startsWith("S2") ? "4,4" : null}),
+    Plot.dot(proj_data.filter(d => !d.senaryo.startsWith("S2")),
+      {x: "yil", y: "nufus", fill: "senaryo", r: 4, tip: true,
+       title: d => `${d.senaryo}\n${d.yil}: ${d.nufus.toFixed(1)}M`}),
+    Plot.ruleY([86.1], {stroke: "#888", strokeDasharray: "3,3"})
+  ]
+})
+```
+
+::: {.callout-note appearance="simple"}
+**Referans:** Keyfitz (1971) momentum formulu; dogrulanmis M = 1,180 (NRR=1 senaryosu icin, capraz dogrulanmis). S0: TDH 1,40 sabit, goc haric. Proje belgelerindeki senaryo projeksiyonlari: S0 2060'ta 80,7M, 2105'te 39,5M; S2 (aninda yenilenme) zirve 101,6M (~2070).
+:::
+
+---
+
+## 5. SGK Aktif/Pasif Baski Testi
+
+Calisma cagi nufusu daraldikca ve emekli nufus buyudukce, sosyal guvenlik sisteminin coken dengesi.
+
+```{ojs}
+//| echo: false
+
+viewof tdh_sgk = Inputs.range([0.80, 2.10], {value: 1.42, step: 0.05, label: "TDH senaryosu"})
+viewof emeklilik_yasi = Inputs.range([58, 68], {value: 62, step: 1, label: "Fiili emeklilik yasi"})
+```
+
+```{ojs}
+//| echo: false
+
+// SGK aktif/pasif orani: gercek noktalar
+// 2022: 2.01, 2023: 1.73, 2024: 1.63, 2025: 1.59 (Ocak 2026)
+// Projeksiyon: nufus yaslanmasiyla duser
+// Basit model: aktif nufus ~= 20-emeklilik_yasi, pasif = emeklilik_yasi-olum
+
+sgk_yillar = [2022, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060]
+
+function sgkProj(tdh_val, em_yas) {
+  let nrr = tdh_val * 0.478
+  let r = nrr >= 1.0 ? 0 : Math.log(nrr) / 29
+  
+  // Baz oran 2025: 1.59
+  // Yaslanan nufus + kucilen calisma cagi → oran duser
+  // Emeklilik yasi yuklestikce oran iyilesir (daha az pasif)
+  let baz = 1.59
+  let em_etki = (em_yas - 62) * 0.04 // her yil emeklilik yasi artisi ~ +0.04 oran
+  
+  return sgk_yillar.map(y => {
+    let t = y - 2025
+    // Demografik bozulma: yas yapisi yaslaniyor
+    let dem_bozulma = t * 0.015 * (1 - nrr) // NRR dusukse bozulma hizlanir
+    let oran = Math.max(0.5, baz + em_etki - dem_bozulma)
+    return {yil: y, oran: oran, senaryo: `TDH=${tdh_val.toFixed(2)}, Em.yasi=${em_yas}`}
+  })
+}
+
+sgk_gercek = [{yil: 2022, oran: 2.01}, {yil: 2023, oran: 1.73}, {yil: 2024, oran: 1.63}, {yil: 2025, oran: 1.59}]
+sgk_proj = sgkProj(tdh_sgk, emeklilik_yasi)
+sgk_proj_ref = sgkProj(1.40, 62) // referans S0
+
+// 1.0 esigine varilma yili
+esik_yil = sgk_proj.find(d => d.oran <= 1.0)
+```
+
+```{ojs}
+//| echo: false
+
+html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
+  <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Mevcut oran (2025)</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: #1F3864;">1,591</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Projeksiyon 2060</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: ${sgk_proj[sgk_proj.length-1].oran <= 1.0 ? '#B33A3A' : '#9E7A1A'};">${sgk_proj[sgk_proj.length-1].oran.toFixed(2)}</div>
+  </div>
+  <div style="background: ${esik_yil ? '#ffebee' : '#e8f5e9'}; border-left: 4px solid ${esik_yil ? '#B33A3A' : '#2E7D32'}; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">1,0 esigine varis</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: ${esik_yil ? '#B33A3A' : '#2E7D32'};">${esik_yil ? `~${esik_yil.yil}` : '>2060'}</div>
+  </div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+
+sgk_all = [
+  ...sgk_gercek.map(d => ({...d, senaryo: "Gerceklesen"})),
+  ...sgk_proj.map(d => ({...d, senaryo: "Secilen senaryo"})),
+  ...sgk_proj_ref.map(d => ({...d, senaryo: "S0 referans (TDH=1.40, Em=62)"}))
+]
+
+Plot.plot({
+  width: 700, height: 380,
+  x: {label: "Yil", tickFormat: d => d.toString()},
+  y: {label: "Aktif/Pasif Orani", domain: [0.5, 2.2]},
+  color: {domain: ["Gerceklesen", "Secilen senaryo", "S0 referans (TDH=1.40, Em=62)"], range: ["#1F3864", "#2E7D32", "#B33A3A"]},
+  marks: [
+    Plot.ruleY([1.0], {stroke: "#B33A3A", strokeDasharray: "6,4", strokeWidth: 2}),
+    Plot.text([{x: 2035, y: 1.05}], {text: ["Sistemik cokus esigi (1,0)"], fill: "#B33A3A", fontSize: 10}),
+    Plot.line(sgk_all, {x: "yil", y: "oran", stroke: "senaryo", strokeWidth: 2}),
+    Plot.dot(sgk_all.filter(d => d.senaryo === "Gerceklesen"), {x: "yil", y: "oran", fill: "#1F3864", r: 5, tip: true,
+      title: d => `${d.yil}: ${d.oran.toFixed(2)}`})
+  ]
+})
+```
+
+::: {.callout-warning appearance="simple"}
+**Uyari:** Bu model basitlestirilmis bir demografik-aktuaryal projeksiyondur; gercek SGK dengesini belirleyen kayit disi istihdam orani, prim gun sayisi, asil-tali sigortalik dagilimlari ve emeklilik yas kademesi gibi kurumsal degiskenler dahil edilmemistir. Gosterdigi sey: demografik yapi degismezse, kurumsal parametreleri ne kadar duzeltirseniz duzeltin, aktif/pasif oraninin dusus yonunun degismeyecegidir. SGK gercek aktif/pasif orani: 2022 = 2,01 (zirve); Ocak 2026 = 1,591.
+:::
+
+---
+
+::: {.callout-tip}
+**Planlanan ek modeller:** HWP Ayristirma Simulatoru, Stok-Akis Paradoksu, Bongaarts-Feeney Tempo Hesaplayici, Nesil Uzunlugu Hizlandiricisi, Surdurulebilirlik Duzey Kontrol Paneli ve daha fazlasi bu bolume eklenecektir. Tam liste icin [proje yol haritasina](/about.qmd) bakiniz.
+:::
