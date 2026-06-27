@@ -4,15 +4,11 @@ toc: false
 ---
 
 ::: {.about-header}
-
 ![](images/profile-placeholder.jpg){.rounded}
 
 **Mehmet Emin Sezgin**
 
-Kıdemli Politika Analisti · Aile ve Sosyal Hizmetler Bakanlığı\
-Toplum Çalışmaları Enstitüsü\
-Ankara
-
+1981 doğumlu Sezgin, 2004 yılında Gazi Üniversitesi İktisadi ve İdari Bilimler Fakültesi Kamu Yönetimi Bölümü'nden mezun olmuştur. 2014 yılında ABD'de Florida State University'den Kamu Yönetimi alanında MPA derecesi almıştır. 2006 yılında Başbakanlık Aile ve Sosyal Araştırmalar Genel Müdürlüğü'nde uzman yardımcısı olarak kamu görevine başlamış, Aile ve Sosyal Politikalar Bakanlığının kurulmasının ardından bakanlık bünyesinde uzman olarak görevine devam etmiştir. Halihazırda Aile ve Sosyal Hizmetler Bakanlığında uzman olarak çalışmakta; aile politikaları, nüfus politikaları, sosyal politika ve kamu politikaları alanlarına odaklanmaktadır. Kamu politikalarının tasarımı, uygulanması ve analizi süreçlerine yoğunlaşmaktadır.
 :::
 
 ## Çalışma Alanları
@@ -21,23 +17,13 @@ Yaklaşık 20 yıldır kamu politikası alanında çalışmaktayım. Temel uzman
 
 Mevcut araştırma programım, Türkiye'deki doğurganlık düşüşünü kültürel tercih ya da ideolojik dönüşüm olarak değil, kurumsal kapasite ve risk yönetimi meselesi olarak yeniden tanımlamayı hedeflemektedir. Bu çerçevenin temel tezi şudur: **kriz bir istek eksikliği değil, güvence eksikliğidir.**
 
-## Metodoloji
-
-Çalışmalarımda kullandığım başlıca demografik yöntemler:
-
-- HWP (Horiuchi-Wilmoth-Pletcher) ayrıştırma analizi
-- Parite ilerleme oranları (PPR) analizi
-- Bongaarts-Feeney tempo düzeltmesi
-- Kohort-bileşen nüfus projeksiyonu
-- Kitagawa ayrıştırması
-
 ## Yayın Platformları
 
 - **Bu site** — Araştırmalar, politika notları, veri görselleştirmeleri ve interaktif modeller
-- **[TamgaTürk](https://tamgaturk.com)** — Analiz yazıları
-- **[Medium](https://medium.com)** — Geniş kitleye yönelik yazılar
+- **[TamgaTürk](https://tamgaturk.com)**
+- **[Medium](https://medium.com)**
 - **[toplum.org.tr](https://toplum.org.tr)** — Toplum Çalışmaları Enstitüsü
 
 ## İletişim
 
-📧 mehmet.sezgin@aile.gov.tr
+📧 eminsezgin@gmail.com
