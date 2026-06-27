@@ -264,36 +264,32 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 :::
 
 ---
+## 4. Toplam Nufus Projeksiyon Simulatoru (2025–2225, 200 Yil)
 
-## 4. Nufus Momentumu (Fren Mesafesi) Olcer
-
-TDH bugun aninda yenilenme duzeyine (2,1) ciksa bile, nufus yas yapisindaki atalet nedeniyle buyumeye devam eder. Ne kadar sure? Ne kadar buyur?
+TDH farkli sabit degerlerde tutulsa, 200 yil boyunca Turkiye nufusu nasil bir patika izler? Kisa vadeli momentum ile uzun vadeli kucilme arasindaki fark.
 
 ```{ojs}
 //| echo: false
 
-viewof tdh_momentum = Inputs.range([1.40, 2.50], {value: 2.10, step: 0.05, label: "TDH aninda bu degere ciksa:"})
+viewof tdh_momentum = Inputs.range([1.00, 2.50], {value: 1.42, step: 0.02, label: "TDH (sabit tutulursa):"})
 ```
 
 ```{ojs}
 //| echo: false
 
 nrr_mom = tdh_momentum * 0.478
-e0 = 78.09
 mu_mom = 29
 nufus_2025 = 86.1  // milyon
 
-// Belgelenmis senaryo projeksiyonlari (milyon, goc haric)
-// Kaynak: Gorulmez Kriz, Sezgin (2026), Tablo 3.2
-proj_S0 = ({2025:86.1, 2030:88.0, 2040:89.3, 2050:86.5, 2060:80.7, 2080:63.2, 2105:39.5})  // TDH dusus devam
-proj_S1 = ({2025:86.1, 2030:88.0, 2040:90.1, 2050:89.4, 2060:85.2, 2080:71.7, 2105:52.4})  // TDH=1.40 sabit
-proj_S2 = ({2025:86.1, 2030:90.2, 2040:96.6, 2050:100.1, 2060:101.1, 2080:101.2, 2105:100.8}) // Aninda yenilenme
-proj_S3 = ({2025:86.1, 2030:88.0, 2040:91.4, 2050:92.0, 2060:89.1, 2080:79.4, 2105:65.1})  // Politika mudahalesi
+// Belgelenmis senaryo projeksiyonlari (milyon, goc haric), 2025-2105 gercek/dogrulanmis,
+// 2105 sonrasi 2080-2105 araligindaki ortalama buyume hizinin (r) uzatilmasiyla 2225'e tasinmistir.
+// Kaynak: Gorulmez Kriz, Sezgin (2026), Tablo 3.2 (2025-2105); yazar uzantisi (2125-2225).
+proj_S0 = ({2025:86.1, 2030:88.0, 2040:89.3, 2050:86.5, 2060:80.7, 2080:63.2, 2105:39.5, 2125:27.1, 2150:17.0, 2175:10.6, 2200:6.6, 2225:4.1})
+proj_S1 = ({2025:86.1, 2030:88.0, 2040:90.1, 2050:89.4, 2060:85.2, 2080:71.7, 2105:52.4, 2125:40.8, 2150:29.8, 2175:21.8, 2200:15.9, 2225:11.6})
+proj_S2 = ({2025:86.1, 2030:90.2, 2040:96.6, 2050:100.1, 2060:101.1, 2080:101.2, 2105:100.8, 2125:100.5, 2150:100.1, 2175:99.7, 2200:99.3, 2225:98.9})
+proj_S3 = ({2025:86.1, 2030:88.0, 2040:91.4, 2050:92.0, 2060:89.1, 2080:79.4, 2105:65.1, 2125:55.5, 2150:45.5, 2175:37.3, 2200:30.6, 2225:25.1})
 
-// Kullanicinin TDH'sine gore senaryolar arasi interpolasyon
 function interpolateScenario(tdh_val) {
-  // TDH degerine gore en yakin iki senaryo arasinda lineer interpolasyon
-  // S0 ~1.00 (dusus), S1 ~1.40, S3 ~1.70, S2 ~2.10
   let scenarios = [
     {tdh: 1.00, proj: proj_S0},
     {tdh: 1.40, proj: proj_S1},
@@ -302,11 +298,9 @@ function interpolateScenario(tdh_val) {
   ]
   if (tdh_val <= 1.00) return proj_S0
   if (tdh_val >= 2.10) return proj_S2
-  
   let lo = scenarios.filter(s => s.tdh <= tdh_val).pop()
   let hi = scenarios.filter(s => s.tdh >= tdh_val).shift()
   if (lo.tdh === hi.tdh) return lo.proj
-  
   let alpha = (tdh_val - lo.tdh) / (hi.tdh - lo.tdh)
   let result = {}
   for (let y of Object.keys(lo.proj)) {
@@ -316,20 +310,16 @@ function interpolateScenario(tdh_val) {
 }
 
 secilen_proj = interpolateScenario(tdh_momentum)
-momentum_orani = nrr_mom >= 1.0 ? 1.180 : 1.0 // belgelenmis M=1.180 (NRR=1 icin)
-
-// Zirve ve stabilizasyon
 proj_vals = Object.values(secilen_proj)
 zirve_nufus = Math.max(...proj_vals)
 zirve_yil_idx = proj_vals.indexOf(zirve_nufus)
 zirve_yil = Object.keys(secilen_proj)[zirve_yil_idx]
-son_deger = secilen_proj[2105] || secilen_proj[2080]
 ```
 
 ```{ojs}
 //| echo: false
 
-html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
+html`<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0;">
   <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
     <div style="font-size: 0.75em; color: #666;">Zirve nufusu</div>
     <div style="font-size: 1.5em; font-weight: bold; color: #1F3864;">${zirve_nufus.toFixed(1)}M</div>
@@ -338,12 +328,14 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
   <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
     <div style="font-size: 0.75em; color: #666;">2060 projeksiyonu</div>
     <div style="font-size: 1.5em; font-weight: bold; color: #9E7A1A;">${secilen_proj[2060].toFixed(1)}M</div>
-    <div style="font-size: 0.7em; color: #888;">2105: ${secilen_proj[2105].toFixed(1)}M</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #888; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">2125 projeksiyonu (100 yil)</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: #888;">${secilen_proj[2125].toFixed(1)}M</div>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #B33A3A; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">S0 karsilastirma (TDH dusus devam)</div>
-    <div style="font-size: 1.5em; font-weight: bold; color: #B33A3A;">${proj_S0[2060].toFixed(1)}M</div>
-    <div style="font-size: 0.7em; color: #888;">2060 (2105: ${proj_S0[2105].toFixed(1)}M)</div>
+    <div style="font-size: 0.75em; color: #666;">2225 projeksiyonu (200 yil)</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: #B33A3A;">${secilen_proj[2225].toFixed(1)}M</div>
   </div>
 </div>`
 ```
@@ -351,39 +343,139 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 ```{ojs}
 //| echo: false
 
-// Projeksiyon grafik verisi
-yillar_proj_keys = [2025, 2030, 2040, 2050, 2060, 2080, 2105]
+yillar_200 = [2025, 2030, 2040, 2050, 2060, 2080, 2105, 2125, 2150, 2175, 2200, 2225]
 
-s0_seri = yillar_proj_keys.map(y => ({yil: y, nufus: proj_S0[y], senaryo: "S0 (dusus devam)"}))
-secilen_seri = yillar_proj_keys.map(y => ({yil: y, nufus: secilen_proj[y], senaryo: `TDH=${tdh_momentum.toFixed(2)}`}))
-s2_seri = yillar_proj_keys.map(y => ({yil: y, nufus: proj_S2[y], senaryo: "S2 (aninda yenilenme)"}))
+s0_200 = yillar_200.map(y => ({yil: y, nufus: proj_S0[y], senaryo: "S0 (dusus devam)"}))
+s2_200 = yillar_200.map(y => ({yil: y, nufus: proj_S2[y], senaryo: "S2 (aninda yenilenme)"}))
+secilen_200 = yillar_200.map(y => ({yil: y, nufus: secilen_proj[y], senaryo: `Secilen (TDH=${tdh_momentum.toFixed(2)})`}))
 
-proj_data = [...s0_seri, ...secilen_seri, ...s2_seri]
+proj_data_200 = [...s0_200, ...secilen_200, ...s2_200]
 
 Plot.plot({
-  width: 700, height: 380,
-  x: {label: "Yil", tickFormat: d => d.toString()},
-  y: {label: "Nufus (milyon)", domain: [20, 110]},
-  color: {domain: ["S0 (dusus devam)", `TDH=${tdh_momentum.toFixed(2)}`, "S2 (aninda yenilenme)"],
+  width: 700, height: 400,
+  x: {label: "Yil", domain: [2025, 2225]},
+  y: {label: "Nufus (milyon)", domain: [0, 110]},
+  color: {domain: ["S0 (dusus devam)", `Secilen (TDH=${tdh_momentum.toFixed(2)})`, "S2 (aninda yenilenme)"],
           range: ["#B33A3A", "#1F3864", "#888888"]},
   marks: [
-    Plot.line(proj_data, {x: "yil", y: "nufus", stroke: "senaryo", strokeWidth: d => d.senaryo.startsWith("S0") || d.senaryo.startsWith("S2") ? 1.5 : 2.5,
+    Plot.ruleX([2105], {stroke: "#ccc", strokeDasharray: "2,2"}),
+    Plot.text([{x: 2105, y: 105}], {text: ["80 yil"], fill: "#aaa", fontSize: 9}),
+    Plot.ruleX([2225], {stroke: "#ccc", strokeDasharray: "2,2"}),
+    Plot.text([{x: 2200, y: 105}], {text: ["200 yil"], fill: "#aaa", fontSize: 9}),
+    Plot.line(proj_data_200, {x: "yil", y: "nufus", stroke: "senaryo",
+      strokeWidth: d => d.senaryo.startsWith("Secilen") ? 2.5 : 1.5,
       strokeDasharray: d => d.senaryo.startsWith("S2") ? "4,4" : null}),
-    Plot.dot(proj_data.filter(d => !d.senaryo.startsWith("S2")),
-      {x: "yil", y: "nufus", fill: "senaryo", r: 4, tip: true,
-       title: d => `${d.senaryo}\n${d.yil}: ${d.nufus.toFixed(1)}M`}),
-    Plot.ruleY([86.1], {stroke: "#888", strokeDasharray: "3,3"})
+    Plot.dot(proj_data_200.filter(d => d.senaryo.startsWith("Secilen")),
+      {x: "yil", y: "nufus", fill: "#1F3864", r: 4, tip: true,
+       title: d => `${d.yil}: ${d.nufus.toFixed(1)}M`})
   ]
 })
 ```
 
 ::: {.callout-note appearance="simple"}
-**Referans:** Keyfitz (1971) momentum formulu; dogrulanmis M = 1,180 (NRR=1 senaryosu icin, capraz dogrulanmis). S0: TDH 1,40 sabit, goc haric. Proje belgelerindeki senaryo projeksiyonlari: S0 2060'ta 80,7M, 2105'te 39,5M; S2 (aninda yenilenme) zirve 101,6M (~2070).
+**Yontem:** 2025–2105 degerleri belgelenmis S0/S1/S2/S3 senaryo projeksiyonlarindan (kohort-bilesen modeli, goc haric); kullanicinin sectigi TDH'ye gore bu dort sabit nokta arasinda lineer interpolasyon yapilir. 2105 sonrasi (2125–2225), 2080–2105 araligindaki ortalama buyume/kucilme hizinin sabit tutularak ileri tasinmasidir — **bu kisim dogrulanmis bir kohort-bilesen ciktisi degil, basitlestirilmis bir uzantidir** ve yalnizca buyuklugun mertebesini gostermek icindir. NRR=1 (TDH≈2,10) senaryosunda nufus ~100M civarinda stabilize olur (Keyfitz momentum, M=1,180); altindaki her TDH degeri suresiz kucilmeye gider.
 :::
 
 ---
 
-## 5. SGK Aktif/Pasif Baski Testi
+## 5. Goc Senaryosu Simulatoru
+
+Doğurganlık açığı net göçle kapatılabilir mi? Göçmen TDH'sinin (2,1) doğurganlık çarpanıyla birlikte hesaplanan kohort-bileşen modeli.
+
+```{ojs}
+//| echo: false
+
+viewof goc_slider = Inputs.range([0, 500], {value: 0, step: 10, label: "Yillik net goc (bin kisi)"})
+```
+
+```{ojs}
+//| echo: false
+
+// Devamlilik notundaki dogrulanmis senaryo noktalari (goçmen TDH=2.1 ile kohort-bilesen model)
+// Kaynak: Goc Projeksiyonu Devamlilik Notu, 19 Haziran 2026
+goc_senaryolari = ([
+  {goc: 0,   nufus2100: 53,  azalma: 13.2, kumulatif: 0,  oadr: 59},
+  {goc: 100, nufus2100: 69,  azalma: 8.8,  kumulatif: 8,  oadr: 51},
+  {goc: 250, nufus2100: 89,  azalma: 4.4,  kumulatif: 19, oadr: 44},
+  {goc: 300, nufus2100: 96,  azalma: 3.4,  kumulatif: 23, oadr: 43},
+  {goc: 500, nufus2100: 123, azalma: 0.2,  kumulatif: 38, oadr: 39}
+])
+
+function gocInterpolate(g) {
+  let pts = goc_senaryolari
+  if (g <= 0) return pts[0]
+  if (g >= 500) return pts[pts.length-1]
+  let lo = pts.filter(p => p.goc <= g).pop()
+  let hi = pts.filter(p => p.goc >= g).shift()
+  if (lo.goc === hi.goc) return lo
+  let alpha = (g - lo.goc) / (hi.goc - lo.goc)
+  return {
+    goc: g,
+    nufus2100: lo.nufus2100 + alpha*(hi.nufus2100-lo.nufus2100),
+    azalma: lo.azalma + alpha*(hi.azalma-lo.azalma),
+    kumulatif: lo.kumulatif + alpha*(hi.kumulatif-lo.kumulatif),
+    oadr: lo.oadr + alpha*(hi.oadr-lo.oadr)
+  }
+}
+
+goc_secilen = gocInterpolate(goc_slider)
+azalma_ok = goc_secilen.azalma < 5.0   // Kisit II esigi (binde 5)
+oadr_ok = goc_secilen.oadr < 30        // Kisit III esigi (Sezgin cercevesi, <%30)
+```
+
+```{ojs}
+//| echo: false
+
+html`<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0;">
+  <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">2100 nufusu</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: #1F3864;">${goc_secilen.nufus2100.toFixed(0)}M</div>
+  </div>
+  <div style="background: ${azalma_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${azalma_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Yillik azalma (Kisit II)</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: ${azalma_ok ? '#2E7D32' : '#B33A3A'};">‰${goc_secilen.azalma.toFixed(1)}</div>
+    <div style="font-size: 0.7em; color: #888;">Esik: <‰5,0 ${azalma_ok ? '✓' : '✗'}</div>
+  </div>
+  <div style="background: ${oadr_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${oadr_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">2100 OADR (Kisit III)</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: ${oadr_ok ? '#2E7D32' : '#B33A3A'};">%${goc_secilen.oadr.toFixed(0)}</div>
+    <div style="font-size: 0.7em; color: #888;">Esik: <%30 ${oadr_ok ? '✓' : '✗'}</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Kumulatif goc (75 yil)</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: #9E7A1A;">${goc_secilen.kumulatif.toFixed(0)}M</div>
+  </div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+
+Plot.plot({
+  width: 700, height: 380,
+  x: {label: "Yillik net goc (bin kisi)", domain: [0, 500]},
+  y: {label: "2100 Nufusu (milyon)", domain: [40, 130]},
+  marks: [
+    Plot.line(goc_senaryolari, {x: "goc", y: "nufus2100", stroke: "#1F3864", strokeWidth: 2.5}),
+    Plot.dot(goc_senaryolari, {x: "goc", y: "nufus2100", fill: "#1F3864", r: 5, tip: true,
+      title: d => `${d.goc}K/yil → ${d.nufus2100}M (2100), OADR %${d.oadr}`}),
+    Plot.dot([{x: goc_slider, y: goc_secilen.nufus2100}], {x: "x", y: "y", r: 7, fill: "#2E7D32"}),
+    Plot.ruleX([250], {stroke: "#9E7A1A", strokeDasharray: "4,4"}),
+    Plot.text([{x: 260, y: 125}], {text: ["Kisit II esigi (~250K/yil)"], fill: "#9E7A1A", fontSize: 10})
+  ]
+})
+```
+
+::: {.callout-warning appearance="simple"}
+**Kritik sinir:** Göç, yalnizca nüfus düşüş hizi kisitini (Kisit II, <binde 5) karşılayabilir — 250 bin/yil net göç ile bu eşik karşılanır. Ancak **OADR kisiti (Kisit III, <%30) hiçbir göç senaryosunda karşılanmaz**: 500 bin/yil ile bile 2100 OADR'si %39'da kalir. Göç, doğurganlık davranışının kendisini (NRR) değiştirmez; yaş yapısını iyileştirir ama yeterli ölçekte değil. Göçmen TDH=2,1 varsayımıyla kohort-bileşen modeli kullanılmıştır (basit `g=r+m` formülü reddedilmiştir — bkz. yöntem notu).
+
+*Kaynak: Göç Projeksiyonu Devamlılık Notu, 19 Haziran 2026 — doğrulanmış senaryo tablosu.*
+:::
+
+---
+
+
+## 6. SGK Aktif/Pasif Baski Testi
 
 Calisma cagi nufusu daraldikca ve emekli nufus buyudukce, sosyal guvenlik sisteminin coken dengesi.
 
