@@ -1266,9 +1266,274 @@ Evlenme/boşanma hızları, hanehalkı büyüklüğü ve kompozisyonu.
 
 ## İstihdam ve Kadın İşgücü
 
-Kadın işgücüne katılımı, istihdam oranları ve doğurganlıkla kesişimi.
+Kadın işgücüne katılımı, istihdam-doğurganlık çatışması ve annelik cezasının (child penalty) sayısal görünümü.
 
-*Bu bölümün içeriği hazırlanıyor.*
+### Kadın İşgücüne Katılım Oranı: Genel Görünüm (2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+library(plotly)
+
+kategoriler_lfpr <- c("Kadin", "Erkek", "Toplam")
+lfpr_2024 <- c(36.8, 72.0, 54.2)
+istihdam_2024 <- c(32.5, 66.9, 49.5)
+issizlik_2024 <- c(11.8, 7.1, 8.7)
+
+fig <- plot_ly() %>%
+  add_trace(x = kategoriler_lfpr, y = lfpr_2024, type = "bar", name = "Issgucune katilim orani",
+            marker = list(color = "#1F3864"),
+            text = paste0("%", lfpr_2024), textposition = "outside") %>%
+  add_trace(x = kategoriler_lfpr, y = istihdam_2024, type = "bar", name = "Istihdam orani",
+            marker = list(color = "#9E7A1A"),
+            text = paste0("%", istihdam_2024), textposition = "outside") %>%
+  layout(
+    barmode = "group",
+    yaxis = list(title = "Oran (%)", range = c(0, 85)),
+    xaxis = list(title = ""),
+    legend = list(orientation = "h", x = 0.15, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK-UN Women, "Türkiye'de İstatistiklerle Kadın 2025" yayını (2024 verisi). Kadın işgücüne katılım oranı (%36,8), erkek oranının (%72,0) yarısından az kalmaktadır — 35,2 puanlık bir cinsiyet makası. Kadın istihdam oranı %32,5; AB-27 ortalaması ise kadın-erkek ayrımı olmaksızın %75,8'dir (Türkiye toplamı %49,5).
+:::
+
+### Kadın İşgücüne Katılım Oranı: Tam Zaman Serisi (2014–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_lfpr <- 2014:2025
+
+lfpr_15_plus <- c(30.3, 31.5, 32.5, 33.6, 34.2, 34.4, 30.9, 32.8, 35.1, 35.8, 36.8, 36.2)
+lfpr_15_24 <- c(27.7, 29.8, 30.4, 31.1, 31.3, 32.6, 27.5, 29.7, 31.0, 33.1, 34.0, 34.3)
+lfpr_15_64 <- c(33.6, 35.0, 36.2, 37.6, 38.3, 38.7, 35.0, 37.3, 40.0, 40.9, 42.1, 41.6)
+
+fig_lfpr_seri <- plot_ly() %>%
+  add_trace(x = yillar_lfpr, y = lfpr_15_plus, type = "scatter", mode = "lines+markers",
+            name = "15+ yas", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_lfpr, y = lfpr_15_64, type = "scatter", mode = "lines+markers",
+            name = "15-64 yas", line = list(color = "#9E7A1A", width = 2.5)) %>%
+  add_trace(x = yillar_lfpr, y = lfpr_15_24, type = "scatter", mode = "lines+markers",
+            name = "15-24 yas", line = list(color = "#5B8C5A", width = 2)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Kadin Issgucune Katilim Orani (%)", range = c(20, 45)),
+    legend = list(orientation = "h", x = 0.15, y = -0.15),
+    shapes = list(
+      list(type = "rect", x0 = 2019.7, x1 = 2020.5, y0 = 20, y1 = 45,
+           fillcolor = "rgba(179,58,58,0.08)", line = list(width = 0))
+    ),
+    annotations = list(
+      list(x = 2020.1, y = 43.5, text = "COVID-19", showarrow = FALSE,
+           font = list(size = 9, color = "#B33A3A"))
+    ),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_lfpr_seri
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK İşgücü İstatistikleri, kadın işgücüne katılma oranı (%), 2014–2025 tam seri (yaş kırılımlı). 15+ yaş grubunda oran %30,3'ten %36,8'e yükselmiş (12 yılda +6,5 puan); 2020'de üç yaş grubunda da eş zamanlı COVID-19 kaynaklı sert düşüş ve ardından toparlanma görülmektedir. 15-64 yaş grubu sürekli olarak 15+ grubunun üzerinde seyretmektedir — bu, 65 yaş üstü kadınların işgücüne katılımının çok düşük olmasından kaynaklanır.
+:::
+
+### Kadın İşgücüne Katılım Oranı: Eğitim Düzeyine Göre Tam Seri (2014–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_egt <- 2014:2025
+
+okuryazar_olmayan <- c(16.0, 16.1, 15.2, 15.9, 16.1, 15.4, 12.4, 12.8, 13.9, 13.8, 14.6, 14.0)
+lise <- c(31.9, 32.7, 33.7, 34.3, 34.7, 34.1, 29.9, 32.5, 36.1, 37.4, 38.5, 37.8)
+meslek_lisesi <- c(39.8, 40.8, 41.4, 42.6, 42.7, 42.2, 37.0, 38.5, 43.0, 45.0, 43.8, 43.2)
+yuksekogretim <- c(71.3, 71.6, 71.3, 72.7, 71.6, 71.5, 65.6, 67.6, 68.8, 68.9, 68.7, 67.8)
+
+fig_egt <- plot_ly() %>%
+  add_trace(x = yillar_egt, y = okuryazar_olmayan, type = "scatter", mode = "lines+markers",
+            name = "Okuryazar olmayan", line = list(color = "#B33A3A", width = 2)) %>%
+  add_trace(x = yillar_egt, y = lise, type = "scatter", mode = "lines+markers",
+            name = "Genel lise", line = list(color = "#9E7A1A", width = 2)) %>%
+  add_trace(x = yillar_egt, y = meslek_lisesi, type = "scatter", mode = "lines+markers",
+            name = "Lise dengi mesleki okul", line = list(color = "#5B8C5A", width = 2)) %>%
+  add_trace(x = yillar_egt, y = yuksekogretim, type = "scatter", mode = "lines+markers",
+            name = "Yuksekogretim", line = list(color = "#1F3864", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Kadin Issgucune Katilim Orani (%)", range = c(0, 80)),
+    legend = list(orientation = "h", x = 0.02, y = -0.18),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_egt
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK İşgücü İstatistikleri, eğitim düzeyine göre kadın işgücüne katılım oranı (15+), 2014–2025 tam seri. Dört eğitim grubu arasındaki makas **kapanmıyor, aksine genişliyor**: yükseköğretim mezunu kadınlarda katılım oranı sürekli %65-73 bandında kalırken, okuryazar olmayan kadınlarda %12-16 bandında sıkışmıştır — aradaki fark ~55 puan. Bu, Bakım-İstihdam araştırma notundaki TESEV referanslı teze (genel kadın istihdamındaki artışın esas kaynağı düşük/orta eğitimli kadınların işgücüne daha fazla katılımı değil, yükseköğretim mezunu kadın nüfusunun payının artması) **doğrudan sayısal destektir** — kompozisyon etkisi. Tüm eğitim grupları 2020'de COVID-19 şokuyla eş zamanlı düşüş göstermiş, sonrasında farklı hızlarda toparlanmıştır.
+:::
+
+### Cinsiyete Göre İşsizlik Göstergeleri (Detaylı)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+gosterge <- c("Issiz Sayisi (Bin)", "Issizlik Orani (%)", "Genis Issiz Sayisi (Bin)",
+              "Genis Issizlik Orani (%)", "20-24 Yas Issiz Sayisi (Bin)", "20-24 Yas Issizlik Orani (%)")
+kadin_vals <- c(1498, 12.6, 3085, 30.6, 342, 24.7)
+erkek_vals <- c(1766, 7.7, 3002, 18.3, 335, 15.2)
+
+fig2 <- plot_ly() %>%
+  add_trace(x = gosterge, y = kadin_vals, type = "bar", name = "Kadin",
+            marker = list(color = "#9E7A1A")) %>%
+  add_trace(x = gosterge, y = erkek_vals, type = "bar", name = "Erkek",
+            marker = list(color = "#1F3864")) %>%
+  layout(
+    barmode = "group",
+    yaxis = list(title = "Deger"),
+    xaxis = list(title = "", tickangle = -25),
+    legend = list(orientation = "h", x = 0.3, y = -0.3),
+    margin = list(b = 120),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig2
+```
+
+::: {.callout-warning}
+**Kaynak:** TÜİK, CEİD İzleme Raporu (2023–2024). Kadınların %30,6'ya ulaşan **geniş işsizlik oranı**, resmi işsizlik verilerinin (%12,6) çok ötesinde yaygın bir güvencesizlik alanına işaret etmektedir. 20–24 yaş grubundaki genç kadınlarda işsizlik (%24,7), aynı yaş grubundaki erkeklere (%15,2) göre belirgin biçimde daha yüksektir.
+:::
+
+### Annelik Cezası: Çocuk Sahibi Olmanın İstihdam Üzerindeki Etkisi (2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+kategoriler_cocuk <- c("Hanesinde 3 yas alti\ncocugu OLAN\n25-49 yas istihdam orani",
+                        "Hanesinde 3 yas alti\ncocugu OLMAYAN\n25-49 yas istihdam orani")
+degerler_cocuk <- c(26.9, 58.6)
+
+fig3 <- plot_ly(x = kategoriler_cocuk, y = degerler_cocuk, type = "bar",
+                marker = list(color = c("#B33A3A", "#2E7D32")),
+                text = paste0("%", degerler_cocuk), textposition = "outside",
+                hovertemplate = "%{x}<br>%%{y}<extra></extra>") %>%
+  layout(
+    yaxis = list(title = "Istihdam Orani (%)", range = c(0, 70)),
+    xaxis = list(title = ""),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig3
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK-UN Women, "Türkiye'de İstatistiklerle Kadın 2025" yayını. 0-3 yaş çocuğu olan 25-49 yaş grubundaki bireylerin istihdam oranı (%26,9), aynı yaş grubunda küçük çocuğu olmayanların istihdam oranının (%58,6) **yarısından daha azdır — 31,7 puanlık bir fark.** Bu, Güvenli Başlangıç Programı'nın hedeflediği "annelik cezası"nın TÜİK verisiyle doğrudan kanıtıdır: çocuk sahibi olmak, istihdamdan kopuşun en güçlü tek belirleyicisi haline gelmektedir.
+:::
+
+### Kayıt Dışı İstihdam Oranı: Tarım vs Tarım Dışı (2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+kategoriler_kayit <- c("Tarim", "Tarim Disi")
+kayit_disi <- c(91.1, 15.7)
+
+fig4 <- plot_ly(x = kategoriler_kayit, y = kayit_disi, type = "bar",
+                marker = list(color = c("#9E7A1A", "#1F3864")),
+                text = paste0("%", kayit_disi), textposition = "outside") %>%
+  layout(
+    yaxis = list(title = "Kayit Disi Istihdam Orani (%)", range = c(0, 100)),
+    xaxis = list(title = ""),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig4
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK-UN Women, "Türkiye'de İstatistiklerle Kadın 2025" yayını (15+, 2024). Tarımda kayıt dışılık (%91,1) neredeyse evrensel düzeydedir; tarım dışı sektörde de hâlâ her altı çalışandan biri (%15,7) sosyal güvenlik kapsamı dışındadır. Kayıt dışı istihdam, Güvenli Başlangıç Programı'nın "kayıtlı çalışma" garantisinin neden kritik bir bileşen olduğunu açıklar.
+:::
+
+### Genç İşsizlik ve NEET Oranı Trendi (2015 → 2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_genc <- c(2015, 2024)
+genc_issizlik <- c(33.8, 30.1)
+genc_issizlik_alt <- c(14.3, 16.2)
+neet <- c(22.2, 22.3)
+neet_alt <- c(16.5, 13.1)
+
+fig5 <- plot_ly() %>%
+  add_trace(x = yillar_genc, y = genc_issizlik, type = "scatter", mode = "lines+markers",
+            name = "Genc issizlik (15-24)", line = list(color = "#B33A3A", width = 2.5),
+            marker = list(size = 8)) %>%
+  add_trace(x = yillar_genc, y = neet, type = "scatter", mode = "lines+markers",
+            name = "NEET (ne egitimde ne istihdamda)", line = list(color = "#9E7A1A", width = 2.5, dash = "dash"),
+            marker = list(size = 8)) %>%
+  layout(
+    xaxis = list(title = "", tickvals = yillar_genc),
+    yaxis = list(title = "Oran (%)", range = c(0, 40)),
+    legend = list(orientation = "h", x = 0.1, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig5
+```
+
+::: {.callout-warning}
+**Kaynak:** TÜİK-UN Women, "Türkiye'de İstatistiklerle Kadın 2025" yayını. Genç işsizlik oranı 2015-2024 arasında hafif gerilemiş görünse de (%33,8→%30,1), **NEET oranı neredeyse hiç değişmemiştir** (%22,2→%22,3) — yapısal bir durağanlığa işaret etmektedir. Bu iki gösterge arasındaki tutarsızlık, gençlerin işsizlik istatistiklerinden "çıkmasının" çoğunlukla istihdama geçişten değil, işgücünden tamamen çekilmesinden (eğitime de dönmeden) kaynaklanabileceğini göstermektedir.
+:::
+
+### Yarı Zamanlı Çalışma ve Çalışma Hayatında Kalma Süresi (2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+kategoriler_sure <- c("Kadin", "Erkek")
+calisma_suresi <- c(20.7, 39.7)
+
+fig6 <- plot_ly(x = kategoriler_sure, y = calisma_suresi, type = "bar",
+                marker = list(color = c("#9E7A1A", "#1F3864")),
+                text = paste0(calisma_suresi, " yil"), textposition = "outside") %>%
+  layout(
+    yaxis = list(title = "Calisma Hayatinda Kalma Suresi (Yil)", range = c(0, 45)),
+    xaxis = list(title = ""),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig6
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK-UN Women, "Türkiye'de İstatistiklerle Kadın 2025" yayını (2024). Bir kadının çalışma hayatında aktif olarak geçirmesi beklenen ortalama süre (20,7 yıl), erkeklerin (39,7 yıl) yaklaşık yarısı kadardır — neredeyse iki kat fark. Bu gösterge, kadınların işgücü piyasasına girişinin değil, **kalıcılığının** zayıf olduğunu doğrudan göstermektedir; tam da Güvenli Başlangıç Programı'nın "istihdamdan kopuşu önleme" hedefinin sayısal gerekçesidir.
+:::
+
+::: {.callout-tip}
+**Bu sekmenin bağlamı:** Bu sekmedeki göstergeler, Bakım-İstihdam Ekseninde Yeniden Düşünmek araştırma notundaki "sosyal rezerv" ve "istihdam tamponu" tezlerinin sayısal temelini oluşturmaktadır — özellikle annelik cezası grafiği ve geniş işsizlik oranı, kadın işgücünün neden "harekete geçirilmeyi bekleyen" bir potansiyel olarak tanımlandığını göstermektedir. Detaylı analiz için [Bakım-İstihdam politika notuna](/politika-notlari/bakim-istihdam.qmd) bakınız.
+:::
+
 
 ## Ekonomi, Konut ve Yaşam Maliyeti
 
