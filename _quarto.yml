@@ -1,13 +1,12 @@
 project:
   type: website
   output-dir: _site
-
 website:
   title: "Mehmet Emin Sezgin"
   description: "Demografi, sosyal politika ve aile politikaları üzerine araştırma ve analizler"
   site-url: https://eminsezgin.org
   favicon: images/favicon.png
-
+  google-analytics: "G-LQ57XTTKXG"
   navbar:
     background: "#1F3864"
     foreground: "#FFFFFF"
@@ -32,7 +31,6 @@ website:
         href: https://github.com/eminsezgin
       - icon: rss
         href: yazilar/index.xml
-
   page-footer:
     background: "#1F3864"
     foreground: "#C0C0C0"
@@ -41,11 +39,9 @@ website:
     right:
       - icon: envelope
         href: mailto:mehmet.sezgin@aile.gov.tr
-
   search:
     location: navbar
     type: overlay
-
 format:
   html:
     theme:
