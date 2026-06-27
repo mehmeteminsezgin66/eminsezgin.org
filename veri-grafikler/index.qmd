@@ -576,6 +576,85 @@ ggplotly(p_kdh, tooltip = "text") %>%
 **Kaynak:** TÜİK, İllere Göre Kaba Doğum Hızı 2025. Şanlıurfa'nın kaba doğum hızı (23,9‰) Zonguldak'ın (6,6‰) yaklaşık 3,6 katıdır. Kaba doğum hızı nüfus yapısından (genç nüfus oranı) da etkilendiği için TDH'ye göre bölgesel farkları daha da büyük göstermektedir.
 :::
 
+### Annenin Yaş Grubuna Göre Doğumlar: Genç Anne Grupları (2012–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+library(plotly)
+
+yillar_genc_anne <- 2012:2025
+
+altı15 <- c(568, 449, 436, 321, 309, 295, 251, 218, 146, 128, 164, 150, 123, 116)
+on5_17 <- c(24098, 21967, 20682, 18841, 17099, 15282, 12157, 10127, 8335, 7258, 7190, 6651, 5991, 5240)
+on8_19 <- c(70299, 67847, 65860, 61559, 59244, 55058, 48920, 44026, 38113, 32491, 30281, 27119, 25195, 23249)
+
+fig_genc <- plot_ly() %>%
+  add_trace(x = yillar_genc_anne, y = on8_19, type = "scatter", mode = "lines+markers",
+            name = "18-19 yas", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_genc_anne, y = on5_17, type = "scatter", mode = "lines+markers",
+            name = "15-17 yas", line = list(color = "#9E7A1A", width = 2.5)) %>%
+  add_trace(x = yillar_genc_anne, y = altı15, type = "scatter", mode = "lines+markers",
+            name = "<15 yas", line = list(color = "#B33A3A", width = 2)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Dogum Sayisi", type = "log"),
+    legend = list(orientation = "h", x = 0.15, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_genc
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Annenin Yaş Grubu ve Doğum Sırasına Göre Doğumlar (yazar hesaplaması, 2012–2025 tam seri, ara değer yok). Genç anne gruplarındaki doğum sayısı tüm kategorilerde sert biçimde düşmüştür: 18-19 yaş grubu 70.299'dan (2012) 23.249'a (2025) — **%66,9 azalma**; 15-17 yaş grubu 24.098'den 5.240'a — **%78,3 azalma**; 15 yaş altı doğumlar 568'den 116'ya — **%79,6 azalma**. Y ekseni logaritmik ölçektedir (üç serinin farklı büyüklük mertebelerini aynı grafikte okunabilir kılmak için).
+
+**Daha uzun dönem perspektifi (2001–2025):** B. A. Koçer'in (@ba_kocer) aynı TÜİK serisinden ürettiği 2001 başlangıçlı grafiğe göre düşüş çok daha köklüdür: 18-19 yaş grubu 2001'de 103.482 ile başlamış ve 2025'e kadar **%77,5** azalmıştır; 15-17 yaş grubu 50.848'den **%89,7** azalmıştır; 15 yaş altı doğumlar ise 2.730'dan **%95,8** azalarak adeta ortadan kalkmıştır. 2012–2025 ile 2001–2025 arasındaki fark, düşüşün büyük bir kısmının zaten **2001–2012 arasında** gerçekleştiğini, 2012 sonrasının ise bu uzun düşüşün devamı niteliğinde olduğunu göstermektedir — adölesan doğurganlığın çöküşü 2010'lardan çok önce başlamış, kronik bir süreçtir.
+:::
+
+### Annenin Yaş Grubuna Göre Doğumlar: Orta Yaş Anne Grupları (2012–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yirmi_yirmidort <- c(332232, 323274, 327116, 315594, 309470, 304227, 287163, 265605, 248310, 232012, 220354, 196372, 184399, 164368)
+yirmibes_yirmidokuz <- c(397945, 400292, 416737, 414956, 406808, 405568, 395350, 380536, 361868, 357361, 344081, 323293, 319741, 308312)
+otuz_otuzdort <- c(306208, 309422, 327552, 323103, 314256, 311058, 307415, 294595, 279957, 279424, 268828, 250523, 252187, 247211)
+otuzbes_otuzdokuz <- c(126055, 133272, 144950, 152617, 162411, 166851, 163455, 154418, 143227, 137580, 130829, 120259, 118478, 113801)
+
+fig_orta <- plot_ly() %>%
+  add_trace(x = yillar_genc_anne, y = yirmibes_yirmidokuz, type = "scatter", mode = "lines+markers",
+            name = "25-29 yas", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_genc_anne, y = otuz_otuzdort, type = "scatter", mode = "lines+markers",
+            name = "30-34 yas", line = list(color = "#9E7A1A", width = 2.5)) %>%
+  add_trace(x = yillar_genc_anne, y = yirmi_yirmidort, type = "scatter", mode = "lines+markers",
+            name = "20-24 yas", line = list(color = "#5B8C5A", width = 2)) %>%
+  add_trace(x = yillar_genc_anne, y = otuzbes_otuzdokuz, type = "scatter", mode = "lines+markers",
+            name = "35-39 yas", line = list(color = "#888888", width = 2)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Dogum Sayisi"),
+    legend = list(orientation = "h", x = 0.1, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_orta
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, Annenin Yaş Grubu ve Doğum Sırasına Göre Doğumlar (yazar hesaplaması, 2012–2025 tam seri, ara değer yok). Dört orta yaş grubunun tamamında 2012–2025 arasında **mutlak azalma** görülmektedir, ancak azalma hızı yaşça farklılaşmaktadır: 20-24 yaş grubu en sert düşüşü yaşamış (332.232→164.368, **%50,5 azalma**), buna karşılık 30-34 yaş grubu çok daha ılımlı bir düşüş göstermiştir (306.208→247.211, **%19,3 azalma**). 25-29 yaş grubu hâlâ en kalabalık doğum kategorisi olmayı sürdürmektedir (2025: 308.312), ancak bu grup da %22,5 azalmıştır.
+
+**Dönem seçiminin sonucu değiştirdiği kritik bir örnek:** B. A. Koçer'in (@ba_kocer) 2001 başlangıçlı grafiğine göre tablo farklı okunmaktadır. 2001'de 20-24 yaş grubu zirvede (436.558) ve 30-34 grubu görece düşükken (197.347), 2001–2025 boyunca 20-24 grubu **%62,3 azalmış**, buna karşılık 30-34 grubu **%25,3 artmıştır.** Bu görünür çelişki aslında bir zamanlama meselesidir: 30-34 grubundaki yükseliş büyük ölçüde **2001–2012 arasında** gerçekleşmiş (197.347'den 306.208'e çıkmış) — yani doğurganlığın yaşça kayması esas olarak 2000'li ve 2010'ların ilk yarısında yaşanmıştır. 2012'den itibaren ise bu kayma tükenmiş, 30-34 grubu da düşüşe geçmiştir (306.208→247.211). Sonuç: **doğurganlığın yaşça kayması 2012'den önce tamamlanmış bir süreçtir; 2012 sonrası dönem artık tüm yaş gruplarının eş zamanlı, ama farklı hızlarda küçülmesiyle karakterizedir.**
+:::
+
+::: {.callout-tip}
+**Tamamlayıcı not — ileri yaş anne grupları (40-44, 45-49, 50+):** B. A. Koçer'in (@ba_kocer) aynı TÜİK serisinden ürettiği grafiğe göre, ileri yaş gruplarında da 2001–2025 arasında azalma görülmektedir, ancak şiddeti çok daha hafiftir: 40-44 yaş grubu sadece **%10,2** azalmış (29.676→26.637) ve dönem ortasında (2013–2022 arası) artış göstermiştir; 45-49 yaş grubu **%75,1**, 50+ yaş grubu ise **%81,6** azalmıştır. 40-44 grubunun göreli direnci, bu yaş grubundaki doğumların büyük ölçüde yüksek parite (3. veya 4+ çocuk) doğumlarından oluşması ve bu davranışın diğer yaş gruplarındaki çöküşten daha izole kalmasıyla ilişkilendirilebilir.
+:::
+
 ## PPR ve HWP Analizi
 
 Parite geçiş oranları, HWP ayrıştırma bulguları ve karşı-olgusal senaryolar — sitenin özgün analitik katkısı.
