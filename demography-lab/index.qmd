@@ -90,7 +90,7 @@ Plot.plot({
 **Formul:** TDH = TDH₁ × (1 + PPR₁ + PPR₁ × PPR₂ + PPR₁ × PPR₂ × PPR₃). Sabit tutulan 2025 bileşenleri: TDH₁ = 0,608; PPR₂ = 0,507; PPR₃ ≈ 0,700. Kırmızı nokta: Türkiye'nin mevcut konumu (PPR₁ = 0,712 → TDH = 1,419). Yeşil nokta: seçilen PPR₁ değeri. Dikey sarı çizgi: 0,70 kritik eşiği (Kohler).
 :::
 
----
+
 
 ## 2. Nüfus Piramidi Projeksiyonu (2025 → 2060)
 
@@ -181,7 +181,7 @@ Plot.plot({
 **Yontem:** 2025 gercek TUIK piramidi baslangic noktasi; her 5 yilda bir yas grubu yukari kaydirilir (TUIK hayat tablosuna yakin hayatta kalma oranlariyla), taban (0-4 yas girisi) secilen senaryonun TDH egilimine gore degisir. Tam bir kohort-bilesen modeli degil, momentum analizinin temel mekanigini gorunurlestiren bir gostergedir.
 :::
 
----
+
 
 ## 3. Kohort Yarilma ve Surdurulebilirlik Hesaplayici
 
@@ -263,7 +263,7 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 **Formul:** NRR = TDH × k (k = 0,478). Kohort yarilma = ln(2) / (−ln(NRR)) × μ. Yillik kucilme = −ln(NRR) / μ. OADR: stabil nufus modelinden yaklasik (Sustainability Level Fertility, Sezgin 2026).
 :::
 
----
+
 ## 4. Toplam Nufus Projeksiyon Simulatoru (2025–2225, 200 Yil)
 
 TDH farkli sabit degerlerde tutulsa, 200 yil boyunca Turkiye nufusu nasil bir patika izler? Kisa vadeli momentum ile uzun vadeli kucilme arasindaki fark.
@@ -376,7 +376,7 @@ Plot.plot({
 **Yontem:** 2025–2105 degerleri belgelenmis S0/S1/S2/S3 senaryo projeksiyonlarindan (kohort-bilesen modeli, goc haric); kullanicinin sectigi TDH'ye gore bu dort sabit nokta arasinda lineer interpolasyon yapilir. 2105 sonrasi (2125–2225), 2080–2105 araligindaki ortalama buyume/kucilme hizinin sabit tutularak ileri tasinmasidir — **bu kisim dogrulanmis bir kohort-bilesen ciktisi degil, basitlestirilmis bir uzantidir** ve yalnizca buyuklugun mertebesini gostermek icindir. NRR=1 (TDH≈2,10) senaryosunda nufus ~100M civarinda stabilize olur (Keyfitz momentum, M=1,180); altindaki her TDH degeri suresiz kucilmeye gider.
 :::
 
----
+
 
 ## 5. Goc Senaryosu Simulatoru
 
@@ -472,7 +472,7 @@ Plot.plot({
 *Kaynak: Göç Projeksiyonu Devamlılık Notu, 19 Haziran 2026 — doğrulanmış senaryo tablosu.*
 :::
 
----
+
 
 
 ## 6. SGK Aktif/Pasif Baski Testi
@@ -570,7 +570,7 @@ Plot.plot({
 **Uyari:** Bu model basitlestirilmis bir demografik-aktuaryal projeksiyondur; gercek SGK dengesini belirleyen kayit disi istihdam orani, prim gun sayisi, asil-tali sigortalik dagilimlari ve emeklilik yas kademesi gibi kurumsal degiskenler dahil edilmemistir. Gosterdigi sey: demografik yapi degismezse, kurumsal parametreleri ne kadar duzeltirseniz duzeltin, aktif/pasif oraninin dusus yonunun degismeyecegidir. SGK gercek aktif/pasif orani: 2022 = 2,01 (zirve); Ocak 2026 = 1,591.
 :::
 
----
+
 
 ::: {.callout-tip}
 **Planlanan ek modeller:** HWP Ayristirma Simulatoru, Stok-Akis Paradoksu, Bongaarts-Feeney Tempo Hesaplayici, Nesil Uzunlugu Hizlandiricisi, Surdurulebilirlik Duzey Kontrol Paneli ve daha fazlasi bu bolume eklenecektir. Tam liste icin [proje yol haritasina](/about.qmd) bakiniz.
