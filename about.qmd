@@ -11,11 +11,21 @@ toc: false
 1981 doğumlu Sezgin, 2004 yılında Gazi Üniversitesi İktisadi ve İdari Bilimler Fakültesi Kamu Yönetimi Bölümü'nden mezun olmuştur. 2014 yılında ABD'de Florida State University'den Kamu Yönetimi alanında MPA derecesi almıştır. 2006 yılında Başbakanlık Aile ve Sosyal Araştırmalar Genel Müdürlüğü'nde uzman yardımcısı olarak kamu görevine başlamış, Aile ve Sosyal Politikalar Bakanlığının kurulmasının ardından bakanlık bünyesinde uzman olarak görevine devam etmiştir. Halihazırda Aile ve Sosyal Hizmetler Bakanlığında uzman olarak çalışmakta; aile politikaları, nüfus politikaları, sosyal politika ve kamu politikaları alanlarına odaklanmaktadır. Kamu politikalarının tasarımı, uygulanması ve analizi süreçlerine yoğunlaşmaktadır.
 :::
 
-## Çalışma Alanları
+## Bu Site Hakkında
 
-Yaklaşık 20 yıldır kamu politikası alanında çalışmaktayım. Temel uzmanlık alanlarım demografi, nüfus ve aile politikaları, sosyal politika, istihdam ve ulusal güvenlik kesişimidir.
+Bu site, şahsi gayretlerim ve entelektüel birikimimle inşa ettiğim demografik araştırma programımın ürünüdür. Türkiye'nin değişen nüfus yapısını, doğurganlık eğilimlerini, aile kurma davranışlarını ve bu dönüşümün geleceğe uzanan sonuçlarını daha açık, ölçülebilir ve politika ile ilişkilendirilebilir biçimde ele alma çabasından doğmuştur.
 
-Mevcut araştırma programım, Türkiye'deki doğurganlık düşüşünü kültürel tercih ya da ideolojik dönüşüm olarak değil, kurumsal kapasite ve risk yönetimi meselesi olarak yeniden tanımlamayı hedeflemektedir. Bu çerçevenin temel tezi şudur: **kriz bir istek eksikliği değil, güvence eksikliğidir.**
+Bununla birlikte burada yer alan çalışmalar yalnızca demografiyle sınırlı değildir. Aile politikaları, sosyal politika ve kamu yönetimi alanlarında yirmi yılı aşan mesleki bilgi, saha gözlemi ve kamu tecrübesinin birikimini de yansıtmaktadır. Akademik literatür, resmî veriler ve politika uygulamaları arasında bağ kurmaya; karmaşık meseleleri yalnızca teşhis etmekle kalmayıp uygulanabilir çözüm seçenekleri geliştirmeye çalışıyorum.
+
+Bu siteyi, tamamlanmış cevapların sergilendiği bir vitrin olmaktan çok, gelişmeye devam eden bir düşünce ve araştırma alanı olarak görüyorum. Burada raporlarımı, politika notlarımı, veri ve grafik çalışmalarımı, yayımlanmış yazılarımı ve üzerinde çalıştığım kavramsal çerçeveleri paylaşacağım.
+
+Amacım, özellikle demografi ve aile politikaları alanında Türkiye'de ihtiyaç duyulan nitelikli tartışmaya katkı sunmak; veriyi, kurumsal tecrübeyi ve politika tasarımını aynı zeminde buluşturmaktır.
+
+Raporların sayfaları arasında veya akademik makalelerin dar sınırlarında hapsolmuş bilgilerin, karar alıcılara ve topluma yeterince nüfuz edemediğini yaşayarak tecrübe ettim. Bu siteyi; sahip olduğumuz demografik krizlerin sadece fotoğrafını çeken değil, Demography Lab içindeki interaktif modellerle karar alıcılara "yeni bir işletim sistemi" için rasyonel çıkış yolları sunan, açık kaynaklı bir dijital laboratuvar olarak kurguladım.
+
+Çünkü demografi, özellikle uzun vadeli sonuçları itibari ile sezgisel olarak kavranması zor bir alandır. Ayrıca demografik mekanizmaların işleyişi ve yapısı gecikmeli ve yanlış yorumlanmaya müsaittir. Bu sayfadaki veri ve grafikler ile interaktif model ve simülasyonlar demografide sıkça bahsettiğimiz kavramların nasıl işlediğini görselleştirerek anlaşılmasını kolaylaştırmak üzere tasarlanmıştır.
+
+Amacım, rasyonel veri ile kuşaklararası adaleti merkeze alan yapısal reform tartışmalarına mütevazı, ancak somut bir katkı sunmaktır. Bu platformun, karar alıcılardan akademisyenlere ve bu ülkenin geleceğine kafa yoran herkese faydalı bir kaynak olmasını ümit ediyorum.
 
 ## Yayın Platformları
 
