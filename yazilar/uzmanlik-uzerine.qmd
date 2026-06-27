@@ -1,0 +1,34 @@
+---
+title: "Uzmanlık Üzerine"
+description: "Alan uzmanlığı ile metot uzmanlığı arasındaki fark üzerine; Heinlein, Taleb ve Feynman'dan ilhamla, politika analizinde neden yöntemde derinleşmenin omurga, alan bilgisinin ise vitrin olduğuna dair bir düşünce."
+author: "Mehmet Emin Sezgin"
+---
+
+> "A human being should be able to change a diaper, plan an invasion, butcher a hog, conn a ship, design a building, write a sonnet, balance accounts, build a wall, set a bone, comfort the dying, take orders, give orders, cooperate, act alone, solve equations, analyze a new problem, pitch manure, program a computer, cook a tasty meal, fight efficiently, die gallantly. Specialization is for insects."
+> — Robert A. Heinlein
+
+> "Wind extinguishes a candle and energizes fire."
+> — Nassim Nicholas Taleb
+
+> "This is not a new idea; this is the idea of the age of reason. This is the philosophy that guided the men that made the democracy that we live under. The idea that no one really knew how to run a government led to the idea that we should arrange a system by which new ideas could be developed, tried out, and tossed out if necessary, with more new ideas brought in—a trial and error system."
+> — Richard P. Feynman, *What Do You Care What Other People Think?*
+
+Kamuda 20 yılı doldurmak üzere olduğum uzmanlığı bir unvan olarak hiç değerlendirmedim. Benim için uzmanlık iki anlama gelmiştir: Birincisi bir konuya, bir sektöre ya da spesifik bir alana hakim olmaktır. İkinci ise bir metotta, bir bakışta ya da bir düşünme biçiminde uzmanlaşmaktır. Ben kendi adıma hep ikincisine yakın durmuşumdur. Çünkü hayatım boyunca gündemlerin değiştiğini, başlıkların eskidiğini ama düşünme biçiminin kalıcı olduğunu gördüm.
+
+Belirli bir alanda uzmanlık çoğu zaman güven verir. İnsan "ben burayı biliyorum" der ve o bilgiyle devam eder. Buna saygım var. Ama politika analizi gibi canlı, çelişkili ve sürekli değişen bir alanda bu tür bir uzmanlık hızla bir konfor alanına dönüşebilir. Dün doğru olan, bugün anlamsızlaşabilir. Dün işe yarayan veri seti, bugün yanıltıcı olabilir. Alan uzmanlığı bazen insanı dünyayı olduğu gibi görmekten alıkoyan bir göz bağına dönüşür.
+
+Metotta uzmanlaşmak ise daha tekinsiz bir yoldur. Sürekli tetikte olmayı gerektirir. Problem tanımını sorgulamayı, varsayımları didiklemeyi, "herkes böyle yapıyor" cümlesinden bilinçli olarak rahatsızlık duymayı gerektirir. Bir metoda hâkimseniz, bir ülke değiştiğinde, bir sektör çöktüğünde, bir paradigma kaydığında eliniz boş kalmaz. Çünkü siz bir cevabın değil, ona nasıl ulaşılacağının peşindesinizdir.
+
+Bu yüzden Robert Heinlein'in "uzmanlaşma böcekler içindir" sözü bana hep çok anlamlı gelmiştir, insana yakışan bir uyarı gibi. İnsan merak eden bir varlık. Bağlantılar kurmak, alanlar arasında dolaşmak, beklenmedik yerlerden sezgiler devşirmek için yaratılmış. İnsanı güçlü kılan tek bir şeyde derinleşmek değil, derinliği taşıyabilen bir zihne sahip olmaktır.
+
+Politika analizi tam da bu yüzden yöntem insanlarının alanıdır. Bugün doğurganlığı çalışırsınız, yarın bakım politikalarını, ertesi gün tarım desteklerini. Konular değişir ama sorular benzerdir: Problem doğru tanımlanmış mı? Teşvik davranışla örtüşüyor mu? Uygulama kapasitesi gerçekçi mi? Veri neyi söylüyor değil, neyi gizliyor? Bu soruları sormayı bilen biri için konu başlıkları sadece farklı sahnelerdir.
+
+Yöntem uzmanlığı çoğu zaman sanıldığının tersine daha zahmetli bir yoldur. Alan uzmanlığı belirli bir bilgi kümesini öğrenip onu derinleştirmeyi gerektirir; yöntem uzmanlığı ise yanlış yapmayı, yanılmayı ve o yanılgılardan öğrenmeyi gerektirir. Bu yüzden de gerçek anlamda yerleşmesi daha uzun sürer. Çünkü burada öğrenilen şey bir cevap değil, cevap üretme kapasitesidir. Hangi varsayım çöker, hangi ölçüm yanıltır, hangi gösterge sizi rahatlatır ama gerçeği saklar; bunlar kitapla değil, tekrarlanan hatalarla öğrenilir. Deneme yanılma bu anlamda bir ara aşama değil, bizzat yöntemin kendisidir.
+
+Bu noktada üstadım Nassim Taleb'in dünyayı asıl öğrenme biçimimizin planlama, modelleme ya da teorik öngörü değil; hata yaparak ayakta kalma süreci olduğu iddiasını hatırlamak gerekir. Nassim'e göre, "teoriye ne kadar fazla yaslanırsan, o kadar kırılgan hale gelirsin" ve "deneme yanılmayla öğrenirsin, talimatla değil". Deneme yanılma, sistemin içindeki çalışmayan yerleri ayıklayarak devam ettiği için üstündür. Yanlışlar bedel ödetir ve öğretir. Bu yüzden deneme yanılma ile öğrenilen bilgi daha kalıcıdır; çünkü hayatta kalma filtresinden geçmiştir. Taleb'in "antifragilite" dediği şey tam olarak budur: hata karşısında kırılmayan, hatta hatadan güçlenen yapılar. Yöntem uzmanlığı da böyledir. Yavaş ilerler, çok hata yapar, sabır ister; ama bir kez oluştuğunda, başlıklar eskise de, paradigmalar kaysa da, elde kalan tek gerçek uzmanlık biçimi olur.
+
+Bunları söylerken alan uzmanlığını küçümsediğimin ve değersiz bulduğumun düşünülmesini istemem. Tam tersine, alan uzmanlığı birçok durumda vazgeçilmezdir ve ciddi bir emek, disiplin ve derinlik gerektirir. Ama sağlam bir yöntem olmadan alan bilgisi kolayca ezbere, tekrar eden kalıplara ve konforlu doğrulara dönüşebiliyor ve bir noktada ezberi kuvvetli olan, pazarlaması güçlü olan karar vericileri kandırabiliyor. Bu yüzden mesele alan uzmanlığı mı yöntem uzmanlığı mı sorusu değil; alan bilgisinin, onu sürekli sınayan ve yenileyen bir yöntemle birlikte var olup olmadığı meselesi. Benim durduğum yer tam olarak burası.
+
+İşin bir de duygusal tarafı var. Metotta uzmanlaşmayı seçmek genellikle yalnızlık getirir, bir etiketiniz olmaz. İnsanlar zihinlerinde sizi belirli bir yere oturtmakta zorlanır. "Tam olarak ne uzmanısın?" sorusu sık gelir. Ama bu belirsizlik aynı zamanda özgürlüktür. Düşüncenizi bir alana sabitlemezsiniz. Yanlış yapma lüksünüz vardır çünkü kimliğiniz tek bir doğruya bağlı değildir.
+
+Sonuçta ben uzmanlığı bir vitrin değil, bir omurga olarak görüyorum. Alan uzmanlığı vitrin gibidir; dışarıdan bakıldığında etkileyici durabilir. Metot uzmanlığı ise omurga gibidir; görünmez ama ayakta tutar. Politika gibi karmaşık ve insani bir alanda, ayakta kalmak için vitrin değil omurga gerekir. Bu tercihi romantik değil, mesleğimi ayakta tutmaya yönelik bir akıl yürütme olarak görüyorum. Ve evet, biraz da bu yüzden, her ne kadar Heinlein'ın saydığı çoğu işi beceremesem de, uzmanlaşmayı böceklere bırakmak bana hâlâ iyi bir fikir gibi geliyor.

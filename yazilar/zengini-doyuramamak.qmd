@@ -1,0 +1,85 @@
+---
+title: "Yoksulları Doyuramamak Değil, Zenginleri Doyuramamak"
+description: "Sosyal adalet tartışmalarının ıskaladığı asıl mesele: orta sınıfın erimesi, ön-dağıtım ile son-dağıtım arasındaki kayıp ve zenginlerin sınırsız taleplerinin kurumsallaşması."
+author: "Mehmet Emin Sezgin"
+---
+
+Sosyal adalet tartışmaları çoğu zaman yoksullara ne kadar yardım verildiği üzerinden yürür. Transferler yeterli mi, destekler artmalı mı, bütçe büyümeli mi… Oysa bu tartışmaların büyük bölümü asıl meseleyi ıskalar.
+
+Türkiye'de ve dünyada temel sorun, yoksulları doyuramamak değil, zenginleri doyuramamaktır. Bu sorunun sonucunda gelir dağılımının iki zıt ucunda kümelenmeler görünürken, orta kısımda yer alan orta sınıf giderek erimektedir.
+
+Bir toplumun sağlıklı olup olmadığını gösteren temel ölçüt, yoksulların ne kadar yardım aldığı ya da en zenginler ne kadar kazandığı değildir. Asıl ölçüt, orta sınıfın ne kadar geniş olduğudur. Orta sınıf büyüyorsa sistem çalışıyor demektir. Daralıyorsa, yapısal bir sorun vardır.
+
+## Orta Sınıf Neden Merkezdir?
+
+Kamu politikaları literatürü, devlet müdahalelerini üç başlık altında inceler: dağıtımcı (distributive), düzenleyici (regulatory) ve yeniden dağıtımcı (redistributive) politikaları.
+
+Dağıtımcı politikalar, kaynakların üretkenliği ve toplumsal kapasiteyi artıracak şekilde kullanılmasını ifade eder. Sağlıklı bir düzende bu alan merkezîdir. Çünkü orta sınıf burada inşa edilir.
+
+Dağıtımcı politikalar doğru çalıştığında insanlar eğitim, beceri ve istihdam yoluyla kendi ayakları üzerinde durabilir. Bu durumda sosyal yardımlar istisnai bir destek mekanizması olarak işlev görür.
+
+Siyaset bilimci Jacob Hacker'ın geliştirdiği "ön-dağıtım" (pre-distribution) yaklaşımı bu noktayı net biçimde açıklar:
+
+> "Focus on market reforms that encourage a more equal distribution of economic power and rewards even before government collects taxes or pays out benefits."
+
+Yani mesele, piyasada oluşan adaletsizliği sonradan yardımlarla telafi etmek değil, ekonomik gücün ve getirinin en baştan daha dengeli dağılmasını sağlayacak kuralları kurmaktır.
+
+Hacker'e göre, eğer sendikal haklar zayıflatılmış, piyasa tekelleşmeye bırakılmış ve finansal rant siyasi kararlarla korunmuşsa, sonradan yapılan hiçbir sosyal transfer bu yapısal bozukluğu düzeltemez. Biz bugün sürekli "son-dağıtımı" yani yardımları konuşarak, "ön-dağıtımdaki" büyük adaletsizliği gözden kaçırıyoruz.
+
+## Sosyal Yardımlar Neden Büyüyor?
+
+Normal şartlarda yeniden dağıtımcı politikalara olan ihtiyaç sınırlı kalmalıdır. Ancak bir ülkede sosyal yardım bütçesi sürekli büyüyor, yardım alan kişi sayısı her yıl artıyor ve transferler kalıcı hale geliyorsa, bu sosyal devletin güçlendiğini değil, dağıtımcı politikanın başarısız olduğunu gösterir.
+
+Sistem başta yanlış kurulmuştur.
+
+Bu noktada Gøsta Esping-Andersen ve Anthony Giddens'ın öncülük ettiği "Sosyal Yatırım Devleti" yaklaşımı kritik bir ayrım sunar: Devlet "tamir eden" (repair) mi olmalıdır, yoksa "hazırlayan" (prepare) mı?
+
+Mevcut yapı, yoksulluk oluştuktan sonra onu yönetmeye odaklanmaktadır. Oysa aklı başında bir sistem, yoksulluk oluşmadan önce bireyi güçlendirmeyi hedefler. Eğitime, çocuk bakımına ve mesleki becerilere yapılmayan her yatırım, ileride daha büyük bir sosyal yardım faturası olarak geri döner. Bugün övünerek anlattığımız sosyal yardım harcamalarının büyük kısmı, aslında zamanında yapılmamış sosyal yatırımın gecikmiş bedelidir.
+
+## Zenginlerin Sınırı Olmayan Talepleri
+
+Bu başarısızlığın temel nedeni, zenginlerin taleplerine sınır konulamamasıdır.
+
+Teşvikler, istisnalar, garantiler ve koruma mekanizmaları zamanla yukarıda yoğunlaşır. Zenginlerin talepleri "ekonomik zorunluluk" gibi sunulur ve tartışma dışına çıkarılır. Buna karşılık aşağıya gelindiğinde kaynak kısıtı ve bütçe disiplini hatırlanır.
+
+Bu yapı Türkiye'ye özgü değildir. Küresel ölçekte de benzer bir tablo vardır. Dünyanın en zengin yüzde 1'inin gelir ve servet payı uzun süredir artmaktadır. Mekanizmalar farklıdır, ama sonuç aynıdır: Zenginlerin iştahı sınırlanmadıkça, kaynakların geniş toplumsal kesimlere yayılması mümkün olmaz.
+
+## KKM, Düşük Faiz ve Servet Transferi
+
+Geçmiş yıllarda uygulanan yüksek enflasyon–düşük faiz politikası ve kur korumalı mevduat sistemi bu tabloyu daha belirginleştirdi.
+
+Bu dönemde ortaya çıkan imkânlardan fiilen yararlanabilen kesim, tasarruf kapasitesi yüksek olan dar bir gruptu. Orta sınıfın büyük bölümü zaten sınırlı birikime sahipti. Yoksul kesimlerin ise neredeyse hiç tasarruf imkânı yoktu.
+
+Bu nedenle ne KKM sistemine girebildiler ne de düşük faiz ortamını bir kazanç fırsatına çevirebildiler. Sistem, tasarrufu olanı korudu, olmayanı tamamen dışarıda bıraktı. Üstelik bu kesimler sadece sistemden yararlanamamakla kalmadı, sonuçlarından da doğrudan zarar gördü. Enflasyonun yükselttiği kira, gıda ve enerji fiyatları en ağır biçimde orta sınıfın ve yoksulların üzerine bindi.
+
+Buna karşılık, yüksek birikimi olan kesimler hem kur farkı hem devlet desteği sayesinde servetlerini büyüttü. Krediye erişim bile başlı başına bir zenginleşme aracına dönüştü. Ucuz krediye ulaşabilenler, bu kaynakla kısa sürede varlıklarını artırdı. Krediye erişemeyen geniş kesimler ise daha da sıkıştı.
+
+Sonuçta kamu kaynakları, üretimi ve orta sınıfı güçlendirmek yerine, varlıklı kesimlerin servetini büyüten bir kanala aktı. Bu süreçte gerçekleşen servet transferinin, sosyal yardımlara ayrılan kaynağın katbekat üzerinde olduğu açıktır.
+
+Yoksulu doyurmak için ayıramadığımız kaynağı, zengini daha zengin yapmak için ayırdık.
+
+## Kurumsallaşmış Doyumsuzluk
+
+Buradaki sorun, bireysel açgözlülükten çok, kurumsallaşmış doyumsuzluktur.
+
+Sistem, zenginlerin sınırsız taleplerini ödüllendirdikçe bu davranış biçimi normalleşir. Zamanla sınır koymak siyasi olarak maliyetli, sınır koymamak ise doğal hale gelir. Bu noktada sosyal yardımlar bir çözüm olmaktan çıkar, telafi mekanizmasına dönüşür. Sorun çözülmez, ertelenir.
+
+## Yoksulluk: Gelir Değil, Yapabilirlik Meselesi
+
+Amartya Sen'in kalkınma yaklaşımı bu tabloyu tamamlar:
+
+> "Poverty is not just a lack of income, it is a deprivation of capabilities."
+
+Sen'e göre yoksulluk yalnızca gelir düşüklüğü değildir. Bireyin potansiyelini gerçekleştirme imkânlarından yoksun kalmasıdır. Sosyal yardıma bağımlı bir düzen, bireyin cebini doldursa bile iradesini ve kapasitesini zayıflatır. Hedefimiz yardımla yaşayan bir toplum değil, kendi tercihlerini hayata geçirebilen özgür bireyler topluluğu olmalıdır.
+
+## Sonuç: Dengeyi Kaybeden Toplumlar Kırılganlaşır
+
+Gerçek sosyal adalet, ne yalnızca yoksula daha fazla vermekle ne de zengini cezalandırmakla sağlanır. Gerçek adalet, orta sınıfı büyütecek bir dağıtımcı politika mimarisi kurmakla mümkündür. Bunun temeli, kaynakları en yüksek toplumsal faydayı üretecek şekilde kullanmaktır.
+
+Eğitime, üretkenliğe, beceriye ve istihdama yönelmeyen; üst dilimin taleplerine sınır koyamayan hiçbir sistem kalıcı denge üretemez. Bugün yaşadığımız sorun, yardımların yetersizliği değil, dengenin bozulmasıdır.
+
+Yoksulları doyurmak için zenginlerinin doymasını bekleyen bir sistem sosyal adaleti gerçekleştiremez.
+
+Orta sınıfı koruyamayan bir sistem de sürdürülebilir bir sosyal adalet inşa edemez.
+
+Gerçek mesele budur.

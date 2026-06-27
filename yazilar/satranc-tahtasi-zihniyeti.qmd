@@ -1,0 +1,53 @@
+---
+title: "Satranç Tahtası Zihniyeti"
+description: "Thomas Sowell'in 'satranç taşı yanılgısı' üzerinden, politika tasarımının insanları tepkisiz nesneler gibi gördüğünde neden başarısız olduğuna dair bir değerlendirme."
+author: "Mehmet Emin Sezgin"
+---
+
+> "There are no solutions. There are only trade-offs."
+> — Thomas Sowell
+
+> "Everyone has a plan until they get punched in the mouth."
+> — Mike Tyson
+
+Thomas Sowell, *Social Justice Fallacy* kitabında çok temel bir yanılgıya işaret eder: "chess piece fallacy." Yani satranç taşı yanılgısı. Bu yanılgıya göre politika yapıcı, toplumdaki insanları bir satranç tahtasındaki taşlar gibi görür. Kuralları koyar, hamleyi yapar ve taşların öngördüğü yere gitmesini bekler.
+
+Sorun şudur: İnsanlar taş değildir, taş gibi tepkisiz kalmazlar.
+
+Taşın iradesi ve tepkisi yoktur. Alternatif üretmez, kaçmaz, başka yollar aramaz. Maliyeti hesaplamaz. Ama insan bütün bunları yapar. Politika tasarımının en büyük zaafı da tam burada başlar. Karar verici, düzenlemeyi bir hamle gibi görür. Toplumun geri kalanının bu hamleye vereceği karşılığı hesaba katmaz ya da yetersiz hesaba katar.
+
+Sonra sonuçlar şaşırtır. Çünkü tasarlanan dünya ile yaşanan dünya arasında fark vardır. Harita ile arazi arasındaki fark gibi.
+
+Satranç taşı yanılgısını anlatmak için verilen en bilinen örneklerden biri, ABD'de 1990'ların başında Federal Havacılık İdaresi'nin iki yaş altı çocukların uçaklarda ebeveyn kucağında seyahat etmesini yasaklayıp ayrı koltuk ve çocuk koltuğu zorunluluğu getirmeyi planlamasıdır.
+
+İlk bakışta bu düzenleme mantıklıdır. Uçakta daha sıkı güvenlik önlemi, daha az risk demektir. Ancak mesele burada bitmez. Çünkü politika, sadece niyetle değil, tepkiyle birlikte işler. Zorunlu ayrı koltuk, aileler için uçuş maliyetini ciddi ölçüde artırır. Uçak bileti fiyatı yükseldiğinde bazı aileler uçmaktan vazgeçer, kara yolunu tercih eder. İstatistik ise basittir: Hava yolu, kara yolundan kat kat güvenlidir.
+
+Yapılan analizler, uçakta kurtarılacak her bir bebek hayatına karşılık kara yolunda 15 ila 60 ek ölüm riskinin ortaya çıkabileceğini gösterdi. Yani güvenliği artırmak için tasarlanan bir düzenleme, toplam ölüm sayısını artırabilirdi.
+
+Bu durum literatürde "bebek koltuğu paradoksu" olarak anılır. Politika doğru görünür ama toplam etki ters yönde olur.
+
+Bu zihniyetin yeni olmadığını görmek için iki yüz yıl geriye gitmek yeterlidir. Adam Smith, *The Theory of Moral Sentiments*'ta "sistem adamı"nı tarif ederken çarpıcı bir benzetme yapar. Ona göre sistem adamı, toplumu satranç tahtasındaki taşlar gibi düzenleyebileceğini sanır. Kendi planına âşık olur ve en küçük sapmaya bile tahammül edemez. Oysa satranç taşlarının kendi iradesi yoktur; insan toplumundaki her bireyin ise kendine özgü bir yönü, refleksi ve hareket mantığı vardır. Bu gerçek göz ardı edildiğinde ortaya çıkan şey düzen değil, kaçınılmaz bir karmaşadır.
+
+Bu noktada, Zbigniew Brzezinski'nin meşhur *Büyük Satranç Tahtası* (The Grand Chessboard) eserini anmak, meselenin sadece ulusal değil, küresel çaptaki tezahürünü görmek açısından elzemdir. Brzezinski, Avrasya'yı devasa bir satranç tahtası, devletleri ve milletleri ise küresel hegemonyanın inşasında yeri isteğe göre değiştirilecek piyonlar, atlar veya kaleler olarak kurgular. Makro düzeyde büyüleyici görünen bir jeopolitik zekâ sunan bu yaklaşım, aslında "sistem adamının" kibrinin uluslararası ilişkilerdeki zirvesidir. Kurgu kâğıt üzerinde kusursuzdur; ancak Brzezinski'nin haritasında uslu uslu duran o "taşlar", arazide kanı, inancı, öfkesi ve en önemlisi kendi iradesi olan canlı topluluklardır. Küresel satranç tahtasında yapılan o büyük ve kusursuz hamlelerin Asya'da, Orta Doğu'da veya Kafkasya'da yarattığı asimetrik ve kaotik karşı hamleler, bize o değişmez gerçeği bir kez daha hatırlatır: İnsanlar ve milletler ahşap yontular değildir.
+
+Bu yanılgı yalnızca güvenlik politikalarında değil, ekonomik düzenlemelerde, sosyal yardımlarda, kota uygulamalarında ve hatta eğitim reformlarında görülür. Vergi artışı gelir getirir sanılır, ama kayıt dışılık artar. Kota eşitlik sağlar sanılır, ama farklı alanlarda teşvik bozulur. Yasa konur, davranış değişmez; yalnızca biçim değiştirir.
+
+Örneğin benzer bir yanılgı Türkiye'de kadın istihdamına yönelik bazı düzenlemelerde de görülür. Mevzuata göre, iş yerinde 150'den fazla kadın çalışan bulunması hâlinde, 0–6 yaş arası çocuğu olan çalışanlar için iş yerine yakın bir kreş veya bakım imkânı sağlanması zorunludur. Niyet açıktır: Çalışan anneleri desteklemek. Ancak pratikte bu düzenleme, bazı işverenlerin kadın çalışan sayısını bilinçli olarak 150'nin altında tutmasına yol açmıştır. Yani kadınları korumak için getirilen bir kural, dolaylı biçimde kadın istihdamını sınırlayan bir politikaya dönüşmüştür. Taşlar doğru yere konulmuş gibi görünür, ama oyuncular oyunu başka bir yerden oynamaya başlar.
+
+Edward Lorenz'in meşhur "kelebek etkisi" benzetmesi, kamu politikalarının bu yönü açısından son derece öğreticidir. Küçük gibi görünen bir düzenleme, sınırlı bir teşvik ya da teknik bir mevzuat değişikliği, zaman içinde öngörülmeyen ve geri dönülmesi zor sonuçlar üretebilir. Satranç tahtasında tek bir taşı oynattığını sanan karar verici, aslında bütün oyunun dengesini değiştirebilir. Çünkü karmaşık toplumsal sistemlerde hiçbir hamle bir laboratuvar ortamındaymışçasına yalıtılmış değildir. Her müdahale, başka davranışları tetikler, yeni maliyetler üretir ve zincirleme etkiler doğurur. Bu nedenle politika tasarımı, yalnızca "ne yapmak istediğimiz" sorusuyla değil, "bunun neleri harekete geçireceği" sorusuyla birlikte düşünülmek zorundadır.
+
+Çünkü insanlar pasif nesneler değildir. Maliyetleri hesaplar, riskleri kıyaslar, alternatif yollar bulur. Politikalar bu karşılığı hesaba katmadığında "istenmeyen sonuçlar" doğar. Bu sonuçlar çoğu zaman kötü niyetten değil, yanlış modelden kaynaklanır.
+
+Satranç tahtası zihniyeti, toplumu düzenlenebilir bir mekanizma gibi görür. Oysa toplum karmaşık bir sistemdir. Küçük bir müdahale zincirleme etkiler üretir. Davranış değişimi doğrusal değildir. İnsanlar merkezi planın sessiz uygulayıcıları değil, kendi pozisyonlarının ve çıkarlarının aktif yorumcularıdır.
+
+Kahneman ve Tversky'nin çalışmalarında ortaya konan bilişsel yanılgılar ise bu tabloyu tamamlar. Karar vericiler genellikle görünen riske aşırı odaklanır, görünmeyen riskleri küçümser ya da ihmal eder. Uçakta yaşanan bir türbülans zihinde dramatik bir yer tutar; otoyol kazası sıradandır. Oysa istatistikler tam tersini söyler. Dikkat çeken risk, gerçek riskle aynı şey değildir.
+
+Satranç taşı yanılgısının bir diğer boyutu da Adam Smith'in sistem adamında belirttiği gibi bir ahlaki üstünlük duygusudur. Politika yapıcı, doğruyu bildiğine inanır. "İnsanların iyiliği için" hareket ettiğini düşünür. Bu inanç, geri beslemeye ve eleştiriye karşı körlük üretir. Eleştiri, niyete ve şahsa saldırı gibi algılanır. Oysa mesele niyet ya da şahıslar değil, sonuçtur.
+
+İyi niyetle tasarlanan birçok politika, toplam etki analizine tabi tutulmadığı için başarısız olur. Daha kötüsü, bu başarısızlık çoğu zaman ölçüm teknikleriyle gizlenir. Uçaktaki güvenlik artışı raporlanır; kara yolundaki ek ölüm istatistikleri farklı dosyada kalır. Harita düzenli görünür, arazi ise dağınıktır.
+
+Thomas Sowell'in işaret ettiği şey budur: Toplumu bir satranç tahtası gibi görmek entelektüel bir konfordur. Ama gerçek dünyada insanlar ve toplumlar, planlanan hamleleri bozma kapasitesine sahiptir.
+
+Politika tasarımı, taş dizmek değil; davranışları anlamaktır. Eğer insanı cansız bir varlık gibi görürseniz, sonuçları beklenmedik olur. Belki de mesele şudur: Devletler hamle yapabilir ama toplum karşı hamle yapar.
+
+Ve çoğu zaman oyunu kazanan, plan yapan olmaz. Hatta çoğu zaman bir kazanan olduğu bile tartışmalıdır.

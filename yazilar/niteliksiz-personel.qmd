@@ -1,0 +1,67 @@
+---
+title: "Kamuda İnsan Kaynağı Meselesi: Liyakat, Ters Seçim ve Marjinalin Gücü"
+description: "Türkiye'de kamunun temel sorunu nitelikli personel eksikliği değil, niteliksiz personel fazlalığıdır. Akerlof'un ters seçimi, Weber'in bürokrasi ideali ve Fukuyama'nın kurumsal çürüme kavramı üzerinden bir okuma."
+author: "Mehmet Emin Sezgin"
+---
+
+Türkiye'de kamu yönetimi üzerine yapılan tartışmaların büyük bölümü, nitelikli personel eksikliği üzerinden yürür. Sürekli olarak "iyi yetişmiş insan bulamıyoruz", "uzman açığımız var", "beyin göçü yaşıyoruz" gibi şikâyetler dile getirilir. Oysa meseleye biraz daha yakından bakıldığında, sorunun esasen nitelikli personel eksikliği değil, niteliksiz personel fazlalığı olduğu görülür.
+
+Bu iki durum aynı şey değildir. Birinde kaynak yoktur, diğerinde kaynak vardır ama sistem tarafından dışlanmaktadır. Türkiye'de kamunun temel problemi ikinci gruba daha yakındır.
+
+Bugün kamuda belirli bir eğitim düzeyine, mesleki birikime ve analitik kapasiteye sahip insan sayısı az değildir. Sorun, bu insanların sistem içinde seçilememesi, korunamaması ve çoğu zaman görünmez hale gelmesidir. Bu da bizi doğrudan insan kaynakları meselesinden ziyade, seçme, değerlendirme ve terfi mekanizmalarının yapısına götürür.
+
+## Weber'in Bürokrasi İdeali ve Gerçeklik
+
+Max Weber'in klasik bürokrasi tanımı, liyakat temelli seçme, uzmanlığa dayalı görev dağılımı ve kişisellikten arınmış kurumsal işleyiş üzerine kuruludur. Weber'e göre modern devlet, bireylerin keyfiliği yerine kuralların hâkim olduğu bir yönetim modeli üretmek zorundadır. Bu modelin merkezinde de nitelikli insan kaynağı vardır.
+
+Türkiye'de yaşanan sorun, bürokrasinin "fazla bürokratik" olması değil, Weberyen anlamda bürokratik bile olamamasıdır. Kurallar vardır ama belirleyici değildir. Mevzuat vardır ama uygulama kişiselleşmiştir. Kadrolar vardır ama işlevleri belirsizleşmiştir. Liyakat ilkesi kâğıt üzerinde korunurken, fiiliyatta zayıflamıştır.
+
+Bu durum, insan kaynakları meselesini teknik bir problem olmaktan çıkarıp, doğrudan yönetişim meselesine dönüştürür.
+
+## Akerlof ve Ters Seçim Mekanizması
+
+George Akerlof'un "The Market for Lemons" makalesinde ortaya koyduğu ters seçim mekanizması, bu tabloyu anlamak için güçlü bir çerçeve sunar. Akerlof, kalite ile kalitesizliğin ayırt edilemediği piyasalarda, kaliteli ürünlerin zamanla piyasadan çekildiğini gösterir. Çünkü sistem, kaliteyi ödüllendiremediğinde kalite sistemde kalmak için rasyonel bir gerekçe bulamaz.
+
+Kamudaki insan kaynağı yapısı da benzer bir mekanizmayla çalışmaktadır. Performans ölçümünün zayıf olduğu, liyakatin görünür olmadığı ve terfi kriterlerinin şeffaf olmadığı ortamlarda, nitelikli personelin sistem içinde kalması giderek anlamsızlaşır. Zamanla ya pasifleşirler ya da sistemden uzaklaşırlar. Yerlerini ise sistemle uyumlu ama üretken olmayan kadrolar doldurur.
+
+Bu noktadan sonra sorun artık bireysel yetersizlik değil, kurumsal ters seçim haline gelir.
+
+## Paul Graham ve Marjinalin Gücü
+
+Paul Graham'ın *The Power of Marginal* makalesinde vurguladığı temel fikir, küçük farkların uzun vadede büyük sonuçlar üretmesidir. Bir kurumun kalitesi, çoğu zaman dramatik sıçramalarla değil, küçük ama sürekli iyileşmelerle yükselir. Aynı şekilde, küçük ama sürekli ihmal edilen detaylar da zamanla büyük bozulmalara yol açar.
+
+Kamuda liyakatli personelin katkıları genellikle bu marjinal düzeyde ortaya çıkar. Bir riskin erken fark edilmesi, bir raporun daha iyi hazırlanması, bir verinin daha dikkatli analiz edilmesi, bir uygulama hatasının önceden görülmesi gibi katkılar ilk bakışta büyük görünmez. Ancak uzun vadede kurumun kapasitesini belirleyen esas unsur bu katkıların toplamıdır.
+
+Eğer sistem bu marjinal farkları ayırt edemiyor ve ödüllendiremiyorsa, marjinal emek de sistemden çekilir. Böylece Akerlof'un ters seçimi ile Graham'ın marjinal gücü aynı noktada birleşir: kalite görünmez hale gelir.
+
+Devlet kapasitesi dediğimiz şey, büyük reformlardan önce, marjinal farkları seçebilen ve koruyabilen bir insan kaynakları rejimidir.
+
+## Liyakatsiz Yönetici ve Niteliksizlik Döngüsü
+
+Niteliksiz personel ile liyakatsiz yönetici, aynı yapısal sorunun iki yüzüdür. Liyakatsiz yönetici, nitelikli insanla çalışmakta zorlanır. Çünkü nitelikli insan soru sorar, gerekçe ister ve hatayı gösterir. Bu da yöneticinin konfor alanını bozar.
+
+Bunun bürokrasideki günlük karşılığı çok tipiktir: Diyelim ki kuruma milyonlarca liralık yeni bir harcama öngören bir proje sunuldu. Nitelikli bir uzman verileri toplar, sahaya iner ve yöneticisinin önüne şu tespiti koyar: "Bu proje mevcut tasarımıyla arazide çalışmaz, kaynaklar israf edilecek." Liyakatsiz bir yönetici için bu rapor bir "fırsat" değil, üst makamlara sunacağı pürüzsüz "başarı hikayesine" vurulmuş bir darbedir. Yönetici, projeyi rehabilite etmek ya da rafa kaldırmak yerine; "ekip uyumunu bozduğu" veya "fazla negatif/teorik kaldığı" gerekçesiyle o uzmanı pasif bir göreve çeker ve raporu sümen altı eder. O uzmanın yerine, hiçbir teknik detayı dert etmeyen ve sadece onaylayan "uyumlu" personeli getirir. Sonuç hep aynıdır: Kâğıt üzerinde proje kusursuzca tamamlanmış, kurdele kesilmiştir; ancak arazide kaynaklar çöpe gitmiştir. Sistemin dışına itilen nitelikli personel ise o günden sonra sadece mesai saatini dolduran, sessiz bir "gölgeye" dönüşür.
+
+Bu nedenle liyakatsiz yöneticiler zamanla kendilerine benzeyen kadroları tercih etmeye başlar. Sadakat yetkinliğin yerine geçer. Uyum performansın önüne geçer. Sessizlik başarı olarak kodlanır.
+
+Böylece karşılıklı bir koruma mekanizması oluşur. Personel yöneticiyi sorgulamaz, yönetici personeli korur. Ortaya çıkan yapı dışarıdan bakıldığında istikrarlı görünür, içeriden bakıldığında ise çürümüştür.
+
+## Fukuyama ve Kurumsal Çürüme
+
+Francis Fukuyama'nın "political decay" kavramı, bu sürecin uzun vadeli sonucunu açıklar. Kurumlar zamanla öğrenme yeteneğini kaybettiklerinde, hatalarını düzeltemediklerinde ve iç denetim mekanizmalarını kaybettiklerinde çürümeye başlar. Bu çürüme ani değil, yavaş ve çoğu zaman fark edilmeden gerçekleşir.
+
+Patronaj ilişkileri güçlendikçe, liyakat geri çekildikçe ve hesap verebilirlik zayıfladıkça, kurumlar kendi kendini yenileyemez hale gelir. Bu noktadan sonra yapılan reformlar da yüzeysel kalır. Çünkü sorun yapısal hale gelmiştir.
+
+## Stratejik İnsan Kaynakları Eksikliği
+
+Bütün bu tablo, Türkiye'de kamunun neden gerçek anlamda bir stratejik insan kaynakları politikasına sahip olmadığını da açıklar. Personel politikaları çoğu zaman kısa vadeli ihtiyaçlara göre şekillenir. Uzun vadeli yetenek havuzu, kurumsal hafıza ve kariyer planlaması sistematik biçimde ele alınmaz.
+
+Sonuçta ortaya çıkan yapı, insan yetiştiren değil, insan tüketen bir yapıdır.
+
+## Sonuç
+
+Kamudaki temel sorun, nitelikli insan bulamamak değildir. Sorun, nitelikli insanı seçememek, koruyamamak ve değerlendirememektir. Bu da liyakat ilkesinin zayıflaması, ters seçim mekanizmasının çalışması ve marjinal katkıların görünmez hale gelmesiyle oluşur.
+
+Bu döngü kırılmadıkça, personel sayısı artsa da kapasite artmaz. Eğitim programları çoğalsa da performans yükselmez. Reform belgeleri yayımlansa da kurumlar öğrenmez.
+
+Çünkü mesele insan sayısı değil, sistemin insanla kurduğu ilişkidir.

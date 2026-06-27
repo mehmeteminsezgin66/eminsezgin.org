@@ -1,0 +1,26 @@
+---
+title: "Harita Araziyi İkame Ettiğinde"
+description: "Bürokrasinin PowerPoint diliyle ürettiği temsillerin, sınırlı rasyonellik ve ölçüm yanılsaması üzerinden gerçekliğin kendisinin yerine geçmesi üzerine."
+author: "Mehmet Emin Sezgin"
+---
+
+> "The map is not the territory, but people mistake the map for the territory."
+> — Nassim Nicholas Taleb
+
+Türkiye'de politika yapımında karşılaşılan temel sorun, çoğu zaman sanıldığı gibi niyet ya da ideoloji meselesi değildir. Sorun, daha derinde ve daha yapısal bir yerde durur: gerçekliğin yerini temsillerin alması. Bu temsil çoğu zaman akademik bir model de değildir; bürokrasinin alışıldık diliyle üretilmiş PowerPoint sunumlarıdır. Sunumlar dünyayı anlamak için değil, düzenlemek, sadeleştirmek ve savunulabilir kılmak için kullanılır. Ancak bu işlev zamanla yer değiştirir. Sunumlar dünyayı anlatan araçlar olmaktan çıkar, dünyanın kendisi gibi muamele görmeye başlar.
+
+Ortaya çıkan durum, klasik bir harita–arazi karışmasıdır. Harita araziyi temsil etmek için vardır; araziyi ikame etmek için değil. Buna rağmen karar süreçlerinde giderek daha sık görülen şey, haritanın estetiğinin ve basitliğinin arazinin karmaşıklığını bastırmasıdır. Grafikler düzgün görünür, göstergeler netleşir, hedefler sıralanır. Buna karşılık sahadaki davranışlar, kurumsal kapasite sınırları, geri besleme boşlukları ve maliyetler görünmez hale gelir. Görünmeyen her unsur, karar süreçlerinde de hesaba katılmaz.
+
+Bu tablo tesadüf değildir. Herbert Simon'ın sınırlı rasyonellik yaklaşımı, karar vericilerin ve kurumların karmaşık dünyayı tam olarak kavrayamadığını açıkça ortaya koyar. Zaman, bilgi ve dikkat sınırlıdır. Bu nedenle "en iyi" çözümler değil, işlenebilir çözümler üretilir. Bu başlı başına bir sorun oluşturmaz. Sorun, bu sınırlılığı dengeleyecek geri besleme ve yanlışlama mekanizmaları kurulmadığında ortaya çıkar. Böyle durumlarda "yeterince iyi" olan hızla "iyi görünüyor"a dönüşür. PowerPoint sunumları bu dönüşümün en işlevsel taşıyıcısıdır.
+
+Burada PowerPoint'ten kastedilen şey, teknik olarak bir sunum aracı olması değildir; bilgiyi zorunlu olarak yüzeyselleştiren bir temsil biçimi olmasıdır. PowerPoint, karmaşık ilişkileri, belirsizlikleri ve çelişkileri taşımak için değil; onları sadeleştirerek aktarılabilir hale getirmek için tasarlanır. Bu nedenle neden–sonuç ilişkilerini derinleştirmez, varsayımları tartışmaya açmaz, başarısızlıkları görünür kılmaz. Bilgiyi dilimleyerek sunar, bağlamından koparır ve karar vericinin dikkatini sonuçtan çok sunumun iç tutarlılığına yöneltir. Sorun, bu yüzeyselliğin bir iletişim tercihi olmaktan çıkıp bilginin kendisi sanılmaya başlanmasıdır. Bu noktadan sonra PowerPoint, düşünmeyi destekleyen bir araç olmaktan çıkar ve düşünmenin yerine geçen bir ikameye dönüşür.
+
+Daniel Kahneman ve Amos Tversky'nin bilişsel psikoloji alanındaki bulguları, bu sürecin zihinsel altyapısını açıklar. Zihin, zor sorularla karşılaştığında farkında olmadan daha kolay sorulara yönelir. "Bu politika sahada neyi değiştirmektedir?" sorusu zor bir sorudur. Bunun yerine "kaç kişiye ulaşılmaktadır?", "kaç faaliyet yapılmaktadır?", "kaç riskli vaka tespit edilmektedir?" gibi sorular öne çıkar. Bu sorular cevaplanabilir, ölçülebilir ve sunulabilir niteliktedir. Böylece karmaşıklık yönetilmiş gibi görünür; oysa gerçekte yalnızca yer değiştirmiştir.
+
+Bu aşamadan sonra ölçüm yanılsaması devreye girer. Ölçülen şey, önemli olduğu için değil; ölçülebildiği için merkeze alınır. Sayılar yalnızca bilgi üretmez, aynı zamanda meşruiyet üretir. Grafik yükseldiğinde işin yolunda olduğu varsayılır. Oysa ölçülen göstergenin asıl hedefle ne ölçüde ilişkili olduğu çoğu zaman sorgulanmaz. Zamanla ölçü hedefin yerini alır. Politikanın başarılı olup olmadığı değil, sunumun ikna edici olup olmadığı belirleyici hale gelir.
+
+Bu yaklaşım, geri beslemesi zayıf sosyal alanlarda özellikle ağır sonuçlar üretir. Çocuk hizmetleri, yoksulluk, eğitim ve bakım politikaları gibi alanlarda yanlış model, yalnızca yanlış kararlar üretmez; yanlış bir güven duygusu da üretir. Modelin bedelini model ödemez. Bedeli, sahada yaşayanlar öder. Ancak bu bedel sunumlarda görünmez. Görünmeyen bedel, karar süreçlerinde de yok sayılır.
+
+Sorunun kaynağı tam olarak burada yatar. Bu bir sunum problemi değildir; bir düşünme ve karar mimarisi problemidir. Daha iyi grafikler, daha sofistike panolar ya da daha parlak göstergeler çözüm üretmez. Aksine, haritayı daha cazip hale getirir ve araziyle bağın daha da kopmasına neden olur. İhtiyaç duyulan şey, yanlışlanmaya açık, geri beslemeyi zorunlu kılan ve çalışmayanı ayıklayabilen bir yöntemdir. Haritayı ortadan kaldırmak değil; haritayı yeniden araziye tabi kılmaktır.
+
+Aksi halde PowerPoint'ler konuşmaya devam eder. Gerçeklik ise sessizce birikir. Sessizce biriken bu gerçeklik, er ya da geç çok daha yüksek bir maliyetle geri döner. Bu durum bugüne özgü bir risk değildir; göz göre göre ilerleyen bir süreçtir.

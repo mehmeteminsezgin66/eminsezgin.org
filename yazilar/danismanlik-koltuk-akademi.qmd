@@ -1,0 +1,35 @@
+---
+title: "Danışmanlık, Koltuk ve Sessizlik: Akademi–Bürokrasi İlişkisi"
+description: "Akademi ile bürokrasinin birbirinden neredeyse hiç faydalanamamasının arkasındaki yapısal mekanizma: beklenti, pozisyon ve başarısızlığın görünür olmasından duyulan korku."
+author: "Mehmet Emin Sezgin"
+---
+
+> "Wherever a person can live, there one can also live well."
+> — Marcus Aurelius
+
+Türkiye'de kamu politikalarının neden kalıcı sonuç üretmekte zorlandığına dair tartışmalar genellikle siyasete, kadrolara ya da kaynak yetersizliğine bağlanır. Oysa bu tabloyu sürekli yeniden üreten ve daha az konuşulan bir başka mesele de bürokrasi ile akademinin birbirinden neredeyse hiç faydalanamaması[^1]dır. Üstelik bu kopuş, iki tarafın da birbirine ihtiyacı olmadığı için değil; tam tersine, ihtiyaçların ve beklentilerin yanlış yerde konumlanması nedeniyle derinleşmektedir.
+
+Kâğıt üzerinde bakıldığında tablo umut verici görünebilir. Akademi bilgi üretir, bürokrasi uygulama yapar. Biri teoriyle, diğeri pratikle meşgul olur. Doğal olarak bu iki dünyanın birbirini beslemesi gerekir ama pratikte bu gerçekleşmez. Akademi, bürokrasinin gerçekten ihtiyaç duyduğu yöntemsel destek, eleştirel değerlendirme ve yol göstericiliği üretmekte yetersiz kalırken, bürokrasi ise akademiden gelen sınırlı sayıdaki nitelikli değerlendirmeyi, çoğu zaman görmezden gelerek kendi eksiklerini örtmeyi tercih etmektedir. Sonuç: iki tarafın da katkı sunduğunu iddia ettiği ama kimsenin sorumluluk almadığı bir başarısızlık döngüsü olmaktadır.
+
+Akademi tarafındaki sorun genellikle "teori–pratik kopuşu" başlığı altında değerlendirilebilir ama mesele sadece teorinin pratiğe aktarılmasındaki teknik güçlük değildir. Asıl sorun, akademinin bürokrasiyle kurduğu ilişkinin bilgi üretimi ve eleştirel rehberlik üzerinden değil, beklenti ve pozisyon üzerinden şekillenmesidir. Akademik dünyanın önemli bir kısmı, kamuya dönük değerlendirmelerini bağımsız bir mesafeden yapmak yerine; projelerde yer alma, danışmanlık alma, fonlara erişme ya da doğrudan bürokrasi içinde bir koltuk edinme beklentisiyle kurmaktadır. Bu beklenti ise ister istemez söylenen sözün değerini düşürmektedir.
+
+Bu noktadan sonra akademik değerlendirme, olması gereken şeyi değil; duyulmak isteneni söylemeye başlar. Sert eleştiriler yumuşatılır, yapısal sorunlar teknik ayrıntılara indirgenir, başarısızlıklar "iyileştirme alanı" olarak süslenerek ifade edilir. Böylece akademi, bürokrasinin gerçekliğini zorlayan bir rehber olmaktan çıkıp, onu rahatlatan bir iç ses haline gelir. Eleştiri varmış gibi yapılırken eleştirinin maliyeti de üstlenilmemiş olur.
+
+Bu tarz bir çalışmanın somut bir örneği, yakın zamanda Enstitü Sosyal adındaki düşünce kuruluşu tarafından hazırlanan ve akademi–kamu iş birliğini güçlendirmeyi amaçlayan bir politika notunda açıkça görülmektedir[^2]. İlgili çalışmada akademik üretimdeki niceliksel artış, grafikler ve tablolarla ayrıntılı biçimde sunulmakta; tez sayıları, araştırma başlıkları ve kurumsal yapılanma önerileri üzerinden bir ilerleme olduğu iddia edilmektedir. Ancak bu iddia, akademik bilginin kamu politikalarına nasıl, hangi koşullarda ve ne ölçüde etki ettiği sorusunu sistematik biçimde pas geçmektedir. Akademi, bu metinde bürokrasiyi zorlayan bağımsız bir değerlendirme kaynağı olarak değil; mevcut kurumsal çerçeveyi daha iyi anlatan, daha düzenli hale getiren bir destek unsuru olarak konumlanmaktadır. Bürokrasi açısından bakıldığında ise bu tür çalışmalar, eksiklikleri görünür kılmak yerine "bilimsel destek alınmış" izlenimi yaratarak mevcut uygulamaları meşrulaştırma işlevi görür. Böylece akademik bilgi, öğrenme ve yanlışlama üretmek yerine; düzeni tahkim eden, ama sonuç üretmeyen bir role sıkışır. Bu da akademi–bürokrasi ilişkisinin neden kalıcı biçimde başarısızlık ürettiğini açıklayan tipik ve güncel bir örnek oluşturmaktadır.
+
+Bürokrasi cephesinde ise tablo daha tanıdıktır. Eğer akademiden gelen değerlendirme yüzeysel, güvenli ve mevcut anlatıyla uyumluysa; memnuniyetle karşılanır. Raporlara girer, sunumlara eklenir, "bilimsel destek" etiketiyle çalışmalara meşruiyet sağlanmış olur. Ama akademiden gerçekten yetkin, sahayla temas eden, yöntemsel olarak güçlü ve rahatsız edici bir değerlendirme gelirse, bu kez başka bir refleks devreye girer: görmezden gelme ya da sümen altı etme. Eleştiri yok sayılır, raporlar rafa kaldırılır, "akademik ama gerçekçi değil" denilerek etkisizleştirilir.
+
+Bu refleksin temelinde şeffaflık ya da iyi niyet eksikliğinden çok daha derin bir şey yatmaktadır: başarısızlığın görünür hale gelmesinden duyulan korku. Akademinin sahici bir değerlendirmesi, bürokrasinin yıllardır sürdürdüğü "yolunda gidiyor" anlatısını zedeleyebilir. Bu zedelenme, yalnızca kurumsal prestiji değil; bireysel kariyerleri, terfi ihtimallerini ve mevcut düzeni tehdit eder. Dolayısıyla en güvenli yol, eleştiriyi içeri almamak, sistemi olduğu gibi sürdürmektir.
+
+Bu iki eğilim birleştiğinde ortaya son derece sorunlu bir yapı çıkmaktadır. Akademi, bürokrasiye gerçek bir ayna tutmuyor; bürokrasi de aynaya bakmaktan bilinçli olarak kaçınıyor. Böyle bir ortamda bilgi üretiliyor gibi görünüyor, raporlar yazılıyor, paneller yapılıyor, çalıştaylar düzenleniyor. Ama öğrenme olmuyor. Çünkü öğrenme, yanlışla yüzleşmeyi gerektirir. Yanlışla yüzleşmeyen bir sistem, kaçınılmaz olarak aynı hataları yeniden üretir.
+
+Bu durumun en tehlikeli sonucu, başarısızlığın kişilere değil, sisteme ait olmasına rağmen; sistemin kendisini sürekli başarılı ilan etmesidir. Akademik raporlar, bürokratik sunumlar ve resmi söylem bir araya geldiğinde, ortaya "bilim destekli politika" görüntüsü çıkar. Oysa bu görüntünün altında, ne akademinin bağımsızlığı ne de bürokrasinin öğrenme kapasitesi gerçek anlamda çalışmaktadır.
+
+Peki bu noktada çözüm nedir? Çözüm, akademiyi daha fazla projeye dahil etmek ya da bürokrasiyi daha fazla akademik raporla donatmak değildir. Çözüm, ilişkinin doğasını değiştirmektir. Akademinin rolü, karar vericiyi memnun etmek değil; gerçekliği görünür kılmak olmalıdır. Bürokrasi için ise akademi, vitrin süsü değil; rahatsız edici ama gerekli bir geri besleme kaynağı olarak konumlanmalıdır.
+
+Aksi halde her iki taraf da kendi konfor alanında kalır. Akademi konuşur ama risk almaz, bürokrasi dinler gibi yapar ama değişmez. Ve ortaya çıkan şey, yıllardır aşina olduğumuz o tanıdık sonuç olur: çok sayıda belge, çok az ilerleme. Başarısızlık ise kimsenin değil, herkesin ya da en kolay suçlanabilenin olur.
+
+Bu yazıyı okuyanlar için mesele yeni değil. Ama belki hâlâ hatırlatılması gerekiyor: Gerçeklikle yüzleşmeyen her yapı, gizlediği sorunun bedelini daha fazla öder.
+
+[^1]: Akademi ile kastedilen üniversiteler ile akademisyenler tarafından kurulan ve idare edilen düşünce ve araştırma kuruluşlarıdır.
+[^2]: Bütüncül Aile Politikaları İçin 2025 Aile Yılı ve Aile Enstitüsünün İşlevi, Enstitü Sosyal, Politika Notu, Ocak 2025.
