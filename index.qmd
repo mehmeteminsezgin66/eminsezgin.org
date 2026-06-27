@@ -22,7 +22,7 @@ Akademik literatür, resmî veriler ve politika uygulamaları arasında bağ kur
 Araştırma · 2026
 :::
 ::: {.card-title}
-[Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi: HWP Ayrıştırma Analizi (2013–2025)](arastirmalar/hwp-analizi.qmd)
+[Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi: HWP Ayrıştırma Analizi (2013–2024)](arastirmalar/hwp-analizi.qmd)
 :::
 ::: {.card-summary}
 Horiuchi-Wilmoth-Pletcher yöntemiyle TDH kaybının parite geçiş ve evlilik bileşenlerine ayrıştırılması. PPR₁ etkisi toplam kaybın %56,6'sını açıklıyor.
