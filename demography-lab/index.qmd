@@ -810,6 +810,104 @@ html`<div style="font-size: 0.9em; color: #444; background: #FAFAF8; border-left
 **Kaynak:** TUIK Dogum Istatistikleri, dogum sirasina gore TDH bilesenleri (TDHₙ = TDH × (n. sira payi/100)), 2013-2025 tam seri (resmi TDH serisine tam toplanacak sekilde olceklenmistir). Varsayilan secimde (2013→2025), toplam TDH kaybinin (-0,68) en buyuk tek kaynagi **2. cocuktur** (1→2 gecisi) — diger uc bilesenin her biri ayri ayri daha az katki yapar. Kaydiriciyi degistirerek son donemdeki hizlanmayi da gozlemleyebilirsiniz (orn. 2021'den baslatip 2025'e kadarki degisime bakin).
 :::
 
+## 9. HWP Ayrıştırma Simülatörü
+
+2013'ten 2024'e TDH kaybının (−0,626) hangi bileşenlerden geldiğini gösteren HWP ayrıştırmasını tersine çevirin: her bir bileşendeki kaybın ne kadarını "geri kazansak" TDH ne olurdu?
+
+```{ojs}
+//| echo: false
+
+viewof iyilesme_evlilik = Inputs.range([0, 100], {value: 0, step: 5, label: "Evlilik etkisi iyilesme (%)"})
+viewof iyilesme_ppr1 = Inputs.range([0, 100], {value: 0, step: 5, label: "1→2 gecis (PPR₁) iyilesme (%)"})
+viewof iyilesme_ppr2plus = Inputs.range([0, 100], {value: 0, step: 5, label: "2→3 ve sonrasi gecisler iyilesme (%)"})
+```
+
+```{ojs}
+//| echo: false
+
+// HWP kovaryat katkilari, 2013-2024 (gercek, dogrulanmis: toplam -0.626)
+tdh_2013_hwp = 2.110
+tdh_2024_hwp = 1.484
+
+katki_evlilik = -0.019 + -0.077 + -0.066 + -0.056  // dort evlilik yas grubu toplami
+katki_ppr1 = -0.354
+katki_ppr2plus = -0.006 + -0.021 + -0.027  // 2->3, 3->4, 4+ gecisleri toplami
+
+toplam_kayip_dogrulama = katki_evlilik + katki_ppr1 + katki_ppr2plus
+
+// Kullanicinin sectigi iyilesme oranlarina gore kalan kayip
+kalan_kayip_evlilik = katki_evlilik * (1 - iyilesme_evlilik/100)
+kalan_kayip_ppr1 = katki_ppr1 * (1 - iyilesme_ppr1/100)
+kalan_kayip_ppr2plus = katki_ppr2plus * (1 - iyilesme_ppr2plus/100)
+
+tdh_simulasyon = tdh_2013_hwp + kalan_kayip_evlilik + kalan_kayip_ppr1 + kalan_kayip_ppr2plus
+tdh_kazanc = tdh_simulasyon - tdh_2024_hwp
+```
+
+```{ojs}
+//| echo: false
+
+html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
+  <div style="background: #f8f9fa; border-left: 4px solid #888; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">TDH 2024 (gerceklesen)</div>
+    <div style="font-size: 1.6em; font-weight: bold; color: #888;">${tdh_2024_hwp.toFixed(3)}</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">TDH (simulasyon)</div>
+    <div style="font-size: 1.6em; font-weight: bold; color: #1F3864;">${tdh_simulasyon.toFixed(3)}</div>
+  </div>
+  <div style="background: ${tdh_kazanc > 0 ? '#e8f5e9' : '#f8f9fa'}; border-left: 4px solid ${tdh_kazanc > 0 ? '#2E7D32' : '#888'}; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Kazanc</div>
+    <div style="font-size: 1.6em; font-weight: bold; color: ${tdh_kazanc > 0 ? '#2E7D32' : '#888'};">+${tdh_kazanc.toFixed(3)}</div>
+  </div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+
+waterfall_veri = [
+  {asama: "TDH 2013", deger: tdh_2013_hwp, tip: "baz"},
+  {asama: "Evlilik etkisi", deger: kalan_kayip_evlilik, tip: kalan_kayip_evlilik < 0 ? "kayip" : "kazanc"},
+  {asama: "1→2 gecis", deger: kalan_kayip_ppr1, tip: kalan_kayip_ppr1 < 0 ? "kayip" : "kazanc"},
+  {asama: "2→3+ gecisler", deger: kalan_kayip_ppr2plus, tip: kalan_kayip_ppr2plus < 0 ? "kayip" : "kazanc"},
+  {asama: "TDH (simulasyon)", deger: tdh_simulasyon, tip: "sonuc"}
+]
+
+// Kumulatif baslangic noktalarini hesapla (waterfall icin)
+kumulatif = []
+let aradeger = tdh_2013_hwp
+for (let i = 1; i < waterfall_veri.length - 1; i++) {
+  kumulatif.push({asama: waterfall_veri[i].asama, baslangic: Math.min(aradeger, aradeger + waterfall_veri[i].deger),
+                  bitis: Math.max(aradeger, aradeger + waterfall_veri[i].deger), tip: waterfall_veri[i].tip})
+  aradeger += waterfall_veri[i].deger
+}
+
+renk_skala = ({baz: "#888888", kayip: "#B33A3A", kazanc: "#2E7D32", sonuc: "#1F3864"})
+
+Plot.plot({
+  width: 700, height: 400,
+  x: {label: null, domain: ["TDH 2013", "Evlilik etkisi", "1→2 gecis", "2→3+ gecisler", "TDH (simulasyon)"]},
+  y: {label: "TDH", domain: [1.3, 2.2]},
+  marks: [
+    Plot.barY([{asama: "TDH 2013", y0: 0, y1: tdh_2013_hwp}], {x: "asama", y1: "y1", y2: "y0", fill: renk_skala.baz}),
+    Plot.barY(kumulatif, {x: "asama", y1: "baslangic", y2: "bitis", fill: d => renk_skala[d.tip]}),
+    Plot.barY([{asama: "TDH (simulasyon)", y0: 0, y1: tdh_simulasyon}], {x: "asama", y1: "y1", y2: "y0", fill: renk_skala.sonuc}),
+    Plot.text([{asama: "TDH 2013", y: tdh_2013_hwp + 0.05, t: tdh_2013_hwp.toFixed(2)}], {x: "asama", y: "y", text: "t", fontWeight: "bold"}),
+    Plot.text([{asama: "TDH (simulasyon)", y: tdh_simulasyon + 0.05, t: tdh_simulasyon.toFixed(2)}], {x: "asama", y: "y", text: "t", fontWeight: "bold"}),
+    Plot.text(kumulatif, {x: "asama", y: d => Math.max(d.baslangic, d.bitis) + 0.04,
+      text: d => (d.bitis - d.baslangic === 0 ? "0.000" : ((d.tip === "kazanc" ? "+" : "") + (d.bitis - d.baslangic).toFixed(3))),
+      fontSize: 10, fontWeight: "bold"})
+  ]
+})
+```
+
+::: {.callout-warning appearance="simple"}
+**Nasil calisir:** Her kaydirici, ilgili HWP bilesenindeki **gercek 2013-2024 kaybinin** ne kadarinin "geri kazanildigini" (%0=hic, %100=tam 2013 seviyesine donus) simule eder. Gercek 2013-2024 kayiplari: Evlilik etkisi −0,218 (dort yas grubunun toplami), 1→2 gecis (PPR₁) −0,354, 2→3+ gecisler −0,054. **PPR₁'i tek basina %100 iyilestirmek** (diger ikisi sabit), TDH'yi 1,484'ten **1,838'e** cikarir — bu, tum toplam kaybin (−0,626) **%56,5'ini** tek basina temsil eder ve butun diger uc kategorinin toplamından daha buyuktur.
+
+**Kaynak:** HWP (Horiuchi-Wilmoth-Pletcher) ayristirma analizi, 2013-2024, dogrulanmis TUIK verisi (toplam kontrolu: 2,110 + (−0,626) = 1,484 ✓).
+:::
+
 ::: {.callout-tip}
-**Planlanan ek modeller:** HWP Ayristirma Simulatoru, Stok-Akis Paradoksu, Bongaarts-Feeney Tempo Hesaplayici, Nesil Uzunlugu Hizlandiricisi, Surdurulebilirlik Duzey Kontrol Paneli ve daha fazlasi bu bolume eklenecektir. Tam liste icin [proje yol haritasina](/about.qmd) bakiniz.
+**Planlanan ek modeller:** Stok-Akis Paradoksu, Bongaarts-Feeney Tempo Hesaplayici, Nesil Uzunlugu Hizlandiricisi, Surdurulebilirlik Duzey Kontrol Paneli ve daha fazlasi bu bolume eklenecektir. Tam liste icin [proje yol haritasina](/about.qmd) bakiniz.
 :::
