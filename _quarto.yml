@@ -20,7 +20,7 @@ website:
         href: politika-notlari/index.qmd
       - text: "Veri ve Grafikler"
         href: veri-grafikler/index.qmd
-      - text: "Demography Lab"
+      - text: "Demografi Lab"
         href: demography-lab/index.qmd
       - text: "English"
         href: en/index.qmd
