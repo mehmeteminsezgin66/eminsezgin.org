@@ -1596,6 +1596,93 @@ Türkiye'nin doğum sırası profili, gelişmiş Avrupa ülkeleri ile düşük d
 :::
 
 
+### Orta Gelirli Ülkelerde Doğurganlık Düşüş Hızı
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+ulkeler_41 <- c("Sili", "Kolombiya", "Kosta Rika", "Guney Kore", "Meksika", "Turkiye")
+tfr_2024_41 <- c(1.13, 1.62, 1.32, 0.75, 1.87, 1.62)
+
+sira_41 <- order(tfr_2024_41)
+ulkeler_41_sirali <- factor(ulkeler_41[sira_41], levels = ulkeler_41[sira_41])
+renk_41 <- ifelse(ulkeler_41[sira_41] == "Turkiye", "#B33A3A", "#9E7A1A")
+
+fig41 <- plot_ly(x = tfr_2024_41[sira_41], y = ulkeler_41_sirali, type = "bar", orientation = "h",
+                 marker = list(color = renk_41),
+                 text = tfr_2024_41[sira_41], textposition = "outside") %>%
+  layout(
+    xaxis = list(title = "Toplam Dogurganlik Hizi (2024)"),
+    yaxis = list(title = ""),
+    margin = list(l = 110),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig41
+```
+
+::: {.callout-warning}
+**Kaynak:** OECD, Society at a Glance 2024 / Fertility trends across the OECD. OECD'nin resmi tespiti şudur: *"Düşüş Şili, Kolombiya, Kosta Rika, Kore, Meksika ve Türkiye'de özellikle belirgin olmuştur — bu ülkelerde önceden ortalama 4-5 çocuk/kadın düzeyindeyken, en az 3 çocuk/kadın düşüş yaşanmıştır."* Türkiye, bu altı ülkelik grubun **ortasında** yer almaktadır (1,62) — Güney Kore'nin (0,75) çok üzerinde ama Meksika'nın (1,87) altındadır. INED (Fransız Ulusal Demografi Enstitüsü) de Türkiye'yi Güney Kore, Tayvan, İran, Brezilya ve Kolombiya ile birlikte **"yüksek düzeyden dramatik düşüş"** kategorisinde sınıflandırmaktadır.
+:::
+
+### Doğum Sırasına Göre Dağılım: Uluslararası Karşılaştırma
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 10
+#| fig-height: 7
+
+library(plotly)
+
+ulkeler <- c("ABD", "Meksika", "Turkiye", "Fransa", "Norvec", "Isvec", "Belcika",
+             "Hollanda", "Almanya", "Italya", "Ispanya", "Guney Kore", "Hindistan")
+tfr_etiket <- c("ABD (TDH: 1,62)", "Meksika (TDH: 1,60)", "Turkiye (TDH: 1,48)",
+                "Fransa (TDH: 1,61)", "Norvec (TDH: 1,40)", "Isvec (TDH: 1,45)",
+                "Belcika (TDH: 1,47)", "Hollanda (TDH: 1,43)", "Almanya (TDH: 1,35)",
+                "Italya (TDH: 1,18)", "Ispanya (TDH: 1,10)", "Guney Kore (TDH: 0,75)",
+                "Hindistan (TDH: 1,90)")
+cocuk1 <- c(39.0, 40.2, 41.9, 43.2, 43.6, 44.5, 44.7, 45.4, 46.8, 49.7, 50.7, 61.3, 66.4)
+cocuk2 <- c(31.0, 25.6, 30.7, 34.0, 36.1, 37.2, 34.3, 37.1, 34.8, 35.2, 35.3, 31.9, 22.7)
+cocuk3 <- c(16.0, 15.7, 17.0, 15.2, 15.5, 13.8, 13.9, 13.0, 12.6, 11.4, 10.5, 6.8, 7.3)
+cocuk4plus <- c(14.0, 18.5, 10.4, 7.6, 5.0, 4.0, 7.1, 4.0, 5.8, 4.0, 4.0, 0.0, 4.0)
+
+sira <- order(cocuk1, decreasing = TRUE)
+tfr_etiket_sirali <- factor(tfr_etiket[sira], levels = rev(tfr_etiket[sira]))
+
+fig <- plot_ly() %>%
+  add_trace(y = tfr_etiket_sirali, x = cocuk1[sira], type = "bar", orientation = "h",
+            name = "1. cocuk", marker = list(color = "#B33A3A"),
+            text = paste0(cocuk1[sira], "%"), textposition = "inside", insidetextfont = list(color = "white")) %>%
+  add_trace(y = tfr_etiket_sirali, x = cocuk2[sira], type = "bar", orientation = "h",
+            name = "2. cocuk", marker = list(color = "#1F3864"),
+            text = paste0(cocuk2[sira], "%"), textposition = "inside", insidetextfont = list(color = "white")) %>%
+  add_trace(y = tfr_etiket_sirali, x = cocuk3[sira], type = "bar", orientation = "h",
+            name = "3. cocuk (Kore: 3+)", marker = list(color = "#2E7D32"),
+            text = paste0(cocuk3[sira], "%"), textposition = "inside", insidetextfont = list(color = "white")) %>%
+  add_trace(y = tfr_etiket_sirali, x = cocuk4plus[sira], type = "bar", orientation = "h",
+            name = "4+ cocuk", marker = list(color = "#9E7A1A"),
+            text = ifelse(cocuk4plus[sira] > 0, paste0(cocuk4plus[sira], "%"), ""), textposition = "inside", insidetextfont = list(color = "white")) %>%
+  layout(
+    barmode = "stack",
+    xaxis = list(title = "Toplam Dogumlarin Payi (%)", range = c(0, 100)),
+    yaxis = list(title = ""),
+    legend = list(orientation = "h", x = 0.1, y = -0.1),
+    margin = list(l = 160),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig
+```
+
+::: {.callout-important}
+**Kaynak:** Hindistan — SRS 2024; Güney Kore — Statistics Korea, Preliminary Results of Birth and Death Statistics 2024 (3. ve 4+ çocuk kategorileri kaynakta birleşik raporlanmaktadır, "3+ çocuk" olarak gösterilmiştir); İspanya, İtalya, Almanya, Hollanda, İsveç, Belçika, Fransa — Eurostat 2024; Norveç — SSB 2024; ABD — NCHS 2023; **Türkiye — TÜİK 2024**; Meksika — INEGI ENR 2024.
+
+Türkiye'nin doğum sırası profili, gelişmiş Avrupa ülkeleri ile düşük doğurganlıklı Doğu Asya ülkeleri (Güney Kore) arasında **ayırt edici bir konumda** durmaktadır: 1. çocuk payı (%41,9) Fransa'dan (%43,2) düşük, Meksika'dan (%40,2) yüksektir — orta sırada. Ancak **4. çocuk ve sonrası payı (%10,4)**, listedeki tüm Avrupa ülkelerinden (İtalya, İspanya, Hollanda, İsveç: %4,0; Almanya: %5,8; Norveç: %5,0) belirgin biçimde yüksektir; sadece Meksika (%18,5) ve ABD (%14,0) bu kalemde Türkiye'yi geçmektedir. Bu, Türkiye'de **yüksek pariteli doğurganlığın** (3. ve sonraki çocuklar) Avrupa'daki "düşük doğurganlık" rejimlerinden farklı olarak hâlâ göreli bir ağırlığa sahip olduğunu — doğurganlık düşüşünün esas olarak 1→2 geçişinde (PPR₁ çöküşü) yoğunlaştığını, yüksek pariteli ailelerin görece daha dirençli kaldığını göstermektedir.
+:::
+
+
 ## Evlilik ve Aile Yapısı
 
 Evlenme ve boşanma eğilimleri, ilk evlenme yaşının yükselişi ve bunların doğurganlıkla ilişkisi.
