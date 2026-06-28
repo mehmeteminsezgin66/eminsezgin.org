@@ -1333,9 +1333,268 @@ fig9
 
 ## Uluslararası Karşılaştırmalar
 
-TDH ve OADR'nin OECD ve dünya ülkeleriyle karşılaştırması, norm difüzyon asimetrisi.
+Türkiye'nin doğurganlık göstergelerini seçili ülkelerle karşılaştırmalı bağlama yerleştirmek.
 
-*Bu bölümün içeriği hazırlanıyor.*
+### Toplam Doğurganlık Hızı: Uluslararası Karşılaştırma (2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 7
+
+library(plotly)
+
+ulkeler_tdh <- c("Israil", "Hindistan", "Meksika", "Fransa", "Avustralya", "ABD",
+                  "Turkiye", "Birlesik Krallik", "Almanya", "Isvec", "Hollanda",
+                  "Norvec", "Kanada", "Polonya", "Japonya", "Ispanya", "Italya", "Guney Kore")
+tdh_deger <- c(2.75, 1.94, 1.87, 1.64, 1.64, 1.62, 1.62, 1.54, 1.46, 1.43, 1.43,
+               1.42, 1.33, 1.31, 1.23, 1.21, 1.20, 0.75)
+
+sira_tdh <- order(tdh_deger)
+ulkeler_sirali <- factor(ulkeler_tdh[sira_tdh], levels = ulkeler_tdh[sira_tdh])
+renkler_tdh <- ifelse(ulkeler_tdh[sira_tdh] == "Turkiye", "#B33A3A", "#1F3864")
+
+fig36 <- plot_ly(x = tdh_deger[sira_tdh], y = ulkeler_sirali, type = "bar", orientation = "h",
+                 marker = list(color = renkler_tdh),
+                 text = tdh_deger[sira_tdh], textposition = "outside",
+                 hovertemplate = "%{y}: %{x}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "Toplam Dogurganlik Hizi (TDH)"),
+    yaxis = list(title = ""),
+    shapes = list(
+      list(type = "line", x0 = 2.1, x1 = 2.1, y0 = -0.5, y1 = 17.5, yref = "y",
+           line = list(color = "#888", dash = "dot", width = 1))
+    ),
+    margin = list(l = 130),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig36
+```
+
+::: {.callout-note}
+**Kaynak:** Birleşmiş Milletler, World Population Prospects 2024. İsrail (2,75) OECD içinde yenilenme eşiğinin (2,1) üzerinde kalan tek ülkedir. Türkiye (1,62), ABD ve Fransa ile aynı bandda yer almakta, Güney Kore'nin (0,75) çok üzerinde ama İtalya/İspanya/Japonya'nın (~1,20) belirgin üzerinde durmaktadır.
+:::
+
+### 10 Yıllık Değişim Hızı: Türkiye vs Avrupa Birliği (2013–2023)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+karsilastirma_grup <- c("Turkiye", "Avrupa Birligi (AB-27)")
+tdh_2013_karsi <- c(2.11, 1.51)
+tdh_2023_karsi <- c(1.51, 1.38)
+
+fig37 <- plot_ly() %>%
+  add_trace(x = karsilastirma_grup, y = tdh_2013_karsi, type = "bar",
+            name = "2013", marker = list(color = "#9E7A1A"),
+            text = tdh_2013_karsi, textposition = "outside") %>%
+  add_trace(x = karsilastirma_grup, y = tdh_2023_karsi, type = "bar",
+            name = "2023", marker = list(color = "#1F3864"),
+            text = tdh_2023_karsi, textposition = "outside") %>%
+  layout(
+    barmode = "group",
+    yaxis = list(title = "TDH", range = c(0, 2.4)),
+    xaxis = list(title = ""),
+    legend = list(orientation = "h", x = 0.3, y = -0.1),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig37
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK; Eurostat (aktaran: Euronews, Mart 2026). 2013-2023 arasında Türkiye'nin TDH'si 2,11'den 1,51'e düşmüştür — **mutlak değişim −0,60, yüzdesel değişim −%28,4** — bu, 34 Avrupa ülkesi arasında **en sert düşüş** olarak kayda geçmiştir. Aynı dönemde AB-27 ortalaması 1,51'den 1,38'e (−%8,6) düşmüştür — Türkiye'nin düşüş hızı AB ortalamasının **~3,3 katıdır**. 2014-2024 aralığında ölçüldüğünde düşüş daha da serttir (2,19→1,48, −%32,4).
+:::
+
+### Türkiye'nin OECD Ortalamasına Yakınsaması (Uzun Dönem, 1960–2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_yakinsama <- c(1960, 1970, 1980, 1990, 2000, 2010, 2020, 2024)
+tdh_turkiye_uzun <- c(6.42, 5.68, 4.95, 3.07, 2.53, 2.08, 1.77, 1.48)
+
+fig38 <- plot_ly(x = yillar_yakinsama, y = tdh_turkiye_uzun, type = "scatter", mode = "lines+markers",
+                 line = list(color = "#1F3864", width = 2.5),
+                 marker = list(color = "#1F3864", size = 6),
+                 hovertemplate = "Yil: %{x}<br>TDH: %{y}<extra></extra>") %>%
+  add_trace(x = c(2024), y = c(1.40), type = "scatter", mode = "markers",
+            marker = list(color = "#9E7A1A", size = 10, symbol = "diamond"),
+            name = "OECD ortalamasi (2024)", showlegend = TRUE) %>%
+  layout(
+    xaxis = list(title = "", dtick = 10),
+    yaxis = list(title = "TDH", range = c(1, 7)),
+    showlegend = TRUE,
+    legend = list(orientation = "h", x = 0.1, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig38
+```
+
+::: {.callout-warning}
+**Kaynak:** World Bank/TÜİK (1960-2024 ara yıl noktaları yaklaşıktır, dönüm noktaları doğrulanmıştır); OECD Family Database (2024 OECD ortalaması: 1,40). *Not: 1970-2010 ara değerleri TÜİK/World Bank serilerinden yaklaşık olarak alınmıştır; yalnızca 1960, 2024 (Türkiye) ve 2024 (OECD ortalaması) kesin doğrulanmış noktalardır.* 1960'larda Türkiye'nin TFR'si (6,42) OECD ortalamasının kat kat üzerindeyken, 2024'te Türkiye (1,48) OECD ortalamasının (1,40) **altına düşmüştür** — bu, basit bir "yakınsama" değil, geçip altına inen bir patikadır.
+:::
+
+### Beşeri Kalkınma Endeksi (HDI) vs Toplam Doğurganlık Hızı
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 6
+
+ulkeler_hdi <- c("Norvec", "Almanya", "Avustralya", "ABD", "Guney Kore", "Israil",
+                  "Fransa", "Ispanya", "Japonya", "Polonya", "Italya", "Turkiye",
+                  "Meksika", "Hindistan")
+hdi_deger <- c(0.970, 0.959, 0.958, 0.938, 0.937, 0.919, 0.920, 0.918, 0.925,
+               0.906, 0.906, 0.853, 0.789, 0.685)
+tdh_hdi <- c(1.42, 1.46, 1.64, 1.62, 0.75, 2.75, 1.64, 1.21, 1.23, 1.31, 1.20,
+             1.62, 1.89, 1.94)
+renk_hdi <- ifelse(ulkeler_hdi == "Turkiye", "#B33A3A", "#1F3864")
+
+fig39 <- plot_ly(x = hdi_deger, y = tdh_hdi, type = "scatter", mode = "markers+text",
+                 marker = list(size = 12, color = renk_hdi),
+                 text = ulkeler_hdi, textposition = "top center", textfont = list(size = 9),
+                 hovertemplate = "%{text}<br>HDI: %{x}<br>TDH: %{y}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "Beseri Kalkinma Endeksi (HDI, 2023)"),
+    yaxis = list(title = "Toplam Dogurganlik Hizi (2024)"),
+    shapes = list(
+      list(type = "line", x0 = 0.65, x1 = 1.0, y0 = 2.1, y1 = 2.1,
+           line = list(color = "#888", dash = "dot", width = 1))
+    ),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig39
+```
+
+::: {.callout-note}
+**Kaynak:** UNDP Human Development Report 2025 (HDI, 2023 verisi); UN World Population Prospects 2024 (TDH). Türkiye (HDI=0,853), kalkınma düzeyi olarak Polonya/İtalya/İspanya'nın (HDI~0,91) bir basamak altında yer almakla birlikte, TDH'si (1,62) bu ülkelerin tamamından (1,20-1,31) **yüksektir**. Bu, HDI ile TDH arasında basit/doğrusal bir ilişki olmadığını göstermektedir — Güney Kore (HDI=0,937, TDH=0,75) ile İsrail (HDI=0,919, TDH=2,75) arasındaki devasa fark, benzer kalkınma düzeyindeki ülkelerin çok farklı doğurganlık rejimleri sergileyebildiğinin en çarpıcı kanıtıdır.
+:::
+
+### Yaşlı Bağımlılık Oranı (OADR): Şimdi ve 2054 Projeksiyonu
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 6
+
+ulkeler_oadr <- c("Guney Kore", "Italya", "Ispanya", "Yunanistan", "Japonya", "OECD Ortalama")
+oadr_simdi <- c(29.3, 41.0, 35.0, 41.0, 54.9, 32.6)
+oadr_2054 <- c(84.5, 76.6, 76.2, 70.7, 80.0, 55.2)
+
+fig42 <- plot_ly() %>%
+  add_trace(x = ulkeler_oadr, y = oadr_simdi, type = "bar",
+            name = "2024", marker = list(color = "#1F3864")) %>%
+  add_trace(x = ulkeler_oadr, y = oadr_2054, type = "bar",
+            name = "2054 (projeksiyon)", marker = list(color = "#B33A3A")) %>%
+  layout(
+    barmode = "group",
+    yaxis = list(title = "Yasli Bagimlilik Orani (65+/20-64, %)"),
+    xaxis = list(title = ""),
+    legend = list(orientation = "h", x = 0.25, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig42
+```
+
+::: {.callout-important}
+**Kaynak:** OECD, Pensions at a Glance 2025 (Demographic old-age to working-age ratio, 65+/20-64). Güney Kore, OECD ülkeleri arasında **en hızlı yaşlanan** ülke konumundadır: 2024'te OECD'nin en genç ülkelerinden biriyken (29,3, OECD ortalamasının altında), 2054'te **en yaşlı** ülke olması beklenmektedir (84,5, OECD ortalamasının iki katından fazla). Türkiye, OECD'nin en genç ülkelerinden biridir (2024'te <20), ancak OECD raporu Türkiye'nin de 2084'e kadar OECD ortalamasının (68) üzerine çıkmasının beklendiğini belirtmektedir — yani genç nüfus yapısı **kalıcı bir avantaj değil, ertelenmiş bir yaşlanma sürecidir.**
+:::
+
+### Orta Gelirli Ülkelerde Doğurganlık Düşüş Hızı
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+ulkeler_41 <- c("Sili", "Kolombiya", "Kosta Rika", "Guney Kore", "Meksika", "Turkiye")
+tfr_2024_41 <- c(1.13, 1.62, 1.32, 0.75, 1.87, 1.62)
+
+sira_41 <- order(tfr_2024_41)
+ulkeler_41_sirali <- factor(ulkeler_41[sira_41], levels = ulkeler_41[sira_41])
+renk_41 <- ifelse(ulkeler_41[sira_41] == "Turkiye", "#B33A3A", "#9E7A1A")
+
+fig41 <- plot_ly(x = tfr_2024_41[sira_41], y = ulkeler_41_sirali, type = "bar", orientation = "h",
+                 marker = list(color = renk_41),
+                 text = tfr_2024_41[sira_41], textposition = "outside") %>%
+  layout(
+    xaxis = list(title = "Toplam Dogurganlik Hizi (2024)"),
+    yaxis = list(title = ""),
+    margin = list(l = 110),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig41
+```
+
+::: {.callout-warning}
+**Kaynak:** OECD, Society at a Glance 2024 / Fertility trends across the OECD. OECD'nin resmi tespiti şudur: *"Düşüş Şili, Kolombiya, Kosta Rika, Kore, Meksika ve Türkiye'de özellikle belirgin olmuştur — bu ülkelerde önceden ortalama 4-5 çocuk/kadın düzeyindeyken, en az 3 çocuk/kadın düşüş yaşanmıştır."* Türkiye, bu altı ülkelik grubun **ortasında** yer almaktadır (1,62) — Güney Kore'nin (0,75) çok üzerinde ama Meksika'nın (1,87) altındadır. INED (Fransız Ulusal Demografi Enstitüsü) de Türkiye'yi Güney Kore, Tayvan, İran, Brezilya ve Kolombiya ile birlikte **"yüksek düzeyden dramatik düşüş"** kategorisinde sınıflandırmaktadır.
+:::
+
+### Doğum Sırasına Göre Dağılım: Uluslararası Karşılaştırma
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 10
+#| fig-height: 7
+
+library(plotly)
+
+ulkeler <- c("ABD", "Meksika", "Turkiye", "Fransa", "Norvec", "Isvec", "Belcika",
+             "Hollanda", "Almanya", "Italya", "Ispanya", "Guney Kore", "Hindistan")
+tfr_etiket <- c("ABD (TDH: 1,62)", "Meksika (TDH: 1,60)", "Turkiye (TDH: 1,48)",
+                "Fransa (TDH: 1,61)", "Norvec (TDH: 1,40)", "Isvec (TDH: 1,45)",
+                "Belcika (TDH: 1,47)", "Hollanda (TDH: 1,43)", "Almanya (TDH: 1,35)",
+                "Italya (TDH: 1,18)", "Ispanya (TDH: 1,10)", "Guney Kore (TDH: 0,75)",
+                "Hindistan (TDH: 1,90)")
+cocuk1 <- c(39.0, 40.2, 41.9, 43.2, 43.6, 44.5, 44.7, 45.4, 46.8, 49.7, 50.7, 61.3, 66.4)
+cocuk2 <- c(31.0, 25.6, 30.7, 34.0, 36.1, 37.2, 34.3, 37.1, 34.8, 35.2, 35.3, 31.9, 22.7)
+cocuk3 <- c(16.0, 15.7, 17.0, 15.2, 15.5, 13.8, 13.9, 13.0, 12.6, 11.4, 10.5, 6.8, 7.3)
+cocuk4plus <- c(14.0, 18.5, 10.4, 7.6, 5.0, 4.0, 7.1, 4.0, 5.8, 4.0, 4.0, 0.0, 4.0)
+
+sira <- order(cocuk1, decreasing = TRUE)
+tfr_etiket_sirali <- factor(tfr_etiket[sira], levels = rev(tfr_etiket[sira]))
+
+fig <- plot_ly() %>%
+  add_trace(y = tfr_etiket_sirali, x = cocuk1[sira], type = "bar", orientation = "h",
+            name = "1. cocuk", marker = list(color = "#B33A3A"),
+            text = paste0(cocuk1[sira], "%"), textposition = "inside", insidetextfont = list(color = "white")) %>%
+  add_trace(y = tfr_etiket_sirali, x = cocuk2[sira], type = "bar", orientation = "h",
+            name = "2. cocuk", marker = list(color = "#1F3864"),
+            text = paste0(cocuk2[sira], "%"), textposition = "inside", insidetextfont = list(color = "white")) %>%
+  add_trace(y = tfr_etiket_sirali, x = cocuk3[sira], type = "bar", orientation = "h",
+            name = "3. cocuk (Kore: 3+)", marker = list(color = "#2E7D32"),
+            text = paste0(cocuk3[sira], "%"), textposition = "inside", insidetextfont = list(color = "white")) %>%
+  add_trace(y = tfr_etiket_sirali, x = cocuk4plus[sira], type = "bar", orientation = "h",
+            name = "4+ cocuk", marker = list(color = "#9E7A1A"),
+            text = ifelse(cocuk4plus[sira] > 0, paste0(cocuk4plus[sira], "%"), ""), textposition = "inside", insidetextfont = list(color = "white")) %>%
+  layout(
+    barmode = "stack",
+    xaxis = list(title = "Toplam Dogumlarin Payi (%)", range = c(0, 100)),
+    yaxis = list(title = ""),
+    legend = list(orientation = "h", x = 0.1, y = -0.1),
+    margin = list(l = 160),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig
+```
+
+::: {.callout-important}
+**Kaynak:** Hindistan — SRS 2024; Güney Kore — Statistics Korea, Preliminary Results of Birth and Death Statistics 2024 (3. ve 4+ çocuk kategorileri kaynakta birleşik raporlanmaktadır, "3+ çocuk" olarak gösterilmiştir); İspanya, İtalya, Almanya, Hollanda, İsveç, Belçika, Fransa — Eurostat 2024; Norveç — SSB 2024; ABD — NCHS 2023; **Türkiye — TÜİK 2024**; Meksika — INEGI ENR 2024.
+
+Türkiye'nin doğum sırası profili, gelişmiş Avrupa ülkeleri ile düşük doğurganlıklı Doğu Asya ülkeleri (Güney Kore) arasında **ayırt edici bir konumda** durmaktadır: 1. çocuk payı (%41,9) Fransa'dan (%43,2) düşük, Meksika'dan (%40,2) yüksektir — orta sırada. Ancak **4. çocuk ve sonrası payı (%10,4)**, listedeki tüm Avrupa ülkelerinden (İtalya, İspanya, Hollanda, İsveç: %4,0; Almanya: %5,8; Norveç: %5,0) belirgin biçimde yüksektir; sadece Meksika (%18,5) ve ABD (%14,0) bu kalemde Türkiye'yi geçmektedir. Bu, Türkiye'de **yüksek pariteli doğurganlığın** (3. ve sonraki çocuklar) Avrupa'daki "düşük doğurganlık" rejimlerinden farklı olarak hâlâ göreli bir ağırlığa sahip olduğunu — doğurganlık düşüşünün esas olarak 1→2 geçişinde (PPR₁ çöküşü) yoğunlaştığını, yüksek pariteli ailelerin görece daha dirençli kaldığını göstermektedir.
+:::
+
 
 ## Evlilik ve Aile Yapısı
 
