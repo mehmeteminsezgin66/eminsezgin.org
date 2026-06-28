@@ -875,12 +875,15 @@ waterfall_veri = [
 ]
 
 // Kumulatif baslangic noktalarini hesapla (waterfall icin)
-kumulatif = []
-let aradeger = tdh_2013_hwp
-for (let i = 1; i < waterfall_veri.length - 1; i++) {
-  kumulatif.push({asama: waterfall_veri[i].asama, baslangic: Math.min(aradeger, aradeger + waterfall_veri[i].deger),
-                  bitis: Math.max(aradeger, aradeger + waterfall_veri[i].deger), tip: waterfall_veri[i].tip})
-  aradeger += waterfall_veri[i].deger
+kumulatif = {
+  let aradeger = tdh_2013_hwp
+  const sonuc = []
+  for (let i = 1; i < waterfall_veri.length - 1; i++) {
+    sonuc.push({asama: waterfall_veri[i].asama, baslangic: Math.min(aradeger, aradeger + waterfall_veri[i].deger),
+                    bitis: Math.max(aradeger, aradeger + waterfall_veri[i].deger), tip: waterfall_veri[i].tip})
+    aradeger += waterfall_veri[i].deger
+  }
+  return sonuc
 }
 
 renk_skala = ({baz: "#888888", kayip: "#B33A3A", kazanc: "#2E7D32", sonuc: "#1F3864"})
