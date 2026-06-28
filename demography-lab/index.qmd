@@ -707,11 +707,12 @@ viewof yil_b = Inputs.select(yillar_secenekleri, {value: "2025", label: "Bitis y
 //| echo: false
 
 // TUIK dogum sirasina gore TDH bilesenleri, 2013-2025 tam seri
+// Not: bilesenler resmi TDH serisine tam toplanacak sekilde olceklenmistir (yuvarlama duzeltmesi)
 yillar_tdh_ayristirma = [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025]
-tdh1_seri = [0.760,0.780,0.780,0.768,0.758,0.721,0.684,0.657,0.615,0.629,0.612,0.622,0.608]
-tdh2_seri = [0.688,0.704,0.689,0.675,0.662,0.643,0.602,0.568,0.555,0.505,0.465,0.456,0.433]
-tdh3_seri = [0.366,0.396,0.393,0.386,0.378,0.367,0.344,0.317,0.311,0.285,0.251,0.238,0.219]
-tdh4_seri = [0.275,0.288,0.276,0.269,0.265,0.254,0.238,0.219,0.221,0.204,0.180,0.168,0.153]
+tdh1_seri = [0.767,0.786,0.787,0.774,0.765,0.728,0.692,0.661,0.619,0.633,0.616,0.624,0.611]
+tdh2_seri = [0.694,0.710,0.695,0.680,0.668,0.649,0.609,0.572,0.558,0.508,0.468,0.457,0.435]
+tdh3_seri = [0.369,0.399,0.396,0.389,0.381,0.371,0.348,0.319,0.313,0.287,0.252,0.239,0.220]
+tdh4_seri = [0.277,0.290,0.278,0.271,0.267,0.257,0.241,0.220,0.222,0.205,0.181,0.168,0.154]
 
 idx_a = yillar_tdh_ayristirma.indexOf(+yil_a)
 idx_b = yillar_tdh_ayristirma.indexOf(+yil_b)
@@ -733,6 +734,15 @@ fark_1 = deger_b.cocuk1 - deger_a.cocuk1
 fark_2 = deger_b.cocuk2 - deger_a.cocuk2
 fark_3 = deger_b.cocuk3 - deger_a.cocuk3
 fark_4 = deger_b.cocuk4 - deger_a.cocuk4
+
+// En buyuk katkiyi (mutlak deger) bulan yardimci
+katkilar = [
+  {ad: "1. Cocuk", deger: fark_1},
+  {ad: "2. Cocuk", deger: fark_2},
+  {ad: "3. Cocuk", deger: fark_3},
+  {ad: "4+ Cocuk", deger: fark_4}
+]
+en_buyuk_katki = katkilar.slice().sort((a,b) => Math.abs(b.deger) - Math.abs(a.deger))[0]
 ```
 
 ```{ojs}
@@ -741,15 +751,15 @@ fark_4 = deger_b.cocuk4 - deger_a.cocuk4
 html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
   <div style="background: #f8f9fa; border-left: 4px solid #888; padding: 12px; border-radius: 4px;">
     <div style="font-size: 0.75em; color: #666;">TDH ${yil_a}</div>
-    <div style="font-size: 1.6em; font-weight: bold; color: #888;">${tdh_a_toplam.toFixed(3)}</div>
+    <div style="font-size: 1.6em; font-weight: bold; color: #888;">${tdh_a_toplam.toFixed(2)}</div>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
     <div style="font-size: 0.75em; color: #666;">TDH ${yil_b}</div>
-    <div style="font-size: 1.6em; font-weight: bold; color: #1F3864;">${tdh_b_toplam.toFixed(3)}</div>
+    <div style="font-size: 1.6em; font-weight: bold; color: #1F3864;">${tdh_b_toplam.toFixed(2)}</div>
   </div>
   <div style="background: ${fark_toplam < 0 ? '#ffebee' : '#e8f5e9'}; border-left: 4px solid ${fark_toplam < 0 ? '#B33A3A' : '#2E7D32'}; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Toplam Degisim</div>
-    <div style="font-size: 1.6em; font-weight: bold; color: ${fark_toplam < 0 ? '#B33A3A' : '#2E7D32'};">${fark_toplam >= 0 ? '+' : ''}${fark_toplam.toFixed(3)}</div>
+    <div style="font-size: 0.75em; color: #666;">En buyuk katki: ${en_buyuk_katki.ad}</div>
+    <div style="font-size: 1.6em; font-weight: bold; color: ${fark_toplam < 0 ? '#B33A3A' : '#2E7D32'};">${en_buyuk_katki.deger >= 0 ? '+' : ''}${en_buyuk_katki.deger.toFixed(3)}</div>
   </div>
 </div>`
 ```
@@ -757,51 +767,43 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 ```{ojs}
 //| echo: false
 
-katki_veri = [
-  {siralama: "1. Cocuk", deger: fark_1},
-  {siralama: "2. Cocuk", deger: fark_2},
-  {siralama: "3. Cocuk", deger: fark_3},
-  {siralama: "4+ Cocuk", deger: fark_4}
+bar_veri = [
+  {yil: yil_a, siralama: "1. Cocuk", deger: deger_a.cocuk1, fark: 0},
+  {yil: yil_a, siralama: "2. Cocuk", deger: deger_a.cocuk2, fark: 0},
+  {yil: yil_a, siralama: "3. Cocuk", deger: deger_a.cocuk3, fark: 0},
+  {yil: yil_a, siralama: "4+ Cocuk", deger: deger_a.cocuk4, fark: 0},
+  {yil: yil_b, siralama: "1. Cocuk", deger: deger_b.cocuk1, fark: fark_1},
+  {yil: yil_b, siralama: "2. Cocuk", deger: deger_b.cocuk2, fark: fark_2},
+  {yil: yil_b, siralama: "3. Cocuk", deger: deger_b.cocuk3, fark: fark_3},
+  {yil: yil_b, siralama: "4+ Cocuk", deger: deger_b.cocuk4, fark: fark_4}
 ]
 
-Plot.plot({
-  width: 700, height: 320,
-  marginLeft: 90,
-  x: {label: "TDH Degisimine Katki"},
-  y: {label: null, domain: ["4+ Cocuk","3. Cocuk","2. Cocuk","1. Cocuk"], type: "band"},
-  marks: [
-    Plot.ruleX([0]),
-    Plot.barX(katki_veri, {x: "deger", y: "siralama", fill: d => d.deger < 0 ? "#B33A3A" : "#2E7D32"}),
-    Plot.text(katki_veri, {x: "deger", y: "siralama", text: d => d.deger.toFixed(3), dx: d => d.deger < 0 ? -22 : 22, fontSize: 11, fontWeight: "bold"})
-  ]
-})
-```
-
-```{ojs}
-//| echo: false
+siralama_renkleri = ["#1F3864","#9E7A1A","#5B8C5A","#B33A3A"]
 
 Plot.plot({
-  width: 700, height: 320,
+  width: 700, height: 420,
+  marginRight: 60,
   x: {label: null, domain: [yil_a, yil_b]},
-  y: {label: "TDH Bileseni", domain: [0, 0.85]},
-  color: {domain: ["1. Cocuk","2. Cocuk","3. Cocuk","4+ Cocuk"], range: ["#1F3864","#9E7A1A","#5B8C5A","#B33A3A"]},
+  y: {label: "TDH Bileseni (cocuk sayisi)", domain: [0, Math.max(tdh_a_toplam, tdh_b_toplam) + 0.15]},
+  color: {domain: ["1. Cocuk","2. Cocuk","3. Cocuk","4+ Cocuk"], range: siralama_renkleri, legend: true},
   marks: [
-    Plot.barY([
-      {yil: yil_a, siralama: "1. Cocuk", deger: deger_a.cocuk1},
-      {yil: yil_a, siralama: "2. Cocuk", deger: deger_a.cocuk2},
-      {yil: yil_a, siralama: "3. Cocuk", deger: deger_a.cocuk3},
-      {yil: yil_a, siralama: "4+ Cocuk", deger: deger_a.cocuk4},
-      {yil: yil_b, siralama: "1. Cocuk", deger: deger_b.cocuk1},
-      {yil: yil_b, siralama: "2. Cocuk", deger: deger_b.cocuk2},
-      {yil: yil_b, siralama: "3. Cocuk", deger: deger_b.cocuk3},
-      {yil: yil_b, siralama: "4+ Cocuk", deger: deger_b.cocuk4}
-    ], {x: "yil", y: "deger", fill: "siralama"})
+    Plot.barY(bar_veri, {x: "yil", y: "deger", fill: "siralama", order: ["4+ Cocuk","3. Cocuk","2. Cocuk","1. Cocuk"]}),
+    Plot.text(bar_veri, {x: "yil", y: "deger", text: d => d.deger.toFixed(2),
+      fill: "white", fontSize: 11, fontWeight: "bold",
+      // Yigin icindeki orta noktaya yerlesim icin manuel y-offset gerekmedigi durumda Plot otomatik konumlandirir
+    }),
+    Plot.text(bar_veri.filter(d => d.yil === yil_b), {x: "yil", y: "deger",
+      text: d => d.fark === 0 ? "" : (d.fark > 0 ? `+${d.fark.toFixed(2)}` : d.fark.toFixed(2)),
+      dx: 45, fontSize: 11, fontWeight: "bold",
+      fill: d => d.fark < 0 ? "#B33A3A" : "#2E7D32"})
   ]
 })
 ```
 
 ::: {.callout-important appearance="simple"}
-**Kaynak:** TUIK Dogum Istatistikleri, dogum sirasina gore TDH bilesenleri (TDHₙ = TDH × (n. sira payi/100)), 2013-2025 tam seri. Varsayilan secimde (2013→2025), toplam TDH kaybinin (-0,676) **%37,7'si 2. cocuktan**, %22,5'i 1. cocuktan, %21,7'si 3. cocuktan ve %18,0'i 4+ cocuktan kaynaklanmaktadir — 2. cocuk (1→2 gecisi) tek basina en buyuk paya sahiptir. Farkli yil ciftleri secerek (orn. 2021 vs 2025) son donemdeki hizlanmayi da gozlemleyebilirsiniz.
+**Nasil okunur:** Sol sutun ${yil_a}, sag sutun ${yil_b} yilina ait TDH'nin doğum sırasına göre bilesenlerini gosterir (her renk bir dogum sirasi). Sag sutunun yaninda, ${yil_a}'dan ${yil_b}'ye o bilesendeki degisim (kirmizi=azalma, yesil=artma) etiketlenmistir.
+
+**Kaynak:** TUIK Dogum Istatistikleri, dogum sirasina gore TDH bilesenleri (TDHₙ = TDH × (n. sira payi/100)), 2013-2025 tam seri (resmi TDH serisine tam toplanacak sekilde olceklenmistir). Varsayilan secimde (2013→2025), toplam TDH kaybinin (-0,68) en buyuk tek kaynagi **2. cocuktur** (1→2 gecisi) — diger uc bilesenin her biri ayri ayri daha az katki yapar. Farkli yil ciftleri secerek (orn. 2021 vs 2025) son donemdeki hizlanmayi da gozlemleyebilirsiniz.
 :::
 
 ::: {.callout-tip}
