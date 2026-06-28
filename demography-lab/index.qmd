@@ -261,6 +261,8 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 
 ::: {.callout-note appearance="simple"}
 **Formul:** NRR = TDH × k (k = 0,478). Kohort yarilma = ln(2) / (−ln(NRR)) × μ. Yillik kucilme = −ln(NRR) / μ. OADR: stabil nufus modelinden yaklasik (Sustainability Level Fertility, Sezgin 2026).
+
+**μ (ortalama anne yaşı) neden bu yönde çalışıyor?** Kaydırıcıda μ küçüldüğünde kohort yarılanma süresi de küçülür — bu ilk bakışta sezgiye aykırı görünebilir ("anneler daha genç doğuruyorsa nüfus daha mı hızlı çökermiş?"). Burada μ, **NRR'yi sabit tutarak yalnızca nesil döngüsünün takvimde ne kadar sık tekrarlandığını** gösterir: aynı küçülme oranı (NRR) daha kısa aralıklarla tekrarlanırsa, *yıl bazında* çöküş daha hızlı birikir — tıpkı aynı faiz oranının yıllık değil aylık bileşik olarak işlemesi gibi. **Bu, μ'nün gerçek hayatta erken doğum üzerinden NRR'yi (çocuk sayısını) etkileme yolunu içermez** — o ayrı ve genelde ters yönlü bir mekanizmadır (örn. erken evlenme/doğum, kalan doğurganlık penceresini uzatarak NRR'yi yükseltebilir). Bu araç, μ ve NRR'yi birbirinden bağımsız iki kaydırıcı olarak ele alır; ikisinin birbirini nasıl etkilediğini modellemez.
 :::
 
 
