@@ -1339,9 +1339,381 @@ TDH ve OADR'nin OECD ve dünya ülkeleriyle karşılaştırması, norm difüzyon
 
 ## Evlilik ve Aile Yapısı
 
-Evlenme/boşanma hızları, hanehalkı büyüklüğü ve kompozisyonu.
+Evlenme ve boşanma eğilimleri, ilk evlenme yaşının yükselişi ve bunların doğurganlıkla ilişkisi.
 
-*Bu bölümün içeriği hazırlanıyor.*
+### Kaba Evlenme ve Boşanma Hızı (2001–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+library(plotly)
+
+yillar_evb <- 2001:2025
+kaba_evlenme <- c(8.353, 7.729, 8.466, 9.103, 9.37, 9.18, 9.098, 9.035, 8.214, 7.967, 7.986, 8.031,
+                   7.881, 7.77, 7.709, 7.499, 7.091, 6.81, 6.567, 5.856, 6.692, 6.777, 6.645, 6.665, 6.43)
+kaba_bosanma <- c(1.412, 1.444, 1.387, 1.347, 1.401, 1.349, 1.343, 1.403, 1.585, 1.621, 1.618, 1.64,
+                   1.646, 1.696, 1.685, 1.591, 1.599, 1.764, 1.896, 1.638, 2.089, 2.147, 2.032, 2.21, 2.257)
+
+fig1 <- plot_ly() %>%
+  add_trace(x = yillar_evb, y = kaba_evlenme, type = "scatter", mode = "lines+markers",
+            name = "Kaba evlenme hizi", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_evb, y = kaba_bosanma, type = "scatter", mode = "lines+markers",
+            name = "Kaba bosanma hizi", line = list(color = "#B33A3A", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Bin Kisiye Oran (‰)"),
+    legend = list(orientation = "h", x = 0.1, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig1
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, Evlenme ve Boşanma İstatistikleri, 2001–2025 (resmi, tam seri). Kaba evlenme hızı 2001'deki 8,35‰ düzeyinden 2025'te 6,43‰'ye düşmüş (%23,0 azalma); buna karşılık kaba boşanma hızı aynı dönemde 1,41‰'den 2,26‰'ye yükselmiştir (%60,0 artış). İki çizginin birbirinden uzaklaşması — evlenmenin azalıp boşanmanın artması — Türkiye'deki evlilik kurumunun hem giriş hem çıkış kapısında aynı yönde bir zayıflama sergilediğini göstermektedir.
+:::
+
+### Boşanmaların Evlilik Süresine Göre Dağılımı (2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+evlilik_suresi <- c("1 yildan az", "1 yil", "2 yil", "3 yil", "4 yil", "5 yil", "6-10 yil", "11-15 yil", "16+ yil")
+bosanma_sayisi_sure <- c(5444, 18636, 12713, 11072, 9312, 8678, 39305, 30472, 58086)
+
+fig2 <- plot_ly(x = factor(evlilik_suresi, levels = evlilik_suresi), y = bosanma_sayisi_sure, type = "bar",
+                marker = list(color = "#9E7A1A"),
+                text = format(bosanma_sayisi_sure, big.mark = "."), textposition = "outside",
+                hovertemplate = "%{x}: %{y}<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "Evlilik Suresi"),
+    yaxis = list(title = "Bosanma Sayisi (2025)"),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig2
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İl ve Evlilik Süresine Göre Boşanmalar, 2025 (Türkiye toplamı, 193.793 boşanma). Boşanmaların en yoğun olduğu dönem evliliğin ilk yılı değil, **16 yıl ve üzeri** evlilik süresidir (58.086 boşanma, toplamın %30'u); bunu **6-10 yıl** bandı takip etmektedir (39.305, %20,3). İlk yıl içindeki boşanma sayısı (5.444) toplamın sadece %2,8'idir. Bu dağılım, popüler söylemde sık vurgulanan "evliliğin ilk yılları kritiktir" varsayımının aksine, Türkiye'de boşanma riskinin zamanla biriken ve uzun vadede yoğunlaşan bir örüntü izlediğini göstermektedir.
+:::
+
+### Ortalama İlk Evlenme Yaşı Trendi (2021–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_yas <- 2021:2025
+yas_erkek <- c(28.11, 28.21, 28.28, 28.34, 28.49)
+yas_kadin <- c(25.37, 25.56, 25.74, 25.84, 26.02)
+
+fig3 <- plot_ly() %>%
+  add_trace(x = yillar_yas, y = yas_erkek, type = "scatter", mode = "lines+markers",
+            name = "Erkek", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_yas, y = yas_kadin, type = "scatter", mode = "lines+markers",
+            name = "Kadin", line = list(color = "#9E7A1A", width = 2.5)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Ortalama Ilk Evlenme Yasi", range = c(24, 29)),
+    legend = list(orientation = "h", x = 0.3, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig3
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İllere Göre Ortalama İlk Evlenme Yaşı, 2021–2025 (Türkiye toplamı). Bu dönemde erkeklerde ilk evlenme yaşı 28,11'den 28,49'a, kadınlarda 25,37'den 26,02'ye yükselmiştir. *Not: TÜİK'in il bazlı bültenleri bu göstergeyi yalnızca 2021'den itibaren yayınlamaktadır; daha uzun bir tarihsel seri için ayrı bir kaynak gerekmektedir.*
+:::
+
+### İlk Evlenme Yaşı ve Toplam Doğurganlık Hızı (2021–2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_iliski <- 2021:2024
+yas_kadin_iliski <- c(25.37, 25.56, 25.74, 25.84)
+tdh_iliski <- c(1.712, 1.634, 1.517, 1.488)
+
+fig4 <- plot_ly() %>%
+  add_trace(x = yillar_iliski, y = yas_kadin_iliski, type = "scatter", mode = "lines+markers",
+            name = "Kadin ilk evlenme yasi (sol)", line = list(color = "#9E7A1A", width = 2.5),
+            yaxis = "y1") %>%
+  add_trace(x = yillar_iliski, y = tdh_iliski, type = "scatter", mode = "lines+markers",
+            name = "TDH (sag)", line = list(color = "#1F3864", width = 2.5, dash = "dash"),
+            yaxis = "y2") %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Kadin Ilk Evlenme Yasi", side = "left", range = c(25, 26.5)),
+    yaxis2 = list(title = "TDH", overlaying = "y", side = "right", range = c(1.4, 1.8)),
+    legend = list(orientation = "h", x = 0.05, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig4
+```
+
+::: {.callout-warning}
+**Kaynak:** TÜİK, İlk Evlenme Yaşı (2021–2025) ve Temel Doğurganlık Göstergeleri (2001–2025). Kadınlarda ilk evlenme yaşının yükselmesi (25,37→25,84) ile TDH'nin aynı dönemde düşmesi (1,712→1,488) zamansal olarak örtüşmektedir. *Bu kısa dönemli (4 yıllık) eş-hareket bir nedensellik kanıtı değildir — ilk evlenme yaşı verisinin il bazlı bültenlerde yalnızca 2021'den itibaren mevcut olması, daha uzun bir seri üzerinden test edilmesini şimdilik engellemektedir.* Yine de yön, evlilik ertelemesinin doğurganlık düşüşünün bir bileşeni olduğu teziyle tutarlıdır.
+:::
+
+### Kaba Evlenme Hızı — İl Bazlı (2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 7
+
+library(sf)
+library(rnaturalearth)
+
+normalize_il <- function(x) {
+  x <- tolower(x)
+  x <- chartr("çğıöşü", "cgiosu", x)
+  x <- gsub("i̇", "i", x)
+  x <- trimws(x)
+  duzeltmeler <- c(
+    "zinguldak" = "zonguldak",
+    "kinkkale" = "kirikkale",
+    "k. maras" = "kahramanmaras",
+    "k.maras" = "kahramanmaras"
+  )
+  ifelse(x %in% names(duzeltmeler), duzeltmeler[x], x)
+}
+
+if (!exists("turkey_map")) {
+  turkey_map <- ne_states(country = "turkey", returnclass = "sf")
+  turkey_map$il_norm <- normalize_il(turkey_map$name)
+}
+
+il_adlari <- c("Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin",
+               "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa",
+               "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Edirne", "Elazığ", "Erzincan",
+               "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkari", "Hatay", "Isparta",
+               "Mersin", "İstanbul", "İzmir", "Kars", "Kastamonu", "Kayseri", "Kırklareli", "Kırşehir",
+               "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Kahramanmaraş", "Mardin", "Muğla",
+               "Muş", "Nevşehir", "Niğde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop",
+               "Sivas", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Şanlıurfa", "Uşak", "Van", "Yozgat",
+               "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kırıkkale", "Batman", "Şırnak", "Bartın",
+               "Ardahan", "Iğdır", "Yalova", "Karabük", "Kilis", "Osmaniye", "Düzce")
+
+kaba_evlenme_il <- c(6.59, 7.44, 6.81, 6.4, 5.88, 6.15, 6.81, 5.02, 6.26, 6.34, 5.8, 5.95, 6.1, 5.81,
+                      5.7, 6.31, 5.99, 4.94, 6.22, 6.56, 6.8, 5.45, 6.23, 5.76, 5.83, 6.24, 7.76, 5.34,
+                      4.58, 5.99, 7.28, 5.97, 6.6, 6.3, 6.21, 5.69, 5.47, 6.71, 5.82, 6.86, 6.5, 7.08,
+                      5.98, 6.37, 6.45, 7.33, 6.71, 6.28, 5.95, 6.4, 6.68, 5.78, 5.09, 6.67, 6.19, 5.69,
+                      5.44, 6.15, 6.04, 5.86, 5.68, 4.18, 7.5, 6.52, 6.47, 6.59, 5.96, 7.17, 5.61, 6.57,
+                      6.76, 6.86, 6.34, 6.54, 4.67, 5.31, 6.35, 5.78, 7.02, 7.68, 6.66)
+
+evlenme_df <- data.frame(il = il_adlari, deger = kaba_evlenme_il)
+evlenme_df$il_norm <- normalize_il(evlenme_df$il)
+
+map_evlenme <- merge(turkey_map, evlenme_df, by = "il_norm", all.x = TRUE)
+
+fig5 <- plot_ly(map_evlenme, split = ~name, color = ~deger,
+                colors = colorRamp(c("#FAFAF8", "#9E7A1A")),
+                stroke = I("white"), span = I(0.3),
+                hoverinfo = "text", text = ~paste0(name, ": ", round(deger,2), "‰")) %>%
+  layout(
+    showlegend = FALSE,
+    xaxis = list(visible = FALSE),
+    yaxis = list(visible = FALSE),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  ) %>%
+  colorbar(title = "‰")
+fig5
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İllere Göre Kaba Evlenme Hızı, 2025. En yüksek evlenme hızı Gaziantep'te (7,76‰), en düşük Tunceli'de (4,18‰) görülmektedir — aralarında ~1,9 katlık bir fark vardır.
+:::
+
+### Kaba Boşanma Hızı — İl Bazlı (2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 7
+
+kaba_bosanma_il <- c(2.53, 1.35, 2.12, 0.91, 2.18, 2.72, 3.21, 1.43, 2.92, 2.65, 2.16, 0.85, 0.63,
+                      2.22, 2.24, 2.38, 2.67, 1.7, 2.12, 3.14, 1.05, 2.36, 1.72, 1.9, 1.18, 2.89,
+                      2.04, 1.79, 0.92, 0.51, 2.27, 2.49, 2.82, 2.25, 3.28, 1.29, 1.96, 2.68, 2.25,
+                      2.34, 2.51, 2.39, 2.09, 1.64, 2.75, 2.13, 0.89, 3.13, 0.7, 2.7, 2.42, 2.08,
+                      1.2, 2.38, 2.19, 0.73, 2.1, 1.81, 2.72, 1.96, 1.36, 2.24, 0.9, 3.03, 0.72,
+                      1.86, 2.45, 2.56, 0.88, 2.88, 2.7, 0.84, 0.52, 2.27, 1.22, 1.68, 2.23, 2.18,
+                      1.64, 2.18, 2.44)
+
+bosanma_df <- data.frame(il = il_adlari, deger = kaba_bosanma_il)
+bosanma_df$il_norm <- normalize_il(bosanma_df$il)
+
+map_bosanma <- merge(turkey_map, bosanma_df, by = "il_norm", all.x = TRUE)
+
+fig6 <- plot_ly(map_bosanma, split = ~name, color = ~deger,
+                colors = colorRamp(c("#FAFAF8", "#B33A3A")),
+                stroke = I("white"), span = I(0.3),
+                hoverinfo = "text", text = ~paste0(name, ": ", round(deger,2), "‰")) %>%
+  layout(
+    showlegend = FALSE,
+    xaxis = list(visible = FALSE),
+    yaxis = list(visible = FALSE),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  ) %>%
+  colorbar(title = "‰")
+fig6
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, İllere Göre Kaba Boşanma Hızı, 2025. En yüksek boşanma hızı İzmir'de (3,28‰), en düşük Hakkari'de (0,51‰) görülmektedir — aralarında **~6,4 katlık** bir fark vardır; bu, evlenme hızındaki bölgesel farktan (~1,9 kat) çok daha büyüktür. Yüksek boşanma oranları genel olarak Ege ve Akdeniz kıyı illerinde (İzmir, Antalya, Muğla), düşük oranlar ise Doğu ve Güneydoğu Anadolu illerinde (Hakkari, Bitlis, Şırnak, Muş) yoğunlaşmaktadır — bu örüntü, önceki sekmelerdeki lowest-low doğurganlık haritasının **tam tersi** bir bölgesel dağılım sergilemektedir: doğurganlığın en yüksek olduğu bölgeler, boşanmanın en düşük olduğu bölgelerle örtüşmektedir.
+:::
+
+### Medeni Duruma Göre Nüfus (15+ Yaş, 2008–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_medeni <- 2008:2025
+bosandi <- c(1359233,1440440,1562082,1673661,1772881,1870053,1979260,2084472,2174559,2272911,
+             2402247,2553989,2670461,2878252,3059626,3205212,3378926,3567484)
+esi_oldu <- c(2798826,2866024,2946602,3017052,3071832,3124295,3178684,3232561,3285277,3338259,
+              3392974,3448337,3536612,3642207,3693074,3747279,3803008,3860754)
+hic_evlenmedi <- c(14603515,14789619,15064319,15260068,15492867,15723234,15998024,16264563,16517396,16739568,
+                    16993863,17289109,17708198,18696816,19019325,19231798,19485977,19861472)
+
+fig7 <- plot_ly() %>%
+  add_trace(x = yillar_medeni, y = bosandi, type = "scatter", mode = "lines+markers",
+            name = "Bosandi", line = list(color = "#B33A3A", width = 2.5)) %>%
+  add_trace(x = yillar_medeni, y = esi_oldu, type = "scatter", mode = "lines+markers",
+            name = "Esi oldu", line = list(color = "#888888", width = 2)) %>%
+  add_trace(x = yillar_medeni, y = hic_evlenmedi, type = "scatter", mode = "lines+markers",
+            name = "Hic evlenmedi", line = list(color = "#9E7A1A", width = 2.5),
+            yaxis = "y2") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Nufus (Bosandi / Esi Oldu)"),
+    yaxis2 = list(title = "Nufus (Hic Evlenmedi)", overlaying = "y", side = "right"),
+    legend = list(orientation = "h", x = 0.1, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig7
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, Medeni Duruma Göre Nüfus, 2008–2025 (15 yaş üstü). Boşanmış nüfus 2008'de 1.359.233'ten 2025'te 3.567.484'e çıkmıştır — **%162,5 artış**, neredeyse 2,6 katına. Hiç evlenmemiş nüfus da aynı dönemde 14.603.515'ten 19.861.472'ye yükselmiştir (%36,0 artış) — bu artışın bir kısmı nüfus artışından, bir kısmı da evliliğin ertelenmesinden/vazgeçilmesinden kaynaklanmaktadır. Boşanmış nüfusun mutlak büyüme hızı, diğer tüm kategorilerden belirgin biçimde yüksektir.
+:::
+
+### Ortalama Hanehalkı Büyüklüğü (2008–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_hane <- 2008:2025
+hane_buyukluk <- c(4.0,3.9,3.9,3.8,3.7,3.6,3.6,3.5,3.5,3.5,3.4,3.4,3.3,3.2,3.2,3.1,3.1,3.1)
+
+fig8 <- plot_ly(x = yillar_hane, y = hane_buyukluk, type = "scatter", mode = "lines+markers",
+                line = list(color = "#1F3864", width = 2.5),
+                marker = list(color = "#1F3864", size = 5),
+                hovertemplate = "Yil: %{x}<br>Ortalama buyukluk: %{y} kisi<extra></extra>") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Ortalama Hanehalki Buyuklugu (Kisi)", range = c(2.8, 4.2)),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig8
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, Ortalama Hanehalkı Büyüklüğü, 2008–2025 (Türkiye). Ortalama hanehalkı büyüklüğü 2008'deki 4,0 kişiden 2025'te 3,1 kişiye düşmüştür — 18 yılda **%22,5'lik** bir küçülme. Bu düşüş, doğurganlığın azalmasıyla, geleneksel geniş aile yapısının çözülmesiyle ve tek kişilik hanehalklarının artmasıyla birlikte gerçekleşmektedir.
+:::
+
+### Hanehalkı Kompozisyonu Değişimi (2014–2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_tip <- 2014:2025
+toplam_hane <- c(21091075,21662260,22206776,22676186,23221218,24001940,24604086,25329833,26075365,26309332,26599261,26977795)
+tek_kisilik <- c(2931085,3113496,3316894,3491148,3730505,4062576,4404997,4781600,5067331,5192825,5321540,5523321)
+tek_cekirdek <- c(14212489,14497539,14738394,14993563,15173997,15623302,16050444,16323612,16816288,16779240,16891489,16928026)
+cekirdek_disi_coklu <- c(435117,472685,534864,567540,648910,714618,691994,798990,849466,860757,857575,885831)
+cekirdek_diger <- c(3512384,3578540,3616624,3623935,3667806,3601444,3456651,3425631,3342280,3476510,3528657,3640617)
+
+tek_kisilik_pay <- round(tek_kisilik / toplam_hane * 100, 1)
+tek_cekirdek_pay <- round(tek_cekirdek / toplam_hane * 100, 1)
+cekirdek_diger_pay <- round(cekirdek_diger / toplam_hane * 100, 1)
+cekirdek_disi_coklu_pay <- round(cekirdek_disi_coklu / toplam_hane * 100, 1)
+
+fig9 <- plot_ly() %>%
+  add_trace(x = yillar_tip, y = tek_cekirdek_pay, type = "scatter", mode = "lines+markers",
+            name = "Tek cekirdek aile", line = list(color = "#1F3864", width = 2.5)) %>%
+  add_trace(x = yillar_tip, y = tek_kisilik_pay, type = "scatter", mode = "lines+markers",
+            name = "Tek kisilik hanehalki", line = list(color = "#B33A3A", width = 2.5)) %>%
+  add_trace(x = yillar_tip, y = cekirdek_diger_pay, type = "scatter", mode = "lines+markers",
+            name = "Cekirdek aile + diger kisiler", line = list(color = "#9E7A1A", width = 2)) %>%
+  add_trace(x = yillar_tip, y = cekirdek_disi_coklu_pay, type = "scatter", mode = "lines+markers",
+            name = "Cekirdek aile olmayan coklu hanehalki", line = list(color = "#5B8C5A", width = 2)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 1),
+    yaxis = list(title = "Toplam Hanehalki Icindeki Pay (%)"),
+    legend = list(orientation = "h", x = 0.02, y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig9
+```
+
+::: {.callout-warning}
+**Kaynak:** TÜİK, Hanehalkı Tipi, 2014–2025 (Türkiye, yazar hesaplaması: pay yüzdeleri). Tek kişilik hanehalkı payı 2014'teki %13,9'dan 2025'te %20,5'e yükselmiştir — **her beş hanehalkından biri artık tek kişiliktir.** Buna karşılık tek çekirdek aileden oluşan hanehalkı payı %67,4'ten %62,8'e gerilemiştir (2014: 14.212.489/21.091.075; 2025: 16.928.026/26.977.795). Bu eğilim, hanehalkı yapısının "çekirdek aile" merkezli geleneksel modelden uzaklaşarak parçalı/bireysel yaşam biçimlerine kaydığını göstermektedir — bu da doğurganlık üzerinde dolaylı bir baskı unsuru olarak değerlendirilebilir.
+:::
+
+### Hiç Evlenmeme Oranı, Yaş Gruplarına Göre (2008 vs 2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 6
+
+yas_gruplari <- c("15-19","20-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-64",
+                   "65-69","70-74","75-79","80-84","85-89","90+")
+hic_evlenmedi_2008 <- c(95.8,70.3,33.8,14.6,8.1,5.5,4.2,3.5,3.0,2.9,2.8,1.7,1.7,2.0,2.4,3.1)
+hic_evlenmedi_2025 <- c(99.0,86.7,52.9,26.0,14.8,9.9,7.5,5.7,4.5,3.4,2.7,2.2,1.9,1.7,1.7,2.6)
+
+fig10 <- plot_ly() %>%
+  add_trace(x = factor(yas_gruplari, levels = yas_gruplari), y = hic_evlenmedi_2008, type = "bar",
+            name = "2008", marker = list(color = "#9E7A1A")) %>%
+  add_trace(x = factor(yas_gruplari, levels = yas_gruplari), y = hic_evlenmedi_2025, type = "bar",
+            name = "2025", marker = list(color = "#1F3864")) %>%
+  layout(
+    barmode = "group",
+    xaxis = list(title = "Yas Grubu"),
+    yaxis = list(title = "Hic Evlenmeme Orani (%)"),
+    legend = list(orientation = "h", x = 0.35, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig10
+```
+
+::: {.callout-important}
+**Kaynak:** TÜİK, Medeni Duruma Göre Nüfus (yaş grubu kırılımlı), 2008 ve 2025 (yazar hesaplaması: her yaş grubunun "hiç evlenmedi" oranı). *Not: Bu tablo cinsiyet kırılımı içermemektedir; gösterilen oranlar toplam nüfusa (kadın+erkek) aittir.* En çarpıcı değişim 25-29 yaş grubunda görülmektedir: hiç evlenmeme oranı %33,8'den **%52,9'a** çıkmış — bu yaş grubunun artık **çoğunluğu hiç evlenmemiş** durumdadır. 30-34 yaş grubunda oran %14,6'dan %26,0'a (neredeyse 2 katına), 20-24 yaş grubunda %70,3'ten %86,7'ye yükselmiştir. 65 yaş ve sonrasında değişim çok küçüktür veya tersine dönmüştür — bu, evlilik ertelemesinin/vazgeçilmesinin esas olarak genç ve orta yaş kohortlarına özgü, yeni bir davranışsal kırılma olduğunu göstermektedir.
+:::
+
 
 ## İstihdam ve Kadın İşgücü
 
