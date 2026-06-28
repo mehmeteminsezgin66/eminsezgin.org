@@ -67,7 +67,7 @@ Yaşa atanabilir kamu harcamalarının dağılımı ve bunun aile politikasına 
 
 ::: {.content-card}
 ::: {.card-meta}
-Demography Lab
+Demografi Lab
 :::
 ::: {.card-title}
 [İnteraktif Modeller ve Simülasyonlar](demography-lab/index.qmd)

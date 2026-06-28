@@ -1,5 +1,5 @@
 ---
-title: "Demography Lab"
+title: "Demografi Lab"
 toc: true
 toc-depth: 2
 ---
