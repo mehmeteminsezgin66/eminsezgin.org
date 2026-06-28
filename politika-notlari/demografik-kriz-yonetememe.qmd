@@ -1,0 +1,46 @@
+---
+title: "Türkiye'nin Demografik Krizini Yeniden Düşünmek: 2015 Sonrası Demografik Krizi Yönetememe"
+description: "Türkiye'de demografik politikanın 2015 sonrasında doğru başlıklarla teşhis edilmesine rağmen neden sonuç üretemediğini, 'taahhüt devri' kavramı ve bakım yükü vaka analizi üzerinden inceleyen araştırma notu özeti."
+author: "Mehmet Emin Sezgin"
+categories: [politika notu, demografik kriz, bakım yükü, kurumsal kapasite, uygulama açığı]
+---
+
+Türkiye'de demografik kriz tartışması son on yılda kamuoyunda önemli bir yer tutmuştur — ancak bir konunun gündemde yer tutması, onun doğru ele alındığı ve yönetildiği anlamına gelmemektedir. Bu çalışma, 2015 sonrası dönemde Türkiye'de demografik krizin neden doğru başlıklarla teşhis edilmesine rağmen sonuç üretemediğini; "taahhüt devri" olarak kavramsallaştırılan yapısal bir politika döngüsü üzerinden incelemektedir.
+
+*Toplum Çalışmaları Enstitüsü, 8 Ocak 2026. Aşağıda çalışmanın genişletilmiş özeti yer almaktadır — [tam metne buradan ulaşabilirsiniz](https://www.toplum.org.tr/turkiyenin-demografik-krizini-yeniden-dusunmek-2015-sonrasi-demografik-krizi-yonetememe/).*
+
+## Giriş: Demografik Kriz Nedir, Ne Değildir?
+
+Çalışmanın temel iddiası, Türkiye'de demografik krizin demografi üzerinden değil, doğrudan doğurganlık üzerinden ele alındığıdır. Mesele Türkiye'nin pronatalist ya da antinatalist olması değil; demografinin "kaç çocuk doğuyor" göstergesine indirgenen politika setleri etrafında yetersiz kalmasıdır. Çalışma, bu tekrarı açıklamak için literatürdeki yetenek tuzağı (*capability trap*) ve izomorfik taklit (*isomorphic mimicry*) kavramlarına dayanarak "taahhüt devri" adlı yeni bir kavram önermektedir.
+
+## 1. 2015 Sonrası Demografik Politika Dönemi: Pronatalist Dönem
+
+2015 sonrasında Türkiye'de söylem antinatalistten pronatalist çerçeveye kaymış; 12. Kalkınma Planı ve Ailenin Korunması ve Güçlendirilmesi Vizyon Belgesi gibi metinler, demografiyi bakım, yaşlanma ve sosyal refah boyutlarıyla birlikte ele alan geniş bir çerçeve inşa etmeye çalışmıştır. Ancak bu doğru tasarım, hedeflerin sahada davranışsal sonuçlara dönüştüğüne dair sistematik bir değerlendirme mekanizması kurulamadığı için uygulama aşamasında zayıflamaktadır.
+
+## 2. Literatür Taraması: Uygulama Açığı, Yetenek Tuzağı ve İzomorfik Taklit
+
+Pressman ve Wildavsky'nin (1973) klasik *uygulama açığı* kavramından, Pritchett, Woolcock ve Andrews'in (2012) *yetenek tuzağı* kavramına uzanan literatür, politika başarısızlıklarının çoğunlukla yanlış hedef seçiminden değil, kurumların biçimsel reform yaparken işlevsel kapasite geliştirememesinden kaynaklandığını göstermektedir. Bu sürecin temel mekanizması olan *izomorfik taklit*, kurumların uluslararası normlara biçimsel olarak uyum sağlamasına rağmen bu uyumun sahada karşılık üretmemesini ifade eder.
+
+## 3. Demografiyi Doğurganlığa İndirgemek: Politika Tasarımındaki Temel Yaklaşım
+
+Çalışma, Türkiye'nin demografik yaklaşımını kamu yönetimindeki *personel yönetimi* (sayısal giriş odaklı) ile *stratejik insan kaynakları yönetimi* (elde tutma, yaşam döngüsü, verimlilik odaklı) ayrımına benzetmektedir. 10., 11. ve 12. Kalkınma Planları'nda iş-aile uyumu ve bakım hizmetleri gibi başlıkların ardışık dönemlerde tekrar tekrar hedeflenmesi, sorunun doğru teşhis edildiğini ama "taahhüt devri" yoluyla uygulamaya dönüştürülemediğini göstermektedir.
+
+## 4. Bakım Yükü Neden Analitik Bir Mercek?
+
+Bakım yükü, demografik dönüşümün hane yapısı, kadın istihdamı, zaman kullanımı ve toplumsal cinsiyet rolleriyle kesiştiği bir düğüm noktası olarak ele alınmaktadır — krizin nedeni olarak değil, mevcut politikaların neden sonuç üretmediğini gösteren bir vaka alanı olarak. Dünya Bankası (2015) ve ERG-AÇEV (2016) raporları, Türkiye'de bakım/okul öncesi eğitim krizinin ailelerin isteksizliğinden değil, kamusal hizmet arzının yapısal yetersizliğinden kaynaklandığını; işten ayrılan annelerin %84'ünün devlet desteği (kreş) olsa işe döneceğini belgelemektedir.
+
+## 5. Türkiye'de Fiili Bakım Rejimi: Hane Merkezli ve Kadın Ağırlıklı
+
+TAYA 2016 verilerine göre 0-5 yaş grubunda bakım işinin %88'i anne tarafından üstlenilmekte, kurumsal bakımın payı sadece %3'te kalmaktadır. OECD karşılaştırması çarpıcıdır: 0-2 yaş kurumsal bakım oranı Türkiye'de %1'in altındayken OECD ortalaması %36'dır. Uğur, Yıldız ve Yüksel Doğan'ın (2023) TNSA verisine dayanan analizi, kurumsal bakıma erişimin güçlü biçimde eğitim ve gelirle ilişkili olduğunu (üniversite mezunlarında katsayı: 0,370) göstererek bakımın bir kamusal haktan piyasa malına dönüştüğünü ortaya koymaktadır.
+
+## 6. Ölçüm ve Yönetişim Sorunu: TAYA 2021'de Kaybolan Göstergeler
+
+2016'da açık biçimde raporlanan bakım dağılımı göstergeleri, 2021 Türkiye Aile Yapısı Araştırması'nda yer almamaktadır — bu, salt teknik bir eksiklik değil, geri besleme mekanizmasını devre dışı bırakan bir yönetişim zafiyeti olarak değerlendirilmektedir.
+
+## Sonuç ve Politika Önerileri
+
+Çalışma, 2015 sonrası demografik politika başarısızlığının yanlış hedef seçiminden değil, politika tasarımı ile icra kapasitesi arasındaki yapısal uyumsuzluktan kaynaklandığı sonucuna ulaşmaktadır. Çözüm önerisi olarak Pritchett ve arkadaşlarının (2012) *Probleme Dayalı Kademeli Uyum (PDIA)* yaklaşımı önerilmekte; bu çerçevede **pariteye duyarlı politika tasarımı** (doğurganlık kararlarının pariteye göre farklılaşmasına odaklanan hedefli müdahaleler), kapsam genişletmek yerine kapasite önceliklendirmesi, bakım göstergelerinin politika döngüsüne entegrasyonu, taahhüt devrini engelleyen hesap verebilirlik mekanizmaları ve demografik politikanın çıktıdan altyapıya kaydırılması somut öneriler olarak sunulmaktadır.
+
+::: {.callout-note appearance="simple"}
+Bu sayfa, çalışmanın genişletilmiş bir özetidir. Literatür referansları, vaka analizlerinin tam detayları, dipnotlar ve kaynakça için [tam metne buradan ulaşabilirsiniz](https://www.toplum.org.tr/turkiyenin-demografik-krizini-yeniden-dusunmek-2015-sonrasi-demografik-krizi-yonetememe/).
+:::
