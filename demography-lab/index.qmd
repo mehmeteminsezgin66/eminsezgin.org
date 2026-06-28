@@ -692,15 +692,12 @@ Plot.plot({
 
 ## 8. Doğum Sırasına Göre TDH Ayrıştırıcısı
 
-İki yıl seçin: toplam doğurganlık hızındaki değişimin hangi doğum sırasından (1., 2., 3., 4+. çocuk) kaynaklandığını görün.
+Başlangıç yılını kaydırın: toplam doğurganlık hızındaki o yıldan 2025'e kadarki değişimin hangi doğum sırasından (1., 2., 3., 4+. çocuk) kaynaklandığını görün.
 
 ```{ojs}
 //| echo: false
 
-yillar_secenekleri = ["2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"]
-
-viewof yil_a = Inputs.select(yillar_secenekleri, {value: "2013", label: "Baslangic yili"})
-viewof yil_b = Inputs.select(yillar_secenekleri, {value: "2025", label: "Bitis yili"})
+viewof yil_a = Inputs.range([2013, 2024], {value: 2013, step: 1, label: "Baslangic yili (bitis: 2025)"})
 ```
 
 ```{ojs}
@@ -714,8 +711,10 @@ tdh2_seri = [0.694,0.710,0.695,0.680,0.668,0.649,0.609,0.572,0.558,0.508,0.468,0
 tdh3_seri = [0.369,0.399,0.396,0.389,0.381,0.371,0.348,0.319,0.313,0.287,0.252,0.239,0.220]
 tdh4_seri = [0.277,0.290,0.278,0.271,0.267,0.257,0.241,0.220,0.222,0.205,0.181,0.168,0.154]
 
-idx_a = yillar_tdh_ayristirma.indexOf(+yil_a)
-idx_b = yillar_tdh_ayristirma.indexOf(+yil_b)
+yil_b = 2025
+
+idx_a = yillar_tdh_ayristirma.indexOf(yil_a)
+idx_b = yillar_tdh_ayristirma.indexOf(yil_b)
 
 deger_a = ({
   cocuk1: tdh1_seri[idx_a], cocuk2: tdh2_seri[idx_a],
@@ -768,14 +767,14 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 //| echo: false
 
 bar_veri = [
-  {yil: yil_a, siralama: "1. Cocuk", deger: deger_a.cocuk1, fark: 0},
-  {yil: yil_a, siralama: "2. Cocuk", deger: deger_a.cocuk2, fark: 0},
-  {yil: yil_a, siralama: "3. Cocuk", deger: deger_a.cocuk3, fark: 0},
-  {yil: yil_a, siralama: "4+ Cocuk", deger: deger_a.cocuk4, fark: 0},
-  {yil: yil_b, siralama: "1. Cocuk", deger: deger_b.cocuk1, fark: fark_1},
-  {yil: yil_b, siralama: "2. Cocuk", deger: deger_b.cocuk2, fark: fark_2},
-  {yil: yil_b, siralama: "3. Cocuk", deger: deger_b.cocuk3, fark: fark_3},
-  {yil: yil_b, siralama: "4+ Cocuk", deger: deger_b.cocuk4, fark: fark_4}
+  {yil: String(yil_a), siralama: "1. Cocuk", deger: deger_a.cocuk1, fark: 0},
+  {yil: String(yil_a), siralama: "2. Cocuk", deger: deger_a.cocuk2, fark: 0},
+  {yil: String(yil_a), siralama: "3. Cocuk", deger: deger_a.cocuk3, fark: 0},
+  {yil: String(yil_a), siralama: "4+ Cocuk", deger: deger_a.cocuk4, fark: 0},
+  {yil: String(yil_b), siralama: "1. Cocuk", deger: deger_b.cocuk1, fark: fark_1},
+  {yil: String(yil_b), siralama: "2. Cocuk", deger: deger_b.cocuk2, fark: fark_2},
+  {yil: String(yil_b), siralama: "3. Cocuk", deger: deger_b.cocuk3, fark: fark_3},
+  {yil: String(yil_b), siralama: "4+ Cocuk", deger: deger_b.cocuk4, fark: fark_4}
 ]
 
 siralama_renkleri = ["#1F3864","#9E7A1A","#5B8C5A","#B33A3A"]
@@ -783,16 +782,15 @@ siralama_renkleri = ["#1F3864","#9E7A1A","#5B8C5A","#B33A3A"]
 Plot.plot({
   width: 700, height: 420,
   marginRight: 60,
-  x: {label: null, domain: [yil_a, yil_b]},
+  x: {label: null, domain: [String(yil_a), String(yil_b)]},
   y: {label: "TDH Bileseni (cocuk sayisi)", domain: [0, Math.max(tdh_a_toplam, tdh_b_toplam) + 0.15]},
   color: {domain: ["1. Cocuk","2. Cocuk","3. Cocuk","4+ Cocuk"], range: siralama_renkleri, legend: true},
   marks: [
     Plot.barY(bar_veri, {x: "yil", y: "deger", fill: "siralama", order: ["4+ Cocuk","3. Cocuk","2. Cocuk","1. Cocuk"]}),
     Plot.text(bar_veri, {x: "yil", y: "deger", text: d => d.deger.toFixed(2),
-      fill: "white", fontSize: 11, fontWeight: "bold",
-      // Yigin icindeki orta noktaya yerlesim icin manuel y-offset gerekmedigi durumda Plot otomatik konumlandirir
+      fill: "white", fontSize: 11, fontWeight: "bold"
     }),
-    Plot.text(bar_veri.filter(d => d.yil === yil_b), {x: "yil", y: "deger",
+    Plot.text(bar_veri.filter(d => d.yil === String(yil_b)), {x: "yil", y: "deger",
       text: d => d.fark === 0 ? "" : (d.fark > 0 ? `+${d.fark.toFixed(2)}` : d.fark.toFixed(2)),
       dx: 45, fontSize: 11, fontWeight: "bold",
       fill: d => d.fark < 0 ? "#B33A3A" : "#2E7D32"})
@@ -800,10 +798,16 @@ Plot.plot({
 })
 ```
 
-::: {.callout-important appearance="simple"}
-**Nasil okunur:** Sol sutun ${yil_a}, sag sutun ${yil_b} yilina ait TDH'nin doğum sırasına göre bilesenlerini gosterir (her renk bir dogum sirasi). Sag sutunun yaninda, ${yil_a}'dan ${yil_b}'ye o bilesendeki degisim (kirmizi=azalma, yesil=artma) etiketlenmistir.
+```{ojs}
+//| echo: false
 
-**Kaynak:** TUIK Dogum Istatistikleri, dogum sirasina gore TDH bilesenleri (TDHₙ = TDH × (n. sira payi/100)), 2013-2025 tam seri (resmi TDH serisine tam toplanacak sekilde olceklenmistir). Varsayilan secimde (2013→2025), toplam TDH kaybinin (-0,68) en buyuk tek kaynagi **2. cocuktur** (1→2 gecisi) — diger uc bilesenin her biri ayri ayri daha az katki yapar. Farkli yil ciftleri secerek (orn. 2021 vs 2025) son donemdeki hizlanmayi da gozlemleyebilirsiniz.
+html`<div style="font-size: 0.9em; color: #444; background: #FAFAF8; border-left: 4px solid #9E7A1A; padding: 10px 14px; margin: 10px 0;">
+<strong>Nasil okunur:</strong> Sol sutun <strong>${yil_a}</strong>, sag sutun <strong>2025</strong> yilina ait TDH'nin doğum sırasına göre bilesenlerini gosterir (her renk bir dogum sirasi). Sag sutunun yaninda, ${yil_a}'dan 2025'e o bilesendeki degisim (kirmizi=azalma, yesil=artma) etiketlenmistir.
+</div>`
+```
+
+::: {.callout-important appearance="simple"}
+**Kaynak:** TUIK Dogum Istatistikleri, dogum sirasina gore TDH bilesenleri (TDHₙ = TDH × (n. sira payi/100)), 2013-2025 tam seri (resmi TDH serisine tam toplanacak sekilde olceklenmistir). Varsayilan secimde (2013→2025), toplam TDH kaybinin (-0,68) en buyuk tek kaynagi **2. cocuktur** (1→2 gecisi) — diger uc bilesenin her biri ayri ayri daha az katki yapar. Kaydiriciyi degistirerek son donemdeki hizlanmayi da gozlemleyebilirsiniz (orn. 2021'den baslatip 2025'e kadarki degisime bakin).
 :::
 
 ::: {.callout-tip}
