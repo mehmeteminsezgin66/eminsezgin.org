@@ -572,7 +572,77 @@ Plot.plot({
 **Uyari:** Bu model basitlestirilmis bir demografik-aktuaryal projeksiyondur; gercek SGK dengesini belirleyen kayit disi istihdam orani, prim gun sayisi, asil-tali sigortalik dagilimlari ve emeklilik yas kademesi gibi kurumsal degiskenler dahil edilmemistir. Gosterdigi sey: demografik yapi degismezse, kurumsal parametreleri ne kadar duzeltirseniz duzeltin, aktif/pasif oraninin dusus yonunun degismeyecegidir. SGK gercek aktif/pasif orani: 2022 = 2,01 (zirve); Ocak 2026 = 1,591.
 :::
 
+## 7. İstenen vs Gerçekleşen Doğurganlık Makası
 
+"Kriz bir istek eksikliği değil, bir güvence eksikliğidir" tezinin doğrudan sayısal kanıtı: TNSA 2018'e göre hiç çocuğu olmayan kadınlar dahi ortalama 2,6 çocuğu ideal görüyor — ama gerçekleşen TDH bunun çok altında kalıyor.
+
+```{ojs}
+//| echo: false
+
+viewof mevcut_cocuk = Inputs.radio(["0 (henuz cocuksuz)", "1 (bir cocuklu)", "2 (iki cocuklu)", "3+ (uc ve uzeri)"], {value: "0 (henuz cocuksuz)", label: "Mevcut cocuk sayisi"})
+```
+
+```{ojs}
+//| echo: false
+
+// TNSA 2018: mevcut cocuk sayisina gore ideal cocuk sayisi
+ideal_tablo = ({
+  "0 (henuz cocuksuz)": 2.6,
+  "1 (bir cocuklu)": 2.8,
+  "2 (iki cocuklu)": 3.2,
+  "3+ (uc ve uzeri)": 3.8
+})
+
+tdh_gerceklesen = 1.419  // 2025 TUIK
+tdh_istihdamda = 1.38
+tdh_istihdam_disi = 1.72
+
+ideal_secilen = ideal_tablo[mevcut_cocuk]
+makas = ideal_secilen - tdh_gerceklesen
+```
+
+```{ojs}
+//| echo: false
+
+html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
+  <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Ideal cocuk sayisi (TNSA 2018)</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: #9E7A1A;">${ideal_secilen.toFixed(1)}</div>
+  </div>
+  <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Gerceklesen TDH (2025)</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: #1F3864;">${tdh_gerceklesen.toFixed(2)}</div>
+  </div>
+  <div style="background: #ffebee; border-left: 4px solid #B33A3A; padding: 12px; border-radius: 4px;">
+    <div style="font-size: 0.75em; color: #666;">Makas (Ideal - Gerceklesen)</div>
+    <div style="font-size: 1.8em; font-weight: bold; color: #B33A3A;">${makas.toFixed(2)}</div>
+  </div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+
+Plot.plot({
+  width: 700, height: 380,
+  x: {label: null, domain: [0, 1]},
+  y: {label: "Cocuk Sayisi", domain: [0, 4.2]},
+  marks: [
+    Plot.barY([{x: 0.3, y: ideal_secilen}], {x: "x", y: "y", fill: "#9E7A1A", width: 0.3}),
+    Plot.barY([{x: 0.7, y: tdh_gerceklesen}], {x: "x", y: "y", fill: "#1F3864", width: 0.3}),
+    Plot.text([{x: 0.3, y: ideal_secilen + 0.15}], {text: [`Ideal: ${ideal_secilen.toFixed(1)}`], fontSize: 12, fontWeight: "bold"}),
+    Plot.text([{x: 0.7, y: tdh_gerceklesen + 0.15}], {text: [`Gerceklesen: ${tdh_gerceklesen.toFixed(2)}`], fontSize: 12, fontWeight: "bold"}),
+    Plot.ruleY([2.1], {stroke: "#888", strokeDasharray: "4,4"}),
+    Plot.text([{x: 0.95, y: 2.25}], {text: ["Yenilenme (2,1)"], fill: "#888", fontSize: 9, textAnchor: "end"})
+  ]
+})
+```
+
+::: {.callout-important appearance="simple"}
+**Istihdam durumuna gore makas:** Calisan kadinlarda gerceklesen TDH 1,38; istihdam disi kadinlarda 1,72'dir (fark: 0,34 cocuk). Her iki grup da kendi TNSA idealinin (2,6-3,8 bandi) cok altinda kalmaktadir — **istihdamda olmak makasi biraz daraltsa da, hicbir grup idealine yaklasamamaktadir.** Bu, krizin yalnizca "kariyer odakli erteleme" olmadigini, tum toplumsal kesimlere yayilmis sistemik bir guvence sorunu oldugunu gostermektedir.
+
+**Kaynak:** TNSA 2018 (Hacettepe Universitesi Nufus Etutleri Enstitusu) ideal cocuk sayisi tablosu; TUIK 2025 TDH; istihdam durumuna gore TDH (Demografik Guvenlik arastirma notu, Sezgin 2026). Bu makas, herhangi bir kaydirici degismeden bile (mevcut cocuk sayisi 0 secili) zaten ~1,2 cocukluk bir aciktir — kriz bir istek eksikligi degil, bir guvence eksikligidir.
+:::
 
 ::: {.callout-tip}
 **Planlanan ek modeller:** HWP Ayristirma Simulatoru, Stok-Akis Paradoksu, Bongaarts-Feeney Tempo Hesaplayici, Nesil Uzunlugu Hizlandiricisi, Surdurulebilirlik Duzey Kontrol Paneli ve daha fazlasi bu bolume eklenecektir. Tam liste icin [proje yol haritasina](/about.qmd) bakiniz.
