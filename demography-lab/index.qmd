@@ -250,19 +250,20 @@ kisit1_ok = kohort_yarilma > 100
 yillik_kucilme = nrr_hesap >= 1.0 ? 0 : -(Math.log(nrr_hesap) / mu_slider) * 100
 kisit2_ok = yillik_kucilme < 0.5
 
-// Kisit III: OADR < 0.50 (stabil nufus yaklasimi)
-// OADR lookup tablosu (Sustainability Level belgesinden)
-oadr_tahmin = nrr_hesap >= 1.0 ? 0.35 :
-              tdh_slider >= 2.1 ? 0.35 :
-              tdh_slider >= 1.8 ? 0.45 :
-              tdh_slider >= 1.7 ? 0.49 :
-              tdh_slider >= 1.6 ? 0.53 :
-              tdh_slider >= 1.5 ? 0.58 :
-              tdh_slider >= 1.4 ? 0.63 :
-              tdh_slider >= 1.3 ? 0.68 :
-              tdh_slider >= 1.2 ? 0.74 :
-              tdh_slider >= 1.0 ? 0.85 : 1.00
-kisit3_ok = oadr_tahmin < 0.50
+// Kısıt III: Prospektif OADR (70+/15-69) < 0.30 (Sanderson-Scherbov yaklaşımı)
+// Sustainability-Level Fertility (Sezgin 2026) Table 3'ten: stabil nüfus, Lotka modeli, 70+ tanım
+oadr_tahmin = nrr_hesap >= 1.0 ? 0.24 :
+              tdh_slider >= 2.09 ? 0.24 :
+              tdh_slider >= 2.00 ? 0.25 :
+              tdh_slider >= 1.90 ? 0.27 :
+              tdh_slider >= 1.80 ? 0.29 :
+              tdh_slider >= 1.70 ? 0.31 :
+              tdh_slider >= 1.60 ? 0.33 :
+              tdh_slider >= 1.50 ? 0.36 :
+              tdh_slider >= 1.48 ? 0.37 :
+              tdh_slider >= 1.30 ? 0.43 :
+              tdh_slider >= 1.00 ? 0.59 : 0.70
+kisit3_ok = oadr_tahmin < 0.30
 
 karsilanan = (kisit1_ok ? 1 : 0) + (kisit2_ok ? 1 : 0) + (kisit3_ok ? 1 : 0)
 ```
@@ -272,37 +273,37 @@ karsilanan = (kisit1_ok ? 1 : 0) + (kisit2_ok ? 1 : 0) + (kisit3_ok ? 1 : 0)
 
 html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
   <div style="background: ${kisit1_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${kisit1_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Kisit I: Kohort yarilma</div>
-    <div style="font-size: 1.5em; font-weight: bold; color: ${kisit1_ok ? '#2E7D32' : '#B33A3A'};">${kohort_yarilma === Infinity ? '∞' : kohort_yarilma.toFixed(0)} yil</div>
-    <div style="font-size: 0.7em; color: #888;">Esik: >100 yil ${kisit1_ok ? '✓' : '✗'}</div>
+    <div style="font-size: 0.75em; color: #666;">Kısıt I: Kohort yarılanma</div>
+    <div style="font-size: 1.5em; font-weight: bold; color: ${kisit1_ok ? '#2E7D32' : '#B33A3A'};">${kohort_yarilma === Infinity ? '∞' : kohort_yarilma.toFixed(0)} yıl</div>
+    <div style="font-size: 0.7em; color: #888;">Eşik: >100 yıl ${kisit1_ok ? '✓' : '✗'}</div>
   </div>
   <div style="background: ${kisit2_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${kisit2_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Kisit II: Yillik kucilme</div>
+    <div style="font-size: 0.75em; color: #666;">Kısıt II: Yıllık küçülme</div>
     <div style="font-size: 1.5em; font-weight: bold; color: ${kisit2_ok ? '#2E7D32' : '#B33A3A'};">%${yillik_kucilme.toFixed(2)}</div>
-    <div style="font-size: 0.7em; color: #888;">Esik: <%0,50 ${kisit2_ok ? '✓' : '✗'}</div>
+    <div style="font-size: 0.7em; color: #888;">Eşik: <%0,50 ${kisit2_ok ? '✓' : '✗'}</div>
   </div>
   <div style="background: ${kisit3_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${kisit3_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Kisit III: OADR (65+/15-64)</div>
+    <div style="font-size: 0.75em; color: #666;">Kısıt III: Prospektif OADR (70+/15-69)</div>
     <div style="font-size: 1.5em; font-weight: bold; color: ${kisit3_ok ? '#2E7D32' : '#B33A3A'};">${oadr_tahmin.toFixed(2)}</div>
-    <div style="font-size: 0.7em; color: #888;">Esik: <0,50 ${kisit3_ok ? '✓' : '✗'}</div>
+    <div style="font-size: 0.7em; color: #888;">Eşik: <0,30 ${kisit3_ok ? '✓' : '✗'}</div>
   </div>
 </div>
 
 <div style="background: ${karsilanan === 3 ? '#e8f5e9' : karsilanan >= 1 ? '#fff3e0' : '#ffebee'}; padding: 14px; border-radius: 6px; text-align: center; margin: 8px 0;">
   <span style="font-size: 1.1em; font-weight: bold;">
     NRR = ${nrr_hesap.toFixed(3)} | TDH = ${tdh_slider.toFixed(2)} |
-    ${karsilanan}/3 kisit karsilaniyor |
-    ${karsilanan === 3 ? 'SURDURULEBILIR ✓' : karsilanan >= 1 ? 'KISMI RISK ⚠' : 'SURDURULEMEZ ✗'}
+    ${karsilanan}/3 kısıt karşılanıyor |
+    ${karsilanan === 3 ? 'SÜRDÜRÜLEBİLİR ✓' : karsilanan >= 1 ? 'KISMİ RİSK ⚠' : 'SÜRDÜRÜLEMEz ✗'}
   </span>
 </div>
 
 <div style="font-size: 0.85em; color: #666; margin-top: 6px;">
-  Surdurulebilirlik bandi: TDH ≥ 1,70 (minimum) | TDH ≥ 1,81 (uc kisit birlikte) | Turkiye mevcut: TDH = 1,42 (bant disinda)
+  Sürdürülebilirlik bandı: TDH ≥ 1,70 (minimum) | TDH ≥ 1,81 (üç kısıt birlikte) | Türkiye mevcut: TDH = 1,42 (bant dışında)
 </div>`
 ```
 
 ::: {.callout-note appearance="simple"}
-**Formul:** NRR = TDH × k (k = 0,478). Kohort yarilma = ln(2) / (−ln(NRR)) × μ. Yillik kucilme = −ln(NRR) / μ. OADR: stabil nufus modelinden yaklasik (Sustainability Level Fertility, Sezgin 2026).
+**Formül:** NRR = TDH × k (k = 0,478). Kohort yarılanma = ln(2) / (−ln(NRR)) × μ. Yıllık küçülme = −ln(NRR) / μ. Prospektif OADR (70+/15-69): stabil nüfus modelinden (Lotka), Sanderson-Scherbov (2010) yaklaşımıyla — kalan yaşam beklentisi 15 yılın altındaki nüfusun çalışma çağı nüfusuna oranı. Değerler Sustainability-Level Fertility (Sezgin, 2026) Table 3'ten alınmıştır. *Not: Bu, Türkiye'nin güncel (2024) OADR'si değil, seçilen TDH'nin sonsuza kadar sürmesi halinde nüfusun ulaşacağı uzun dönem denge durumundaki (stabil nüfus) değerdir.*
 
 **μ (ortalama anne yaşı) neden bu yönde çalışıyor?** Kaydırıcıda μ küçüldüğünde kohort yarılanma süresi de küçülür — bu ilk bakışta sezgiye aykırı görünebilir ("anneler daha genç doğuruyorsa nüfus daha mı hızlı çökermiş?"). Burada μ, **NRR'yi sabit tutarak yalnızca nesil döngüsünün takvimde ne kadar sık tekrarlandığını** gösterir: aynı küçülme oranı (NRR) daha kısa aralıklarla tekrarlanırsa, *yıl bazında* çöküş daha hızlı birikir — tıpkı aynı faiz oranının yıllık değil aylık bileşik olarak işlemesi gibi. **Bu, μ'nün gerçek hayatta erken doğum üzerinden NRR'yi (çocuk sayısını) etkileme yolunu içermez** — o ayrı ve genelde ters yönlü bir mekanizmadır (örn. erken evlenme/doğum, kalan doğurganlık penceresini uzatarak NRR'yi yükseltebilir). Bu araç, μ ve NRR'yi birbirinden bağımsız iki kaydırıcı olarak ele alır; ikisinin birbirini nasıl etkilediğini modellemez.
 :::
