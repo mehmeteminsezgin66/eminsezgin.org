@@ -49,13 +49,13 @@ tdh_hesap = tdhHesapla(ppr1_slider, ppr2_slider, ppr3_slider)
 tdh_mevcut = tdhHesapla(ppr1_ref, ppr2_ref, ppr3_ref)
 tdh_fark = tdh_hesap - tdh_mevcut
 
-// Elastikiyet: her bir PPR'nin marjinal etkisi (kismi turev, sayisal)
+// Elastikiyet: her bir PPR'nin marjinal etkisi (kısmi türev, sayısal)
 d_eps = 0.01
 elastik_ppr1 = (tdhHesapla(ppr1_ref + d_eps, ppr2_ref, ppr3_ref) - tdh_mevcut) / d_eps
 elastik_ppr2 = (tdhHesapla(ppr1_ref, ppr2_ref + d_eps, ppr3_ref) - tdh_mevcut) / d_eps
 elastik_ppr3 = (tdhHesapla(ppr1_ref, ppr2_ref, ppr3_ref + d_eps) - tdh_mevcut) / d_eps
 
-// PPR1 grafik dizisi (digerleri referans degerde sabit, taban cizgi icin)
+// PPR1 grafik dizisi (diğerleri referans değerde sabit, taban çizgi için)
 ppr1_dizi = Array.from({length: 91}, (_, i) => 0.50 + i * 0.005)
 tdh_dizi = ppr1_dizi.map(p => tdhHesapla(p, ppr2_ref, ppr3_ref))
 ```
@@ -94,8 +94,8 @@ Plot.plot({
     Plot.ruleY([1.30], {stroke: "#B33A3A", strokeDasharray: "6,4", strokeWidth: 1}),
     Plot.ruleY([1.70], {stroke: "#2E7D32", strokeDasharray: "6,4", strokeWidth: 1}),
     Plot.ruleY([2.10], {stroke: "#888", strokeDasharray: "3,3", strokeWidth: 1}),
-    Plot.text([{x: 0.52, y: 1.32}], {text: ["Lowest-low esigi (1,30)"], fill: "#B33A3A", fontSize: 10}),
-    Plot.text([{x: 0.52, y: 1.72}], {text: ["Surdurulebilirlik bandi (1,70)"], fill: "#2E7D32", fontSize: 10}),
+    Plot.text([{x: 0.52, y: 1.32}], {text: ["Lowest-low eşiği (1,30)"], fill: "#B33A3A", fontSize: 10}),
+    Plot.text([{x: 0.52, y: 1.72}], {text: ["Sürdürülebilirlik bandı (1,70)"], fill: "#2E7D32", fontSize: 10}),
     Plot.text([{x: 0.52, y: 2.12}], {text: ["Yenilenme (2,10)"], fill: "#888", fontSize: 10}),
     Plot.line(ppr1_dizi.map((p, i) => ({x: p, y: tdh_dizi[i]})), {x: "x", y: "y", stroke: "#888", strokeWidth: 1.5, strokeDasharray: "3,3"}),
     Plot.dot([{x: 0.712, y: tdh_mevcut}], {x: "x", y: "y", r: 7, fill: "#B33A3A", tip: true, title: d => `Mevcut: PPR₁=0,712 → TDH=${tdh_mevcut.toFixed(3)}`}),
@@ -111,7 +111,7 @@ Plot.plot({
 Plot.plot({
   width: 700, height: 220,
   marginLeft: 100,
-  x: {label: "TDH Uzerindeki Marjinal Etki (kismi turev)"},
+  x: {label: "TDH Üzerindeki Marjinal Etki (kısmi türev)"},
   y: {label: null, domain: ["PPR₃ (3→4+)", "PPR₂ (2→3)", "PPR₁ (1→2)"], type: "band"},
   marks: [
     Plot.barX([
@@ -129,7 +129,7 @@ Plot.plot({
 ```
 
 ::: {.callout-note appearance="simple"}
-**Formul:** TDH = TDH₁ × (1 + PPR₁ + PPR₁ × PPR₂ + PPR₁ × PPR₂ × PPR₃). Sabit tutulan 2025 bileşeni: TDH₁ = 0,608. Üst grafikte kırmızı nokta Türkiye'nin mevcut konumunu (PPR₁=0,712, PPR₂=0,507, PPR₃=0,700 → TDH=1,419), yeşil nokta seçilen üç değerin bileşik sonucunu gösterir (gri kesikli çizgi yalnızca PPR₁ eksenindeki referans patikadır, diğer ikisi sabit tutulduğunda). Alt panel, her bir geçişteki **eşit büyüklükte (0,01 birim) bir iyileşmenin TDH'ye marjinal katkısını** karşılaştırır: PPR₁'deki bir birim iyileşme, PPR₃'tekinin **yaklaşık 5 katı** etki üretir — bu, "neden ikinci çocuğa odaklanmak üçüncü çocuğa teşvik vermekten daha etkili" tezinin sayısal kanıtıdır.
+**Formül:** TDH = TDH₁ × (1 + PPR₁ + PPR₁ × PPR₂ + PPR₁ × PPR₂ × PPR₃). Sabit tutulan 2025 bileşeni: TDH₁ = 0,608. Üst grafikte kırmızı nokta Türkiye'nin mevcut konumunu (PPR₁=0,712, PPR₂=0,507, PPR₃=0,700 → TDH=1,419), yeşil nokta seçilen üç değerin bileşik sonucunu gösterir (gri kesikli çizgi yalnızca PPR₁ eksenindeki referans patikadır, diğer ikisi sabit tutulduğunda). Alt panel, her bir geçişteki **eşit büyüklükte (0,01 birim) bir iyileşmenin TDH'ye marjinal katkısını** karşılaştırır: PPR₁'deki bir birim iyileşme, PPR₃'tekinin **yaklaşık 5 katı** etki üretir — bu, "neden ikinci çocuğa odaklanmak üçüncü çocuğa teşvik vermekten daha etkili" tezinin sayısal kanıtıdır.
 :::
 
 
@@ -141,8 +141,8 @@ Plot.plot({
 ```{ojs}
 //| echo: false
 
-viewof secilen_yil = Inputs.range([2025, 2060], {value: 2025, step: 5, label: "Yil"})
-viewof secilen_senaryo = Inputs.radio(["S0 — Mudahalesiz", "S3 — Kapsamli politika"], {value: "S0 — Mudahalesiz", label: "Senaryo"})
+viewof secilen_yil = Inputs.range([2025, 2060], {value: 2025, step: 5, label: "Yıl"})
+viewof secilen_senaryo = Inputs.radio(["S0 — Müdahalesiz", "S3 — Kapsamlı politika"], {value: "S0 — Müdahalesiz", label: "Senaryo"})
 ```
 
 ```{ojs}
@@ -191,11 +191,11 @@ tepe_pay = (piramit_veri.erkek.slice(13).reduce((a,b)=>a+b,0) + piramit_veri.kad
 
 html`<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 8px 0;">
   <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 10px; border-radius: 4px;">
-    <span style="font-size: 0.8em; color: #666;">Taban (0-4 yas) payi:</span>
+    <span style="font-size: 0.8em; color: #666;">Taban (0-4 yaş) payı:</span>
     <span style="font-size: 1.3em; font-weight: bold; color: #1F3864;"> %${taban_pay}</span>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 10px; border-radius: 4px;">
-    <span style="font-size: 0.8em; color: #666;">Tepe (65+) payi:</span>
+    <span style="font-size: 0.8em; color: #666;">Tepe (65+) payı:</span>
     <span style="font-size: 1.3em; font-weight: bold; color: #9E7A1A;"> %${tepe_pay}</span>
   </div>
 </div>`
@@ -206,13 +206,13 @@ html`<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margi
 
 Plot.plot({
   width: 700, height: 480, marginLeft: 60,
-  x: {label: "Toplam Nufusun Payi (%)", domain: [-5.5, 5.5]},
+  x: {label: "Toplam Nüfusun Payı (%)", domain: [-5.5, 5.5]},
   y: {label: null, domain: yas_gruplari, type: "band"},
-  color: {domain: ["Erkek", "Kadin"], range: ["#1F3864", "#9E7A1A"]},
+  color: {domain: ["Erkek", "Kadın"], range: ["#1F3864", "#9E7A1A"]},
   marks: [
     Plot.barX(yas_gruplari.map((yg,i) => ({yas: yg, deger: -piramit_veri.erkek[i], cinsiyet: "Erkek"})),
       {x: "deger", y: "yas", fill: "cinsiyet", sort: {y: null}}),
-    Plot.barX(yas_gruplari.map((yg,i) => ({yas: yg, deger: piramit_veri.kadin[i], cinsiyet: "Kadin"})),
+    Plot.barX(yas_gruplari.map((yg,i) => ({yas: yg, deger: piramit_veri.kadin[i], cinsiyet: "Kadın"})),
       {x: "deger", y: "yas", fill: "cinsiyet", sort: {y: null}}),
     Plot.ruleX([0])
   ]
@@ -220,14 +220,14 @@ Plot.plot({
 ```
 
 ::: {.callout-note appearance="simple"}
-**Yontem:** 2025 gercek TUIK piramidi baslangic noktasi; her 5 yilda bir yas grubu yukari kaydirilir (TUIK hayat tablosuna yakin hayatta kalma oranlariyla), taban (0-4 yas girisi) secilen senaryonun TDH egilimine gore degisir. Tam bir kohort-bilesen modeli degil, momentum analizinin temel mekanigini gorunurlestiren bir gostergedir.
+**Yöntem:** 2025 gerçek TÜİK piramidi başlangıç noktası; her 5 yılda bir yaş grubu yukarı kaydırılır (TÜİK hayat tablosuna yakın hayatta kalma oranlarıyla), taban (0-4 yaş girişi) seçilen senaryonun TDH eğilimine göre değişir. Tam bir kohort-bileşen modeli değil, momentum analizinin temel mekanığını görünürleştiren bir göstergedir.
 :::
 
 
 
-## 3. Kohort Yarilma ve Surdurulebilirlik Hesaplayici
+## 3. Kohort Yarılma ve Sürdürülebilirlik Hesaplayıcı
 
-Uc kisit cercevesi: kohort yarilma suresi, yillik kucilme orani ve yasli bagimlilik orani. Turkiye'nin mevcut TDH'si bu kisitlarin neresinde?
+Üç kısıt çerçevesi: kohort yarılma süresi, yıllık küçülme oranı ve yaşlı bağımlılık oranı. Türkiye'nin mevcut TDH'si bu kısıtların neresinde?
 
 ```{ojs}
 //| echo: false
@@ -242,11 +242,11 @@ viewof mu_slider = Inputs.range([26, 32], {value: 29, step: 0.5, label: "Ortalam
 k_katsayi = 0.478
 nrr_hesap = tdh_slider * k_katsayi
 
-// Kisit I: Kohort yarilma > 100 yil
+// Kısıt I: Kohort yarılma > 100 yıl
 kohort_yarilma = nrr_hesap >= 1.0 ? Infinity : (Math.log(2) / (-Math.log(nrr_hesap))) * mu_slider
 kisit1_ok = kohort_yarilma > 100
 
-// Kisit II: Yillik kucilme < %0.5
+// Kısıt II: Yıllık küçülme < %0.5
 yillik_kucilme = nrr_hesap >= 1.0 ? 0 : -(Math.log(nrr_hesap) / mu_slider) * 100
 kisit2_ok = yillik_kucilme < 0.5
 
@@ -309,9 +309,9 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 :::
 
 
-## 4. Toplam Nufus Projeksiyon Simulatoru (2025–2225, 200 Yil)
+## 4. Toplam Nüfus Projeksiyon Simülatörü (2025–2225, 200 Yıl)
 
-TDH farkli sabit degerlerde tutulsa, 200 yil boyunca Turkiye nufusu nasil bir patika izler? Kisa vadeli momentum ile uzun vadeli kucilme arasindaki fark.
+TDH farklı sabit değerlerde tutulsa, 200 yıl boyunca Türkiye nüfusu nasıl bir patika izler? Kısa vadeli momentum ile uzun vadeli küçülme arasındaki fark.
 
 ```{ojs}
 //| echo: false
@@ -326,9 +326,9 @@ nrr_mom = tdh_momentum * 0.478
 mu_mom = 29
 nufus_2025 = 86.1  // milyon
 
-// Belgelenmis senaryo projeksiyonlari (milyon, goc haric), 2025-2105 gercek/dogrulanmis,
-// 2105 sonrasi 2080-2105 araligindaki ortalama buyume hizinin (r) uzatilmasiyla 2225'e tasinmistir.
-// Kaynak: Gorulmez Kriz, Sezgin (2026), Tablo 3.2 (2025-2105); yazar uzantisi (2125-2225).
+// Belgelenmiş senaryo projeksiyonları (milyon, göç hariç), 2025-2105 gerçek/doğrulanmış,
+// 2105 sonrası 2080-2105 aralığındaki ortalama büyüme hızının (r) uzatılmasıyla 2225'e taşınmıştır.
+// Kaynak: Görülmez Kriz, Sezgin (2026), Tablo 3.2 (2025-2105); yazar uzantısı (2125-2225).
 proj_S0 = ({2025:86.1, 2030:88.0, 2040:89.3, 2050:86.5, 2060:80.7, 2080:63.2, 2105:39.5, 2125:27.1, 2150:17.0, 2175:10.6, 2200:6.6, 2225:4.1})
 proj_S1 = ({2025:86.1, 2030:88.0, 2040:90.1, 2050:89.4, 2060:85.2, 2080:71.7, 2105:52.4, 2125:40.8, 2150:29.8, 2175:21.8, 2200:15.9, 2225:11.6})
 proj_S2 = ({2025:86.1, 2030:90.2, 2040:96.6, 2050:100.1, 2060:101.1, 2080:101.2, 2105:100.8, 2125:100.5, 2150:100.1, 2175:99.7, 2200:99.3, 2225:98.9})
@@ -366,20 +366,20 @@ zirve_yil = Object.keys(secilen_proj)[zirve_yil_idx]
 
 html`<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0;">
   <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Zirve nufusu</div>
+    <div style="font-size: 0.75em; color: #666;">Zirve nüfusu</div>
     <div style="font-size: 1.5em; font-weight: bold; color: #1F3864;">${zirve_nufus.toFixed(1)}M</div>
-    <div style="font-size: 0.7em; color: #888;">~${zirve_yil} civarinda</div>
+    <div style="font-size: 0.7em; color: #888;">~${zirve_yil} civarında</div>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
     <div style="font-size: 0.75em; color: #666;">2060 projeksiyonu</div>
     <div style="font-size: 1.5em; font-weight: bold; color: #9E7A1A;">${secilen_proj[2060].toFixed(1)}M</div>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #888; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">2125 projeksiyonu (100 yil)</div>
+    <div style="font-size: 0.75em; color: #666;">2125 projeksiyonu (100 yıl)</div>
     <div style="font-size: 1.5em; font-weight: bold; color: #888;">${secilen_proj[2125].toFixed(1)}M</div>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #B33A3A; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">2225 projeksiyonu (200 yil)</div>
+    <div style="font-size: 0.75em; color: #666;">2225 projeksiyonu (200 yıl)</div>
     <div style="font-size: 1.5em; font-weight: bold; color: #B33A3A;">${secilen_proj[2225].toFixed(1)}M</div>
   </div>
 </div>`
@@ -390,27 +390,27 @@ html`<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px
 
 yillar_200 = [2025, 2030, 2040, 2050, 2060, 2080, 2105, 2125, 2150, 2175, 2200, 2225]
 
-s0_200 = yillar_200.map(y => ({yil: y, nufus: proj_S0[y], senaryo: "S0 (dusus devam)"}))
-s2_200 = yillar_200.map(y => ({yil: y, nufus: proj_S2[y], senaryo: "S2 (aninda yenilenme)"}))
-secilen_200 = yillar_200.map(y => ({yil: y, nufus: secilen_proj[y], senaryo: `Secilen (TDH=${tdh_momentum.toFixed(2)})`}))
+s0_200 = yillar_200.map(y => ({yil: y, nufus: proj_S0[y], senaryo: "S0 (düşüş devam)"}))
+s2_200 = yillar_200.map(y => ({yil: y, nufus: proj_S2[y], senaryo: "S2 (anında yenilenme)"}))
+secilen_200 = yillar_200.map(y => ({yil: y, nufus: secilen_proj[y], senaryo: `Seçilen (TDH=${tdh_momentum.toFixed(2)})`}))
 
 proj_data_200 = [...s0_200, ...secilen_200, ...s2_200]
 
 Plot.plot({
   width: 700, height: 400,
-  x: {label: "Yil", domain: [2025, 2225]},
-  y: {label: "Nufus (milyon)", domain: [0, 110]},
-  color: {domain: ["S0 (dusus devam)", `Secilen (TDH=${tdh_momentum.toFixed(2)})`, "S2 (aninda yenilenme)"],
+  x: {label: "Yıl", domain: [2025, 2225]},
+  y: {label: "Nüfus (milyon)", domain: [0, 110]},
+  color: {domain: ["S0 (düşüş devam)", `Seçilen (TDH=${tdh_momentum.toFixed(2)})`, "S2 (anında yenilenme)"],
           range: ["#B33A3A", "#1F3864", "#888888"]},
   marks: [
     Plot.ruleX([2105], {stroke: "#ccc", strokeDasharray: "2,2"}),
-    Plot.text([{x: 2105, y: 105}], {text: ["80 yil"], fill: "#aaa", fontSize: 9}),
+    Plot.text([{x: 2105, y: 105}], {text: ["80 yıl"], fill: "#aaa", fontSize: 9}),
     Plot.ruleX([2225], {stroke: "#ccc", strokeDasharray: "2,2"}),
-    Plot.text([{x: 2200, y: 105}], {text: ["200 yil"], fill: "#aaa", fontSize: 9}),
+    Plot.text([{x: 2200, y: 105}], {text: ["200 yıl"], fill: "#aaa", fontSize: 9}),
     Plot.line(proj_data_200, {x: "yil", y: "nufus", stroke: "senaryo",
-      strokeWidth: d => d.senaryo.startsWith("Secilen") ? 2.5 : 1.5,
+      strokeWidth: d => d.senaryo.startsWith("Seçilen") ? 2.5 : 1.5,
       strokeDasharray: d => d.senaryo.startsWith("S2") ? "4,4" : null}),
-    Plot.dot(proj_data_200.filter(d => d.senaryo.startsWith("Secilen")),
+    Plot.dot(proj_data_200.filter(d => d.senaryo.startsWith("Seçilen")),
       {x: "yil", y: "nufus", fill: "#1F3864", r: 4, tip: true,
        title: d => `${d.yil}: ${d.nufus.toFixed(1)}M`})
   ]
@@ -418,26 +418,26 @@ Plot.plot({
 ```
 
 ::: {.callout-note appearance="simple"}
-**Yontem:** 2025–2105 degerleri belgelenmis S0/S1/S2/S3 senaryo projeksiyonlarindan (kohort-bilesen modeli, goc haric); kullanicinin sectigi TDH'ye gore bu dort sabit nokta arasinda lineer interpolasyon yapilir. 2105 sonrasi (2125–2225), 2080–2105 araligindaki ortalama buyume/kucilme hizinin sabit tutularak ileri tasinmasidir — **bu kisim dogrulanmis bir kohort-bilesen ciktisi degil, basitlestirilmis bir uzantidir** ve yalnizca buyuklugun mertebesini gostermek icindir. NRR=1 (TDH≈2,10) senaryosunda nufus ~100M civarinda stabilize olur (Keyfitz momentum, M=1,180); altindaki her TDH degeri suresiz kucilmeye gider.
+**Yöntem:** 2025–2105 değerleri belgelenmiş S0/S1/S2/S3 senaryo projeksiyonlarından (kohort-bileşen modeli, göç hariç); kullanıcının seçtiği TDH'ye göre bu dört sabit nokta arasında lineer interpolasyon yapılır. 2105 sonrası (2125–2225), 2080–2105 aralığındaki ortalama büyüme/küçülme hızının sabit tutularak ileri taşınmasıdır — **bu kısım doğrulanmış bir kohort-bileşen çıktısı değil, basitleştirilmiş bir uzantıdır** ve yalnızca büyüklüğün mertebesini göstermek içindir. NRR=1 (TDH≈2,10) senaryosunda nüfus ~100M civarında stabilize olur (Keyfitz momentum, M=1,180); altındaki her TDH değeri süresiz küçülmeye gider.
 :::
 
 
 
-## 5. Goc Senaryosu Simulatoru
+## 5. Göç Senaryosu Simülatörü
 
 Doğurganlık açığı net göçle kapatılabilir mi? Göçmen TDH'sinin (2,1) doğurganlık çarpanıyla birlikte hesaplanan kohort-bileşen modeli.
 
 ```{ojs}
 //| echo: false
 
-viewof goc_slider = Inputs.range([0, 500], {value: 0, step: 10, label: "Yillik net goc (bin kisi)"})
+viewof goc_slider = Inputs.range([0, 500], {value: 0, step: 10, label: "Yıllık net göç (bin kişi)"})
 ```
 
 ```{ojs}
 //| echo: false
 
-// Devamlilik notundaki dogrulanmis senaryo noktalari (goçmen TDH=2.1 ile kohort-bilesen model)
-// Kaynak: Goc Projeksiyonu Devamlilik Notu, 19 Haziran 2026
+// Devamlılık notundaki doğrulanmış senaryo noktaları (göçmen TDH=2.1 ile kohort-bileşen model)
+// Kaynak: Göç Projeksiyonu Devamlılık Notu, 19 Haziran 2026
 goc_senaryolari = ([
   {goc: 0,   nufus2100: 53,  azalma: 13.2, kumulatif: 0,  oadr: 59},
   {goc: 100, nufus2100: 69,  azalma: 8.8,  kumulatif: 8,  oadr: 51},
@@ -464,8 +464,8 @@ function gocInterpolate(g) {
 }
 
 goc_secilen = gocInterpolate(goc_slider)
-azalma_ok = goc_secilen.azalma < 5.0   // Kisit II esigi (binde 5)
-oadr_ok = goc_secilen.oadr < 30        // Kisit III esigi (Sezgin cercevesi, <%30)
+azalma_ok = goc_secilen.azalma < 5.0   // Kısıt II eşiği (binde 5)
+oadr_ok = goc_secilen.oadr < 30        // Kısıt III eşiği (Sezgin çerçevesi, <%30)
 ```
 
 ```{ojs}
@@ -473,21 +473,21 @@ oadr_ok = goc_secilen.oadr < 30        // Kisit III esigi (Sezgin cercevesi, <%3
 
 html`<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0;">
   <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">2100 nufusu</div>
+    <div style="font-size: 0.75em; color: #666;">2100 nüfusu</div>
     <div style="font-size: 1.5em; font-weight: bold; color: #1F3864;">${goc_secilen.nufus2100.toFixed(0)}M</div>
   </div>
   <div style="background: ${azalma_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${azalma_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Yillik azalma (Kisit II)</div>
+    <div style="font-size: 0.75em; color: #666;">Yıllık azalma (Kısıt II)</div>
     <div style="font-size: 1.5em; font-weight: bold; color: ${azalma_ok ? '#2E7D32' : '#B33A3A'};">‰${goc_secilen.azalma.toFixed(1)}</div>
-    <div style="font-size: 0.7em; color: #888;">Esik: <‰5,0 ${azalma_ok ? '✓' : '✗'}</div>
+    <div style="font-size: 0.7em; color: #888;">Eşik: <‰5,0 ${azalma_ok ? '✓' : '✗'}</div>
   </div>
   <div style="background: ${oadr_ok ? '#e8f5e9' : '#ffebee'}; border-left: 4px solid ${oadr_ok ? '#2E7D32' : '#B33A3A'}; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">2100 OADR (Kisit III)</div>
+    <div style="font-size: 0.75em; color: #666;">2100 OADR (Kısıt III)</div>
     <div style="font-size: 1.5em; font-weight: bold; color: ${oadr_ok ? '#2E7D32' : '#B33A3A'};">%${goc_secilen.oadr.toFixed(0)}</div>
-    <div style="font-size: 0.7em; color: #888;">Esik: <%30 ${oadr_ok ? '✓' : '✗'}</div>
+    <div style="font-size: 0.7em; color: #888;">Eşik: <%30 ${oadr_ok ? '✓' : '✗'}</div>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Kumulatif goc (75 yil)</div>
+    <div style="font-size: 0.75em; color: #666;">Kümülatif göç (75 yıl)</div>
     <div style="font-size: 1.5em; font-weight: bold; color: #9E7A1A;">${goc_secilen.kumulatif.toFixed(0)}M</div>
   </div>
 </div>`
@@ -498,21 +498,21 @@ html`<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px
 
 Plot.plot({
   width: 700, height: 380,
-  x: {label: "Yillik net goc (bin kisi)", domain: [0, 500]},
-  y: {label: "2100 Nufusu (milyon)", domain: [40, 130]},
+  x: {label: "Yıllık net göç (bin kişi)", domain: [0, 500]},
+  y: {label: "2100 Nüfusu (milyon)", domain: [40, 130]},
   marks: [
     Plot.line(goc_senaryolari, {x: "goc", y: "nufus2100", stroke: "#1F3864", strokeWidth: 2.5}),
     Plot.dot(goc_senaryolari, {x: "goc", y: "nufus2100", fill: "#1F3864", r: 5, tip: true,
-      title: d => `${d.goc}K/yil → ${d.nufus2100}M (2100), OADR %${d.oadr}`}),
+      title: d => `${d.goc}K/yıl → ${d.nufus2100}M (2100), OADR %${d.oadr}`}),
     Plot.dot([{x: goc_slider, y: goc_secilen.nufus2100}], {x: "x", y: "y", r: 7, fill: "#2E7D32"}),
     Plot.ruleX([250], {stroke: "#9E7A1A", strokeDasharray: "4,4"}),
-    Plot.text([{x: 260, y: 125}], {text: ["Kisit II esigi (~250K/yil)"], fill: "#9E7A1A", fontSize: 10})
+    Plot.text([{x: 260, y: 125}], {text: ["Kısıt II eşiği (~250K/yıl)"], fill: "#9E7A1A", fontSize: 10})
   ]
 })
 ```
 
 ::: {.callout-warning appearance="simple"}
-**Kritik sinir:** Göç, yalnizca nüfus düşüş hizi kisitini (Kisit II, <binde 5) karşılayabilir — 250 bin/yil net göç ile bu eşik karşılanır. Ancak **OADR kisiti (Kisit III, <%30) hiçbir göç senaryosunda karşılanmaz**: 500 bin/yil ile bile 2100 OADR'si %39'da kalir. Göç, doğurganlık davranışının kendisini (NRR) değiştirmez; yaş yapısını iyileştirir ama yeterli ölçekte değil. Göçmen TDH=2,1 varsayımıyla kohort-bileşen modeli kullanılmıştır (basit `g=r+m` formülü reddedilmiştir — bkz. yöntem notu).
+**Kritik sınır:** Göç, yalnızca nüfus düşüş hızı kısıtını (Kısıt II, <binde 5) karşılayabilir — 250 bin/yıl net göç ile bu eşik karşılanır. Ancak **OADR kısıtı (Kısıt III, <%30) hiçbir göç senaryosunda karşılanmaz**: 500 bin/yıl ile bile 2100 OADR'si %39'da kalır. Göç, doğurganlık davranışının kendisini (NRR) değiştirmez; yaş yapısını iyileştirir ama yeterli ölçekte değil. Göçmen TDH=2,1 varsayımıyla kohort-bileşen modeli kullanılmıştır (basit `g=r+m` formülü reddedilmiştir — bkz. yöntem notu).
 
 *Kaynak: Göç Projeksiyonu Devamlılık Notu, 19 Haziran 2026 — doğrulanmış senaryo tablosu.*
 :::
@@ -520,24 +520,24 @@ Plot.plot({
 
 
 
-## 6. SGK Aktif/Pasif Baski Testi
+## 6. SGK Aktif/Pasif Baskı Testi
 
-Calisma cagi nufusu daraldikca ve emekli nufus buyudukce, sosyal guvenlik sisteminin coken dengesi.
+Çalışma çağı nüfusu daraldıkça ve emekli nüfus büyüdükçe, sosyal güvenlik sisteminin çöken dengesi.
 
 ```{ojs}
 //| echo: false
 
 viewof tdh_sgk = Inputs.range([0.80, 2.10], {value: 1.42, step: 0.05, label: "TDH senaryosu"})
-viewof emeklilik_yasi = Inputs.range([58, 68], {value: 62, step: 1, label: "Fiili emeklilik yasi"})
+viewof emeklilik_yasi = Inputs.range([58, 68], {value: 62, step: 1, label: "Fiili emeklilik yaşı"})
 ```
 
 ```{ojs}
 //| echo: false
 
-// SGK aktif/pasif orani: gercek noktalar
+// SGK aktif/pasif oranı: gerçek noktalar
 // 2022: 2.01, 2023: 1.73, 2024: 1.63, 2025: 1.59 (Ocak 2026)
-// Projeksiyon: nufus yaslanmasiyla duser
-// Basit model: aktif nufus ~= 20-emeklilik_yasi, pasif = emeklilik_yasi-olum
+// Projeksiyon: nüfus yaşlanmasıyla düşer
+// Basit model: aktif nüfus ~= 20-emeklilik_yasi, pasif = emeklilik_yasi-ölüm
 
 sgk_yillar = [2022, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060]
 
@@ -546,17 +546,17 @@ function sgkProj(tdh_val, em_yas) {
   let r = nrr >= 1.0 ? 0 : Math.log(nrr) / 29
   
   // Baz oran 2025: 1.59
-  // Yaslanan nufus + kucilen calisma cagi → oran duser
-  // Emeklilik yasi yuklestikce oran iyilesir (daha az pasif)
+  // Yaşlanan nüfus + küçülen çalışma çağı → oran düşer
+  // Emeklilik yaşı yükseldikçe oran iyileşir (daha az pasif)
   let baz = 1.59
-  let em_etki = (em_yas - 62) * 0.04 // her yil emeklilik yasi artisi ~ +0.04 oran
+  let em_etki = (em_yas - 62) * 0.04 // her yıl emeklilik yaşı artışı ~ +0.04 oran
   
   return sgk_yillar.map(y => {
     let t = y - 2025
-    // Demografik bozulma: yas yapisi yaslaniyor
-    let dem_bozulma = t * 0.015 * (1 - nrr) // NRR dusukse bozulma hizlanir
+    // Demografik bozulma: yaş yapısı yaşlanıyor
+    let dem_bozulma = t * 0.015 * (1 - nrr) // NRR düşükse bozulma hızlanır
     let oran = Math.max(0.5, baz + em_etki - dem_bozulma)
-    return {yil: y, oran: oran, senaryo: `TDH=${tdh_val.toFixed(2)}, Em.yasi=${em_yas}`}
+    return {yil: y, oran: oran, senaryo: `TDH=${tdh_val.toFixed(2)}, Em.yası=${em_yas}`}
   })
 }
 
@@ -564,7 +564,7 @@ sgk_gercek = [{yil: 2022, oran: 2.01}, {yil: 2023, oran: 1.73}, {yil: 2024, oran
 sgk_proj = sgkProj(tdh_sgk, emeklilik_yasi)
 sgk_proj_ref = sgkProj(1.40, 62) // referans S0
 
-// 1.0 esigine varilma yili
+// 1.0 eşiğine varılma yılı
 esik_yil = sgk_proj.find(d => d.oran <= 1.0)
 ```
 
@@ -581,7 +581,7 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
     <div style="font-size: 1.8em; font-weight: bold; color: ${sgk_proj[sgk_proj.length-1].oran <= 1.0 ? '#B33A3A' : '#9E7A1A'};">${sgk_proj[sgk_proj.length-1].oran.toFixed(2)}</div>
   </div>
   <div style="background: ${esik_yil ? '#ffebee' : '#e8f5e9'}; border-left: 4px solid ${esik_yil ? '#B33A3A' : '#2E7D32'}; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">1,0 esigine varis</div>
+    <div style="font-size: 0.75em; color: #666;">1,0 eşiğine varış</div>
     <div style="font-size: 1.8em; font-weight: bold; color: ${esik_yil ? '#B33A3A' : '#2E7D32'};">${esik_yil ? `~${esik_yil.yil}` : '>2060'}</div>
   </div>
 </div>`
@@ -591,28 +591,28 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 //| echo: false
 
 sgk_all = [
-  ...sgk_gercek.map(d => ({...d, senaryo: "Gerceklesen"})),
-  ...sgk_proj.map(d => ({...d, senaryo: "Secilen senaryo"})),
+  ...sgk_gercek.map(d => ({...d, senaryo: "Gerçekleşen"})),
+  ...sgk_proj.map(d => ({...d, senaryo: "Seçilen senaryo"})),
   ...sgk_proj_ref.map(d => ({...d, senaryo: "S0 referans (TDH=1.40, Em=62)"}))
 ]
 
 Plot.plot({
   width: 700, height: 380,
-  x: {label: "Yil", tickFormat: d => d.toString()},
-  y: {label: "Aktif/Pasif Orani", domain: [0.5, 2.2]},
-  color: {domain: ["Gerceklesen", "Secilen senaryo", "S0 referans (TDH=1.40, Em=62)"], range: ["#1F3864", "#2E7D32", "#B33A3A"]},
+  x: {label: "Yıl", tickFormat: d => d.toString()},
+  y: {label: "Aktif/Pasif Oranı", domain: [0.5, 2.2]},
+  color: {domain: ["Gerçekleşen", "Seçilen senaryo", "S0 referans (TDH=1.40, Em=62)"], range: ["#1F3864", "#2E7D32", "#B33A3A"]},
   marks: [
     Plot.ruleY([1.0], {stroke: "#B33A3A", strokeDasharray: "6,4", strokeWidth: 2}),
-    Plot.text([{x: 2035, y: 1.05}], {text: ["Sistemik cokus esigi (1,0)"], fill: "#B33A3A", fontSize: 10}),
+    Plot.text([{x: 2035, y: 1.05}], {text: ["Sistemik çöküş eşiği (1,0)"], fill: "#B33A3A", fontSize: 10}),
     Plot.line(sgk_all, {x: "yil", y: "oran", stroke: "senaryo", strokeWidth: 2}),
-    Plot.dot(sgk_all.filter(d => d.senaryo === "Gerceklesen"), {x: "yil", y: "oran", fill: "#1F3864", r: 5, tip: true,
+    Plot.dot(sgk_all.filter(d => d.senaryo === "Gerçekleşen"), {x: "yil", y: "oran", fill: "#1F3864", r: 5, tip: true,
       title: d => `${d.yil}: ${d.oran.toFixed(2)}`})
   ]
 })
 ```
 
 ::: {.callout-warning appearance="simple"}
-**Uyari:** Bu model basitlestirilmis bir demografik-aktuaryal projeksiyondur; gercek SGK dengesini belirleyen kayit disi istihdam orani, prim gun sayisi, asil-tali sigortalik dagilimlari ve emeklilik yas kademesi gibi kurumsal degiskenler dahil edilmemistir. Gosterdigi sey: demografik yapi degismezse, kurumsal parametreleri ne kadar duzeltirseniz duzeltin, aktif/pasif oraninin dusus yonunun degismeyecegidir. SGK gercek aktif/pasif orani: 2022 = 2,01 (zirve); Ocak 2026 = 1,591.
+**Uyarı:** Bu model basitleştirilmiş bir demografik-aktüaryal projeksiyondur; gerçek SGK dengesini belirleyen kayıt dışı istihdam oranı, prim gün sayısı, asıl-tali sigortalılık dağılımları ve emeklilik yaş kademesi gibi kurumsal değişkenler dahil edilmemiştir. Gösterdiği şey: demografik yapı değişmezse, kurumsal parametreleri ne kadar düzeltirseniz düzeltin, aktif/pasif oranının düşüş yönünün değişmeyeceğidir. SGK gerçek aktif/pasif oranı: 2022 = 2,01 (zirve); Ocak 2026 = 1,591.
 :::
 
 ## 7. İstenen vs Gerçekleşen Doğurganlık Makası
@@ -622,21 +622,21 @@ Plot.plot({
 ```{ojs}
 //| echo: false
 
-viewof mevcut_cocuk = Inputs.radio(["0 (henuz cocuksuz)", "1 (bir cocuklu)", "2 (iki cocuklu)", "3+ (uc ve uzeri)"], {value: "0 (henuz cocuksuz)", label: "Mevcut cocuk sayisi"})
+viewof mevcut_cocuk = Inputs.radio(["0 (henüz çocuksuz)", "1 (bir çocuklu)", "2 (iki çocuklu)", "3+ (üç ve üzeri)"], {value: "0 (henüz çocuksuz)", label: "Mevcut çocuk sayısı"})
 ```
 
 ```{ojs}
 //| echo: false
 
-// TNSA 2018: mevcut cocuk sayisina gore ideal cocuk sayisi
+// TNSA 2018: mevcut çocuk sayısına göre ideal çocuk sayısı
 ideal_tablo = ({
-  "0 (henuz cocuksuz)": 2.6,
-  "1 (bir cocuklu)": 2.8,
-  "2 (iki cocuklu)": 3.2,
-  "3+ (uc ve uzeri)": 3.8
+  "0 (henüz çocuksuz)": 2.6,
+  "1 (bir çocuklu)": 2.8,
+  "2 (iki çocuklu)": 3.2,
+  "3+ (üç ve üzeri)": 3.8
 })
 
-tdh_gerceklesen = 1.419  // 2025 TUIK
+tdh_gerceklesen = 1.419  // 2025 TÜİK
 tdh_istihdamda = 1.38
 tdh_istihdam_disi = 1.72
 
@@ -649,15 +649,15 @@ makas = ideal_secilen - tdh_gerceklesen
 
 html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
   <div style="background: #f8f9fa; border-left: 4px solid #9E7A1A; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Ideal cocuk sayisi (TNSA 2018)</div>
+    <div style="font-size: 0.75em; color: #666;">İdeal çocuk sayısı (TNSA 2018)</div>
     <div style="font-size: 1.8em; font-weight: bold; color: #9E7A1A;">${ideal_secilen.toFixed(1)}</div>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Gerceklesen TDH (2025)</div>
+    <div style="font-size: 0.75em; color: #666;">Gerçekleşen TDH (2025)</div>
     <div style="font-size: 1.8em; font-weight: bold; color: #1F3864;">${tdh_gerceklesen.toFixed(2)}</div>
   </div>
   <div style="background: #ffebee; border-left: 4px solid #B33A3A; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">Makas (Ideal - Gerceklesen)</div>
+    <div style="font-size: 0.75em; color: #666;">Makas (İdeal - Gerçekleşen)</div>
     <div style="font-size: 1.8em; font-weight: bold; color: #B33A3A;">${makas.toFixed(2)}</div>
   </div>
 </div>`
@@ -667,28 +667,28 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 //| echo: false
 
 makas_veri = [
-  {kategori: "Ideal", deger: ideal_secilen},
-  {kategori: "Gerceklesen", deger: tdh_gerceklesen}
+  {kategori: "İdeal", deger: ideal_secilen},
+  {kategori: "Gerçekleşen", deger: tdh_gerceklesen}
 ]
 
 Plot.plot({
   width: 700, height: 380,
-  x: {label: null, domain: ["Ideal", "Gerceklesen"]},
-  y: {label: "Cocuk Sayisi", domain: [0, 4.2]},
-  color: {domain: ["Ideal", "Gerceklesen"], range: ["#9E7A1A", "#1F3864"]},
+  x: {label: null, domain: ["İdeal", "Gerçekleşen"]},
+  y: {label: "Çocuk Sayısı", domain: [0, 4.2]},
+  color: {domain: ["İdeal", "Gerçekleşen"], range: ["#9E7A1A", "#1F3864"]},
   marks: [
     Plot.barY(makas_veri, {x: "kategori", y: "deger", fill: "kategori"}),
     Plot.text(makas_veri, {x: "kategori", y: d => d.deger + 0.15, text: d => d.deger.toFixed(2), fontSize: 12, fontWeight: "bold"}),
     Plot.ruleY([2.1], {stroke: "#888", strokeDasharray: "4,4"}),
-    Plot.text([{x: "Gerceklesen", y: 2.25}], {x: "x", y: "y", text: ["Yenilenme (2,1)"], fill: "#888", fontSize: 9, dx: 40})
+    Plot.text([{x: "Gerçekleşen", y: 2.25}], {x: "x", y: "y", text: ["Yenilenme (2,1)"], fill: "#888", fontSize: 9, dx: 40})
   ]
 })
 ```
 
 ::: {.callout-important appearance="simple"}
-**Istihdam durumuna gore makas:** Calisan kadinlarda gerceklesen TDH 1,38; istihdam disi kadinlarda 1,72'dir (fark: 0,34 cocuk). Her iki grup da kendi TNSA idealinin (2,6-3,8 bandi) cok altinda kalmaktadir — **istihdamda olmak makasi biraz daraltsa da, hicbir grup idealine yaklasamamaktadir.** Bu, krizin yalnizca "kariyer odakli erteleme" olmadigini, tum toplumsal kesimlere yayilmis sistemik bir guvence sorunu oldugunu gostermektedir.
+**İstihdam durumuna göre makas:** Çalışan kadınlarda gerçekleşen TDH 1,38; istihdam dışı kadınlarda 1,72'dir (fark: 0,34 çocuk). Her iki grup da kendi TNSA idealinin (2,6-3,8 bandı) çok altında kalmaktadır — **istihdamda olmak makası biraz daraltsa da, hiçbir grup idealine yaklaşamamaktadır.** Bu, krizin yalnızca "kariyer odaklı erteleme" olmadığını, tüm toplumsal kesimlere yayılmış sistemik bir güvence sorunu olduğunu göstermektedir.
 
-**Kaynak:** TNSA 2018 (Hacettepe Universitesi Nufus Etutleri Enstitusu) ideal cocuk sayisi tablosu; TUIK 2025 TDH; istihdam durumuna gore TDH (Demografik Guvenlik arastirma notu, Sezgin 2026). Bu makas, herhangi bir kaydirici degismeden bile (mevcut cocuk sayisi 0 secili) zaten ~1,2 cocukluk bir aciktir — kriz bir istek eksikligi degil, bir guvence eksikligidir.
+**Kaynak:** TNSA 2018 (Hacettepe Üniversitesi Nüfus Etütleri Enstitüsü) ideal çocuk sayısı tablosu; TÜİK 2025 TDH; istihdam durumuna göre TDH (Demografik Güvenlik araştırma notu, Sezgin 2026). Bu makas, herhangi bir kaydırıcı değişmeden bile (mevcut çocuk sayısı 0 seçili) zaten ~1,2 çocukluk bir açıktır — kriz bir istek eksikliği değil, bir güvence eksikliğidir.
 :::
 
 ## 8. Doğum Sırasına Göre TDH Ayrıştırıcısı
@@ -704,8 +704,8 @@ viewof yil_a = Inputs.range([2013, 2024], {value: 2013, step: 1, label: "Baslang
 ```{ojs}
 //| echo: false
 
-// TUIK dogum sirasina gore TDH bilesenleri, 2013-2025 tam seri
-// Not: bilesenler resmi TDH serisine tam toplanacak sekilde olceklenmistir (yuvarlama duzeltmesi)
+// TÜİK doğum sırasına göre TDH bileşenleri, 2013-2025 tam seri
+// Not: bileşenler resmi TDH serisine tam toplanacak şekilde ölçeklenmiştir (yuvarlama düzeltmesi)
 yillar_tdh_ayristirma = [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025]
 tdh1_seri = [0.767,0.786,0.787,0.774,0.765,0.728,0.692,0.661,0.619,0.633,0.616,0.624,0.611]
 tdh2_seri = [0.694,0.710,0.695,0.680,0.668,0.649,0.609,0.572,0.558,0.508,0.468,0.457,0.435]
@@ -735,12 +735,12 @@ fark_2 = deger_b.cocuk2 - deger_a.cocuk2
 fark_3 = deger_b.cocuk3 - deger_a.cocuk3
 fark_4 = deger_b.cocuk4 - deger_a.cocuk4
 
-// En buyuk katkiyi (mutlak deger) bulan yardimci
+// En büyük katkıyı (mutlak değer) bulan yardımcı
 katkilar = [
-  {ad: "1. Cocuk", deger: fark_1},
-  {ad: "2. Cocuk", deger: fark_2},
-  {ad: "3. Cocuk", deger: fark_3},
-  {ad: "4+ Cocuk", deger: fark_4}
+  {ad: "1. Çocuk", deger: fark_1},
+  {ad: "2. Çocuk", deger: fark_2},
+  {ad: "3. Çocuk", deger: fark_3},
+  {ad: "4+ Çocuk", deger: fark_4}
 ]
 en_buyuk_katki = katkilar.slice().sort((a,b) => Math.abs(b.deger) - Math.abs(a.deger))[0]
 ```
@@ -758,7 +758,7 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
     <div style="font-size: 1.6em; font-weight: bold; color: #1F3864;">${tdh_b_toplam.toFixed(2)}</div>
   </div>
   <div style="background: ${fark_toplam < 0 ? '#ffebee' : '#e8f5e9'}; border-left: 4px solid ${fark_toplam < 0 ? '#B33A3A' : '#2E7D32'}; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">En buyuk katki: ${en_buyuk_katki.ad}</div>
+    <div style="font-size: 0.75em; color: #666;">En büyük katkı: ${en_buyuk_katki.ad}</div>
     <div style="font-size: 1.6em; font-weight: bold; color: ${fark_toplam < 0 ? '#B33A3A' : '#2E7D32'};">${en_buyuk_katki.deger >= 0 ? '+' : ''}${en_buyuk_katki.deger.toFixed(3)}</div>
   </div>
 </div>`
@@ -768,14 +768,14 @@ html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px
 //| echo: false
 
 bar_veri = [
-  {yil: String(yil_a), siralama: "1. Cocuk", deger: deger_a.cocuk1, fark: 0},
-  {yil: String(yil_a), siralama: "2. Cocuk", deger: deger_a.cocuk2, fark: 0},
-  {yil: String(yil_a), siralama: "3. Cocuk", deger: deger_a.cocuk3, fark: 0},
-  {yil: String(yil_a), siralama: "4+ Cocuk", deger: deger_a.cocuk4, fark: 0},
-  {yil: String(yil_b), siralama: "1. Cocuk", deger: deger_b.cocuk1, fark: fark_1},
-  {yil: String(yil_b), siralama: "2. Cocuk", deger: deger_b.cocuk2, fark: fark_2},
-  {yil: String(yil_b), siralama: "3. Cocuk", deger: deger_b.cocuk3, fark: fark_3},
-  {yil: String(yil_b), siralama: "4+ Cocuk", deger: deger_b.cocuk4, fark: fark_4}
+  {yil: String(yil_a), siralama: "1. Çocuk", deger: deger_a.cocuk1, fark: 0},
+  {yil: String(yil_a), siralama: "2. Çocuk", deger: deger_a.cocuk2, fark: 0},
+  {yil: String(yil_a), siralama: "3. Çocuk", deger: deger_a.cocuk3, fark: 0},
+  {yil: String(yil_a), siralama: "4+ Çocuk", deger: deger_a.cocuk4, fark: 0},
+  {yil: String(yil_b), siralama: "1. Çocuk", deger: deger_b.cocuk1, fark: fark_1},
+  {yil: String(yil_b), siralama: "2. Çocuk", deger: deger_b.cocuk2, fark: fark_2},
+  {yil: String(yil_b), siralama: "3. Çocuk", deger: deger_b.cocuk3, fark: fark_3},
+  {yil: String(yil_b), siralama: "4+ Çocuk", deger: deger_b.cocuk4, fark: fark_4}
 ]
 
 siralama_renkleri = ["#1F3864","#9E7A1A","#5B8C5A","#B33A3A"]
@@ -784,10 +784,10 @@ Plot.plot({
   width: 700, height: 420,
   marginRight: 60,
   x: {label: null, domain: [String(yil_a), String(yil_b)]},
-  y: {label: "TDH Bileseni (cocuk sayisi)", domain: [0, Math.max(tdh_a_toplam, tdh_b_toplam) + 0.15]},
-  color: {domain: ["1. Cocuk","2. Cocuk","3. Cocuk","4+ Cocuk"], range: siralama_renkleri, legend: true},
+  y: {label: "TDH Bileşeni (çocuk sayısı)", domain: [0, Math.max(tdh_a_toplam, tdh_b_toplam) + 0.15]},
+  color: {domain: ["1. Çocuk","2. Çocuk","3. Çocuk","4+ Çocuk"], range: siralama_renkleri, legend: true},
   marks: [
-    Plot.barY(bar_veri, {x: "yil", y: "deger", fill: "siralama", order: ["4+ Cocuk","3. Cocuk","2. Cocuk","1. Cocuk"]}),
+    Plot.barY(bar_veri, {x: "yil", y: "deger", fill: "siralama", order: ["4+ Çocuk","3. Çocuk","2. Çocuk","1. Çocuk"]}),
     Plot.text(bar_veri, {x: "yil", y: "deger", text: d => d.deger.toFixed(2),
       fill: "white", fontSize: 11, fontWeight: "bold"
     }),
@@ -803,12 +803,12 @@ Plot.plot({
 //| echo: false
 
 html`<div style="font-size: 0.9em; color: #444; background: #FAFAF8; border-left: 4px solid #9E7A1A; padding: 10px 14px; margin: 10px 0;">
-<strong>Nasil okunur:</strong> Sol sutun <strong>${yil_a}</strong>, sag sutun <strong>2025</strong> yilina ait TDH'nin doğum sırasına göre bilesenlerini gosterir (her renk bir dogum sirasi). Sag sutunun yaninda, ${yil_a}'dan 2025'e o bilesendeki degisim (kirmizi=azalma, yesil=artma) etiketlenmistir.
+<strong>Nasıl okunur:</strong> Sol sütun <strong>${yil_a}</strong>, sağ sütun <strong>2025</strong> yılına ait TDH'nin doğum sırasına göre bileşenlerini gösterir (her renk bir doğum sırası). Sağ sütunun yanında, ${yil_a}'dan 2025'e o bileşendeki değişim (kırmızı=azalma, yeşil=artma) etiketlenmiştir.
 </div>`
 ```
 
 ::: {.callout-important appearance="simple"}
-**Kaynak:** TUIK Dogum Istatistikleri, dogum sirasina gore TDH bilesenleri (TDHₙ = TDH × (n. sira payi/100)), 2013-2025 tam seri (resmi TDH serisine tam toplanacak sekilde olceklenmistir). Varsayilan secimde (2013→2025), toplam TDH kaybinin (-0,68) en buyuk tek kaynagi **2. cocuktur** (1→2 gecisi) — diger uc bilesenin her biri ayri ayri daha az katki yapar. Kaydiriciyi degistirerek son donemdeki hizlanmayi da gozlemleyebilirsiniz (orn. 2021'den baslatip 2025'e kadarki degisime bakin).
+**Kaynak:** TÜİK Doğum İstatistikleri, doğum sırasına göre TDH bileşenleri (TDHₙ = TDH × (n. sıra payı/100)), 2013-2025 tam seri (resmi TDH serisine tam toplanacak şekilde ölçeklenmiştir). Varsayılan seçimde (2013→2025), toplam TDH kaybının (-0,68) en büyük tek kaynağı **2. çocuktur** (1→2 geçişi) — diğer üç bileşenin her biri ayrı ayrı daha az katkı yapar. Kaydırıcıyı değiştirerek son dönemdeki hızlanmayı da gözlemleyebilirsiniz (örn. 2021'den başlatıp 2025'e kadarki değişime bakın).
 :::
 
 ## 9. HWP Ayrıştırma Simülatörü
@@ -826,7 +826,7 @@ viewof iyilesme_ppr2plus = Inputs.range([0, 100], {value: 0, step: 5, label: "2�
 ```{ojs}
 //| echo: false
 
-// HWP kovaryat katkilari, 2013-2024 (gercek, dogrulanmis: toplam -0.626)
+// HWP kovaryat katkıları, 2013-2024 (gerçek, doğrulanmış: toplam -0.626)
 tdh_2013_hwp = 2.110
 tdh_2024_hwp = 1.484
 
@@ -836,7 +836,7 @@ katki_ppr2plus = -0.006 + -0.021 + -0.027  // 2->3, 3->4, 4+ gecisleri toplami
 
 toplam_kayip_dogrulama = katki_evlilik + katki_ppr1 + katki_ppr2plus
 
-// Kullanicinin sectigi iyilesme oranlarina gore kalan kayip
+// Kullanıcının seçtiği iyileşme oranlarına göre kalan kayıp
 kalan_kayip_evlilik = katki_evlilik * (1 - iyilesme_evlilik/100)
 kalan_kayip_ppr1 = katki_ppr1 * (1 - iyilesme_ppr1/100)
 kalan_kayip_ppr2plus = katki_ppr2plus * (1 - iyilesme_ppr2plus/100)
@@ -850,7 +850,7 @@ tdh_kazanc = tdh_simulasyon - tdh_2024_hwp
 
 html`<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
   <div style="background: #f8f9fa; border-left: 4px solid #888; padding: 12px; border-radius: 4px;">
-    <div style="font-size: 0.75em; color: #666;">TDH 2024 (gerceklesen)</div>
+    <div style="font-size: 0.75em; color: #666;">TDH 2024 (gerçekleşen)</div>
     <div style="font-size: 1.6em; font-weight: bold; color: #888;">${tdh_2024_hwp.toFixed(3)}</div>
   </div>
   <div style="background: #f8f9fa; border-left: 4px solid #1F3864; padding: 12px; border-radius: 4px;">
@@ -875,7 +875,7 @@ waterfall_veri = [
   {asama: "TDH (simulasyon)", deger: tdh_simulasyon, tip: "sonuc"}
 ]
 
-// Kumulatif baslangic noktalarini hesapla (waterfall icin)
+// Kümülatif başlangıç noktalarını hesapla (waterfall için)
 kumulatif = {
   let aradeger = tdh_2013_hwp
   const sonuc = []
@@ -907,11 +907,11 @@ Plot.plot({
 ```
 
 ::: {.callout-warning appearance="simple"}
-**Nasil calisir:** Her kaydirici, ilgili HWP bilesenindeki **gercek 2013-2024 kaybinin** ne kadarinin "geri kazanildigini" (%0=hic, %100=tam 2013 seviyesine donus) simule eder. Gercek 2013-2024 kayiplari: Evlilik etkisi −0,218 (dort yas grubunun toplami), 1→2 gecis (PPR₁) −0,354, 2→3+ gecisler −0,054. **PPR₁'i tek basina %100 iyilestirmek** (diger ikisi sabit), TDH'yi 1,484'ten **1,838'e** cikarir — bu, tum toplam kaybin (−0,626) **%56,5'ini** tek basina temsil eder ve butun diger uc kategorinin toplamından daha buyuktur.
+**Nasıl çalışır:** Her kaydırıcı, ilgili HWP bileşenindeki **gerçek 2013-2024 kaybının** ne kadarının "geri kazanıldığını" (%0=hiç, %100=tam 2013 seviyesine dönüş) simüle eder. Gerçek 2013-2024 kayıpları: Evlilik etkisi −0,218 (dört yaş grubunun toplamı), 1→2 geçiş (PPR₁) −0,354, 2→3+ geçişler −0,054. **PPR₁'i tek başına %100 iyileştirmek** (diğer ikisi sabit), TDH'yi 1,484'ten **1,838'e** çıkarır — bu, tüm toplam kaybın (−0,626) **%56,5'ini** tek başına temsil eder ve bütün diğer üç kategorinin toplamından daha büyüktür.
 
-**Kaynak:** HWP (Horiuchi-Wilmoth-Pletcher) ayristirma analizi, 2013-2024, dogrulanmis TUIK verisi (toplam kontrolu: 2,110 + (−0,626) = 1,484 ✓).
+**Kaynak:** HWP (Horiuchi-Wilmoth-Pletcher) ayrıştırma analizi, 2013-2024, doğrulanmış TÜİK verisi (toplam kontrolü: 2,110 + (−0,626) = 1,484 ✓).
 :::
 
 ::: {.callout-tip}
-**Planlanan ek modeller:** Stok-Akis Paradoksu, Bongaarts-Feeney Tempo Hesaplayici, Nesil Uzunlugu Hizlandiricisi, Surdurulebilirlik Duzey Kontrol Paneli ve daha fazlasi bu bolume eklenecektir. Tam liste icin [proje yol haritasina](/about.qmd) bakiniz.
+**Planlanan ek modeller:** Stok-Akış Paradoksu, Bongaarts-Feeney Tempo Hesaplayıcı, Nesil Uzunluğu Hızlandırıcısı, Sürdürülebilirlik Düzey Kontrol Paneli ve daha fazlası bu bölüme eklenecektir. Tam liste için [proje yol haritasına](/about.qmd) bakınız.
 :::
