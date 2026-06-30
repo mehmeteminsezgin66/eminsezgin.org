@@ -4,7 +4,7 @@ toc: false
 ---
 
 ::: {.hero-section}
-# Mehmet Emin Sezgin
+# Demografik Güvenlik Araştırma Programı
 
 ::: {.subtitle}
 Türkiye'nin demografik dönüşümünü, doğurganlık eğilimlerini ve aile kurma davranışlarını veri temelli analiz ve uygulanabilir politika çerçeveleriyle ele alan bir araştırma programı.
