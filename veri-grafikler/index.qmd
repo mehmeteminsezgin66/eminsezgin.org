@@ -3266,7 +3266,7 @@ fig13
 
 **G. Doğum Aralıklarının Uzaması**
 
-### Doğumlar Arası Bekleme Süresi Uzuyor: 60+ Aylık Aralık Payı (2019-2025)
+### 2025 Profili: Parite Geçişine Göre Doğumlar Arası Bekleme Dağılımı
 
 ```{r}
 #| echo: false
@@ -3274,37 +3274,124 @@ fig13
 #| fig-width: 9
 #| fig-height: 5
 
-yillar_aralik <- c(2019, 2020, 2021, 2022, 2023, 2024, 2025)
-aralik_12 <- c(28.3, 28.2, 28.6, 30.0, 30.8, 30.9, 31.5)
-aralik_23 <- c(44.5, 44.1, 43.4, 44.8, 45.4, 46.7, 48.2)
-aralik_34 <- c(38.2, 39.1, 38.8, 40.8, 41.5, 43.3, 44.2)
-aralik_toplam <- c(34.2, 34.1, 34.1, 35.6, 36.2, 36.8, 37.7)
+gecisler <- c("1→2 geçiş", "2→3 geçiş", "3→4 geçiş", "4+→ geçiş")
+bant_etiket <- c("6-17 ay","18-23 ay","24-35 ay","36-47 ay","48-59 ay","60+ ay (5 yıl+)")
+bant_renkler <- c("#C8E6C9","#81C784","#FFF176","#FFD54F","#FF8A65","#B33A3A")
 
-fig14 <- plot_ly() %>%
-  add_trace(x = yillar_aralik, y = aralik_23, type = "scatter", mode = "lines+markers",
-            name = "2→3 geçiş (2. doğumdan 3. doğuma)",
-            line = list(color = "#B33A3A", width = 2.5), marker = list(size = 7)) %>%
-  add_trace(x = yillar_aralik, y = aralik_34, type = "scatter", mode = "lines+markers",
-            name = "3→4 geçiş",
-            line = list(color = "#9E7A1A", width = 2)) %>%
-  add_trace(x = yillar_aralik, y = aralik_toplam, type = "scatter", mode = "lines+markers",
-            name = "Tüm doğumlar (toplam)",
-            line = list(color = "#888888", width = 2, dash = "dash"), marker = list(size = 6)) %>%
-  add_trace(x = yillar_aralik, y = aralik_12, type = "scatter", mode = "lines+markers",
-            name = "1→2 geçiş (1. doğumdan 2. doğuma)",
-            line = list(color = "#1F3864", width = 2.5), marker = list(size = 7)) %>%
-  layout(
-    xaxis = list(title = "", tickvals = yillar_aralik),
-    yaxis = list(title = "Son İki Doğum Arasında 60+ Ay Bekleyenlerin Payı (%)",
-                 range = c(25, 52)),
-    legend = list(orientation = "h", x = -0.05, y = -0.25),
-    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+vals <- list(
+  c(8.3, 10.2, 20.0, 16.9, 13.1, 31.5),
+  c(5.7,  7.1, 13.8, 13.0, 12.2, 48.2),
+  c(6.0,  7.9, 15.2, 14.2, 12.5, 44.2),
+  c(8.0, 10.6, 19.9, 15.7, 12.0, 33.9)
+)
+
+fig14a <- plot_ly()
+for (i in seq_along(bant_etiket)) {
+  y_vals <- sapply(vals, function(v) v[i])
+  txt <- if (i == 6) paste0("%", y_vals) else rep("", 4)
+  fig14a <- fig14a %>% add_trace(
+    x = gecisler, y = y_vals, type = "bar", name = bant_etiket[i],
+    marker = list(color = bant_renkler[i]),
+    text = txt, textposition = "inside", insidetextanchor = "middle",
+    textfont = list(color = if (i == 6) "white" else "transparent", size = 12)
   )
-fig14
+}
+fig14a <- fig14a %>% layout(
+  barmode = "stack",
+  xaxis = list(title = ""),
+  yaxis = list(title = "Doğum Aralığı Dağılımı (%)", range = c(0, 101)),
+  legend = list(orientation = "h", x = -0.05, y = -0.22),
+  plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+)
+fig14a
 ```
 
-::: {.callout-note appearance="simple"}
-**Kaynak:** TÜİK Doğum İstatistikleri, annenin doğum sırasına göre son iki doğumu arasındaki aylık doğum aralığı, 2019-2025. "60+ ay" kategorisi, iki doğum arasında 5 yıl ve daha uzun süre bekleyen annelerin payını göstermektedir. Tüm parite geçişlerinde bu pay artmaktadır: 2→3 geçişinde %44,5'ten %48,2'ye, 1→2 geçişinde %28,3'ten %31,5'e yükselmiştir. 2→3 geçişinin en yüksek 60+ ay payına sahip olması, üçüncü çocuk kararının en uzun bekleme ve erteleme sürecine tabi olduğunu göstermektedir. Doğum aralıklarının bu uzaması, doğurganlık düşüşünün yalnızca daha az çocuk istenmesi değil, çocuk doğurma davranışının fiilen ertelendiği anlamına da gelmektedir.
+::: {.callout-important appearance="simple"}
+**Kaynak:** TÜİK Doğum İstatistikleri, annenin doğum sırasına göre son iki doğumu arasındaki aylık doğum aralığı, 2025. Her sütun %100'e normalleştirilmiştir. En çarpıcı bulgu: **2→3 geçişinde annelerin neredeyse yarısı (%48,2) ikinci çocuğunu doğurduktan beş yıldan fazla sonra üçüncü çocuğunu doğurdu.** 1→2 geçişinde bu oran %31,5, 3→4 geçişinde %44,2'dir. 60+ ay bandı (koyu kırmızı) her parite geçişinde en büyük tek kategoriy oluşturmaktadır. Arka plandaki renk geçişi kısalan bant paylarını vurgular: doğum aralıkları uzadıkça, bir sonraki parite geçişi biyolojik olarak daha güçleşir.
+:::
+
+### Doğurganlık Penceresi: Türkiye'de Üçüncü Çocuğa Giden Yolun Biyolojik Haritası
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 4.5
+
+# Ortalama yol: 1. çocuk 27.5 → 2. çocuk 31.3 → 3. çocuk 35.7
+# 60+ ay yolu: 1. çocuk 27.5 → 2. çocuk 33.3 → 3. çocuk 39.1
+# (İlk doğum yaşı TÜİK 2025: 27.46; WA 1→2=45.6 ay; WA 2→3=52.8 ay; 60+ band ort: 70 ay)
+
+yas_1d <- 27.46
+yas_2d_ort <- 31.3
+yas_3d_ort <- 35.7
+yas_2d_60p <- 33.3
+yas_3d_60p <- 39.1
+
+fig14b <- plot_ly() %>%
+  # Biyolojik zon arka planları (önce ekleyelim, şeffaf alanlar)
+  add_trace(x = c(24.5, 32, 32, 24.5), y = c(0.2, 0.2, 2.8, 2.8),
+            type = "scatter", mode = "none", fill = "toself",
+            fillcolor = "rgba(200,230,201,0.35)", line = list(width = 0),
+            showlegend = FALSE, hoverinfo = "none") %>%
+  add_trace(x = c(32, 37, 37, 32), y = c(0.2, 0.2, 2.8, 2.8),
+            type = "scatter", mode = "none", fill = "toself",
+            fillcolor = "rgba(255,243,176,0.4)", line = list(width = 0),
+            showlegend = FALSE, hoverinfo = "none") %>%
+  add_trace(x = c(37, 41, 41, 37), y = c(0.2, 0.2, 2.8, 2.8),
+            type = "scatter", mode = "none", fill = "toself",
+            fillcolor = "rgba(255,204,168,0.45)", line = list(width = 0),
+            showlegend = FALSE, hoverinfo = "none") %>%
+  add_trace(x = c(41, 43, 43, 41), y = c(0.2, 0.2, 2.8, 2.8),
+            type = "scatter", mode = "none", fill = "toself",
+            fillcolor = "rgba(255,170,170,0.45)", line = list(width = 0),
+            showlegend = FALSE, hoverinfo = "none") %>%
+  # Ortalama yol
+  add_trace(x = c(yas_1d, yas_2d_ort, yas_3d_ort), y = c(2, 2, 2),
+            type = "scatter", mode = "lines+markers+text",
+            name = "Ortalama yol (ağırlıklı ort. aralık)",
+            line = list(color = "#1F3864", width = 3),
+            marker = list(size = 14, color = "#1F3864", symbol = "circle"),
+            text = c(paste0("1. çocuk\n", yas_1d, " yaş"),
+                     paste0("2. çocuk\n", yas_2d_ort, " yaş"),
+                     paste0("3. çocuk\n", yas_3d_ort, " yaş")),
+            textposition = c("top center","top center","top center"),
+            textfont = list(size = 11, color = "#1F3864")) %>%
+  # 60+ ay yolu
+  add_trace(x = c(yas_1d, yas_2d_60p, yas_3d_60p), y = c(1, 1, 1),
+            type = "scatter", mode = "lines+markers+text",
+            name = "60+ ay aralık yolu (%31-48'i kapsayan grup)",
+            line = list(color = "#B33A3A", width = 3, dash = "dot"),
+            marker = list(size = 14, color = "#B33A3A", symbol = "diamond"),
+            text = c("", paste0("2. çocuk\n", yas_2d_60p, " yaş"),
+                     paste0("3. çocuk\n", yas_3d_60p, " yaş")),
+            textposition = c("top center","top center","top center"),
+            textfont = list(size = 11, color = "#B33A3A")) %>%
+  layout(
+    xaxis = list(title = "Anne Yaşı", range = c(24.5, 43),
+                 tickvals = c(25, 27.5, 30, 32, 35, 37, 39.1, 41),
+                 ticktext = c("25","27,5","30","32","35","37","39,1","41")),
+    yaxis = list(visible = FALSE, range = c(0.2, 2.8)),
+    annotations = list(
+      list(x = 28.2, y = 0.42, text = "Optimal doğurganlık", showarrow = FALSE,
+           font = list(size = 10, color = "#2E7D32")),
+      list(x = 34.5, y = 0.42, text = "Azalan doğurganlık", showarrow = FALSE,
+           font = list(size = 10, color = "#F57F17")),
+      list(x = 39.0, y = 0.42, text = "Yüksek risk", showarrow = FALSE,
+           font = list(size = 10, color = "#BF360C")),
+      list(x = 27.2, y = 1.6, text = "Ortalama yol", showarrow = FALSE,
+           font = list(size = 10, color = "#1F3864"), xanchor = "left"),
+      list(x = 27.2, y = 0.65, text = "60+ ay aralık yolu", showarrow = FALSE,
+           font = list(size = 10, color = "#B33A3A"), xanchor = "left")
+    ),
+    legend = list(orientation = "h", x = 0.0, y = -0.15),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig14b
+```
+
+::: {.callout-important appearance="simple"}
+**Kaynak ve yöntem:** TÜİK Doğum İstatistikleri 2025 (doğum aralığı dağılımı) + TÜİK Temel Doğurganlık Göstergeleri 2025 (ilk doğumdaki ortalama anne yaşı: 27,46). Ortalama yol, her parite geçişindeki ağırlıklı ortalama aralığı kullanır (1→2: 45,6 ay; 2→3: 52,8 ay; 60+ band için 72 ay orta noktası). 60+ ay yolu, birinci ve ikinci geçişte de 60+ ay bekleyen gruba karşılık gelir (70 ay orta nokta). **Temel bulgu:** Türkiye'de üçüncü çocuk, ortalama 35,7 yaşında doğuyor — doğurganlığın hızla azalmaya başladığı 35 yaş eşiğinin hemen ötesinde. Birinci ve ikinci geçişte 60+ ay bekleyenler için (ki 1→2 geçişinde bu pay %31,5, 2→3 geçişinde %48,2'dir) üçüncü çocuk 39,1 yaşına geliyor. Bu yaşta dördüncü çocuk biyolojik olarak hâlâ mümkün olsa da çok güçleşmiştir. Doğum aralıklarının uzaması, yalnızca tempo etkisi değil, aynı zamanda parite ilerlemesini fiilen kısıtlayan yapısal bir mekanizmadır.
 :::
 
 **H. Mekânsal Difüzyon: Metropol-Çevre Yakınsaması**
