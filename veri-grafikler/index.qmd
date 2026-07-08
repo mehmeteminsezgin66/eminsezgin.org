@@ -2963,6 +2963,87 @@ fig_bolge
 **Kaynak:** TÜİK Hanehalkı BT Kullanım Araştırması, İstatistiki Bölge Birimleri Sınıflaması (İBBS) 1. düzey bazında bireysel internet kullanım oranı, 2011-2025. TRC (Güneydoğu Anadolu: Gaziantep, Şanlıurfa, Diyarbakır, Mardin, Batman, Şırnak, Siirt) ile TR1 (İstanbul) arasındaki fark 2011'de 29,4 puana ulaşmışken 2025'te 7,4 puana gerilemiştir. Bu yakınsama doğrusal olmamıştır — 2011-2020 arasında fark 24-31 puan aralığında görece sabit seyrederken, 2020-2025 döneminde hızla kapanmıştır. **Yorumlama notu:** Bu grafik internet erişiminin bölgeler arasında eşitlendiğini göstermekte; internet erişimi ile doğurganlık değişimi arasındaki nedensellik ilişkisi konusunda bir iddiada bulunmamaktadır. İki olgu zaman içinde birlikte hareket etmekte, ancak ortak etkenler her ikisini de eş zamanlı olarak sürüklüyor olabilir.
 :::
 
+### İkiz Panel: TDH ve İnternet Erişimi Aynı Bölgelerde Nasıl Yakınsıyor
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 10
+#| fig-height: 5.5
+
+library(plotly)
+
+yillar_tdh_ibbs <- c(2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025)
+tdh_tr1 <- c(1.77,1.772,1.72,1.802,1.808,1.89,1.882,1.857,1.805,1.729,1.607,1.488,1.39,1.299,1.208,1.204,1.138)
+tdh_tr5 <- c(1.989,1.909,1.918,1.962,1.992,2.025,2.036,2.007,1.973,1.895,1.779,1.685,1.606,1.553,1.459,1.392,1.322)
+tdh_tra <- c(2.749,2.781,2.707,2.716,2.655,2.689,2.591,2.514,2.431,2.283,2.2,2.028,1.985,1.807,1.645,1.588,1.518)
+tdh_trb <- c(2.902,2.841,2.745,2.711,2.702,2.761,2.642,2.554,2.536,2.437,2.357,2.176,2.075,1.962,1.776,1.735,1.642)
+tdh_trc <- c(3.634,3.609,3.478,3.508,3.445,3.591,3.455,3.283,3.276,3.147,2.949,2.789,2.777,2.615,2.358,2.32,2.212)
+tdh_tr  <- c(2.1,2.08,2.047,2.109,2.107,2.186,2.157,2.115,2.082,2.005,1.889,1.772,1.712,1.634,1.517,1.488,1.419)
+
+yillar_int_ibbs <- c(2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025)
+int_tr1 <- c(56.5,60.9,61.4,64.4,67.1,71.8,78.6,84.0,86.6,88.7,90.9,93.1,93.1,95.3,96.5)
+int_tr5 <- c(51.0,57.1,58.5,58.6,61.9,68.2,75.5,79.8,83.3,85.5,88.1,88.9,88.6,89.9,91.8)
+int_tra <- c(34.7,32.2,33.3,40.4,40.2,48.6,49.1,51.9,61.3,67.8,68.4,70.5,81.4,79.0,85.7)
+int_trb <- c(31.5,34.1,31.0,37.6,40.2,45.3,52.9,60.4,63.2,68.0,74.8,75.3,81.3,80.4,80.3)
+int_trc <- c(27.1,29.4,34.5,39.0,43.1,48.5,49.2,58.4,58.4,63.8,76.9,79.2,84.0,86.6,89.1)
+int_tr  <- c(45.0,47.4,48.9,53.8,55.9,61.2,66.8,72.9,75.3,79.0,82.6,85.0,87.1,88.8,90.9)
+
+p_tdh <- plot_ly() %>%
+  add_trace(x = yillar_tdh_ibbs, y = tdh_tr1, type = "scatter", mode = "lines",
+            name = "TR1 İstanbul", line = list(color = "#1F3864", width = 2.5),
+            legendgroup = "tr1", showlegend = TRUE) %>%
+  add_trace(x = yillar_tdh_ibbs, y = tdh_tr5, type = "scatter", mode = "lines",
+            name = "TR5 Batı Anadolu", line = list(color = "#5B8C5A", width = 2),
+            legendgroup = "tr5", showlegend = TRUE) %>%
+  add_trace(x = yillar_tdh_ibbs, y = tdh_tr, type = "scatter", mode = "lines",
+            name = "Türkiye ort.", line = list(color = "#888888", width = 1.5, dash = "dash"),
+            legendgroup = "tr", showlegend = TRUE) %>%
+  add_trace(x = yillar_tdh_ibbs, y = tdh_tra, type = "scatter", mode = "lines",
+            name = "TRA Kuzeydoğu", line = list(color = "#9E7A1A", width = 2),
+            legendgroup = "tra", showlegend = TRUE) %>%
+  add_trace(x = yillar_tdh_ibbs, y = tdh_trb, type = "scatter", mode = "lines",
+            name = "TRB Ortadoğu", line = list(color = "#CC6600", width = 2),
+            legendgroup = "trb", showlegend = TRUE) %>%
+  add_trace(x = yillar_tdh_ibbs, y = tdh_trc, type = "scatter", mode = "lines",
+            name = "TRC Güneydoğu", line = list(color = "#B33A3A", width = 2.5),
+            legendgroup = "trc", showlegend = TRUE) %>%
+  layout(xaxis = list(title = "", dtick = 4),
+         yaxis = list(title = "Toplam Doğurganlık Hızı", range = c(1.0, 4.0)),
+         annotations = list(list(x = 0.5, y = 1.08, text = "TDH (2009-2025)",
+                                  xref = "paper", yref = "paper", showarrow = FALSE,
+                                  font = list(size = 13, color = "#1F3864"))))
+
+p_int <- plot_ly() %>%
+  add_trace(x = yillar_int_ibbs, y = int_tr1, type = "scatter", mode = "lines",
+            name = "TR1", line = list(color = "#1F3864", width = 2.5), showlegend = FALSE) %>%
+  add_trace(x = yillar_int_ibbs, y = int_tr5, type = "scatter", mode = "lines",
+            name = "TR5", line = list(color = "#5B8C5A", width = 2), showlegend = FALSE) %>%
+  add_trace(x = yillar_int_ibbs, y = int_tr, type = "scatter", mode = "lines",
+            name = "TR", line = list(color = "#888888", width = 1.5, dash = "dash"), showlegend = FALSE) %>%
+  add_trace(x = yillar_int_ibbs, y = int_tra, type = "scatter", mode = "lines",
+            name = "TRA", line = list(color = "#9E7A1A", width = 2), showlegend = FALSE) %>%
+  add_trace(x = yillar_int_ibbs, y = int_trb, type = "scatter", mode = "lines",
+            name = "TRB", line = list(color = "#CC6600", width = 2), showlegend = FALSE) %>%
+  add_trace(x = yillar_int_ibbs, y = int_trc, type = "scatter", mode = "lines",
+            name = "TRC", line = list(color = "#B33A3A", width = 2.5), showlegend = FALSE) %>%
+  layout(xaxis = list(title = "", dtick = 4),
+         yaxis = list(title = "İnternet Kullanımı (%)", range = c(20, 100)),
+         annotations = list(list(x = 0.5, y = 1.08, text = "İnternet Erişimi (2011-2025)",
+                                  xref = "paper", yref = "paper", showarrow = FALSE,
+                                  font = list(size = 13, color = "#1F3864"))))
+
+fig_ikiz <- subplot(p_tdh, p_int, nrows = 1, margin = 0.06, titleY = TRUE, titleX = TRUE) %>%
+  layout(legend = list(orientation = "h", x = -0.05, y = -0.2),
+         plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)",
+         margin = list(t = 60))
+fig_ikiz
+```
+
+::: {.callout-warning appearance="simple"}
+**Kaynak:** TÜİK, illere göre toplam doğurganlık hızı (2009-2025) ve Hanehalkı BT Kullanım Araştırması (2011-2025), İBBS 1. Düzey bazında; aynı beş bölge (TR1 İstanbul, TR5 Batı Anadolu, TRA Kuzeydoğu, TRB Ortadoğu, TRC Güneydoğu) ve Türkiye ortalaması, doğrudan görsel karşılaştırma için aynı renk kodlamasıyla yan yana verilmiştir. İki panel de aynı yönde bir yakınsama gösteriyor — TDH'de düşüşle, internette yükselişle — ve TRC ile TR1 arasındaki fark her iki göstergede de daralıyor. **Bu görsel eş-zamanlılık nedensellik kanıtı değildir**; bir üstteki callout'ta özetlenen panel regresyon testi (özellikle birinci-farklar sonucu, β≈0, p=0,75) bu iki eğrinin yıldan yıla birbirini sürüklediğine dair istatistiksel destek bulamamıştır. Panel, "iki olgu aynı yöne gidiyor" gözlemini gösterir; "biri diğerini açıklıyor" iddiasını göstermez.
+:::
+
 ::: {.callout-warning appearance="simple"}
 **Analitik not — İnternet erişimi ve TDH düşüşü arasındaki ilişkinin panel regresyon testi:** İBBS 1. Düzey paneli (12 bölge × 15 yıl, 2011-2025) üzerinde beş spesifikasyon sınandı. Havuzlanmış OLS (β=−0,019, p<0,001) ve iki yönlü sabit etkili modelde (bölge+yıl SE; β=−0,019, p<0,001, R²=0,97) internet erişimi ile TDH arasında güçlü negatif ilişki bulunmaktadır. Ancak **birinci farklar modeli** — yıldan yıla aynı bölgedeki değişimleri izleyen en katı spesifikasyon — bu ilişkiyi tamamen ortadan kaldırmaktadır: β=−0,0005, p=0,746, R²=0,001. Bu, düzey ve sabit etki modellerindeki ilişkinin ağırlıklı olarak bölgeler arası kesitsel farklardan ve ortak zaman trendinden kaynaklandığını göstermektedir. Bir bölgede internetin bir önceki yıla kıyasla daha hızlı yayılması, o bölgede TDH'nin o yıl daha hızlı düşmesiyle ilişkili **değildir**. Bu bulgu, iki olgunun birlikte hareket ettiğini ancak yıllık eş-hareketin kanıtlanamadığını doğrular ve nedensellik iddiasından kaçınma kararının ampirik gerekçesidir. Olası açıklama: nedensellik varsa gecikmeli etkiyle (3-5 yıl) geliyor olabilir, veya her iki olgu da bölgenin kalkınma düzeyinin bağımsız fonksiyonlarıdır.
 :::
