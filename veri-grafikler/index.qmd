@@ -2915,6 +2915,58 @@ fig3
 **Kaynak:** TÜİK BT Kullanım Araştırması, işgücü durumuna göre internet kullanımı, 2007-2025 (kategori yapısı 2004-2005'te farklı olduğundan dışlanmıştır). "Ev işleriyle meşgul" (büyük ölçüde ev kadınları) kategorisi 2007'de neredeyse tamamen dijital olarak görünmezken (%6,9 — öğrencilerin (%82,8) onikide biri kadar), 2025'te bile en düşük kategorilerden biri olmaya devam etmektedir (%80,8 — ücretli çalışanların %98,4'üne kıyasla 17,6 puan geride). Bakım yükü, kadınları yalnızca işgücü piyasasından değil, dijital/enformasyonel bağlantıdan da geriye düşürmektedir.
 :::
 
+### Bölgesel Yakınsama: İnternet Erişiminde Coğrafi Uçurum Daralıyor (2011-2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_bolge <- c(2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025)
+bolge_tr1  <- c(56.5,60.9,61.4,64.4,67.1,71.8,78.6,84.0,86.6,88.7,90.9,93.1,93.1,95.3,96.5)
+bolge_tr5  <- c(51.0,57.1,58.5,58.6,61.9,68.2,75.5,79.8,83.3,85.5,88.1,88.9,88.6,89.9,91.8)
+bolge_tra  <- c(34.7,32.2,33.3,40.4,40.2,48.6,49.1,51.9,61.3,67.8,68.4,70.5,81.4,79.0,85.7)
+bolge_trb  <- c(31.5,34.1,31.0,37.6,40.2,45.3,52.9,60.4,63.2,68.0,74.8,75.3,81.3,80.4,80.3)
+bolge_trc  <- c(27.1,29.4,34.5,39.0,43.1,48.5,49.2,58.4,58.4,63.8,76.9,79.2,84.0,86.6,89.1)
+bolge_tr   <- c(45.0,47.4,48.9,53.8,55.9,61.2,66.8,72.9,75.3,79.0,82.6,85.0,87.1,88.8,90.9)
+
+fig_bolge <- plot_ly() %>%
+  add_trace(x = yillar_bolge, y = bolge_tr1, type = "scatter", mode = "lines+markers",
+            name = "TR1 — İstanbul",
+            line = list(color = "#1F3864", width = 2.5), marker = list(size = 5)) %>%
+  add_trace(x = yillar_bolge, y = bolge_tr5, type = "scatter", mode = "lines+markers",
+            name = "TR5 — Batı Anadolu (Ankara)",
+            line = list(color = "#5B8C5A", width = 2), marker = list(size = 5)) %>%
+  add_trace(x = yillar_bolge, y = bolge_tr, type = "scatter", mode = "lines",
+            name = "Türkiye ortalaması",
+            line = list(color = "#888888", width = 1.5, dash = "dash")) %>%
+  add_trace(x = yillar_bolge, y = bolge_tra, type = "scatter", mode = "lines+markers",
+            name = "TRA — Kuzeydoğu Anadolu",
+            line = list(color = "#9E7A1A", width = 2), marker = list(size = 5)) %>%
+  add_trace(x = yillar_bolge, y = bolge_trb, type = "scatter", mode = "lines+markers",
+            name = "TRB — Ortadoğu Anadolu",
+            line = list(color = "#CC6600", width = 2), marker = list(size = 5)) %>%
+  add_trace(x = yillar_bolge, y = bolge_trc, type = "scatter", mode = "lines+markers",
+            name = "TRC — Güneydoğu Anadolu",
+            line = list(color = "#B33A3A", width = 2.5), marker = list(size = 5)) %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "İnternet Kullanan Bireylerin Payı (%)", range = c(20, 100)),
+    legend = list(orientation = "h", x = -0.05, y = -0.25),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_bolge
+```
+
+::: {.callout-note appearance="simple"}
+**Kaynak:** TÜİK Hanehalkı BT Kullanım Araştırması, İstatistiki Bölge Birimleri Sınıflaması (İBBS) 1. düzey bazında bireysel internet kullanım oranı, 2011-2025. TRC (Güneydoğu Anadolu: Gaziantep, Şanlıurfa, Diyarbakır, Mardin, Batman, Şırnak, Siirt) ile TR1 (İstanbul) arasındaki fark 2011'de 29,4 puana ulaşmışken 2025'te 7,4 puana gerilemiştir. Bu yakınsama doğrusal olmamıştır — 2011-2020 arasında fark 24-31 puan aralığında görece sabit seyrederken, 2020-2025 döneminde hızla kapanmıştır. **Yorumlama notu:** Bu grafik internet erişiminin bölgeler arasında eşitlendiğini göstermekte; internet erişimi ile doğurganlık değişimi arasındaki nedensellik ilişkisi konusunda bir iddiada bulunmamaktadır. İki olgu zaman içinde birlikte hareket etmekte, ancak ortak etkenler her ikisini de eş zamanlı olarak sürüklüyor olabilir.
+:::
+
+::: {.callout-warning appearance="simple"}
+**Analitik not — İnternet erişimi ve TDH düşüşü arasındaki ilişkinin panel regresyon testi:** İBBS 1. Düzey paneli (12 bölge × 15 yıl, 2011-2025) üzerinde beş spesifikasyon sınandı. Havuzlanmış OLS (β=−0,019, p<0,001) ve iki yönlü sabit etkili modelde (bölge+yıl SE; β=−0,019, p<0,001, R²=0,97) internet erişimi ile TDH arasında güçlü negatif ilişki bulunmaktadır. Ancak **birinci farklar modeli** — yıldan yıla aynı bölgedeki değişimleri izleyen en katı spesifikasyon — bu ilişkiyi tamamen ortadan kaldırmaktadır: β=−0,0005, p=0,746, R²=0,001. Bu, düzey ve sabit etki modellerindeki ilişkinin ağırlıklı olarak bölgeler arası kesitsel farklardan ve ortak zaman trendinden kaynaklandığını göstermektedir. Bir bölgede internetin bir önceki yıla kıyasla daha hızlı yayılması, o bölgede TDH'nin o yıl daha hızlı düşmesiyle ilişkili **değildir**. Bu bulgu, iki olgunun birlikte hareket ettiğini ancak yıllık eş-hareketin kanıtlanamadığını doğrular ve nedensellik iddiasından kaçınma kararının ampirik gerekçesidir. Olası açıklama: nedensellik varsa gecikmeli etkiyle (3-5 yıl) geliyor olabilir, veya her iki olgu da bölgenin kalkınma düzeyinin bağımsız fonksiyonlarıdır.
+:::
+
 **B. Toplumsal Cinsiyet Rolü Tutumları**
 
 ### WVS: Kadının Çalışması ve Liderliği Üzerine Tutumlar (2007-2011-2018)
@@ -3438,6 +3490,98 @@ fig15
 
 ::: {.callout-important appearance="simple"}
 **Kaynak:** TÜİK, illere göre toplam doğurganlık hızı, 2009-2025 (ikamet yerine göre). İl grupları yazar tarafından 2025 TDH düzeyine göre oluşturulmuş; gösterilen değerler grup ortalamasıdır. Temel bulgu: metropol-yüksek TDH grubu arasındaki fark 2009'daki 2,59 puandan 2025'te 1,17 puana daralmıştır — 16 yılda 1,41 puanlık kapanma. Kaynağı asimetriktir: yüksek TDH'li iller −1,97 puan düşerken metropoller −0,56 puan düşmüştür. 2025'te metropol grubu ortalaması 1,117 — Türkiye genelinin (1,419) çok altında ve onlarca yıldır yenileme düzeyinin altında. **Kritik gözlem:** Yüksek TDH grubunun düşüşü ulusal doruk yılından önce başlamaktadır — bu grup 2009'dan itibaren (2014'te küçük bir sıçramayla) sürekli düşerken, Türkiye ulusal ortalaması 2014'e kadar yükselmiş ve doruk yapmıştır. 2009-2013 arasında yüksek TDH grubu −0,34 puan düşerken ulusal ortalama +0,01 puan artmıştır. Bu örüntü, normların metropolden çevreye yayılan tek yönlü bir süreçle değil, yüksek doğurganlıklı illerdeki bağımsız bir dönüşüm dinamiğiyle açıklandığını güçlü biçimde desteklemektedir — dijital erişimin eşitlenmesi ve iç göç en güçlü açıklayıcı adaylar olarak öne çıkmaktadır.
+:::
+
+### σ-Yakınsama: İller Arası TDH Dağılımı Daralıyor (2009-2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_sigma <- c(2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025)
+sd_iller <- c(0.779,0.784,0.730,0.713,0.695,0.713,0.659,0.614,0.617,0.575,0.539,0.496,0.500,0.458,0.390,0.384,0.366)
+cv_iller <- c(34.7,35.5,33.8,32.5,31.9,31.8,30.1,28.8,29.3,28.4,28.0,27.4,28.5,27.3,25.1,25.2,25.3)
+
+fig_sigma <- plot_ly() %>%
+  add_trace(x = yillar_sigma, y = sd_iller, type = "scatter", mode = "lines+markers",
+            name = "Standart Sapma (sol eksen)",
+            line = list(color = "#1F3864", width = 2.5), marker = list(size = 6),
+            yaxis = "y") %>%
+  add_trace(x = yillar_sigma, y = cv_iller, type = "scatter", mode = "lines+markers",
+            name = "Varyasyon Katsayısı, % (sağ eksen)",
+            line = list(color = "#9E7A1A", width = 2), marker = list(size = 5),
+            yaxis = "y2") %>%
+  add_trace(x = c(2009,2019), y = c(0.779, 0.779 + 10*(-0.0237)),
+            type = "scatter", mode = "lines", name = "2009-19 trendi",
+            line = list(color = "#5B8C5A", width = 1.5, dash = "dash"), yaxis = "y") %>%
+  add_trace(x = c(2019,2025), y = c(0.539, 0.539 + 6*(-0.0305)),
+            type = "scatter", mode = "lines", name = "2019-25 trendi (1,3× hızlı)",
+            line = list(color = "#B33A3A", width = 1.5, dash = "dash"), yaxis = "y") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Standart Sapma", side = "left", range = c(0.3, 0.85)),
+    yaxis2 = list(title = "CV (%)", side = "right", overlaying = "y",
+                  range = c(22, 38), showgrid = FALSE),
+    legend = list(orientation = "h", x = -0.05, y = -0.22),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)",
+    shapes = list(
+      list(type = "line", x0 = 2019, x1 = 2019, y0 = 0.3, y1 = 0.85,
+           line = list(color = "#888888", width = 1, dash = "dot"))
+    )
+  )
+fig_sigma
+```
+
+::: {.callout-note appearance="simple"}
+**Kaynak:** TÜİK illere göre TDH, 2009-2025 (81 il). σ-yakınsama, illerin TDH dağılımının zaman içinde ne kadar daraldığını ölçer. Standart sapma 16 yılda 0,779'dan 0,366'ya düşmüştür (%53 daralma). 2019-2025 döneminde yakınsama hızı 2009-2019'a kıyasla 1,3 kat artmıştır. Bu bulgu herhangi bir nedensellik veya dışsal değişken varsayımından bağımsızdır — yalnızca TDH serisinin kendi içindeki dağılım değişimini gösterir.
+:::
+
+### β-Yakınsama: Başlangıç Düzeyi Yüksek İller Daha Hızlı Düşüyor
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+tdh09 <- c(1.672,2.821,1.790,3.192,2.160,2.217,1.615,2.267,2.108,1.921,2.208,2.057,2.188,2.044,2.220,1.746,1.605,2.228,2.093,1.571,2.122,2.122,2.228,2.083,1.805,2.003,3.058,3.310,2.259,2.113,1.907,2.268,1.933,1.752,1.855,1.727,1.900,1.971,1.983,1.962,1.875,3.544,1.845,2.263,2.084,2.175,3.039,2.016,1.793,2.014,1.939,2.058,1.695,1.533,2.181,2.296,1.842,2.218,2.094,2.104,1.825,1.735,4.361,4.553,3.267,3.916,1.857,2.398,4.299,1.753,1.619,1.658,1.782,1.900,2.268,2.281,1.914,1.816,2.327,2.042,2.175)
+tdh25 <- c(1.299,2.063,1.298,2.139,1.602,1.429,1.117,1.493,1.491,1.374,1.521,1.428,1.598,1.375,1.455,1.214,1.152,1.530,1.468,1.213,1.471,1.437,1.484,1.357,1.207,1.237,1.923,2.137,1.521,1.402,1.383,1.431,1.375,1.226,1.236,1.223,1.231,1.252,1.269,1.419,1.185,2.474,1.283,1.508,1.324,1.410,1.895,1.284,1.284,1.292,1.282,1.379,1.098,1.110,1.439,1.488,1.308,1.523,1.465,1.383,1.236,1.208,3.022,2.949,1.800,2.657,1.244,1.476,2.702,1.165,1.175,1.088,1.288,1.367,1.638,1.554,1.209,1.214,1.517,1.258,1.343)
+iller_adi <- c("Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya","Artvin","Aydın","Balıkesir","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Hakkari","Hatay","Isparta","İstanbul","İzmir","Kahramanmaraş","Karabük","Karaman","Kastamonu","Kayseri","Kırıkkale","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya","Manisa","Mardin","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Şanlıurfa","Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak","Batman","Bartın","Ardahan","Iğdır","Düzce","Aksaray","Bayburt","Giresun","Kilis","Adıyaman2","Mersin","Muğla")
+
+growth <- log(tdh25 / tdh09) / 16
+ln09 <- log(tdh09)
+
+fig_beta <- plot_ly() %>%
+  add_trace(x = tdh09, y = growth * 100, type = "scatter", mode = "markers",
+            marker = list(size = 7, color = "#1F3864", opacity = 0.7),
+            text = iller_adi, hoverinfo = "text+x+y",
+            name = "İller (81)") %>%
+  add_trace(x = sort(tdh09), y = ((-0.0149) + (-0.0207) * log(sort(tdh09))) * 100,
+            type = "scatter", mode = "lines",
+            line = list(color = "#B33A3A", width = 2, dash = "dash"),
+            name = "β = -0,021*** (R² = 0,57)") %>%
+  layout(
+    xaxis = list(title = "İlk TDH (2009)"),
+    yaxis = list(title = "Yıllık Büyüme Hızı (%, log)"),
+    legend = list(orientation = "h", x = 0.15, y = -0.18),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)",
+    annotations = list(
+      list(x = 3.8, y = -4.5, text = paste0("λ = 0,0252 (tam dönüşüm)\nYarılanma ≈ 27 yıl"),
+           showarrow = FALSE, font = list(size = 11, color = "#B33A3A"),
+           bgcolor = "#FFF8F0", bordercolor = "#B33A3A", borderpad = 4)
+    ),
+    shapes = list(
+      list(type = "line", x0 = 0.8, x1 = 5, y0 = 0, y1 = 0,
+           line = list(color = "#aaaaaa", width = 0.8))
+    )
+  )
+fig_beta
+```
+
+::: {.callout-important appearance="simple"}
+**Kaynak ve yöntem:** TÜİK illere göre TDH, 2009-2025 (81 il). β-yakınsama regresyonu: bağımlı değişken yıllıklaştırılmış logaritmik büyüme oranı, bağımsız değişken başlangıç TDH'sinin logaritması. β = −0,021 (p<0,001, R²=0,57) — başlangıçta yüksek TDH'ye sahip iller, düşük iller arasındaki farkı istatistiksel olarak anlamlı biçimde daha hızlı kapatmaktadır. Yakınsama hızı tam dönüşüm formülüyle ($\lambda = -(1/T)\ln(1+\beta T)$) hesaplanmıştır: λ = 0,0252. Yarılanma ömrü ≈ **27 yıl** — mevcut hızla, yüksek TDH'li iller ile düşük TDH'li iller arasındaki farkın yarısı 27 yılda kapanır. (Not: yaygın kullanılan doğrusal yaklaşım β≈−λ, T=16 için ~%22 sapma yaratarak 33 yıl verirdi; bu sitede tam dönüşüm kullanılır.)
 :::
 
 **İ. Uluslararası Bağlam: Mali Kısıt ve Doğurganlık**
