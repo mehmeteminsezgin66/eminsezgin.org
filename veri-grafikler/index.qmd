@@ -3546,9 +3546,9 @@ fig_sigma
 #| fig-width: 9
 #| fig-height: 5.5
 
-tdh09 <- c(1.672,2.821,1.790,3.192,2.160,2.217,1.615,2.267,2.108,1.921,2.208,2.057,2.188,2.044,2.220,1.746,1.605,2.228,2.093,1.571,2.122,2.122,2.228,2.083,1.805,2.003,3.058,3.310,2.259,2.113,1.907,2.268,1.933,1.752,1.855,1.727,1.900,1.971,1.983,1.962,1.875,3.544,1.845,2.263,2.084,2.175,3.039,2.016,1.793,2.014,1.939,2.058,1.695,1.533,2.181,2.296,1.842,2.218,2.094,2.104,1.825,1.735,4.361,4.553,3.267,3.916,1.857,2.398,4.299,1.753,1.619,1.658,1.782,1.900,2.268,2.281,1.914,1.816,2.327,2.042,2.175)
-tdh25 <- c(1.299,2.063,1.298,2.139,1.602,1.429,1.117,1.493,1.491,1.374,1.521,1.428,1.598,1.375,1.455,1.214,1.152,1.530,1.468,1.213,1.471,1.437,1.484,1.357,1.207,1.237,1.923,2.137,1.521,1.402,1.383,1.431,1.375,1.226,1.236,1.223,1.231,1.252,1.269,1.419,1.185,2.474,1.283,1.508,1.324,1.410,1.895,1.284,1.284,1.292,1.282,1.379,1.098,1.110,1.439,1.488,1.308,1.523,1.465,1.383,1.236,1.208,3.022,2.949,1.800,2.657,1.244,1.476,2.702,1.165,1.175,1.088,1.288,1.367,1.638,1.554,1.209,1.214,1.517,1.258,1.343)
-iller_adi <- c("Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya","Artvin","Aydın","Balıkesir","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Hakkari","Hatay","Isparta","İstanbul","İzmir","Kahramanmaraş","Karabük","Karaman","Kastamonu","Kayseri","Kırıkkale","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya","Manisa","Mardin","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Şanlıurfa","Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak","Batman","Bartın","Ardahan","Iğdır","Düzce","Aksaray","Bayburt","Giresun","Kilis","Adıyaman2","Mersin","Muğla")
+tdh09 <- c(2.175,2.759,2.062,2.416,1.804,1.682,1.912,2.353,1.729,1.742,4.219,1.529,1.677,3.697,2.383,1.708,2.558,3.801,1.598,1.739,1.777,1.735,3.23,1.87,1.429,2.016,1.82,2.51,1.397,3.145,1.738,2.089,3.345,2.568,1.758,3.061,2.698,1.669,2.147,2.901,1.7,2.213,2.933,1.9,2.136,1.555,1.383,1.772,1.722,2.082,1.782,3.463,2.029,1.706,3.928,2.1,2.402,1.937,2.551,1.804,1.867,1.873,4.226,1.906,2.066,1.69,1.948,1.865,1.558,1.635,3.931,1.785,2.247,1.712,1.504,1.967,1.925,1.77,1.571,4.569,4.686)
+tdh25 <- c(1.548,1.915,1.426,1.49,1.264,1.11,1.202,1.388,1.231,1.314,2.055,1.247,1.093,1.998,1.187,1.275,1.517,2.053,1.223,1.311,1.325,1.253,2.135,1.359,1.123,1.348,1.302,1.494,1.108,2.002,1.137,1.14,1.707,1.81,1.224,1.613,1.699,1.137,1.329,1.587,1.279,1.385,1.838,1.388,1.528,1.126,1.15,1.137,1.224,1.401,1.406,2.229,1.422,1.215,2.007,1.318,1.472,1.254,1.707,1.276,1.414,1.244,2.108,1.254,1.242,1.369,1.218,1.281,1.228,1.167,1.874,1.358,1.235,1.111,1.169,1.281,1.221,1.138,1.102,3.15,2.534)
+iller_adi <- c("Adana","Adıyaman","Afyonkarahisar","Aksaray","Amasya","Ankara","Antalya","Ardahan","Artvin","Aydın","Ağrı","Balıkesir","Bartın","Batman","Bayburt","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Denizli","Diyarbakır","Düzce","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Isparta","Iğdır","Kahramanmaraş","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kilis","Kocaeli","Konya","Kütahya","Kırklareli","Kırıkkale","Kırşehir","Malatya","Manisa","Mardin","Mersin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak","Çanakkale","Çankırı","Çorum","İstanbul","İzmir","Şanlıurfa","Şırnak")
 
 growth <- log(tdh25 / tdh09) / 16
 ln09 <- log(tdh09)
@@ -3558,7 +3558,7 @@ fig_beta <- plot_ly() %>%
             marker = list(size = 7, color = "#1F3864", opacity = 0.7),
             text = iller_adi, hoverinfo = "text+x+y",
             name = "İller (81)") %>%
-  add_trace(x = sort(tdh09), y = ((-0.0149) + (-0.0207) * log(sort(tdh09))) * 100,
+  add_trace(x = sort(tdh09), y = ((-0.01028) + (-0.02075) * log(sort(tdh09))) * 100,
             type = "scatter", mode = "lines",
             line = list(color = "#B33A3A", width = 2, dash = "dash"),
             name = "β = -0,021*** (R² = 0,57)") %>%
