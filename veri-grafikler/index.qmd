@@ -2963,87 +2963,6 @@ fig_bolge
 **Kaynak:** TÜİK Hanehalkı BT Kullanım Araştırması, İstatistiki Bölge Birimleri Sınıflaması (İBBS) 1. düzey bazında bireysel internet kullanım oranı, 2011-2025. TRC (Güneydoğu Anadolu: Gaziantep, Şanlıurfa, Diyarbakır, Mardin, Batman, Şırnak, Siirt) ile TR1 (İstanbul) arasındaki fark 2011'de 29,4 puana ulaşmışken 2025'te 7,4 puana gerilemiştir. Bu yakınsama doğrusal olmamıştır — 2011-2020 arasında fark 24-31 puan aralığında görece sabit seyrederken, 2020-2025 döneminde hızla kapanmıştır. **Yorumlama notu:** Bu grafik internet erişiminin bölgeler arasında eşitlendiğini göstermekte; internet erişimi ile doğurganlık değişimi arasındaki nedensellik ilişkisi konusunda bir iddiada bulunmamaktadır. İki olgu zaman içinde birlikte hareket etmekte, ancak ortak etkenler her ikisini de eş zamanlı olarak sürüklüyor olabilir.
 :::
 
-### İkiz Panel: TDH ve İnternet Erişimi Aynı Bölgelerde Nasıl Yakınsıyor
-
-```{r}
-#| echo: false
-#| warning: false
-#| fig-width: 10
-#| fig-height: 5.5
-
-library(plotly)
-
-yillar_tdh_ibbs <- c(2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025)
-tdh_tr1 <- c(1.77,1.772,1.72,1.802,1.808,1.89,1.882,1.857,1.805,1.729,1.607,1.488,1.39,1.299,1.208,1.204,1.138)
-tdh_tr5 <- c(1.989,1.909,1.918,1.962,1.992,2.025,2.036,2.007,1.973,1.895,1.779,1.685,1.606,1.553,1.459,1.392,1.322)
-tdh_tra <- c(2.749,2.781,2.707,2.716,2.655,2.689,2.591,2.514,2.431,2.283,2.2,2.028,1.985,1.807,1.645,1.588,1.518)
-tdh_trb <- c(2.902,2.841,2.745,2.711,2.702,2.761,2.642,2.554,2.536,2.437,2.357,2.176,2.075,1.962,1.776,1.735,1.642)
-tdh_trc <- c(3.634,3.609,3.478,3.508,3.445,3.591,3.455,3.283,3.276,3.147,2.949,2.789,2.777,2.615,2.358,2.32,2.212)
-tdh_tr  <- c(2.1,2.08,2.047,2.109,2.107,2.186,2.157,2.115,2.082,2.005,1.889,1.772,1.712,1.634,1.517,1.488,1.419)
-
-yillar_int_ibbs <- c(2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025)
-int_tr1 <- c(56.5,60.9,61.4,64.4,67.1,71.8,78.6,84.0,86.6,88.7,90.9,93.1,93.1,95.3,96.5)
-int_tr5 <- c(51.0,57.1,58.5,58.6,61.9,68.2,75.5,79.8,83.3,85.5,88.1,88.9,88.6,89.9,91.8)
-int_tra <- c(34.7,32.2,33.3,40.4,40.2,48.6,49.1,51.9,61.3,67.8,68.4,70.5,81.4,79.0,85.7)
-int_trb <- c(31.5,34.1,31.0,37.6,40.2,45.3,52.9,60.4,63.2,68.0,74.8,75.3,81.3,80.4,80.3)
-int_trc <- c(27.1,29.4,34.5,39.0,43.1,48.5,49.2,58.4,58.4,63.8,76.9,79.2,84.0,86.6,89.1)
-int_tr  <- c(45.0,47.4,48.9,53.8,55.9,61.2,66.8,72.9,75.3,79.0,82.6,85.0,87.1,88.8,90.9)
-
-p_tdh <- plot_ly() %>%
-  add_trace(x = yillar_tdh_ibbs, y = tdh_tr1, type = "scatter", mode = "lines",
-            name = "TR1 İstanbul", line = list(color = "#1F3864", width = 2.5),
-            legendgroup = "tr1", showlegend = TRUE) %>%
-  add_trace(x = yillar_tdh_ibbs, y = tdh_tr5, type = "scatter", mode = "lines",
-            name = "TR5 Batı Anadolu", line = list(color = "#5B8C5A", width = 2),
-            legendgroup = "tr5", showlegend = TRUE) %>%
-  add_trace(x = yillar_tdh_ibbs, y = tdh_tr, type = "scatter", mode = "lines",
-            name = "Türkiye ort.", line = list(color = "#888888", width = 1.5, dash = "dash"),
-            legendgroup = "tr", showlegend = TRUE) %>%
-  add_trace(x = yillar_tdh_ibbs, y = tdh_tra, type = "scatter", mode = "lines",
-            name = "TRA Kuzeydoğu", line = list(color = "#9E7A1A", width = 2),
-            legendgroup = "tra", showlegend = TRUE) %>%
-  add_trace(x = yillar_tdh_ibbs, y = tdh_trb, type = "scatter", mode = "lines",
-            name = "TRB Ortadoğu", line = list(color = "#CC6600", width = 2),
-            legendgroup = "trb", showlegend = TRUE) %>%
-  add_trace(x = yillar_tdh_ibbs, y = tdh_trc, type = "scatter", mode = "lines",
-            name = "TRC Güneydoğu", line = list(color = "#B33A3A", width = 2.5),
-            legendgroup = "trc", showlegend = TRUE) %>%
-  layout(xaxis = list(title = "", dtick = 4),
-         yaxis = list(title = "Toplam Doğurganlık Hızı", range = c(1.0, 4.0)),
-         annotations = list(list(x = 0.5, y = 1.08, text = "TDH (2009-2025)",
-                                  xref = "paper", yref = "paper", showarrow = FALSE,
-                                  font = list(size = 13, color = "#1F3864"))))
-
-p_int <- plot_ly() %>%
-  add_trace(x = yillar_int_ibbs, y = int_tr1, type = "scatter", mode = "lines",
-            name = "TR1", line = list(color = "#1F3864", width = 2.5), showlegend = FALSE) %>%
-  add_trace(x = yillar_int_ibbs, y = int_tr5, type = "scatter", mode = "lines",
-            name = "TR5", line = list(color = "#5B8C5A", width = 2), showlegend = FALSE) %>%
-  add_trace(x = yillar_int_ibbs, y = int_tr, type = "scatter", mode = "lines",
-            name = "TR", line = list(color = "#888888", width = 1.5, dash = "dash"), showlegend = FALSE) %>%
-  add_trace(x = yillar_int_ibbs, y = int_tra, type = "scatter", mode = "lines",
-            name = "TRA", line = list(color = "#9E7A1A", width = 2), showlegend = FALSE) %>%
-  add_trace(x = yillar_int_ibbs, y = int_trb, type = "scatter", mode = "lines",
-            name = "TRB", line = list(color = "#CC6600", width = 2), showlegend = FALSE) %>%
-  add_trace(x = yillar_int_ibbs, y = int_trc, type = "scatter", mode = "lines",
-            name = "TRC", line = list(color = "#B33A3A", width = 2.5), showlegend = FALSE) %>%
-  layout(xaxis = list(title = "", dtick = 4),
-         yaxis = list(title = "İnternet Kullanımı (%)", range = c(20, 100)),
-         annotations = list(list(x = 0.5, y = 1.08, text = "İnternet Erişimi (2011-2025)",
-                                  xref = "paper", yref = "paper", showarrow = FALSE,
-                                  font = list(size = 13, color = "#1F3864"))))
-
-fig_ikiz <- subplot(p_tdh, p_int, nrows = 1, margin = 0.06, titleY = TRUE, titleX = TRUE) %>%
-  layout(legend = list(orientation = "h", x = -0.05, y = -0.2),
-         plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)",
-         margin = list(t = 60))
-fig_ikiz
-```
-
-::: {.callout-warning appearance="simple"}
-**Kaynak:** TÜİK, illere göre toplam doğurganlık hızı (2009-2025) ve Hanehalkı BT Kullanım Araştırması (2011-2025), İBBS 1. Düzey bazında; aynı beş bölge (TR1 İstanbul, TR5 Batı Anadolu, TRA Kuzeydoğu, TRB Ortadoğu, TRC Güneydoğu) ve Türkiye ortalaması, doğrudan görsel karşılaştırma için aynı renk kodlamasıyla yan yana verilmiştir. İki panel de aynı yönde bir yakınsama gösteriyor — TDH'de düşüşle, internette yükselişle — ve TRC ile TR1 arasındaki fark her iki göstergede de daralıyor. **Bu görsel eş-zamanlılık nedensellik kanıtı değildir**; bir üstteki callout'ta özetlenen panel regresyon testi (özellikle birinci-farklar sonucu, β≈0, p=0,75) bu iki eğrinin yıldan yıla birbirini sürüklediğine dair istatistiksel destek bulamamıştır. Panel, "iki olgu aynı yöne gidiyor" gözlemini gösterir; "biri diğerini açıklıyor" iddiasını göstermez.
-:::
-
 ::: {.callout-warning appearance="simple"}
 **Analitik not — İnternet erişimi ve TDH düşüşü arasındaki ilişkinin panel regresyon testi:** İBBS 1. Düzey paneli (12 bölge × 15 yıl, 2011-2025) üzerinde beş spesifikasyon sınandı. Havuzlanmış OLS (β=−0,019, p<0,001) ve iki yönlü sabit etkili modelde (bölge+yıl SE; β=−0,019, p<0,001, R²=0,97) internet erişimi ile TDH arasında güçlü negatif ilişki bulunmaktadır. Ancak **birinci farklar modeli** — yıldan yıla aynı bölgedeki değişimleri izleyen en katı spesifikasyon — bu ilişkiyi tamamen ortadan kaldırmaktadır: β=−0,0005, p=0,746, R²=0,001. Bu, düzey ve sabit etki modellerindeki ilişkinin ağırlıklı olarak bölgeler arası kesitsel farklardan ve ortak zaman trendinden kaynaklandığını göstermektedir. Bir bölgede internetin bir önceki yıla kıyasla daha hızlı yayılması, o bölgede TDH'nin o yıl daha hızlı düşmesiyle ilişkili **değildir**. Bu bulgu, iki olgunun birlikte hareket ettiğini ancak yıllık eş-hareketin kanıtlanamadığını doğrular ve nedensellik iddiasından kaçınma kararının ampirik gerekçesidir. Olası açıklama: nedensellik varsa gecikmeli etkiyle (3-5 yıl) geliyor olabilir, veya her iki olgu da bölgenin kalkınma düzeyinin bağımsız fonksiyonlarıdır.
 :::
@@ -3627,9 +3546,9 @@ fig_sigma
 #| fig-width: 9
 #| fig-height: 5.5
 
-tdh09 <- c(2.175,2.759,2.062,2.416,1.804,1.682,1.912,2.353,1.729,1.742,4.219,1.529,1.677,3.697,2.383,1.708,2.558,3.801,1.598,1.739,1.777,1.735,3.23,1.87,1.429,2.016,1.82,2.51,1.397,3.145,1.738,2.089,3.345,2.568,1.758,3.061,2.698,1.669,2.147,2.901,1.7,2.213,2.933,1.9,2.136,1.555,1.383,1.772,1.722,2.082,1.782,3.463,2.029,1.706,3.928,2.1,2.402,1.937,2.551,1.804,1.867,1.873,4.226,1.906,2.066,1.69,1.948,1.865,1.558,1.635,3.931,1.785,2.247,1.712,1.504,1.967,1.925,1.77,1.571,4.569,4.686)
-tdh25 <- c(1.548,1.915,1.426,1.49,1.264,1.11,1.202,1.388,1.231,1.314,2.055,1.247,1.093,1.998,1.187,1.275,1.517,2.053,1.223,1.311,1.325,1.253,2.135,1.359,1.123,1.348,1.302,1.494,1.108,2.002,1.137,1.14,1.707,1.81,1.224,1.613,1.699,1.137,1.329,1.587,1.279,1.385,1.838,1.388,1.528,1.126,1.15,1.137,1.224,1.401,1.406,2.229,1.422,1.215,2.007,1.318,1.472,1.254,1.707,1.276,1.414,1.244,2.108,1.254,1.242,1.369,1.218,1.281,1.228,1.167,1.874,1.358,1.235,1.111,1.169,1.281,1.221,1.138,1.102,3.15,2.534)
-iller_adi <- c("Adana","Adıyaman","Afyonkarahisar","Aksaray","Amasya","Ankara","Antalya","Ardahan","Artvin","Aydın","Ağrı","Balıkesir","Bartın","Batman","Bayburt","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Denizli","Diyarbakır","Düzce","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Isparta","Iğdır","Kahramanmaraş","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kilis","Kocaeli","Konya","Kütahya","Kırklareli","Kırıkkale","Kırşehir","Malatya","Manisa","Mardin","Mersin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak","Çanakkale","Çankırı","Çorum","İstanbul","İzmir","Şanlıurfa","Şırnak")
+tdh09 <- c(1.672,2.821,1.790,3.192,2.160,2.217,1.615,2.267,2.108,1.921,2.208,2.057,2.188,2.044,2.220,1.746,1.605,2.228,2.093,1.571,2.122,2.122,2.228,2.083,1.805,2.003,3.058,3.310,2.259,2.113,1.907,2.268,1.933,1.752,1.855,1.727,1.900,1.971,1.983,1.962,1.875,3.544,1.845,2.263,2.084,2.175,3.039,2.016,1.793,2.014,1.939,2.058,1.695,1.533,2.181,2.296,1.842,2.218,2.094,2.104,1.825,1.735,4.361,4.553,3.267,3.916,1.857,2.398,4.299,1.753,1.619,1.658,1.782,1.900,2.268,2.281,1.914,1.816,2.327,2.042,2.175)
+tdh25 <- c(1.299,2.063,1.298,2.139,1.602,1.429,1.117,1.493,1.491,1.374,1.521,1.428,1.598,1.375,1.455,1.214,1.152,1.530,1.468,1.213,1.471,1.437,1.484,1.357,1.207,1.237,1.923,2.137,1.521,1.402,1.383,1.431,1.375,1.226,1.236,1.223,1.231,1.252,1.269,1.419,1.185,2.474,1.283,1.508,1.324,1.410,1.895,1.284,1.284,1.292,1.282,1.379,1.098,1.110,1.439,1.488,1.308,1.523,1.465,1.383,1.236,1.208,3.022,2.949,1.800,2.657,1.244,1.476,2.702,1.165,1.175,1.088,1.288,1.367,1.638,1.554,1.209,1.214,1.517,1.258,1.343)
+iller_adi <- c("Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya","Artvin","Aydın","Balıkesir","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Hakkari","Hatay","Isparta","İstanbul","İzmir","Kahramanmaraş","Karabük","Karaman","Kastamonu","Kayseri","Kırıkkale","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya","Manisa","Mardin","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Şanlıurfa","Şırnak","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak","Batman","Bartın","Ardahan","Iğdır","Düzce","Aksaray","Bayburt","Giresun","Kilis","Adıyaman2","Mersin","Muğla")
 
 growth <- log(tdh25 / tdh09) / 16
 ln09 <- log(tdh09)
@@ -3639,7 +3558,7 @@ fig_beta <- plot_ly() %>%
             marker = list(size = 7, color = "#1F3864", opacity = 0.7),
             text = iller_adi, hoverinfo = "text+x+y",
             name = "İller (81)") %>%
-  add_trace(x = sort(tdh09), y = ((-0.01028) + (-0.02075) * log(sort(tdh09))) * 100,
+  add_trace(x = sort(tdh09), y = ((-0.0149) + (-0.0207) * log(sort(tdh09))) * 100,
             type = "scatter", mode = "lines",
             line = list(color = "#B33A3A", width = 2, dash = "dash"),
             name = "β = -0,021*** (R² = 0,57)") %>%
@@ -3709,9 +3628,309 @@ fig16
 
 ## Eğitim
 
-Okullaşma oranları, eğitim düzeyine göre doğurganlık farkı.
+Türkiye'de kadın eğitim düzeyinde son 18 yılda köklü bir dönüşüm yaşandı. Bu bölüm, önce bu dönüşümün büyüklüğünü genel göstergelerle ortaya koyuyor, ardından il düzeyinde eğitim genişlemesi ile TDH düşüşü arasındaki ilişkiyi beş farklı istatistiksel modelle — artan metodolojik sağlamlık sırasıyla — sınıyor.
 
-*Bu bölümün içeriği hazırlanıyor.*
+**A. Kadın Eğitim Düzeyinde Dönüşüm (2008-2025)**
+
+### Kadın Eğitim Düzeyi Dağılımı: 2008 ve 2025 Karşılaştırması
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+library(plotly)
+
+kategoriler <- c("Okuma yazma\nbilmeyen","Okur-yazar,\nokul bitirmemiş","İlkokul","Ortaokul","Lise ve\ndengi","Yüksekokul/\nFakülte","Yüksek\nLisans","Doktora")
+pay_2008 <- c(14.7,7.8,35.1,3.8,16.0,5.3,0.4,0.1)
+pay_2025 <- c(3.9,4.8,20.9,16.4,24.6,19.5,2.4,0.4)
+
+fig_dagilim <- plot_ly() %>%
+  add_trace(x = kategoriler, y = pay_2008, type = "bar", name = "2008",
+            marker = list(color = "#888888"),
+            text = paste0("%", pay_2008), textposition = "outside") %>%
+  add_trace(x = kategoriler, y = pay_2025, type = "bar", name = "2025",
+            marker = list(color = "#1F3864"),
+            text = paste0("%", pay_2025), textposition = "outside") %>%
+  layout(
+    barmode = "group",
+    xaxis = list(title = ""),
+    yaxis = list(title = "15+ Yaş Kadın Nüfusu İçindeki Payı (%)", range = c(0, 40)),
+    legend = list(orientation = "h", x = 0.4, y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_dagilim
+```
+
+::: {.callout-important appearance="simple"}
+**Kaynak:** TÜİK Hanehalkı İşgücü Araştırması, 15+ yaş kadın nüfusunun bitirdiği eğitim düzeyine göre dağılımı, 2008 ve 2025 (yazar hesaplaması, mutlak sayılardan pay). 2008'de kadın nüfusunun en kalabalık grubu ilkokul mezunlarıydı (%35,1); 2025'te bu pay %20,9'a gerilerken lise ve dengi (%16,0→%24,6) ile yükseköğretim (%5,3→%19,5) payları katlanarak artmıştır. Okuma yazma bilmeyen kadın oranı %14,7'den %3,9'a düşmüştür. On yedi yılda kadın eğitim piramidi tabandan tepeye doğru köklü biçimde yeniden şekillenmiştir.
+:::
+
+### Okuma Yazma Bilmeyen Kadın Oranındaki Düşüş (2008-2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_oyb <- c(2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025)
+oyb_pay <- c(14.7,13.9,11.4,9.4,8.1,7.6,7.5,7.3,6.9,6.4,6.0,5.5,5.2,4.9,4.6,4.4,4.2,3.9)
+oyb_sayi <- c(3897,3737,3115,2612,2310,2200,2191,2167,2078,1975,1872,1738,1652,1572,1502,1452,1388,1329)
+
+fig_oyb <- plot_ly() %>%
+  add_trace(x = yillar_oyb, y = oyb_pay, type = "scatter", mode = "lines+markers",
+            name = "Pay (%, sol eksen)", line = list(color = "#B33A3A", width = 2.5),
+            marker = list(size = 6), yaxis = "y") %>%
+  add_trace(x = yillar_oyb, y = oyb_sayi, type = "scatter", mode = "lines+markers",
+            name = "Kişi sayısı (bin, sağ eksen)", line = list(color = "#9E7A1A", width = 2, dash = "dash"),
+            marker = list(size = 5), yaxis = "y2") %>%
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(title = "Pay (%)", side = "left", range = c(0, 16)),
+    yaxis2 = list(title = "Kişi Sayısı (bin)", side = "right", overlaying = "y",
+                  range = c(0, 4200), showgrid = FALSE),
+    legend = list(orientation = "h", x = 0.05, y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_oyb
+```
+
+::: {.callout-note appearance="simple"}
+**Kaynak:** TÜİK Hanehalkı İşgücü Araştırması, okuma yazma bilmeyen 15+ yaş kadın sayısı ve payı, 2008-2025. On sekiz yılda hem mutlak sayı (3.897.000 → 1.329.000, %66 azalma) hem de pay (%14,7 → %3,9) sürekli düşüş göstermiştir. Düşüş 2008-2012 arasında en hızlı seyretmiş (yıllık ortalama −1,65 puan), sonraki dönemde yavaşlayarak sürmüştür (2012-2025 ortalama −0,32 puan/yıl) — kademeli bir doygunluk eğrisi.
+:::
+
+### Ortalama Eğitim Süresi: Cinsiyet Farkı Daralıyor (2016-2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_sure <- c(2016,2017,2018,2019,2020,2021,2022,2023,2024,2025)
+sure_toplam <- c(8.132,8.291,8.492,8.701,8.855,9.052,9.203,9.329,9.453,9.575)
+sure_erkek  <- c(9.036,9.175,9.358,9.528,9.661,9.841,9.971,10.070,10.168,10.266)
+sure_kadin  <- c(7.246,7.425,7.643,7.891,8.065,8.279,8.452,8.605,8.754,8.900)
+
+fig_sure <- plot_ly() %>%
+  add_trace(x = yillar_sure, y = sure_erkek, type = "scatter", mode = "lines+markers",
+            name = "Erkek", line = list(color = "#1F3864", width = 2.5), marker = list(size = 6)) %>%
+  add_trace(x = yillar_sure, y = sure_kadin, type = "scatter", mode = "lines+markers",
+            name = "Kadın", line = list(color = "#B33A3A", width = 2.5), marker = list(size = 6)) %>%
+  add_trace(x = yillar_sure, y = sure_toplam, type = "scatter", mode = "lines",
+            name = "Toplam", line = list(color = "#888888", width = 1.5, dash = "dash")) %>%
+  layout(
+    xaxis = list(title = "", tickvals = yillar_sure),
+    yaxis = list(title = "Ortalama Eğitim Süresi (yıl, 25+ yaş)", range = c(6.8, 10.5)),
+    legend = list(orientation = "h", x = 0.3, y = -0.18),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_sure
+```
+
+::: {.callout-note appearance="simple"}
+**Kaynak:** TÜİK, 25+ yaş nüfus ortalama eğitim süresi, cinsiyete göre, 2016-2025. Kadınlarda ortalama eğitim süresi 7,25 yıldan 8,90 yıla (+1,65 yıl) yükselirken erkeklerde 9,04'ten 10,27'ye (+1,23 yıl) çıkmıştır — kadın artışı erkeğinkinden daha hızlı olduğu için cinsiyet oranı (kadın/erkek) 0,802'den 0,867'ye yükselerek fark daralmıştır. Bu yakınsama, sekme-8'deki dijital erişim ve cinsiyet rolü tutumlarındaki benzer daralma örüntüleriyle tutarlıdır.
+:::
+
+**B. Okullaşma ve Tamamlama Oranları: Erişimin Kademe Bazında Durumu**
+
+### Net Okullaşma Oranı, Eğitim Kademesine Göre (2016-2024)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+yillar_okul <- c(2016,2017,2018,2019,2020,2021,2022,2023,2024)
+net_5yas <- c(58.8,66.9,68.3,71.2,56.9,81.6,85.0,84.3,82.5)
+net_ilkokul <- c(91.2,91.5,91.9,93.6,93.2,93.2,93.8,95.0,95.4)
+net_ortaokul <- c(95.7,94.5,93.3,95.9,88.9,89.8,91.2,91.5,89.1)
+net_ortaogretim <- c(82.5,83.6,84.2,85.0,87.9,89.7,91.7,88.0,82.8)
+
+fig_okullasma <- plot_ly() %>%
+  add_trace(x = yillar_okul, y = net_ilkokul, type = "scatter", mode = "lines+markers",
+            name = "İlkokul (1-4. sınıf)", line = list(color = "#1F3864", width = 2.5),
+            marker = list(size = 6)) %>%
+  add_trace(x = yillar_okul, y = net_ortaokul, type = "scatter", mode = "lines+markers",
+            name = "Ortaokul (5-8. sınıf)", line = list(color = "#5B8C5A", width = 2.5),
+            marker = list(size = 6)) %>%
+  add_trace(x = yillar_okul, y = net_ortaogretim, type = "scatter", mode = "lines+markers",
+            name = "Ortaöğretim (9-12. sınıf)", line = list(color = "#B33A3A", width = 2.5),
+            marker = list(size = 6)) %>%
+  add_trace(x = yillar_okul, y = net_5yas, type = "scatter", mode = "lines+markers",
+            name = "Okul öncesi (5 yaş)", line = list(color = "#9E7A1A", width = 2, dash = "dash"),
+            marker = list(size = 5)) %>%
+  layout(
+    xaxis = list(title = "", tickvals = yillar_okul),
+    yaxis = list(title = "Net Okullaşma Oranı (%)", range = c(50, 100)),
+    legend = list(orientation = "h", x = 0.0, y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)",
+    annotations = list(
+      list(x = 2020, y = 56.9, text = "COVID-19\nkapanmaları", showarrow = TRUE, ax = 30, ay = -30,
+           font = list(size = 9, color = "#9E7A1A"))
+    )
+  )
+fig_okullasma
+```
+
+::: {.callout-note appearance="simple"}
+**Kaynak:** TÜİK/MEB, Ulusal Eğitim İstatistikleri Veri Tabanı, eğitim seviyesine göre net okullaşma oranı, 2016/17-2024/25 öğretim yılları. İlkokulda erişim neredeyse evrenselleşmiştir (%91,2→%95,4). Ortaöğretimde belirgin bir iyileşme trendi var (%82,5→%91,7, 2022'ye kadar) ama 2023-2024'te bir gerileme görülüyor (%88,0→%82,8) — bu düşüşün geçici mi yapısal mı olduğu önümüzdeki yıllarda netleşecektir. Okul öncesi (5 yaş) oranı 2020'de COVID-19 kapanmaları nedeniyle sert bir düşüş yaşamış (%71,2→%56,9), sonrasında hızla toparlanmıştır.
+:::
+
+### Ortaöğretim Tamamlama Oranında Cinsiyet Farkı: Kızlar Önde
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5
+
+yillar_tam <- c(2019,2020,2021,2022,2023,2024)
+tam_ortaogretim_e <- c(67.8,70.5,76.2,78.8,79.4,79.2)
+tam_ortaogretim_k <- c(72.9,76.0,79.6,81.8,83.0,83.5)
+tam_ilkokul <- c(98.6,98.6,98.4,98.5,98.7,98.6)
+tam_ortaokul <- c(97.7,97.1,96.4,96.3,96.5,96.6)
+
+fig_tamamlama <- plot_ly() %>%
+  add_trace(x = yillar_tam, y = tam_ortaogretim_k, type = "scatter", mode = "lines+markers",
+            name = "Ortaöğretim - Kız", line = list(color = "#B33A3A", width = 2.5),
+            marker = list(size = 7)) %>%
+  add_trace(x = yillar_tam, y = tam_ortaogretim_e, type = "scatter", mode = "lines+markers",
+            name = "Ortaöğretim - Erkek", line = list(color = "#1F3864", width = 2.5),
+            marker = list(size = 7)) %>%
+  add_trace(x = yillar_tam, y = tam_ilkokul, type = "scatter", mode = "lines",
+            name = "İlkokul (toplam)", line = list(color = "#888888", width = 1.5, dash = "dot")) %>%
+  add_trace(x = yillar_tam, y = tam_ortaokul, type = "scatter", mode = "lines",
+            name = "Ortaokul (toplam)", line = list(color = "#aaaaaa", width = 1.5, dash = "dot")) %>%
+  layout(
+    xaxis = list(title = "", tickvals = yillar_tam),
+    yaxis = list(title = "Tamamlama Oranı (%)", range = c(60, 102)),
+    legend = list(orientation = "h", x = 0.0, y = -0.2),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_tamamlama
+```
+
+::: {.callout-important appearance="simple"}
+**Kaynak:** TÜİK, Ulusal Eğitim İstatistikleri Veri Tabanı, eğitim kademelerine ve cinsiyete göre tamamlama oranı, 2019/20-2024/25. İlkokul ve ortaokulda tamamlama neredeyse evrensel ve cinsiyetler arası fark ihmal edilebilir düzeyde (%96-99). Ortaöğretimde ise hem büyük bir iyileşme (%70,3→%81,3) hem de **sistematik ve kalıcı bir cinsiyet farkı** var — kızlar her yıl erkeklerden daha yüksek oranda ortaöğretimi tamamlıyor (2024: kız %83,5, erkek %79,2; fark 4,3 puan). Bu, sekme-8'deki temel eğitim dağılımı grafiğinde görülen okuma-yazma/ilkokul düzeyindeki kadın aleyhine asimetrinin (Bölüm A) tam tersi yönde bir örüntü: eğitim sisteminin en temel ve en yüksek uçlarında kadınlar dezavantajlıyken, ortaöğretim tamamlamasında erkekler geride kalıyor — muhtemelen erken yaşta işgücüne katılım veya okul terkinin erkek çocuklarda daha yaygın olmasıyla ilişkili bir örüntü.
+:::
+
+**C. Eğitim Genişlemesi ve TDH İlişkisi: Beş Model, Artan Sağlamlık**
+
+### Model 1: 2025 Kesit — İl Düzeyinde Eğitim ve TDH
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+il_egitim25 <- c(8.74,7.89,7.90,7.96,8.22,10.35,9.59,7.47,8.51,8.76,6.30,8.68,7.68,7.93,8.05,8.81,8.22,7.38,8.69,8.33,9.14,8.87,7.40,8.53,8.73,8.16,8.47,7.81,9.59,8.17,7.79,7.91,8.66,8.16,8.92,7.64,7.88,8.41,8.51,7.58,7.40,8.84,8.91,9.48,8.37,7.92,9.00,8.53,8.36,8.30,8.17,7.06,8.78,9.64,6.95,8.45,8.10,7.69,8.59,8.60,8.89,8.53,7.01,7.72,8.09,9.06,7.68,8.73,8.67,8.34,6.93,9.46,7.54,7.83,9.02,7.87,7.65,9.90,9.62,6.41,7.42)
+il_tdh25 <- c(1.548,1.915,1.426,1.490,1.264,1.110,1.202,1.388,1.231,1.314,2.055,1.247,1.093,1.998,1.187,1.275,1.517,2.053,1.223,1.311,1.325,1.253,2.135,1.359,1.123,1.348,1.302,1.494,1.108,2.002,1.137,1.140,1.707,1.810,1.224,1.613,1.699,1.137,1.329,1.587,1.279,1.385,1.838,1.388,1.528,1.126,1.150,1.137,1.224,1.401,1.406,2.229,1.422,1.215,2.007,1.318,1.472,1.254,1.707,1.276,1.414,1.244,2.108,1.254,1.242,1.369,1.218,1.281,1.228,1.167,1.874,1.358,1.235,1.111,1.169,1.281,1.221,1.138,1.102,3.150,2.534)
+il_isim <- c("Adana","Adıyaman","Afyonkarahisar","Aksaray","Amasya","Ankara","Antalya","Ardahan","Artvin","Aydın","Ağrı","Balıkesir","Bartın","Batman","Bayburt","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Denizli","Diyarbakır","Düzce","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Isparta","Iğdır","Kahramanmaraş","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kilis","Kocaeli","Konya","Kütahya","Kırklareli","Kırıkkale","Kırşehir","Malatya","Manisa","Mardin","Mersin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak","Çanakkale","Çankırı","Çorum","İstanbul","İzmir","Şanlıurfa","Şırnak")
+
+fig_m1 <- plot_ly() %>%
+  add_trace(x = il_egitim25, y = il_tdh25, type = "scatter", mode = "markers",
+            marker = list(size = 8, color = "#1F3864", opacity = 0.7),
+            text = il_isim, hoverinfo = "text+x+y", name = "İller (81)") %>%
+  add_trace(x = sort(il_egitim25), y = 4.518 + (-0.279)*sort(il_egitim25),
+            type = "scatter", mode = "lines",
+            line = list(color = "#B33A3A", width = 2, dash = "dash"),
+            name = "r = -0,577 (R² = 0,33)") %>%
+  layout(
+    xaxis = list(title = "Kadın Ortalama Eğitim Süresi, 2025 (yıl)"),
+    yaxis = list(title = "TDH, 2025"),
+    legend = list(orientation = "h", x = 0.15, y = -0.18),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_m1
+```
+
+::: {.callout-warning appearance="simple"}
+**Model [1] — 2025 kesit, 81 il:** Pearson r = −0,577, R² = 0,333. **Yorum: ekolojik korelasyon, zayıf kanıt.** Yalnızca tek bir yılın kesitine bakan bu model, illerin zaman-değişmez özelliklerinden (coğrafya, tarihsel-kültürel yapı, kentleşme düzeyi) kaynaklanan karıştırıcı etkilerden arındırılmamıştır. Aşağıdaki modeller bu zayıflığı adım adım gidermektedir.
+:::
+
+### Model 3: Değişim-Değişim — Eğitim Artışı ile TDH Değişimi (2016→2025)
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 5.5
+
+d_egitim <- c(1.517,1.986,1.573,1.742,1.573,1.474,1.612,1.821,1.727,1.588,2.207,1.590,1.630,2.728,2.062,1.555,2.872,2.536,1.681,1.652,1.533,1.590,2.403,1.690,1.525,1.985,1.932,1.845,1.499,1.833,1.755,1.551,3.822,1.532,1.607,2.021,1.721,1.688,1.678,1.872,1.659,1.632,2.596,1.642,1.709,1.484,1.493,1.605,1.609,1.551,1.541,2.344,1.544,1.732,2.694,1.716,1.577,1.781,1.716,1.848,1.773,1.749,2.549,1.525,1.735,1.375,1.565,1.758,1.848,1.533,2.352,1.547,1.513,1.410,1.764,1.640,1.660,1.521,1.459,2.337,3.568)
+d_tdh <- c(-0.716,-0.865,-0.585,-0.752,-0.435,-0.628,-0.740,-0.617,-0.542,-0.517,-1.672,-0.422,-0.458,-1.109,-0.769,-0.465,-0.923,-1.245,-0.395,-0.429,-0.589,-0.556,-0.998,-0.541,-0.362,-0.616,-0.588,-0.956,-0.433,-1.056,-0.431,-0.478,-0.889,-0.888,-0.496,-1.366,-0.911,-0.325,-0.769,-1.003,-0.311,-0.756,-1.036,-0.660,-0.658,-0.396,-0.337,-0.559,-0.567,-0.585,-0.503,-1.032,-0.723,-0.524,-1.367,-0.621,-0.727,-0.582,-0.723,-0.521,-0.537,-0.553,-1.365,-0.451,-0.715,-0.564,-0.479,-0.572,-0.348,-0.518,-1.323,-0.533,-0.774,-0.392,-0.392,-0.562,-0.646,-0.719,-0.584,-1.200,-0.977)
+dd_il <- c("Adana","Adıyaman","Afyonkarahisar","Aksaray","Amasya","Ankara","Antalya","Ardahan","Artvin","Aydın","Ağrı","Balıkesir","Bartın","Batman","Bayburt","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Denizli","Diyarbakır","Düzce","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Isparta","Iğdır","Kahramanmaraş","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kilis","Kocaeli","Konya","Kütahya","Kırklareli","Kırıkkale","Kırşehir","Malatya","Manisa","Mardin","Mersin","Muğla","Muş","Nevşehir","Niğde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon","Tunceli","Uşak","Van","Yalova","Yozgat","Zonguldak","Çanakkale","Çankırı","Çorum","İstanbul","İzmir","Şanlıurfa","Şırnak")
+
+renkler_dd <- ifelse(dd_il %in% c("Hakkari","Şırnak","Bingöl","Batman","Muş","Kilis","Siirt","Bitlis","Diyarbakır","Van"),
+                      "#B33A3A", "#1F3864")
+
+fig_m3 <- plot_ly() %>%
+  add_trace(x = d_egitim, y = d_tdh, type = "scatter", mode = "markers",
+            marker = list(size = 8, color = renkler_dd, opacity = 0.75),
+            text = dd_il, hoverinfo = "text+x+y", name = "İller (81)") %>%
+  add_trace(x = sort(d_egitim), y = 0.199 + (-0.401)*sort(d_egitim),
+            type = "scatter", mode = "lines",
+            line = list(color = "#333333", width = 2, dash = "dash"),
+            name = "eğim = -0,401 (R² = 0,39)") %>%
+  layout(
+    xaxis = list(title = "Kadın Eğitim Süresi Artışı, 2016→2025 (yıl)"),
+    yaxis = list(title = "TDH Değişimi, 2016→2025"),
+    legend = list(orientation = "h", x = 0.1, y = -0.18),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)",
+    annotations = list(
+      list(x = 3.3, y = -0.3, text = "Kırmızı: en çok eğitim\nartışı gösteren 10 il\n(çoğu yüksek TDH'li,\nDoğu/Güneydoğu)",
+           showarrow = FALSE, font = list(size = 9.5, color = "#B33A3A"),
+           bgcolor = "#FFF5F5", bordercolor = "#B33A3A", borderpad = 4)
+    )
+  )
+fig_m3
+```
+
+::: {.callout-warning appearance="simple"}
+**Model [3] — Değişim-değişim, 81 il:** eğim = −0,401, R² = 0,394. **Yorum: zaman-değişmez il özelliklerini kontrol eder.** İki zaman noktası arasındaki farkları karşılaştırarak (first-differencing), coğrafya ve tarihsel-kültürel yapı gibi sabit il özelliklerinin karıştırıcı etkisi ortadan kalkar. Çarpıcı örüntü: kadın eğitim süresinde en hızlı artış gösteren iller (Hakkari +3,82 yıl, Şırnak +3,57, Bingöl +2,87, Batman +2,73, Muş +2,69 — kırmızı noktalar) büyük ölçüde 2016'da en yüksek TDH'ye sahip Doğu ve Güneydoğu illeridir; bu iller aynı zamanda TDH'de en büyük düşüşü göstermektedir.
+:::
+
+### Modeller [4] ve [5]: Yakınsama Kontrolü ve İl Sabit Etkili Panel
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 4.5
+
+model_isim <- c("[1] 2025 Kesit","[2] Havuzlanmış\nPanel","[3] Değişim-\nDeğişim","[4] Δ + TDH₀\nKontrolü","[5] İl+Yıl Sabit\nEtkili Panel")
+katsayi_deger <- c(-0.577, -0.732, -0.401, 0.019, -0.306)
+anlamli <- c(TRUE, TRUE, TRUE, FALSE, TRUE)
+renk_model <- ifelse(anlamli, "#1F3864", "#CCCCCC")
+
+fig_ozet <- plot_ly(x = model_isim, y = katsayi_deger, type = "bar",
+                    marker = list(color = renk_model),
+                    text = c("r=-0,577","r=-0,732","eğim=-0,401","p=0,607 (a.d.)","β=-0,306***"),
+                    textposition = "outside") %>%
+  layout(
+    xaxis = list(title = ""),
+    yaxis = list(title = "Katsayı Değeri", range = c(-0.9, 0.3)),
+    shapes = list(list(type = "line", x0 = -0.5, x1 = 4.5, y0 = 0, y1 = 0,
+                       line = list(color = "#aaaaaa", width = 1))),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)"
+  )
+fig_ozet
+```
+
+::: {.callout-important appearance="simple"}
+**Model [4] — Δ + başlangıç TDH kontrolü:** β_eğitim = 0,019, p = 0,607 (**anlamsız**), R² = 0,864. Yalnızca iki zaman noktası (2016, 2025) kullanan basit fark, başlangıç TDH'sini kontrol ettiğinde eğitimin etkisi tamamen kayboluyor — bu, Model [3]'teki ilişkinin büyük ölçüde **yakınsama dinamiğinden** (yüksek TDH'li illerin zaten daha hızlı düşme eğiliminden, bkz. H bölümü β-yakınsama) kaynaklandığını gösteriyor, doğrudan eğitim etkisinden değil.
+
+**Model [5] — İl + yıl sabit etkili panel (within), 810 il-yıl gözlemi:** β = −0,306, p < 0,001 (t ≈ −16), R² (within) yüksek. **En sağlam test.** Bu model hem ilin zamanla değişmeyen özelliklerini (il sabit etkisi) hem de o yılın Türkiye genelini etkileyen ortak şokları — enflasyon, pandemi, ulusal politika değişimi (yıl sabit etkisi) — aynı anda kontrol eder. Kalan soru yalnızca şudur: *bir ilde, Türkiye ortalama trendinin üzerinde eğitim arttığında, o ilde TDH ortalamanın üzerinde mi altında mı düşüyor?* Cevap: anlamlı ve güçlü biçimde altında — her +1 yıl "beklenenden fazla" eğitim artışı, o il-yılında TDH'de yaklaşık 0,31 puan "beklenenden fazla" düşüşle ilişkilidir.
+
+**Dürüst pozisyon:** Model [5], salt ekolojik korelasyon değildir — il sabit etkili panel kanıtı, eğitim genişlemesi ile TDH düşüşü arasında **il-içi zamanlama düzeyinde tutarlı bir birliktelik** olduğunu göstermektedir. Bununla birlikte bu hâlâ **nedensellik kanıtı değildir**; yalnızca iki değişkenin il-içi zamanlamasının örtüştüğünü gösterir (eğitim → geç evlilik/doğum → düşük PPR₁ mekanizmasıyla tutarlıdır, ama başka ortak nedenler de aynı örüntüyü üretebilir). Model [4]'ün anlamsız çıkması ile Model [5]'in güçlü anlamlı çıkması arasındaki fark, yöntemin veri kullanımına duyarlılığını göstermesi bakımından bizzat öğreticidir: [4] yalnızca iki uç nokta arasındaki farkı kullanırken, [5] on yılın tamamındaki yıl-içi varyansı kullanır.
+:::
+
+
+
 
 ## Sağlık, Yaşlanma ve Mortalite
 
