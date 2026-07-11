@@ -1791,6 +1791,63 @@ Türkiye'nin doğum sırası profili, gelişmiş Avrupa ülkeleri ile düşük d
 
 Evlenme ve boşanma eğilimleri, ilk evlenme yaşının yükselişi ve bunların doğurganlıkla ilişkisi.
 
+### Kohort Bazlı Evlilik Eğrisi: Kadınlarda "Hiç Evlenmiş" Oranının Yaşa Göre Birikimli Seyri
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 6
+
+library(plotly)
+
+yas_1950 <- c(15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50)
+pct_1950 <- c(13.3,23.6,35.8,49.9,59.9,72.6,77.0,82.5,86.0,89.0,92.3,93.6,94.6,95.3,95.9,96.8,97.1,97.5,97.7,97.9,98.1,98.2,98.2,98.2,98.3,98.4,98.4,98.4,98.4,98.4,98.4,98.4,98.4,98.4,98.4,98.4)
+
+yas_1960 <- c(15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50)
+pct_1960 <- c(8.3,16.1,26.7,39.6,49.8,61.2,67.2,73.8,78.1,82.2,86.0,88.4,90.7,91.8,92.8,94.1,94.3,94.8,95.0,95.2,95.7,96.0,96.1,96.3,96.5,96.6,96.7,96.7,96.7,96.8,96.9,97.0,97.0,97.0,97.0,97.1)
+
+yas_1970 <- c(15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50)
+pct_1970 <- c(4.7,10.6,17.9,30.6,41.0,52.0,58.3,65.2,71.0,75.9,80.3,83.4,86.0,87.7,89.0,90.4,90.9,91.5,92.1,92.6,93.2,93.8,94.0,94.3,94.5,94.6,94.6,94.9,95.0,95.2,95.3,95.5,95.9,96.2,96.0,96.5)
+
+yas_1980 <- c(15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41)
+pct_1980 <- c(3.4,7.2,13.7,23.0,31.3,40.8,47.9,54.2,59.9,66.4,72.4,77.2,81.5,84.8,86.7,89.0,90.2,91.3,92.0,92.5,93.0,93.5,93.5,94.3,94.5,95.6,96.8)
+
+yas_1990 <- c(15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31)
+pct_1990 <- c(1.3,3.7,8.6,16.8,23.2,30.0,35.5,40.3,47.7,55.3,64.1,70.9,77.4,82.4,85.8,88.2,90.9)
+
+yas_2000 <- c(15,16,17,18,19,20,21)
+pct_2000 <- c(0.3,0.9,3.1,7.3,12.6,17.5,21.4)
+
+fig_kohort_evlilik <- plot_ly() %>%
+  add_trace(x = yas_1950, y = pct_1950, type = "scatter", mode = "lines",
+            name = "1950'ler", line = list(color = "#B33A3A", width = 3)) %>%
+  add_trace(x = yas_1960, y = pct_1960, type = "scatter", mode = "lines",
+            name = "1960'lar", line = list(color = "#CC6600", width = 3)) %>%
+  add_trace(x = yas_1970, y = pct_1970, type = "scatter", mode = "lines",
+            name = "1970'ler", line = list(color = "#9E7A1A", width = 3)) %>%
+  add_trace(x = yas_1980, y = pct_1980, type = "scatter", mode = "lines",
+            name = "1980'ler", line = list(color = "#5B8C5A", width = 3)) %>%
+  add_trace(x = yas_1990, y = pct_1990, type = "scatter", mode = "lines",
+            name = "1990'lar", line = list(color = "#2E75B6", width = 3)) %>%
+  add_trace(x = yas_2000, y = pct_2000, type = "scatter", mode = "lines",
+            name = "2000'ler", line = list(color = "#1F3864", width = 3)) %>%
+  layout(
+    xaxis = list(title = "Yaş", range = c(15, 51), dtick = 5),
+    yaxis = list(title = "Hiç Evlenmiş Kadın Oranı (%, birikimli)", range = c(0, 100)),
+    legend = list(orientation = "v", x = 1.02, y = 0.5, title = list(text = "Doğum\nOnyılı")),
+    plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)",
+    margin = list(r = 120)
+  )
+fig_kohort_evlilik
+```
+
+::: {.callout-important appearance="simple"}
+**Kaynak:** TÜİK Türkiye Aile Yapısı Araştırması (TAYA) 2021 mikro verisi (yazar hesaplaması, n=22.004 kadın, doğum yılı 1950-2006 arası). Yöntem, ABD'de Ulusal Aile Büyümesi Araştırması (NSFG) verisiyle üretilen benzer kohort eğrilerine dayanır: her doğum onyılı için, o yaşa ulaşmış kadınların o yaşa kadar (herhangi bir noktada) evlenmiş olma oranı hesaplanmıştır. Eğriler **sağdan sansürlüdür** — 2000'ler kohortu 2021'de henüz 15-21 yaşında olduğundan yalnızca bu yaş aralığında gözlemlenebilir; 1950'ler kohortu ise 50 yaşına kadar tam görülebilir. Örneklem küçüldüğünde (n<15) ilgili yaş noktası grafikten çıkarılmıştır.
+
+**Bulgu — Türkiye'de de aynı kohort kayması var, ABD'den daha az dramatik ama net:** 20 yaşında hiç evlenmemiş olma oranı 1950'ler kohortunda %27,4 iken, 1990'lar kohortunda %70,0'e çıkmıştır — yani genç kadınların büyük çoğunluğu 20 yaşında artık evli değil. 2000'ler kohortu 21 yaşında yalnızca %21,4 evlenmiş durumda; aynı yaşta 1950'ler kohortu muhtemelen %85'in üzerindeydi. Bu eğrilerin sağa doğru kayması — evliliğin daha geç yaşlara ertelenmesi — sekme-8'deki TAYA evlilik kararı bulgularıyla (rızasız görücüden rızalı görücüye geçiş) ve PPR₁ düşüşüyle (evlilik içi doğurganlığın Türkiye'de baskın kanal olması nedeniyle) doğrudan bağlantılıdır: **evlilik ne kadar geç başlarsa, doğurganlık penceresi o kadar daralır.**
+:::
+
 ### Kaba Evlenme ve Boşanma Hızı (2001–2025)
 
 ```{r}
