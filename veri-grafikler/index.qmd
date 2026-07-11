@@ -1791,7 +1791,7 @@ Türkiye'nin doğum sırası profili, gelişmiş Avrupa ülkeleri ile düşük d
 
 Evlenme ve boşanma eğilimleri, ilk evlenme yaşının yükselişi ve bunların doğurganlıkla ilişkisi.
 
-### Kohort Bazlı Evlilik Eğrisi: Kadınlarda "Hiç Evlenmiş" Oranının Yaşa Göre Birikimli Seyri
+### Kohort Bazlı Evlilik Eğrisi: Kadınlarda Evlenmiş Olma Oranının Yaşa Göre Birikimli Seyri
 
 ```{r}
 #| echo: false
@@ -1834,7 +1834,7 @@ fig_kohort_evlilik <- plot_ly() %>%
             name = "2000'ler", line = list(color = "#1F3864", width = 3)) %>%
   layout(
     xaxis = list(title = "Yaş", range = c(15, 51), dtick = 5),
-    yaxis = list(title = "Hiç Evlenmiş Kadın Oranı (%, birikimli)", range = c(0, 100)),
+    yaxis = list(title = "En Az Bir Kez Evlenmiş Kadın Oranı (%, birikimli)", range = c(0, 100)),
     legend = list(orientation = "v", x = 1.02, y = 0.5, title = list(text = "Doğum\nOnyılı")),
     plot_bgcolor = "rgba(0,0,0,0)", paper_bgcolor = "rgba(0,0,0,0)",
     margin = list(r = 120)
