@@ -915,14 +915,7 @@ Plot.plot({
 ::: {.callout-tip}
 **Planlanan ek modeller:** Stok-Akış Paradoksu, Bongaarts-Feeney Tempo Hesaplayıcı, Nesil Uzunluğu Hızlandırıcısı, Sürdürülebilirlik Düzey Kontrol Paneli ve daha fazlası bu bölüme eklenecektir. Tam liste için [proje yol haritasına](/about.qmd) bakınız.
 :::
----
-title: "Doğum Simülatörü"
-subtitle: "Toplam Doğurganlık Hızı ve Yıllık Doğum Sayısı Projeksiyonu (2025-2100)"
-format:
-  html:
-    page-layout: full
-    toc: false
-    code-fold: true
+
 ---
 title: "Doğum Simülatörü"
 subtitle: "Toplam Doğurganlık Hızı ve Yıllık Doğum Sayısı Projeksiyonu (2025-2100)"
