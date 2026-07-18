@@ -1847,6 +1847,390 @@ fig_kohort_evlilik
 
 **Bulgu — Türkiye'de de aynı kohort kayması var, ABD'den daha az dramatik ama net:** 20 yaşında hiç evlenmemiş olma oranı 1950'ler kohortunda %27,4 iken, 1990'lar kohortunda %70,0'e çıkmıştır — yani genç kadınların büyük çoğunluğu 20 yaşında artık evli değil. 2000'ler kohortu 21 yaşında yalnızca %21,4 evlenmiş durumda; aynı yaşta 1950'ler kohortu muhtemelen %80'in üzerindeydi. Bu eğrilerin sağa doğru kayması — evliliğin daha geç yaşlara ertelenmesi — sekme-8'deki TAYA evlilik kararı bulgularıyla (rızasız görücüden rızalı görücüye geçiş) ve PPR₁ düşüşüyle (evlilik içi doğurganlığın Türkiye'de baskın kanal olması nedeniyle) doğrudan bağlantılıdır: **evlilik ne kadar geç başlarsa, doğurganlık penceresi o kadar daralır.**
 :::
+### D. Hanehalkı Büyüklüğü ve Doğurganlık {.unnumbered}
+
+Ortalama hanehalkı büyüklüğü, bir toplumun demografik geçmişinin birikimli bir yansımasıdır: geçmiş doğumlar, evlilik ve boşanma örüntüleri, kuşaklararası birlikte yaşama düzenleri ve göç akışlarının toplamını taşır. TDH ise yıllık bir akım göstergesidir. İkisi arasındaki ilişki, doğurganlık düşüşünün aile yapısını nasıl dönüştürdüğünü gözlemlemeye olanak tanır.
+
+#### İllere Göre Ortalama Hanehalkı Büyüklüğü (2025) {.unnumbered}
+
+```{r}
+#| label: fig_hh_harita
+#| fig-cap: "İllere Göre Ortalama Hanehalkı Büyüklüğü, 2025"
+
+# Veri
+hh_2025 <- data.frame(
+  il = c("Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya",
+         "Artvin","Aydın","Balıkesir","Bilecik","Bingöl","Bitlis","Bolu","Burdur",
+         "Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Edirne",
+         "Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane",
+         "Hakkari","Hatay","Isparta","Mersin","İstanbul","İzmir","Kars","Kastamonu",
+         "Kayseri","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya",
+         "Manisa","Kahramanmaraş","Mardin","Muğla","Muş","Nevşehir","Niğde","Ordu",
+         "Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon",
+         "Tunceli","Şanlıurfa","Uşak","Van","Yozgat","Zonguldak","Aksaray","Bayburt",
+         "Karaman","Kırıkkale","Batman","Şırnak","Bartın","Ardahan","Iğdır","Yalova",
+         "Karabük","Kilis","Osmaniye","Düzce"),
+  hh = c(3.25, 3.59, 3.12, 4.23, 2.79, 2.86, 2.90, 2.64, 2.72, 2.58, 2.80, 3.29,
+         3.94, 2.77, 2.64, 3.06, 2.51, 2.69, 2.71, 2.80, 4.09, 2.60, 3.01, 2.73,
+         3.36, 2.56, 3.67, 2.50, 2.67, 4.31, 3.32, 2.71, 3.05, 3.09, 2.75, 3.49,
+         2.63, 3.11, 2.65, 2.81, 3.16, 3.17, 2.71, 3.09, 2.91, 3.36, 4.25, 2.70,
+         4.11, 2.94, 3.01, 2.68, 2.81, 3.14, 2.94, 4.29, 2.57, 3.00, 2.99, 2.94,
+         2.83, 2.49, 4.63, 2.75, 4.18, 2.83, 2.71, 3.20, 2.98, 2.88, 2.75, 4.43,
+         4.84, 2.73, 2.96, 3.71, 2.87, 2.57, 3.26, 3.22, 3.02),
+  tdh = c(1.5484, 1.9146, 1.4264, 2.0549, 1.2643, 1.1096, 1.2017, 1.2307,
+          1.3136, 1.2467, 1.2749, 1.5171, 2.0533, 1.2228, 1.3112, 1.3249,
+          1.1695, 1.2810, 1.2206, 1.2532, 2.1351, 1.1234, 1.3484, 1.3021,
+          1.4944, 1.1083, 2.0023, 1.1374, 1.1402, 1.7071, 1.8099, 1.2241,
+          1.4223, 1.1380, 1.1020, 1.5875, 1.2791, 1.3845, 1.1496, 1.2237,
+          1.3884, 1.5277, 1.1264, 1.4008, 1.4063, 1.6989, 2.2295, 1.2147,
+          2.0069, 1.3183, 1.4725, 1.2545, 1.2763, 1.4144, 1.2445, 2.1084,
+          1.2542, 1.2418, 1.3692, 1.2185, 1.2809, 1.2281, 3.1503, 1.1673,
+          1.8744, 1.2347, 1.1114, 1.4905, 1.1871, 1.3287, 1.1369, 1.9984,
+          2.5340, 1.0925, 1.3878, 1.6131, 1.3584, 1.1366, 1.8383, 1.7071,
+          1.3593)
+)
+
+# Harita
+if (!exists("turkey_map")) {
+  library(rnaturalearth)
+  turkey_map <- ne_states(country = "turkey", returnclass = "sf")
+  normalize_il <- function(x) {
+    x <- tolower(x)
+    x <- chartr("\u00e7\u011f\u0131\u00f6\u015f\u00fc", "cgiosu", x)
+    x <- gsub("i\u0307", "i", x)
+    x <- trimws(x)
+    duzeltmeler <- c(
+      "zinguldak" = "zonguldak",
+      "kinkkale" = "kirikkale",
+      "k. maras" = "kahramanmaras",
+      "k.maras" = "kahramanmaras"
+    )
+    ifelse(x %in% names(duzeltmeler), duzeltmeler[x], x)
+  }
+  turkey_map$il_norm <- normalize_il(turkey_map$name)
+}
+
+hh_2025$il_norm <- normalize_il(hh_2025$il)
+map_hh <- merge(turkey_map, hh_2025, by = "il_norm", all.x = TRUE)
+
+library(ggplot2)
+library(plotly)
+
+p_map <- ggplot(map_hh) +
+  geom_sf(aes(fill = hh,
+              text = paste0(il, "\nOrtalama hanehalk\u0131: ", sprintf("%.2f", hh),
+                            "\nTDH: ", sprintf("%.2f", tdh))),
+          color = "white", linewidth = 0.15) +
+  scale_fill_gradient2(
+    low = "#2166AC", mid = "#F7F7F7", high = "#B2182B",
+    midpoint = 3.08,
+    name = "Ki\u015fi",
+    limits = c(2.4, 5.0),
+    breaks = c(2.5, 3.0, 3.5, 4.0, 4.5, 5.0)
+  ) +
+  theme_void() +
+  theme(
+    legend.position = "bottom",
+    legend.key.width = unit(1.5, "cm"),
+    legend.key.height = unit(0.3, "cm"),
+    plot.title = element_blank()
+  )
+
+ggplotly(p_map, tooltip = "text") |>
+  layout(
+    hoverlabel = list(bgcolor = "white"),
+    margin = list(t = 10, b = 10)
+  ) |>
+  style(hoveron = "fills")
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, ADNKS 2025. Türkiye ortalaması 3,08 kişi. Haritada kırmızı tonları ortalamanın üzerini, mavi tonları altını gösterir. Doğu ve Güneydoğu Anadolu belirgin biçimde yüksek hanehalkı büyüklüğüne sahipken, Batı ve Kuzey illeri 2,5 civarına düşmüştür. 2009'da ortalama hanehalkı büyüklüğü 3'ün altında yalnızca 1 il (Tunceli) varken, 2025'te bu sayı 45'e yükselmiştir.
+:::
+
+#### TDH ve Hanehalkı Büyüklüğü İlişkisi (81 İl, 2025) {.unnumbered}
+
+```{r}
+#| label: fig_tdh_hh_scatter
+#| fig-cap: "TDH ve Ortalama Hanehalkı Büyüklüğü İlişkisi (81 İl, 2025)"
+
+library(plotly)
+
+# Regresyon
+reg <- lm(hh ~ tdh, data = hh_2025)
+hh_2025$predicted <- predict(reg)
+
+# Bölge sınıflaması
+dogu_gd <- c("Ağrı","Bingöl","Bitlis","Diyarbakır","Elazığ","Erzincan","Erzurum",
+             "Hakkari","Kars","Malatya","Muş","Tunceli","Van",
+             "Adıyaman","Batman","Gaziantep","Mardin","Siirt","Şanlıurfa","Şırnak",
+             "Iğdır","Ardahan","Kilis")
+hh_2025$bolge <- ifelse(hh_2025$il %in% dogu_gd, "Doğu / Güneydoğu", "Diğer iller")
+
+# Etiketlenecek iller
+etiketli <- c("Şırnak","Şanlıurfa","Hakkari","Batman","Siirt","Van","Muş",
+              "Gaziantep","Diyarbakır","İstanbul","Ankara","İzmir",
+              "Eskişehir","Giresun","Tunceli","Çanakkale","Bartın")
+hh_2025$label <- ifelse(hh_2025$il %in% etiketli, hh_2025$il, "")
+
+plot_ly() |>
+  add_trace(
+    data = hh_2025[hh_2025$bolge == "Diğer iller",],
+    x = ~tdh, y = ~hh,
+    type = "scatter", mode = "markers",
+    marker = list(color = "#1F3864", size = 7, opacity = 0.7),
+    text = ~paste0(il, "<br>TDH: ", sprintf("%.2f", tdh),
+                   "<br>Hanehalk\u0131: ", sprintf("%.2f", hh)),
+    hoverinfo = "text",
+    name = "Di\u011fer iller"
+  ) |>
+  add_trace(
+    data = hh_2025[hh_2025$bolge == "Doğu / Güneydoğu",],
+    x = ~tdh, y = ~hh,
+    type = "scatter", mode = "markers",
+    marker = list(color = "#B2182B", size = 7, opacity = 0.7),
+    text = ~paste0(il, "<br>TDH: ", sprintf("%.2f", tdh),
+                   "<br>Hanehalk\u0131: ", sprintf("%.2f", hh)),
+    hoverinfo = "text",
+    name = "Do\u011fu / G\u00fcneydoğu"
+  ) |>
+  add_trace(
+    data = hh_2025,
+    x = ~tdh, y = ~predicted,
+    type = "scatter", mode = "lines",
+    line = list(color = "#9E7A1A", width = 2, dash = "dash"),
+    hoverinfo = "none",
+    name = paste0("OLS (\u03b2=1,37, R\u00b2=0,84)")
+  ) |>
+  add_annotations(
+    data = hh_2025[hh_2025$label != "",],
+    x = ~tdh, y = ~hh,
+    text = ~label,
+    showarrow = FALSE,
+    font = list(size = 9, color = "#333333"),
+    yshift = 10
+  ) |>
+  layout(
+    xaxis = list(title = "Toplam Do\u011furganl\u0131k H\u0131z\u0131 (TDH)", zeroline = FALSE,
+                 dtick = 0.5, range = c(0.95, 3.4)),
+    yaxis = list(title = "Ortalama Hanehalk\u0131 B\u00fcy\u00fckl\u00fc\u011f\u00fc (ki\u015fi)", zeroline = FALSE,
+                 dtick = 0.5, range = c(2.2, 5.2)),
+    legend = list(x = 0.02, y = 0.98, bgcolor = "rgba(255,255,255,0.8)"),
+    shapes = list(
+      list(type = "line", x0 = 1.30, x1 = 1.30, y0 = 2.2, y1 = 5.2,
+           line = list(color = "#B2182B", width = 1, dash = "dot")),
+      list(type = "line", x0 = 0.95, x1 = 3.4, y0 = 3.08, y1 = 3.08,
+           line = list(color = "#666666", width = 1, dash = "dot"))
+    ),
+    annotations = list(
+      list(x = 1.33, y = 5.1, text = "Lowest-low<br>e\u015fi\u011fi", showarrow = FALSE,
+           font = list(size = 9, color = "#B2182B")),
+      list(x = 3.2, y = 3.15, text = "TR ort. (3,08)", showarrow = FALSE,
+           font = list(size = 9, color = "#666666"))
+    ),
+    margin = list(t = 10)
+  )
+```
+
+::: {.callout-important}
+## TDH ve Hanehalkı Büyüklüğü: Panel Analizi
+
+81 il ve 2009-2025 dönemi (17 yıl, 1.377 il-yıl gözlemi) üzerinde yapılan analiz, il düzeyinde TDH ile ortalama hanehalkı büyüklüğü arasında güçlü ve istikrarlı bir ilişki olduğunu göstermektedir.
+
+**Kesit ilişkisi:** Pearson korelasyonu 2009-2025 döneminde 0,90-0,95 aralığında kalmıştır (2025: r = 0,91). 2025 kesit regresyonunda TDH'deki 1 puanlık artış, ortalama hanehalkı büyüklüğünde 1,37 kişilik artışla ilişkilidir (R² = 0,84).
+
+**Panel modelleri:** İl ve yıl sabit etkili model TDH'deki 1 puanlık değişimi hanehalkı büyüklüğünde 1,32 kişilik değişimle ilişkilendirmektedir. Yıllık birinci fark modeli ise 0,36 kişi karşılığı vermektedir (p < 0,001). Birinci fark katsayısının düşüklüğü, hanehalkı büyüklüğünün stok niteliğindeki bir gösterge olmasından kaynaklanır: TDH düşüşü hanehalkı yapısına gecikmeli ve birikimli olarak yansır.
+
+**Yapısal okuma:** Lowest-low illerin (TDH < 1,30, n = 38) ortalama hanehalkı büyüklüğü 2,74 kişi iken diğer illerde (n = 43) bu değer 3,43'tür. 2009'da yalnızca 1 ilde ortalama hanehalkı büyüklüğü 3'ün altındayken, 2025'te bu sayı 45'e yükselmiştir. Bu sonuçlar nedensel katsayı olarak yorumlanmamalıdır: TDH yıllık bir akım göstergesidir, ortalama hanehalkı büyüklüğü ise geçmiş doğumlar, evlilik, boşanma, göç ve çok kuşaklı birlikte yaşama düzenlerinin birikimli sonucudur.
+
+**Kaynak:** TÜİK, İllere Göre Toplam Doğurganlık Hızı 2009-2025; TÜİK, ADNKS Ortalama Hanehalkı Büyüklüğü 2009-2025. Panel modelleri: Türkiye toplamı hariç 81 il, standart hatalar il düzeyinde kümelenmiştir.
+:::
+
+#### Türkiye Geneli: Hanehalkı Büyüklüğü ve TDH (2009-2025) {.unnumbered}
+
+```{r}
+#| label: fig_hh_tdh_zaman
+#| fig-cap: "Türkiye Ortalama Hanehalkı Büyüklüğü ve TDH (2009-2025)"
+
+library(plotly)
+
+tr_zaman <- data.frame(
+  yil = 2009:2025,
+  tdh = c(2.100, 2.080, 2.047, 2.109, 2.107, 2.186, 2.157, 2.115, 2.082,
+          2.005, 1.889, 1.772, 1.712, 1.634, 1.517, 1.488, 1.419),
+  hh  = c(3.96, 3.84, 3.76, 3.69, 3.63, 3.57, 3.52, 3.48, 3.45,
+          3.41, 3.35, 3.30, 3.23, 3.17, 3.14, 3.11, 3.08)
+)
+
+plot_ly(tr_zaman) |>
+  add_trace(
+    x = ~yil, y = ~tdh,
+    type = "scatter", mode = "lines+markers",
+    line = list(color = "#1F3864", width = 2.5),
+    marker = list(color = "#1F3864", size = 5),
+    name = "TDH",
+    yaxis = "y"
+  ) |>
+  add_trace(
+    x = ~yil, y = ~hh,
+    type = "scatter", mode = "lines+markers",
+    line = list(color = "#9E7A1A", width = 2.5),
+    marker = list(color = "#9E7A1A", size = 5),
+    name = "Hanehalk\u0131 b\u00fcy\u00fckl\u00fc\u011f\u00fc",
+    yaxis = "y2"
+  ) |>
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(
+      title = list(text = "Toplam Do\u011furganl\u0131k H\u0131z\u0131",
+                   font = list(color = "#1F3864")),
+      side = "left", range = c(1.2, 2.4),
+      tickfont = list(color = "#1F3864"),
+      showgrid = TRUE, gridcolor = "#E8E8E8"
+    ),
+    yaxis2 = list(
+      title = list(text = "Ortalama Hanehalk\u0131 B\u00fcy\u00fckl\u00fc\u011f\u00fc (ki\u015fi)",
+                   font = list(color = "#9E7A1A")),
+      side = "right", overlaying = "y",
+      range = c(2.8, 4.2),
+      tickfont = list(color = "#9E7A1A"),
+      showgrid = FALSE
+    ),
+    legend = list(x = 0.5, y = 1.05, orientation = "h", xanchor = "center"),
+    shapes = list(
+      list(type = "line", x0 = 2009, x1 = 2025, y0 = 2.09, y1 = 2.09,
+           line = list(color = "#B2182B", width = 1, dash = "dot"))
+    ),
+    annotations = list(
+      list(x = 2011, y = 2.12, text = "Yenilenme d\u00fczeyi (~2,09)",
+           showarrow = FALSE, font = list(size = 9, color = "#B2182B"))
+    ),
+    margin = list(t = 10, r = 60)
+  )
+```
+
+::: {.callout-note}
+**Kaynak:** TÜİK, İllere Göre TDH ve ADNKS Ortalama Hanehalkı Büyüklüğü, 2009-2025. TDH 2009'da 2,10'dan 2025'te 1,42'ye düşerken (%32), ortalama hanehalkı büyüklüğü 3,96'dan 3,08'e gerilemiştir (%22). Hanehalkı büyüklüğünün görece daha yavaş daralması, stok-akım farkını yansıtır: mevcut hanelerde yetişkin bireyler yaşamaya devam ettiğinden, düşen doğumların hanehalkı yapısına tam yansıması kuşak gecikmesiyle gerçekleşir.
+:::
+
+### E. PPR₁ ve Hanehalkı Büyüklüğü (Ulusal Düzey) {.unnumbered}
+
+::: {.callout-warning}
+**Veri sınırlaması:** İl bazlı doğum sırası verisi mevcut olmadığından, bu bölümdeki PPR₁ analizi yalnızca **ulusal düzeyde** yapılabilmektedir. PPR₁, ulusal doğum sırası oranları (TÜİK, 2012-2025) ile ulusal TDH'nin çarpılmasıyla türetilen TDH₁ ve TDH₂ serilerinden hesaplanmıştır (PPR₁ = TDH₂/TDH₁), site genelinde kullanılan yöntemle tutarlıdır.
+:::
+
+```{r}
+#| label: fig_ppr1_hh_zaman
+#| fig-cap: "PPR₁ (Birinci-İkinci Çocuk Geçişi) ve Ortalama Hanehalkı Büyüklüğü, 2012-2025"
+
+library(plotly)
+
+ppr1_hh <- data.frame(
+  yil = 2012:2025,
+  ppr1 = c(0.911, 0.906, 0.903, 0.884, 0.880, 0.874, 0.892, 0.881,
+           0.863, 0.902, 0.803, 0.759, 0.734, 0.712),
+  hh = c(3.69, 3.63, 3.57, 3.52, 3.48, 3.45, 3.41, 3.35,
+         3.30, 3.23, 3.17, 3.14, 3.11, 3.08)
+)
+
+plot_ly(ppr1_hh) |>
+  add_trace(
+    x = ~yil, y = ~ppr1,
+    type = "scatter", mode = "lines+markers",
+    line = list(color = "#1F3864", width = 2.5),
+    marker = list(color = "#1F3864", size = 6),
+    name = "PPR\u2081 (1\u21922 ge\u00e7i\u015f)",
+    yaxis = "y"
+  ) |>
+  add_trace(
+    x = ~yil, y = ~hh,
+    type = "scatter", mode = "lines+markers",
+    line = list(color = "#9E7A1A", width = 2.5),
+    marker = list(color = "#9E7A1A", size = 6),
+    name = "Hanehalk\u0131 b\u00fcy\u00fckl\u00fc\u011f\u00fc",
+    yaxis = "y2"
+  ) |>
+  layout(
+    xaxis = list(title = "", dtick = 2),
+    yaxis = list(
+      title = list(text = "PPR\u2081", font = list(color = "#1F3864")),
+      side = "left", range = c(0.68, 0.94),
+      tickfont = list(color = "#1F3864"),
+      showgrid = TRUE, gridcolor = "#E8E8E8"
+    ),
+    yaxis2 = list(
+      title = list(text = "Ortalama Hanehalk\u0131 B\u00fcy\u00fckl\u00fc\u011f\u00fc (ki\u015fi)",
+                   font = list(color = "#9E7A1A")),
+      side = "right", overlaying = "y",
+      range = c(3.0, 3.75),
+      tickfont = list(color = "#9E7A1A"),
+      showgrid = FALSE
+    ),
+    legend = list(x = 0.5, y = 1.08, orientation = "h", xanchor = "center"),
+    shapes = list(
+      list(type = "line", x0 = 2021, x1 = 2021, y0 = 0.68, y1 = 0.94,
+           line = list(color = "#B2182B", width = 1, dash = "dot"))
+    ),
+    annotations = list(
+      list(x = 2021, y = 0.945, text = "PPR\u2081 k\u0131r\u0131lmas\u0131",
+           showarrow = FALSE, font = list(size = 9, color = "#B2182B"))
+    ),
+    margin = list(t = 30, r = 60)
+  )
+```
+
+```{r}
+#| label: fig_ppr1_hh_scatter
+#| fig-cap: "PPR₁ ve Ortalama Hanehalkı Büyüklüğü İlişkisi (Ulusal, 2012-2025)"
+
+reg_ppr1 <- lm(hh ~ ppr1, data = ppr1_hh)
+ppr1_hh$predicted <- predict(reg_ppr1)
+ppr1_hh$label <- as.character(ppr1_hh$yil)
+
+plot_ly(ppr1_hh) |>
+  add_trace(
+    x = ~ppr1, y = ~hh,
+    type = "scatter", mode = "markers",
+    marker = list(color = "#1F3864", size = 9, opacity = 0.75),
+    text = ~paste0(yil, "<br>PPR\u2081: ", sprintf("%.3f", ppr1),
+                   "<br>Hanehalk\u0131: ", sprintf("%.2f", hh)),
+    hoverinfo = "text",
+    showlegend = FALSE
+  ) |>
+  add_trace(
+    x = ~ppr1, y = ~predicted,
+    type = "scatter", mode = "lines",
+    line = list(color = "#9E7A1A", width = 2, dash = "dash"),
+    hoverinfo = "none",
+    name = "OLS (\u03b2=2,44, R\u00b2=0,69)"
+  ) |>
+  add_annotations(
+    x = ~ppr1, y = ~hh, text = ~label,
+    showarrow = FALSE,
+    font = list(size = 8, color = "#555555"),
+    yshift = 11
+  ) |>
+  layout(
+    xaxis = list(title = "PPR\u2081 (Birinci-\u0130kinci \u00c7ocuk Ge\u00e7i\u015fi)",
+                 autorange = "reversed", dtick = 0.05),
+    yaxis = list(title = "Ortalama Hanehalk\u0131 B\u00fcy\u00fckl\u00fc\u011f\u00fc (ki\u015fi)",
+                 dtick = 0.1),
+    legend = list(x = 0.02, y = 0.98, bgcolor = "rgba(255,255,255,0.8)"),
+    margin = list(t = 10)
+  )
+```
+
+::: {.callout-important}
+## PPR₁ ve Hanehalkı Büyüklüğü: Ulusal Düzey Bulgular
+
+**Düzey ilişkisi güçlü:** 2012-2025 döneminde (n=14 yıl) PPR₁ ile ortalama hanehalkı büyüklüğü arasında Pearson korelasyonu r = 0,83'tür (p < 0,001). Basit regresyonda PPR₁'deki 0,10 puanlık düşüş, hanehalkı büyüklüğünde ortalama 0,24 kişilik azalışla ilişkilidir (R² = 0,69).
+
+**Yıllık değişim ilişkisi zayıf:** Birinci fark modelinde (ΔPPR₁ ile ΔHH) korelasyon istatistiksel olarak anlamsızdır (r = −0,14, p = 0,65). Bu, sitenin diğer bölümlerinde (internet-TDH paneli, β-yakınsama) tekrarlanan bir örüntüdür: düzey ilişkisinin gücü, iki serinin de zaman içinde aynı yönde ve kalıcı biçimde hareket etmesinden kaynaklanır; yıl içi eş-hareket kanıtı zayıftır. Bu nedenle PPR₁'deki yıllık değişimin hanehalkı büyüklüğünü **doğrudan ve o yıl içinde** sürüklediği iddia edilemez.
+
+**Ayrışan hızlar, önemli bir bulgu:** 2021 sonrası PPR₁'in yıllık düşüş hızı belirgin biçimde hızlanmıştır (2012-2021: yılda −0,003 puan; 2021-2025: yılda −0,045 puan, yaklaşık 15 kat). Buna karşılık hanehalkı büyüklüğünün düşüş hızı bu dönemde hafifçe **yavaşlamıştır** (2012-2021: yılda −0,048 kişi; 2021-2025: yılda −0,036 kişi). Bu ayrışma, hanehalkı büyüklüğünün PPR₁'deki 2022 sonrası yapısal kırılmayı henüz tam olarak yansıtmadığını göstermektedir; hanehalkı stoku, akım göstergesindeki ani kırılmalara kuşak gecikmesiyle tepki verir.
+
+**Kaynak:** TÜİK, Doğum Sırasına Göre Doğumların Oranı 2012-2025; TÜİK, İllere Göre TDH (Türkiye toplamı); TÜİK, ADNKS Ortalama Hanehalkı Büyüklüğü. PPR₁ = TDH₂/TDH₁, sitenin standart hesaplama yöntemiyle tutarlıdır.
+:::
 
 ### Kaba Evlenme ve Boşanma Hızı (2001–2025)
 
