@@ -915,3 +915,357 @@ Plot.plot({
 ::: {.callout-tip}
 **Planlanan ek modeller:** Stok-Akış Paradoksu, Bongaarts-Feeney Tempo Hesaplayıcı, Nesil Uzunluğu Hızlandırıcısı, Sürdürülebilirlik Düzey Kontrol Paneli ve daha fazlası bu bölüme eklenecektir. Tam liste için [proje yol haritasına](/about.qmd) bakınız.
 :::
+---
+title: "Doğum Simülatörü"
+subtitle: "Toplam Doğurganlık Hızı ve Yıllık Doğum Sayısı Projeksiyonu (2025-2100)"
+format:
+  html:
+    page-layout: full
+    toc: false
+    code-fold: true
+---
+
+::: {.callout-note}
+## Model Hakkında
+
+Bu simülatör, kullanıcının belirlediği TDH senaryosu altında Türkiye'de yılda kaç çocuk doğacağını 2100'e kadar projekte eder. Model, kadın nüfus piramidini yıldan yıla ileriye taşıyarak **geri besleme döngüsünü** canlı biçimde gösterir: düşük TDH, daha az kız doğumuna yol açar; bu kız çocukları 25 yıl sonra üreme çağına girdiğinde kadın havuzu küçülmüş olacağından, aynı TDH düzeyinde bile toplam doğum sayısı düşmeye devam eder.
+
+**Yöntem:** Basitleştirilmiş kuşak-bileşenleri (Leslie matrisi). Baz yıl kadın nüfusu TÜİK ADNKS 2025, yaşa özel doğurganlık hızları (YÖDH) TÜİK 2025 değerleridir. Ölümlülük, Türkiye kadın yaşam tablosu (e₀ ≈ 81) ile uyumlu yaş-spesifik hayatta kalma oranlarına dayanır. Göç modele dahil edilmemiştir (kapalı nüfus varsayımı).
+
+**Kaynak:** TÜİK, Doğum İstatistikleri 2009-2025; TÜİK, ADNKS 2025; TÜİK, Yaşa Özel Doğurganlık Hızı 2025.
+:::
+
+```{ojs}
+//| echo: false
+
+// ========== GİRDİLER ==========
+viewof tdh_hedef = Inputs.range([0.5, 3.5], {
+  value: 1.42,
+  step: 0.01,
+  label: "Hedef TDH"
+})
+
+viewof gecis_modu = Inputs.radio(
+  ["Sabit (2025'ten itibaren)", "Kademeli (2040'a kadar)", "Kademeli (2050'ye kadar)"],
+  {value: "Sabit (2025'ten itibaren)", label: "Geçiş modu"}
+)
+```
+
+```{ojs}
+//| echo: false
+
+// ========== SABİTLER ==========
+
+// 2025 kadın nüfusu (tek yaş, 0-100)
+// Ages 0-16: TÜİK kız doğum verisi (2009-2025), mortalite düzeltmeli
+// Ages 17+: TÜİK ADNKS 2025 toplam kadın nüfusuna (43.032.734) kalibre edilmiş tahmin
+femPop2025 = {
+  // Ages 0-16: TÜİK kız doğum verisi (2009-2025), mortalite düzeltmeli
+  // Ages 17-49: TÜİK 2025 doğum sayısına (895.000) kalibre edilmiş (×1,069)
+  // Ages 50+: TÜİK toplam kadın = 43.032.734'e kalibre (×0,902)
+  const p = [
+    433268, 455713, 467950, 505325, 527203,   // 0-4
+    545078, 580344, 611257, 632075, 640009,   // 5-9
+    650458, 656502, 629916, 629603, 608658,   // 10-14
+    612696, 614703, 612335, 612335, 612335,   // 15-19
+    612335, 612335, 612335, 612335, 612335,   // 20-24
+    630183, 630183, 630183, 630183, 630183,   // 25-29
+    630183, 630183, 630183, 630183, 630183,   // 30-34
+    656402, 656402, 656402, 656402, 656402,   // 35-39
+    656402, 656402, 656402, 656402, 656402,   // 40-44
+    605572, 605572, 605572, 605572, 605572,   // 45-49
+    448678, 448678, 448678, 448678, 448678,   // 50-54
+    448678, 448678, 448678, 448678, 448678,   // 55-59
+    373585, 373585, 373585, 373585, 373585,   // 60-64
+    373585, 373585, 373585, 373585, 373585,   // 65-69
+    294517, 294517, 294517, 294517, 294517,   // 70-74
+    294517, 294517, 294517, 294517, 294517,   // 75-79
+    108770, 108770, 108770, 108770, 108770,   // 80-84
+    108770, 108770, 108770, 108770, 108770,   // 85-89
+    16733, 16733, 16733, 16733, 16733,        // 90-94
+    16733, 16733, 16733, 16733, 16733,        // 95-99
+    16733                                      // 100
+  ];
+  return p;
+}
+
+// 2025 ASFR deseni (kadın başına, tek yaş -- grup oranı her yaşa uygulanır)
+// TÜİK 2025: 15-19: 9.15‰, 20-24: 53.25‰, 25-29: 95.86‰,
+//             30-34: 79.59‰, 35-39: 36.70‰, 40-44: 8.45‰, 45-49: 0.71‰
+// TDH = Σ(ASFR×5)/1000 = 1.419
+asfrBase = {
+  const a = new Array(101).fill(0);
+  const rates = [0.009150, 0.053249, 0.095859, 0.079586, 0.036697, 0.008451, 0.000714];
+  const starts = [15, 20, 25, 30, 35, 40, 45];
+  for (let g = 0; g < 7; g++) {
+    for (let i = 0; i < 5; i++) {
+      a[starts[g] + i] = rates[g];
+    }
+  }
+  return a;
+}
+
+baseTDH = {
+  let s = 0;
+  for (let a = 15; a <= 49; a++) s += asfrBase[a];
+  return s;  // = TDH/5 × 7_groups... actually = TDH since sum of per-woman rates
+}
+
+// Hayatta kalma oranları (kadın, tek yaş, yaklaşık Türkiye e₀≈81)
+survival = {
+  const s = new Array(101).fill(0);
+  for (let a = 0; a < 101; a++) {
+    if (a === 0) s[a] = 0.9950;
+    else if (a < 5) s[a] = 0.9985;
+    else if (a < 15) s[a] = 0.9997;
+    else if (a < 40) s[a] = 0.9993;
+    else if (a < 50) s[a] = 0.9985;
+    else if (a < 60) s[a] = 0.9965;
+    else if (a < 70) s[a] = 0.9920;
+    else if (a < 80) s[a] = 0.9800;
+    else if (a < 90) s[a] = 0.9400;
+    else s[a] = 0.8500;
+  }
+  return s;
+}
+
+// Kız doğum oranı (toplam doğumda kadın payı)
+kizOrani = 0.4868
+```
+
+```{ojs}
+//| echo: false
+
+// ========== SİMÜLASYON ==========
+simulasyon = {
+  const startYear = 2025;
+  const endYear = 2100;
+  const nYears = endYear - startYear + 1;
+
+  // Geçiş parametreleri
+  let gecisYili;
+  if (gecis_modu === "Sabit (2025'ten itibaren)") gecisYili = 2025;
+  else if (gecis_modu === "Kademeli (2040'a kadar)") gecisYili = 2040;
+  else gecisYili = 2050;
+
+  // Başlangıç nüfusu kopyala
+  const pop = femPop2025.slice();
+
+  const sonuclar = [];
+
+  for (let t = 0; t < nYears; t++) {
+    const yil = startYear + t;
+
+    // Bu yılın TDH'si
+    let tdh_yil;
+    if (yil <= 2025) {
+      tdh_yil = 1.419;
+    } else if (yil >= gecisYili) {
+      tdh_yil = tdh_hedef;
+    } else {
+      const frac = (yil - 2025) / (gecisYili - 2025);
+      tdh_yil = 1.419 + (tdh_hedef - 1.419) * frac;
+    }
+
+    // ASFR ölçekle
+    const scale = tdh_yil / baseTDH;
+
+    // Doğumları hesapla
+    let toplam_dogum = 0;
+    for (let a = 15; a <= 49; a++) {
+      toplam_dogum += asfrBase[a] * scale * pop[a];
+    }
+
+    // 15-49 kadın havuzu
+    let havuz = 0;
+    for (let a = 15; a <= 49; a++) havuz += pop[a];
+
+    sonuclar.push({
+      yil: yil,
+      dogum: Math.round(toplam_dogum),
+      kiz_dogum: Math.round(toplam_dogum * kizOrani),
+      havuz: Math.round(havuz),
+      tdh: Math.round(tdh_yil * 1000) / 1000
+    });
+
+    // Nüfusu yaşlandır (sondan başa)
+    for (let a = 100; a >= 1; a--) {
+      pop[a] = pop[a - 1] * survival[a - 1];
+    }
+    // Yeni kız doğumları yaş 0'a ekle
+    pop[0] = toplam_dogum * kizOrani;
+  }
+
+  return sonuclar;
+}
+```
+
+```{ojs}
+//| echo: false
+
+// ========== GRAFİKLER ==========
+
+// Referans: 2025 doğum sayısı
+dogum2025 = simulasyon[0].dogum
+
+// Yenilenme düzeyinde doğum (TDH=2.09 ile aynı havuzda)
+yenilenme_dogum = {
+  const scale = 2.094 / baseTDH;
+  let d = 0;
+  for (let a = 15; a <= 49; a++) d += asfrBase[a] * scale * femPop2025[a];
+  return Math.round(d);
+}
+
+Plot.plot({
+  width: Math.min(900, window.innerWidth - 40),
+  height: 420,
+  marginLeft: 70,
+  marginRight: 20,
+  marginBottom: 50,
+  style: {
+    fontFamily: "Inter, system-ui, sans-serif",
+    fontSize: 12
+  },
+  x: {
+    label: null,
+    tickFormat: d => String(d)
+  },
+  y: {
+    label: "Yıllık doğum sayısı",
+    tickFormat: d => (d / 1e6).toFixed(1) + "M",
+    grid: true
+  },
+  color: {
+    legend: false
+  },
+  marks: [
+    // Yenilenme çizgisi (referans)
+    Plot.ruleY([yenilenme_dogum], {
+      stroke: "#B2182B",
+      strokeDasharray: "6,4",
+      strokeWidth: 1
+    }),
+    Plot.text([{x: 2030, y: yenilenme_dogum}], {
+      x: "x", y: "y",
+      text: d => `Yenilenme düzeyinde 2025 doğumu (~${(yenilenme_dogum/1e6).toFixed(2)}M)`,
+      fill: "#B2182B",
+      fontSize: 10,
+      dy: -10
+    }),
+    // 2025 seviyesi
+    Plot.ruleY([dogum2025], {
+      stroke: "#888888",
+      strokeDasharray: "3,3",
+      strokeWidth: 1
+    }),
+    Plot.text([{x: 2080, y: dogum2025}], {
+      x: "x", y: "y",
+      text: d => `2025 seviyesi (${(dogum2025/1e3).toFixed(0)}K)`,
+      fill: "#888888",
+      fontSize: 10,
+      dy: -10
+    }),
+    // Ana çizgi
+    Plot.line(simulasyon, {
+      x: "yil",
+      y: "dogum",
+      stroke: "#1F3864",
+      strokeWidth: 2.5
+    }),
+    // Noktalar (her 5 yılda bir)
+    Plot.dot(simulasyon.filter(d => d.yil % 10 === 0), {
+      x: "yil",
+      y: "dogum",
+      fill: "#1F3864",
+      r: 3.5
+    }),
+    // Tooltip
+    Plot.tip(simulasyon, Plot.pointerX({
+      x: "yil",
+      y: "dogum",
+      title: d => `${d.yil}\nDoğum: ${(d.dogum / 1e3).toFixed(0)}K\nTDH: ${d.tdh.toFixed(2)}\n15-49 havuz: ${(d.havuz / 1e6).toFixed(2)}M`
+    }))
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+
+// ========== 15-49 KADIN HAVUZU ==========
+
+Plot.plot({
+  width: Math.min(900, window.innerWidth - 40),
+  height: 280,
+  marginLeft: 70,
+  marginRight: 20,
+  marginBottom: 50,
+  style: {
+    fontFamily: "Inter, system-ui, sans-serif",
+    fontSize: 12
+  },
+  x: {
+    label: null,
+    tickFormat: d => String(d)
+  },
+  y: {
+    label: "15-49 yaş kadın nüfusu",
+    tickFormat: d => (d / 1e6).toFixed(0) + "M",
+    grid: true
+  },
+  marks: [
+    Plot.line(simulasyon, {
+      x: "yil",
+      y: "havuz",
+      stroke: "#9E7A1A",
+      strokeWidth: 2.5
+    }),
+    Plot.dot(simulasyon.filter(d => d.yil % 10 === 0), {
+      x: "yil",
+      y: "havuz",
+      fill: "#9E7A1A",
+      r: 3.5
+    }),
+    Plot.tip(simulasyon, Plot.pointerX({
+      x: "yil",
+      y: "havuz",
+      title: d => `${d.yil}\n15-49: ${(d.havuz / 1e6).toFixed(2)}M\nDoğum: ${(d.dogum / 1e3).toFixed(0)}K`
+    }))
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+
+// ========== ÖZET TABLO ==========
+
+md`**Seçili TDH:** ${tdh_hedef.toFixed(2)} | **Geçiş:** ${gecis_modu}`
+
+Inputs.table(
+  simulasyon.filter(d => [2025, 2030, 2035, 2040, 2050, 2060, 2070, 2080, 2090, 2100].includes(d.yil)),
+  {
+    columns: ["yil", "tdh", "dogum", "kiz_dogum", "havuz"],
+    header: {
+      yil: "Yıl",
+      tdh: "TDH",
+      dogum: "Toplam Doğum",
+      kiz_dogum: "Kız Doğum",
+      havuz: "15-49 Kadın"
+    },
+    format: {
+      dogum: d => (d / 1000).toFixed(0) + "K",
+      kiz_dogum: d => (d / 1000).toFixed(0) + "K",
+      havuz: d => (d / 1e6).toFixed(2) + "M",
+      tdh: d => d.toFixed(2)
+    },
+    width: {yil: 60, tdh: 60, dogum: 100, kiz_dogum: 100, havuz: 100}
+  }
+)
+```
+
+::: {.callout-warning}
+## Modelin Sınırları
+
+Bu simülatör **kapalı nüfus** varsayımı altında çalışır: uluslararası göç dahil edilmemiştir. Gerçek doğum sayıları, göçle gelen/giden üreme çağı kadın nüfusundan etkilenecektir. YÖDH yaş deseni 2025 değerlerinde sabit tutulmuştur (yalnızca düzey, yani TDH değişir). Ortalama doğum yaşındaki olası kaymalar modele yansıtılmamıştır. Hayatta kalma oranları zaman içinde sabit varsayılmıştır (gerçekte iyileşme beklenir). 17 yaş ve üzeri kadın nüfusu TÜİK toplam kadın nüfusuna kalibre edilmiş tahmindir; tam doğruluk için ADNKS tek yaş × cinsiyet tablosu kullanılmalıdır.
+:::
