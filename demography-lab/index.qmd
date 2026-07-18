@@ -924,13 +924,21 @@ format:
     toc: false
     code-fold: true
 ---
+title: "Doğum Simülatörü"
+subtitle: "Toplam Doğurganlık Hızı ve Yıllık Doğum Sayısı Projeksiyonu (2025-2100)"
+format:
+  html:
+    page-layout: full
+    toc: false
+    code-fold: true
+---
 
 ::: {.callout-note}
 ## Model Hakkında
 
 Bu simülatör, kullanıcının belirlediği TDH senaryosu altında Türkiye'de yılda kaç çocuk doğacağını 2100'e kadar projekte eder. Model, kadın nüfus piramidini yıldan yıla ileriye taşıyarak **geri besleme döngüsünü** canlı biçimde gösterir: düşük TDH, daha az kız doğumuna yol açar; bu kız çocukları 25 yıl sonra üreme çağına girdiğinde kadın havuzu küçülmüş olacağından, aynı TDH düzeyinde bile toplam doğum sayısı düşmeye devam eder.
 
-**Yöntem:** Basitleştirilmiş kuşak-bileşenleri (Leslie matrisi). Baz yıl kadın nüfusu TÜİK ADNKS 2025, yaşa özel doğurganlık hızları (YÖDH) TÜİK 2025 değerleridir. Ölümlülük, Türkiye kadın yaşam tablosu (e₀ ≈ 81) ile uyumlu yaş-spesifik hayatta kalma oranlarına dayanır. Göç modele dahil edilmemiştir (kapalı nüfus varsayımı).
+**Yöntem:** Basitleştirilmiş kuşak-bileşenleri (Leslie matrisi). Baz yıl kadın nüfusu TÜİK ADNKS 2025 tek yaş × cinsiyet tablosundan (0-74 yaş birebir, 75+ dağıtımlı; toplam 43.032.734, 15-49 kadın havuzu 21.948.521). Yaşa özel doğurganlık hızları (YÖDH) TÜİK 2025 değerleridir. Ölümlülük, Türkiye kadın yaşam tablosu (e₀ ≈ 81) ile uyumlu yaş-spesifik hayatta kalma oranlarına dayanır. Göç modele dahil edilmemiştir (kapalı nüfus varsayımı). Baz yıl (2025) hesaplanan doğum sayısı: 894.542 (TÜİK gerçek: ~895.000, fark %0,1).
 
 **Kaynak:** TÜİK, Doğum İstatistikleri 2009-2025; TÜİK, ADNKS 2025; TÜİK, Yaşa Özel Doğurganlık Hızı 2025.
 :::
@@ -957,34 +965,32 @@ viewof gecis_modu = Inputs.radio(
 // ========== SABİTLER ==========
 
 // 2025 kadın nüfusu (tek yaş, 0-100)
-// Ages 0-16: TÜİK kız doğum verisi (2009-2025), mortalite düzeltmeli
-// Ages 17+: TÜİK ADNKS 2025 toplam kadın nüfusuna (43.032.734) kalibre edilmiş tahmin
+// Kaynak: TÜİK, ADNKS 2025 (İl, tek yaş ve cinsiyete göre nüfus)
+// 0-74: birebir TÜİK değerleri; 75+: 2.121.898 toplam, üstel dağıtımla tek yaşa açılmış
+// Toplam: 43.032.734, 15-49: 21.948.521
 femPop2025 = {
-  // Ages 0-16: TÜİK kız doğum verisi (2009-2025), mortalite düzeltmeli
-  // Ages 17-49: TÜİK 2025 doğum sayısına (895.000) kalibre edilmiş (×1,069)
-  // Ages 50+: TÜİK toplam kadın = 43.032.734'e kalibre (×0,902)
   const p = [
-    433268, 455713, 467950, 505325, 527203,   // 0-4
-    545078, 580344, 611257, 632075, 640009,   // 5-9
-    650458, 656502, 629916, 629603, 608658,   // 10-14
-    612696, 614703, 612335, 612335, 612335,   // 15-19
-    612335, 612335, 612335, 612335, 612335,   // 20-24
-    630183, 630183, 630183, 630183, 630183,   // 25-29
-    630183, 630183, 630183, 630183, 630183,   // 30-34
-    656402, 656402, 656402, 656402, 656402,   // 35-39
-    656402, 656402, 656402, 656402, 656402,   // 40-44
-    605572, 605572, 605572, 605572, 605572,   // 45-49
-    448678, 448678, 448678, 448678, 448678,   // 50-54
-    448678, 448678, 448678, 448678, 448678,   // 55-59
-    373585, 373585, 373585, 373585, 373585,   // 60-64
-    373585, 373585, 373585, 373585, 373585,   // 65-69
-    294517, 294517, 294517, 294517, 294517,   // 70-74
-    294517, 294517, 294517, 294517, 294517,   // 75-79
-    108770, 108770, 108770, 108770, 108770,   // 80-84
-    108770, 108770, 108770, 108770, 108770,   // 85-89
-    16733, 16733, 16733, 16733, 16733,        // 90-94
-    16733, 16733, 16733, 16733, 16733,        // 95-99
-    16733                                      // 100
+    423378, 450710, 466064, 501245, 523734,   // 0-4
+    542375, 577042, 609676, 629835, 640178,   // 5-9
+    649365, 655835, 630003, 630141, 608604,   // 10-14
+    614525, 617468, 639521, 640049, 624261,   // 15-19
+    616124, 605665, 594495, 602515, 643773,   // 20-24
+    655143, 660255, 654493, 649291, 628480,   // 25-29
+    623089, 644615, 630459, 609583, 609184,   // 30-34
+    610763, 623886, 625664, 622686, 628321,   // 35-39
+    624627, 627433, 617648, 630676, 696265,   // 40-44
+    671171, 639621, 618367, 597456, 550949,   // 45-49
+    524228, 592506, 578661, 547468, 515570,   // 50-54
+    499702, 479844, 439664, 383287, 431781,   // 55-59
+    535570, 501331, 431925, 421111, 365411,   // 60-64
+    428281, 380808, 319936, 283091, 328935,   // 65-69
+    395180, 319521, 270031, 247080, 203208,   // 70-74
+    264142, 232445, 204551, 180005, 158404,   // 75-79
+    139396, 122668, 107948, 94994, 83595,     // 80-84
+    73563, 64736, 56967, 50131, 44115,        // 85-89
+    38822, 34163, 30063, 26456, 23281,        // 90-94
+    20487, 18029, 15865, 13961, 12286,        // 95-99
+    10825                                      // 100
   ];
   return p;
 }
@@ -1267,5 +1273,6 @@ Inputs.table(
 ::: {.callout-warning}
 ## Modelin Sınırları
 
-Bu simülatör **kapalı nüfus** varsayımı altında çalışır: uluslararası göç dahil edilmemiştir. Gerçek doğum sayıları, göçle gelen/giden üreme çağı kadın nüfusundan etkilenecektir. YÖDH yaş deseni 2025 değerlerinde sabit tutulmuştur (yalnızca düzey, yani TDH değişir). Ortalama doğum yaşındaki olası kaymalar modele yansıtılmamıştır. Hayatta kalma oranları zaman içinde sabit varsayılmıştır (gerçekte iyileşme beklenir). 17 yaş ve üzeri kadın nüfusu TÜİK toplam kadın nüfusuna kalibre edilmiş tahmindir; tam doğruluk için ADNKS tek yaş × cinsiyet tablosu kullanılmalıdır.
+Bu simülatör **kapalı nüfus** varsayımı altında çalışır: uluslararası göç dahil edilmemiştir. Gerçek doğum sayıları, göçle gelen/giden üreme çağı kadın nüfusundan etkilenecektir. YÖDH yaş deseni 2025 değerlerinde sabit tutulmuştur (yalnızca düzey, yani TDH değişir). Ortalama doğum yaşındaki olası kaymalar modele yansıtılmamıştır. Hayatta kalma oranları zaman içinde sabit varsayılmıştır (gerçekte iyileşme beklenir). 75 yaş ve üzeri nüfus, TÜİK'in yayımladığı toplam değerden (2.121.898) üstel dağıtım ile tek yaşa açılmıştır.
 :::
+
