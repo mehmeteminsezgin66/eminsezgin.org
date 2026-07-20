@@ -1198,7 +1198,7 @@ plot_ly() |>
            showarrow = FALSE,
            font = list(size = 9, color = "#3A6B35")),
       # 2022 şoku
-      list(x = 2020.2, y = 0.830,
+      list(x = 2020.2, y = 0.810,
            text = "2022 \u015foku: -0,098",
            xanchor = "right", yanchor = "middle",
            showarrow = TRUE,
@@ -1215,7 +1215,7 @@ plot_ly() |>
            font = list(size = 9, color = "#8B6914"))
     ),
     legend = list(
-      x = 0.55, y = 0.20,
+      x = 0.02, y = 0.12,
       bgcolor = "rgba(255,255,255,0.85)",
       bordercolor = "#DDDDDD",
       borderwidth = 1,
