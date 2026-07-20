@@ -1094,6 +1094,125 @@ fig10
 **Bu sekmenin özgün katkısı:** Yukarıdaki on grafik, TÜİK'in yayımladığı ham verilerden değil, bu araştırma programının kendi HWP ayrıştırma ve PPR hesaplama metodolojisinden üretilmiştir — başka bir kaynakta bulunmayan analitik çıktılardır. Detaylı metodoloji için [Türkiye'de Toplam Doğurganlık Düşüşünün Anatomisi](/arastirmalar/hwp-analizi.qmd) araştırma sayfasına bakınız.
 :::
 
+
+#### PPR₁: Ham ve Tempo-Düzeltilmiş Tahminler (2013–2025) {.unnumbered}
+
+```{r}
+#| label: fig_ppr1_tempo
+#| fig-cap: "Türkiye'nin Birinci Çocuktan İkinci Çocuğa Geçiş Oranı: Ham ve Tempo-Düzeltilmiş Dönemsel Tahminler (2013–2025)"
+
+library(plotly)
+
+# Ham PPR1 (TÜİK doğum sırası verisi × ulusal TDH, 2013-2025)
+yillar_ham <- 2013:2025
+ppr1_ham <- c(0.906, 0.903, 0.884, 0.880, 0.874, 0.892, 0.881,
+              0.863, 0.902, 0.803, 0.759, 0.734, 0.712)
+
+# Tempo-düzeltilmiş dönem ortalamaları (Bongaarts-Feeney, sıra-özel)
+# 2013-14 ort.: 0.884, 2023-24 ort.: 0.667
+tempo_x0 <- c(2013, 2014)
+tempo_x1 <- c(2023, 2024)
+tempo_y0 <- 0.884
+tempo_y1 <- 0.667
+
+plot_ly() |>
+  # Ham seri
+  add_trace(
+    x = ~yillar_ham, y = ~ppr1_ham,
+    type = "scatter", mode = "lines+markers",
+    name = "PPR\u2081, ham (revize T\u00dc\u0130K serisi)",
+    line = list(color = "#1F3864", width = 2.5),
+    marker = list(color = "#1F3864", size = 6),
+    hovertemplate = "%{x}: %{y:.3f}<extra>Ham PPR\u2081</extra>"
+  ) |>
+  # Alarm bandi (0.70-0.75)
+  add_trace(
+    x = c(2013, 2025, 2025, 2013),
+    y = c(0.70, 0.70, 0.75, 0.75),
+    type = "scatter", mode = "none", fill = "toself",
+    fillcolor = "rgba(205,170,105,0.18)",
+    line = list(color = "transparent"),
+    name = "Ge\u00e7i\u015f / alarm band\u0131 (0,70-0,75)",
+    hoverinfo = "none",
+    showlegend = TRUE
+  ) |>
+  # Tempo-düzeltilmiş dönem ortalaması 1 (2013-14)
+  add_trace(
+    x = c(tempo_x0[1] - 0.3, tempo_x0[2] + 0.3),
+    y = c(tempo_y0, tempo_y0),
+    type = "scatter", mode = "lines",
+    name = "PPR\u2081, tempo-d\u00fczeltilmi\u015f d\u00f6nem ortalamalar\u0131 (B-F)",
+    line = list(color = "#3A6B35", width = 6),
+    hovertemplate = paste0("2013-14 ort.: ", tempo_y0, "<extra>Tempo-d\u00fczeltilmi\u015f</extra>")
+  ) |>
+  # Tempo-düzeltilmiş dönem ortalaması 2 (2023-24)
+  add_trace(
+    x = c(tempo_x1[1] - 0.3, tempo_x1[2] + 0.3),
+    y = c(tempo_y1, tempo_y1),
+    type = "scatter", mode = "lines",
+    showlegend = FALSE,
+    line = list(color = "#3A6B35", width = 6),
+    hovertemplate = paste0("2023-24 ort.: ", tempo_y1, "<extra>Tempo-d\u00fczeltilmi\u015f</extra>")
+  ) |>
+  layout(
+    xaxis = list(title = "Y\u0131l", range = c(2012.5, 2025.8), dtick = 1,
+                 tickangle = -45),
+    yaxis = list(title = "PPR\u2081", range = c(0.55, 1.02), dtick = 0.1,
+                 showgrid = TRUE, gridcolor = "#E8E8E8"),
+    shapes = list(
+      # Davranışsal taban çizgisi (0.70)
+      list(type = "line", x0 = 2012.5, x1 = 2025.8, y0 = 0.70, y1 = 0.70,
+           line = list(color = "#B2182B", width = 1.5)),
+      # 2022 şok dönemi işaret çizgisi
+      list(type = "line", x0 = 2022, x1 = 2022, y0 = 0.55, y1 = 1.02,
+           line = list(color = "#888888", width = 0.8, dash = "dot"))
+    ),
+    annotations = list(
+      # Davranışsal taban etiketi
+      list(x = 2014.5, y = 0.697, text = "davran\u0131\u015fsal taban 0,70",
+           showarrow = FALSE, font = list(size = 10, color = "#B2182B")),
+      # Alarm bandı etiketi
+      list(x = 2014.2, y = 0.726, text = "ge\u00e7i\u015f / alarm band\u0131<br>0,70-0,75",
+           showarrow = FALSE, font = list(size = 10, color = "#8B6914"),
+           align = "left"),
+      # 2013-14 ort. etiketi
+      list(x = 2013.7, y = 0.867, text = "2013-14 ort.<br>0,884",
+           showarrow = FALSE, font = list(size = 10, color = "#3A6B35"),
+           align = "center"),
+      # 2023-24 ort. etiketi
+      list(x = 2024.4, y = 0.654, text = "2023-24 ort.: 0,667",
+           showarrow = FALSE, font = list(size = 10, color = "#3A6B35"),
+           align = "right"),
+      # 2022 şok etiketi
+      list(x = 2019.8, y = 0.830,
+           text = "2022 \u015foku:<br>-0,098",
+           showarrow = TRUE, ax = 30, ay = -40,
+           arrowhead = 2, arrowsize = 0.8,
+           font = list(size = 10, color = "#555555"),
+           arrowcolor = "#555555"),
+      # Alarm bandına giriş etiketi
+      list(x = 2024.0, y = 0.740,
+           text = "alarm band\u0131na<br>giri\u015f: 2024",
+           showarrow = TRUE, ax = -15, ay = -35,
+           arrowhead = 2, arrowsize = 0.8, arrowcolor = "#8B6914",
+           font = list(size = 10, color = "#8B6914"))
+    ),
+    legend = list(x = 0.01, y = 0.30, bgcolor = "rgba(255,255,255,0.85)",
+                  font = list(size = 11)),
+    margin = list(t = 15, r = 15)
+  )
+```
+
+::: {.callout-important}
+## Tempo-Düzeltilmiş PPR₁: 2023'ten Beri 0,70 Eşiğinin Altında
+
+Ham (dönemsel) PPR₁, 2021-2025 döneminde birinci doğum ertelemesinin (dMAB₁/dt) ikinci doğum ertelemesinden (dMAB₂/dt) daha hızlı gerçekleşmesi nedeniyle gerçek quantum'u olduğundan **yüksek göstermektedir**: TDH₁ paydasının TDH₂'den daha fazla baskılanması oranı yapay olarak şişirmektedir. Sıra-özel Bongaarts-Feeney düzeltmesi uygulandığında tempo-düzeltilmiş PPR₁'in 2023'ten bu yana 0,70 davranışsal tabanının altında olduğu görülmektedir (2023-24 ortalaması: 0,667).
+
+Bu bulgunun politika anlamı doğrudandır: 2022 sonrası PPR₁ düşüşünü ertelemeye (tempo) bağlamak mümkün değildir. Davranışsal taban baskısı, ham serinin gösterdiğinden **daha erken ve daha derin** biçimde başlamıştır.
+
+**Kaynak:** TÜİK, Doğum Sırasına Göre Doğumların Oranı 2013-2025; TÜİK, İllere Göre TDH (ulusal); TÜİK, İlk Doğumdaki Ortalama Anne Yaşı. Tempo düzeltmesi: sıra-özel Bongaarts-Feeney (B-F) yöntemi, MAB₁ ve MAB₂ zaman serileri kullanılmıştır. Ham seri: PPR₁ = TDH₂/TDH₁, doğum sırası oranları × ulusal TDH.
+:::
+
 ## Nüfus Yapısı ve Projeksiyon
 
 Nüfus piramidi, kohort büyüklükleri, bağımlılık oranları ve 2025–2060 projeksiyonları.
