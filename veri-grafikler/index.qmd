@@ -1215,7 +1215,7 @@ plot_ly() |>
            font = list(size = 9, color = "#8B6914"))
     ),
     legend = list(
-      x = 0.02, y = 0.25,
+      x = 0.55, y = 0.20,
       bgcolor = "rgba(255,255,255,0.85)",
       bordercolor = "#DDDDDD",
       borderwidth = 1,
